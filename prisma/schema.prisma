@@ -1,0 +1,54 @@
+// Local dev: SQLite. Production (Vercel): switch provider to "postgresql"
+// and point DATABASE_URL at a Neon/Supabase Postgres URL. See README.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// An order is created ONLY by the verified Stripe webhook — never the browser.
+model Order {
+  id              String   @id @default(cuid())
+  orderNumber     String   @unique // human-friendly, e.g. VY-7F3K2
+  stripeSessionId String   @unique
+  email           String
+  customerName    String?
+  region          String   @default("AU") // AU | IN
+  items           String // JSON: [{ slug, name, colour, size, quantity, unitAmount }]
+  amountTotal     Int // minor units (cents / paise)
+  currency        String
+  shippingAddress String? // JSON string
+  status          String   @default("paid") // paid -> in_production -> shipped -> delivered
+  trackingNumber  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Pre-launch / drop waitlist. The pre-order drop is how a $0-capital brand
+// funds its first production run (see business plan §9).
+model WaitlistEntry {
+  id        String   @id @default(cuid())
+  email     String
+  region    String   @default("AU")
+  source    String   @default("homepage") // homepage | product:<slug> | drop
+  createdAt DateTime @default(now())
+
+  @@unique([email, source])
+}
+
+// Customer reviews. New reviews land as "pending" and are approved in admin —
+// UGC is the brand's ad creative, but it must be moderated.
+model Review {
+  id          String   @id @default(cuid())
+  productSlug String
+  author      String
+  rating      Int // 1..5
+  title       String?
+  body        String
+  verified    Boolean  @default(false) // true if tied to a real order email
+  status      String   @default("pending") // pending | approved | hidden
+  createdAt   DateTime @default(now())
+}
