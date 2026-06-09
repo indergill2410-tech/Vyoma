@@ -48,7 +48,7 @@ export default function CartPage() {
       {count === 0 ? (
         <div className="order-card" style={{ textAlign: "center", padding: 48 }}>
           <span className="dev" style={{ fontSize: 36, color: "var(--marigold)", display: "block", marginBottom: 12 }}>व्योम</span>
-          <p className="muted">Your bag is empty — everything is made to order, so nothing's waiting in a warehouse.</p>
+          <p className="muted">Nothing here yet. Everything's made the moment you order it — so let's find your piece.</p>
           <p style={{ marginTop: 18 }}><Link href="/#shop" className="btn">Browse the collection</Link></p>
         </div>
       ) : (

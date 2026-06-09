@@ -20,16 +20,16 @@ export default function About() {
             व्योम · vee-OH-ma · Sanskrit for sky, ether, the infinite space that holds everything.
           </p>
           <p className="muted" style={{ marginTop: 22, fontSize: 17 }}>
-            Yoga was born in India. So is everything we make. That isn't a marketing
-            line we borrowed — it's where our hands actually are. We cut and sew in
-            Tiruppur, Tamil Nadu, India's knitwear capital, working with factories
-            that hold OEKO-TEX certification and pay fairly.
+            Yoga was born in India. So is everything we make. That's not a line we
+            borrowed — it's where our hands actually are. We cut and sew in Tiruppur,
+            Tamil Nadu, alongside people who are paid fairly and have made beautiful
+            things for generations.
           </p>
           <p className="muted" style={{ marginTop: 16, fontSize: 17 }}>
-            We don't mass-produce. Every piece is made to order — cut the day you buy
-            it. Nothing sits in a warehouse marked down. Nothing ends in landfill. It
-            takes a few days longer, and we think that's a fair trade for clothing made
-            on purpose, for one person: you.
+            We don't mass-produce. Every piece is made the day you order it. Nothing
+            sits in a warehouse. Nothing ends in a landfill. It takes a few days
+            longer — and we think that's a fair trade for something made on purpose,
+            for one person: you.
           </p>
         </div>
       </section>
@@ -44,13 +44,13 @@ export default function About() {
             </div>
             <div className="pillar">
               <span className="glyph">✦</span>
-              <h3>Certified, not claimed</h3>
-              <p>OEKO-TEX Standard 100 and GOTS-track organic fibres. We only say what the certificate can prove.</p>
+              <h3>Nothing to hide</h3>
+              <p>Soft on skin, tested safe, honest about every thread. We only ever say what we can prove.</p>
             </div>
             <div className="pillar">
               <span className="glyph">◯</span>
-              <h3>Zero overproduction</h3>
-              <p>Made to order. No deadstock, no markdown bins, no waste. Premium and responsible aren't a trade-off.</p>
+              <h3>Made, not stockpiled</h3>
+              <p>Made the day you order it. No waste, no warehouses. Beautiful and responsible aren't a trade-off.</p>
             </div>
           </div>
         </div>
@@ -60,13 +60,13 @@ export default function About() {
         <div className="container" style={{ maxWidth: 760 }}>
           <span className="section-eyebrow">The honest part</span>
           <h2 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(26px,4vw,38px)", margin: "12px 0 16px" }}>
-            We protect full price. We don't discount the brand.
+            No sales. No markdown bins. Ever.
           </h2>
           <p className="muted" style={{ fontSize: 17 }}>
-            You won't find a 40%-off banner here. Made-to-order, fairly-paid, certified
-            clothing costs what it costs. Instead of sales, we do limited drops and a
-            waitlist — the people on the list hear first. It keeps the brand honest and
-            the wardrobe small and good.
+            You won't find a 40%-off banner here. Made-to-order, fairly-made clothing
+            costs what it costs — and we'd rather be honest about it than dress it up
+            with a fake discount. Instead, we make small drops. The people on the list
+            always hear first.
           </p>
           <div style={{ marginTop: 30 }}>
             <Waitlist source="about" />

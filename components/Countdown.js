@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-// Counts down to the first drop. Scarcity + a real date = the Vuori/Gymshark
-// playbook (business plan §7). Date comes from NEXT_PUBLIC_DROP_DATE.
+// Counts down to the first drop. Date comes from NEXT_PUBLIC_DROP_DATE.
 export default function Countdown({ date }) {
   const target = date ? new Date(date).getTime() : null;
   const [now, setNow] = useState(null);

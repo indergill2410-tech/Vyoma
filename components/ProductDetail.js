@@ -22,7 +22,7 @@ export default function ProductDetail({ product }) {
 
   function build() {
     if (!size) {
-      setError("Choose a size to continue.");
+      setError("Pick your size first ✦");
       return null;
     }
     setError("");
@@ -161,11 +161,11 @@ export default function ProductDetail({ product }) {
         <div className="made-for-you">
           <h4>Made for you, not for a warehouse</h4>
           <ol className="moto-timeline">
-            <li><span>1</span> You order — your piece enters production in Tiruppur, India</li>
-            <li><span>2</span> Cut, sewn &amp; quality-checked to order</li>
-            <li><span>3</span> Tracked courier to your door</li>
+            <li><span>1</span> You order — and your piece begins, in Tiruppur, India</li>
+            <li><span>2</span> Cut, sewn and checked by hand, just for you</li>
+            <li><span>3</span> Couriered to your door, with tracking the whole way</li>
           </ol>
-          <p className="muted small">Nothing mass-produced. Nothing landfilled. That's the whole idea.</p>
+          <p className="muted small">Nothing mass-produced. Nothing wasted. That's the whole idea.</p>
         </div>
       </div>
 

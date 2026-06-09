@@ -8,11 +8,11 @@ export default function Success() {
     <main className="center-page">
       <CartClearer />
       <span className="dev">व्योम</span>
-      <h1>Your piece is being made for you.</h1>
+      <h1>Yours is on its way to being made.</h1>
       <p>
-        Order confirmed — a receipt is on its way to your email. Your piece now
-        enters production in Tiruppur, India, and ships with full tracking. Thank you
-        for choosing something made, not mass-produced.
+        It's official — a receipt is heading to your inbox. Right now, in Tiruppur,
+        your piece is beginning its life, and we'll track it all the way to your door.
+        Thank you for choosing something made, not mass-produced.
       </p>
       <p style={{ marginTop: 28, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
         <Link href="/track" className="btn">Track your order</Link>

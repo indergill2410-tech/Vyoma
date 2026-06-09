@@ -5,10 +5,10 @@ import { formatMoney } from "@/lib/format";
 import { COLOURWAYS } from "@/lib/catalog";
 
 const STEPS = [
-  { key: "paid", title: "Order confirmed", desc: "Payment received. Your order is in the queue." },
-  { key: "in_production", title: "Being made for you", desc: "Cut, sewn and quality-checked to order in Tiruppur, India." },
-  { key: "shipped", title: "On its way", desc: "Handed to a tracked courier, heading to you." },
-  { key: "delivered", title: "Delivered", desc: "It's yours. We hope it has room to grow with you." },
+  { key: "paid", title: "It's official", desc: "We've got your order. Your piece is next in line." },
+  { key: "in_production", title: "Being made for you", desc: "Cut, sewn and checked by hand in Tiruppur, India." },
+  { key: "shipped", title: "On its way", desc: "Handed to the courier and heading straight to you." },
+  { key: "delivered", title: "It's yours", desc: "Delivered. Here's to plenty of room to grow." },
 ];
 
 export default function Track() {
