@@ -64,14 +64,14 @@ export default function Home() {
       {/* Pillars */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <span className="section-eyebrow">Why Vyomawear</span>
             <h2>Three promises, kept.</h2>
             <p>Where it's made. What it's made of. And how. The things we will never cut a corner on.</p>
           </div>
           <div className="pillars">
             {PILLARS.map((p) => (
-              <div className="pillar" key={p.title}>
+              <div className="pillar" key={p.title} data-reveal>
                 <span className="glyph">{p.glyph}</span>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
@@ -92,7 +92,7 @@ export default function Home() {
       {/* Shop */}
       <section className="section" id="shop">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <span className="section-eyebrow">The Collection</span>
             <h2>Pieces, not product.</h2>
             <p>Made to be worn, not stored. Every piece has to earn its place in your week — or it doesn't make the cut.</p>
@@ -109,10 +109,10 @@ export default function Home() {
       <section className="section" style={{ background: "#fff" }}>
         <div className="container">
           <div className="split">
-            <div className="split-media">
+            <div className="split-media" data-reveal>
               <span className="dev">व्योम</span>
             </div>
-            <div>
+            <div data-reveal>
               <span className="section-eyebrow">Where it comes from</span>
               <h2>From the home of yoga, to yours.</h2>
               <p>
@@ -133,7 +133,7 @@ export default function Home() {
       {/* Closing waitlist */}
       <section className="section section-light" style={{ background: "var(--horizon)" }}>
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <span className="section-eyebrow">Don't miss the drop</span>
             <h2>Room to grow.</h2>
             <p>The first drop is small, and made to order. The list always hears first.</p>

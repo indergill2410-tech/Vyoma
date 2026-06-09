@@ -5,6 +5,7 @@ import { useCart, useRegion } from "./Providers";
 import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
 import { getRegion } from "@/lib/regions";
 import { formatMoney, priceFor } from "@/lib/format";
+import { toast, celebrateFrom } from "@/lib/fx";
 import SizeGuide from "./SizeGuide";
 
 export default function ProductDetail({ product }) {
@@ -39,9 +40,13 @@ export default function ProductDetail({ product }) {
     };
   }
 
-  function add() {
+  function add(e) {
     const item = build();
-    if (item) addItem(item);
+    if (item) {
+      celebrateFrom(e);
+      addItem(item);
+      toast(`${product.name} — added to your bag`);
+    }
   }
 
   async function buyNow() {
@@ -158,7 +163,7 @@ export default function ProductDetail({ product }) {
           <div><dt>Care</dt><dd>{product.care}</dd></div>
         </dl>
 
-        <div className="made-for-you">
+        <div className="made-for-you" data-reveal>
           <h4>Made for you, not for a warehouse</h4>
           <ol className="moto-timeline">
             <li><span>1</span> You order — and your piece begins, in Tiruppur, India</li>
