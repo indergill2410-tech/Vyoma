@@ -32,7 +32,7 @@ const SCENES = [
     key: "marigold-dusk",
     moment: "Gold hour",
     line: "Hold the pose a little longer.",
-    body: "The marigold of a Tiruppur evening — and of every flower strung in welcome.",
+    body: "The marigold of an Indian evening — and of every flower strung in welcome.",
   },
   {
     key: "ether",

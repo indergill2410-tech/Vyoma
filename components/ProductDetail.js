@@ -146,6 +146,12 @@ export default function ProductDetail({ product }) {
 
         <p className="pdp-lead">✦ {product.leadTime} · {r.shipping}</p>
 
+        <ul className="pdp-trust" aria-label="Why buy from Vyoma">
+          <li><span>॥</span> Made in India</li>
+          <li><span>✦</span> Secure checkout</li>
+          <li><span>◯</span> Tracked delivery</li>
+        </ul>
+
         <dl className="pdp-specs">
           <div><dt>Fabric</dt><dd>{product.fabric}</dd></div>
           <div><dt>Fit</dt><dd>{product.fit}</dd></div>
@@ -153,14 +159,22 @@ export default function ProductDetail({ product }) {
         </dl>
 
         <div className="made-for-you" data-reveal>
-          <h4>Made for you, not for a warehouse</h4>
+          <h4>Made in India, with care</h4>
           <ol className="moto-timeline">
-            <li><span>1</span> You order — and your piece begins, in Tiruppur, India</li>
-            <li><span>2</span> Cut, sewn and checked by hand, just for you</li>
+            <li><span>1</span> Crafted in India — the birthplace of yoga</li>
+            <li><span>2</span> Cut, sewn and checked by hand</li>
             <li><span>3</span> Couriered to your door, with tracking the whole way</li>
           </ol>
-          <p className="muted small">Nothing mass-produced. Nothing wasted. That's the whole idea.</p>
+          <p className="muted small">Considered, never mass-produced. Made to last.</p>
         </div>
+      </div>
+
+      <div className="pdp-sticky">
+        <div className="pdp-sticky-info">
+          <strong>{product.name}</strong>
+          <span>{formatMoney(unit, region)}</span>
+        </div>
+        <button className="btn" onClick={add}>Add to bag</button>
       </div>
 
       <SizeGuide open={guideOpen} onClose={() => setGuideOpen(false)} fit={product.fit} />

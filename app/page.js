@@ -9,7 +9,7 @@ const PILLARS = [
   {
     glyph: "॥",
     title: "Born where yoga was born",
-    body: "Made in Tiruppur, the heart of India's knitwear. Yoga wear from the very place yoga began.",
+    body: "Made in India — the land that gave the world yoga. Heritage you can wear.",
   },
   {
     glyph: "✦",
@@ -18,8 +18,8 @@ const PILLARS = [
   },
   {
     glyph: "◯",
-    title: "Made the day you order it",
-    body: "Nothing mass-produced. Nothing sitting in a warehouse. Yours is cut and sewn just for you.",
+    title: "Made with intention",
+    body: "Crafted with care, never mass-produced — made to be lived in, season after season.",
   },
 ];
 
@@ -117,12 +117,12 @@ export default function Home() {
               <h2>From the home of yoga, to yours.</h2>
               <p>
                 Everything we make is made in India — the birthplace of yoga, and one of
-                the great textile nations on earth. Cut and sewn in Tiruppur by people
-                who have done it, brilliantly, for generations.
+                the great textile traditions on earth, by hands that have practised the
+                craft for generations.
               </p>
               <p>
                 Whether you practise in Mumbai or Melbourne, it reaches you the same way:
-                made on purpose, by hand, for you — and for no one else.
+                made with care, carried with pride.
               </p>
               <span className="ecta">✦ Made in India · Worn in India &amp; Australia</span>
               <p style={{ marginTop: 18 }}>
@@ -139,7 +139,7 @@ export default function Home() {
           <div className="section-head" data-reveal>
             <span className="section-eyebrow">Don't miss the drop</span>
             <h2>Room to grow.</h2>
-            <p>The first drop is small, and made to order. The list always hears first.</p>
+            <p>The first drop is small and considered. Join the list to be the first to know.</p>
           </div>
           <Waitlist source="drop" />
         </div>

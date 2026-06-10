@@ -7,7 +7,7 @@ import Waitlist from "@/components/Waitlist";
 export const metadata = {
   title: "The Drops",
   description:
-    "Small runs, made to order, announced to the list first. See what's launching and what's on the horizon.",
+    "Small, considered runs made in India. See what's launching and what's on the horizon.",
 };
 
 function Dots({ colourways }) {
@@ -29,10 +29,10 @@ export default function DropsPage() {
     <main className="drops">
       <section className="drops-intro">
         <span className="section-eyebrow">The Drops</span>
-        <h1>We don't do seasons. We do drops.</h1>
+        <h1>We don't do seasons. We do skies.</h1>
         <p>
-          Small runs, made to order, never restocked the same way twice. No sales,
-          no markdown bins — just the next sky, announced to the list first.
+          Small, considered runs — each a moment in the sky, made in India.
+          Join the list to be the first to know.
         </p>
       </section>
 

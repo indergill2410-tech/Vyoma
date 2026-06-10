@@ -10,9 +10,9 @@ const STEPS = [
   { key: "you", word: "You", colour: "night-sky-indigo",
     h: "It begins with you.",
     b: "No order, no garment. Nothing is made until you choose it — so nothing is ever made in vain." },
-  { key: "tiruppur", word: "Tiruppur", colour: "marigold-dusk",
-    h: "We head to Tiruppur.",
-    b: "India's knitwear heart, in Tamil Nadu. The same hands that have shaped cloth here for generations now shape yours." },
+  { key: "india", word: "India", colour: "marigold-dusk",
+    h: "Crafted in India.",
+    b: "In one of the world's great textile traditions, by hands that have shaped beautiful cloth for generations." },
   { key: "cut", word: "Cut", colour: "monsoon-grey",
     h: "Your fabric is cut.",
     b: "Measured and cut to your size — one piece, on purpose. The offcuts are kept and reused, never binned." },
@@ -24,7 +24,7 @@ const STEPS = [
     b: "Every seam, every stitch, every waistband. If it isn't good enough to keep, it doesn't leave." },
   { key: "door", word: "Yours", colour: "night-sky-indigo",
     h: "Couriered to your door.",
-    b: "From Tiruppur to your mat — in Mumbai, in Melbourne, anywhere. Tracked the whole way, and made for one person." },
+    b: "From India to your mat — in Mumbai, in Melbourne, anywhere. Tracked the whole way, made with care." },
 ];
 
 function sceneStyle(key) {
