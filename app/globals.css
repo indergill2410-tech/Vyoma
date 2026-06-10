@@ -431,6 +431,45 @@ a { color: inherit; text-decoration: none; }
 .crumb { font-size: 13px; color: var(--slate); padding-top: 22px; }
 .crumb a:hover { color: var(--ink); text-decoration: underline; }
 
+/* ── Fit Finder ──────────────────────────────────────────── */
+.fit-page { padding: 56px 24px 90px; }
+.fit { max-width: 620px; margin: 0 auto; }
+.fit-progress { display: flex; gap: 8px; justify-content: center; margin-bottom: 30px; }
+.fit-dot { width: 28px; height: 4px; border-radius: 999px; background: var(--mist); transition: background .3s; }
+.fit-dot.on { background: var(--marigold); }
+.fit-step { text-align: center; animation: fit-in .45s cubic-bezier(.16,1,.3,1); }
+@keyframes fit-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fit-step { animation: none; } }
+.fit-title { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 5vw, 42px); line-height: 1.12; letter-spacing: -0.015em; margin: 12px 0 8px; }
+.fit-lead { color: var(--slate); font-weight: 300; margin-bottom: 30px; }
+.fit-options { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 520px) { .fit-options { grid-template-columns: 1fr 1fr; } }
+.fit-option {
+  display: flex; flex-direction: column; gap: 3px; text-align: left;
+  background: #fff; border: 1px solid var(--mist); border-radius: var(--r);
+  padding: 18px 20px; cursor: pointer; font-family: var(--sans);
+  transition: transform .15s ease, border-color .15s ease, box-shadow .2s ease;
+}
+.fit-option:hover { transform: translateY(-2px); border-color: var(--dusk); box-shadow: var(--shadow); }
+.fit-option:focus-visible { outline: 2px solid var(--marigold); outline-offset: 2px; }
+.fit-option-label { font-family: var(--serif); font-size: 18px; font-weight: 400; }
+.fit-option-note { font-size: 13px; color: var(--slate); }
+.fit-back { display: inline-block; margin-top: 26px; }
+
+.fit-match {
+  display: grid; gap: 26px; grid-template-columns: 1fr; align-items: center;
+  text-align: left; margin-top: 26px; background: #fff; border: 1px solid var(--mist);
+  border-radius: var(--r); padding: 22px; box-shadow: var(--shadow);
+}
+@media (min-width: 560px) { .fit-match { grid-template-columns: 200px 1fr; } }
+.fit-swatch {
+  aspect-ratio: 3/4; border-radius: var(--r); display: grid; place-items: center;
+  box-shadow: var(--shadow-lg), 0 24px 60px -24px var(--cw-base);
+}
+.fit-size { font-family: var(--serif); font-size: clamp(44px, 9vw, 64px); color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.3); }
+.fit-match-body h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 4px 0 8px; }
+.fit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
 /* ── Scroll reveal ───────────────────────────────────────── */
 /* Only hide once JS has confirmed it's running (html.reveal-ready), so no-JS
    visitors and crawlers always see content. */

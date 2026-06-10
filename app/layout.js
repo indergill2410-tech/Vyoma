@@ -42,6 +42,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-links">
                 <Link href="/#shop">Shop</Link>
+                <Link href="/fit">Fit Finder</Link>
                 <Link href="/about">Story</Link>
                 <Link href="/track">Track order</Link>
                 <Link href="/admin">Admin</Link>
