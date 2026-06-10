@@ -273,6 +273,8 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) { .pdp-frame { animation: none; } }
 .product-img { object-fit: cover; }
 .swatch-fallback { position: absolute; inset: 0; display: grid; place-items: center; }
+/* Plain <img> from Shopify CDN — fill their positioned frames */
+.card-media img, .pdp-photo, .pdp-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pdp-glyph { font-family: var(--serif); font-size: clamp(54px, 11vw, 96px); opacity: .22; letter-spacing: .04em; }
 .pdp-thumbs { display: flex; gap: 10px; margin-top: 14px; }
 .pdp-thumb { position: relative; width: 60px; height: 76px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; overflow: hidden; padding: 0; background: none; }

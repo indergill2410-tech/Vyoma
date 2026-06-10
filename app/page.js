@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/catalog";
 import SkyHero from "@/components/SkyHero";
 import ScrollSky from "@/components/ScrollSky";
 import Countdown from "@/components/Countdown";
 import Waitlist from "@/components/Waitlist";
-import ProductCard from "@/components/ProductCard";
+import ShopGrid from "@/components/ShopGrid";
 
 const PILLARS = [
   {
@@ -35,7 +34,6 @@ const QUOTES = [
 
 export default function Home() {
   const dropDate = process.env.NEXT_PUBLIC_DROP_DATE;
-  const featured = PRODUCTS.filter((p) => p.hero).slice(0, 3);
 
   return (
     <main className="home">
@@ -103,11 +101,7 @@ export default function Home() {
               <Link href="/sky-series" className="link-btn">See the Sky Series →</Link>
             </p>
           </div>
-          <div className="grid">
-            {PRODUCTS.map((p) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
-          </div>
+          <ShopGrid />
         </div>
       </section>
 
