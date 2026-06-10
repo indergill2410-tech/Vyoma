@@ -4,7 +4,7 @@ import MakingJourney from "@/components/MakingJourney";
 export const metadata = {
   title: "The Making",
   description:
-    "Made the day you order it, in Tiruppur, India. Follow a Vyoma piece from your order to your door — nothing mass-produced, nothing wasted.",
+    "Made in India, the birthplace of yoga. Follow a Vyoma piece from your order to your door — crafted with care, made to last.",
 };
 
 export default function MakingPage() {
@@ -12,10 +12,10 @@ export default function MakingPage() {
     <main className="making">
       <section className="mk-intro">
         <span className="section-eyebrow">The Making</span>
-        <h1>Made the day you order it.</h1>
+        <h1>Made in India, with care.</h1>
         <p>
-          Most clothes are made by the thousand and hope to be bought. Ours waits
-          for you. Here's the whole journey — from your order to your door.
+          Crafted in the land that gave the world yoga. Here's the whole journey —
+          from your order to your door.
         </p>
       </section>
 

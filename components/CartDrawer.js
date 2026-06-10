@@ -76,7 +76,7 @@ export default function CartDrawer() {
           <div className="drawer-empty">
             <span className="dev">व्योम</span>
             <p>Your bag is empty.</p>
-            <p className="muted">Everything is made to order — nothing sits in a warehouse.</p>
+            <p className="muted">Crafted in India, with care — made to be lived in.</p>
             <button className="btn" onClick={() => setDrawerOpen(false)}>
               Browse the collection
             </button>

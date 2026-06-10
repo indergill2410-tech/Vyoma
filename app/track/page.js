@@ -6,7 +6,7 @@ import { COLOURWAYS } from "@/lib/catalog";
 
 const STEPS = [
   { key: "paid", title: "It's official", desc: "We've got your order. Your piece is next in line." },
-  { key: "in_production", title: "Being made for you", desc: "Cut, sewn and checked by hand in Tiruppur, India." },
+  { key: "in_production", title: "Being made for you", desc: "Cut, sewn and checked by hand in India." },
   { key: "shipped", title: "On its way", desc: "Handed to the courier and heading straight to you." },
   { key: "delivered", title: "It's yours", desc: "Delivered. Here's to plenty of room to grow." },
 ];

@@ -21,15 +21,12 @@ export default function About() {
           </p>
           <p className="muted" style={{ marginTop: 22, fontSize: 17 }}>
             Yoga was born in India. So is everything we make. That's not a line we
-            borrowed — it's where our hands actually are. We cut and sew in Tiruppur,
-            Tamil Nadu, alongside people who are paid fairly and have made beautiful
-            things for generations.
+            borrowed — it's where our hands actually are, alongside artisans who have
+            shaped beautiful cloth for generations.
           </p>
           <p className="muted" style={{ marginTop: 16, fontSize: 17 }}>
-            We don't mass-produce. Every piece is made the day you order it. Nothing
-            sits in a warehouse. Nothing ends in a landfill. It takes a few days
-            longer — and we think that's a fair trade for something made on purpose,
-            for one person: you.
+            We make with care, not in haste — each piece considered, never mass-produced.
+            We think that's a fair trade for something made to be loved, and to last.
           </p>
         </div>
       </section>
@@ -40,7 +37,7 @@ export default function About() {
             <div className="pillar">
               <span className="glyph">॥</span>
               <h3>Made in India</h3>
-              <p>Tiruppur, Tamil Nadu. Knitwear made by people who've made it for generations, in yoga's homeland.</p>
+              <p>Crafted in yoga's homeland by artisans who have practised the craft for generations.</p>
             </div>
             <div className="pillar">
               <span className="glyph">✦</span>
@@ -49,8 +46,8 @@ export default function About() {
             </div>
             <div className="pillar">
               <span className="glyph">◯</span>
-              <h3>Made, not stockpiled</h3>
-              <p>Made the day you order it. No waste, no warehouses. Beautiful and responsible aren't a trade-off.</p>
+              <h3>Made to last</h3>
+              <p>Considered, never mass-produced. Beautiful and responsible aren't a trade-off.</p>
             </div>
           </div>
         </div>
@@ -58,15 +55,14 @@ export default function About() {
 
       <section className="section">
         <div className="container" style={{ maxWidth: 760 }}>
-          <span className="section-eyebrow">The honest part</span>
+          <span className="section-eyebrow">Our name</span>
           <h2 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(26px,4vw,38px)", margin: "12px 0 16px" }}>
-            No sales. No markdown bins. Ever.
+            व्योम — the sky that holds everything.
           </h2>
           <p className="muted" style={{ fontSize: 17 }}>
-            You won't find a 40%-off banner here. Made-to-order, fairly-made clothing
-            costs what it costs — and we'd rather be honest about it than dress it up
-            with a fake discount. Instead, we make small drops. The people on the list
-            always hear first.
+            Vyoma is Sanskrit for sky, ether, infinite space — the room to breathe that
+            a practice gives you. We carry that name with pride: made in India, rooted in
+            the tradition that gave the world yoga, and built to move with you for years.
           </p>
           <div style={{ marginTop: 30 }}>
             <Waitlist source="about" />

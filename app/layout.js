@@ -2,6 +2,7 @@ import "./globals.css";
 import Link from "next/link";
 import { Providers } from "@/components/Providers";
 import Nav from "@/components/Nav";
+import AnnounceBar from "@/components/AnnounceBar";
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -13,13 +14,30 @@ export const metadata = {
     template: "%s · Vyomawear",
   },
   description:
-    "Premium yoga wear, made to order in India — yoga's birthplace. Shipping to India and Australia. Vyoma (vee-OH-ma): Sanskrit for sky.",
+    "Premium yoga wear, made in India — the birthplace of yoga. Shipping to India and Australia. Vyoma (vee-OH-ma): Sanskrit for sky, ether, infinite space.",
   openGraph: {
     title: "Vyomawear — Room to breathe.",
     description:
-      "Premium, made-to-order yoga wear from the birthplace of yoga. India & Australia.",
+      "Premium yoga wear, made in India — the birthplace of yoga. India & Australia.",
     type: "website",
   },
+  manifest: "/manifest.webmanifest",
+  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  appleWebApp: { capable: true, title: "Vyoma", statusBarStyle: "black-translucent" },
+};
+
+export const viewport = {
+  themeColor: "#14162E",
+};
+
+const ORG_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Vyomawear",
+  description: "Premium yoga wear, made in India — the birthplace of yoga.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://vyoma-imsr.onrender.com",
+  logo: "/icon.svg",
+  areaServed: ["IN", "AU"],
 };
 
 export default function RootLayout({ children }) {
@@ -31,7 +49,12 @@ export default function RootLayout({ children }) {
             __html: "document.documentElement.classList.add('reveal-ready')",
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
+        />
         <Providers>
+          <AnnounceBar />
           <Nav />
           {children}
           <footer className="site-footer">

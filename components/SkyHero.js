@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 // A living night sky. Vyoma means sky / ether / infinite space — so the hero
 // IS a sky: drifting stars, soft twinkle, the occasional shooting star.
 // Respects prefers-reduced-motion (renders a still field of stars).
-export default function SkyHero({ children }) {
+export default function SkyHero({ children, video, poster }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -103,7 +103,21 @@ export default function SkyHero({ children }) {
 
   return (
     <section className="sky-hero">
-      <canvas ref={canvasRef} className="sky-canvas" aria-hidden="true" />
+      {video ? (
+        <video
+          className="sky-canvas sky-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={poster}
+          aria-hidden="true"
+        >
+          <source src={video} />
+        </video>
+      ) : (
+        <canvas ref={canvasRef} className="sky-canvas" aria-hidden="true" />
+      )}
       <div className="sky-content container">{children}</div>
       <div className="sky-horizon" aria-hidden="true" />
     </section>
