@@ -130,6 +130,9 @@ export default function Home() {
                 made on purpose, by hand, for you — and for no one else.
               </p>
               <span className="ecta">✦ Made in India · Worn in India &amp; Australia</span>
+              <p style={{ marginTop: 18 }}>
+                <Link href="/making" className="link-btn">Follow a piece from order to door →</Link>
+              </p>
             </div>
           </div>
         </div>

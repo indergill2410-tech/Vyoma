@@ -43,6 +43,7 @@ export default function RootLayout({ children }) {
               <div className="footer-links">
                 <Link href="/#shop">Shop</Link>
                 <Link href="/sky-series">The Sky Series</Link>
+                <Link href="/making">The Making</Link>
                 <Link href="/fit">Fit Finder</Link>
                 <Link href="/about">Story</Link>
                 <Link href="/track">Track order</Link>
