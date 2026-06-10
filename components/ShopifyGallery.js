@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 // Interactive gallery for Shopify product images: a main frame plus a thumbnail
 // rail. Clicking a thumb swaps the main image with the cross-dissolve (cw-in).
