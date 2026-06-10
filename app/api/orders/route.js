@@ -26,6 +26,13 @@ export async function PATCH(req) {
   }
   if (trackingNumber !== undefined) data.trackingNumber = trackingNumber || null;
 
-  const order = await prisma.order.update({ where: { id }, data });
-  return NextResponse.json({ order });
+  try {
+    const order = await prisma.order.update({ where: { id }, data });
+    return NextResponse.json({ order });
+  } catch (err) {
+    if (err.code === "P2025") {
+      return NextResponse.json({ error: "Order not found." }, { status: 404 });
+    }
+    throw err;
+  }
 }

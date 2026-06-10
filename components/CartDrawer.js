@@ -4,7 +4,15 @@ import { useState } from "react";
 import { useCart, useRegion } from "./Providers";
 import { getRegion } from "@/lib/regions";
 import { formatMoney } from "@/lib/format";
-import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
+import { COLOURWAYS, swatchStyle, getProduct } from "@/lib/catalog";
+
+// Resolve a line's unit price live from the catalog (snapshot fallback), so the
+// drawer always reflects current pricing rather than what localStorage stored.
+function unitPrice(it, region) {
+  const product = getProduct(it.slug);
+  if (product) return region === "IN" ? product.priceInr : product.priceAud;
+  return region === "IN" ? it.priceInr : it.priceAud;
+}
 
 export default function CartDrawer() {
   const { items, count, updateQty, removeItem, lineId, drawerOpen, setDrawerOpen } = useCart();
@@ -13,10 +21,7 @@ export default function CartDrawer() {
   const [error, setError] = useState("");
 
   const r = getRegion(region);
-  const subtotal = items.reduce(
-    (sum, it) => sum + (region === "IN" ? it.priceInr : it.priceAud) * it.qty,
-    0
-  );
+  const subtotal = items.reduce((sum, it) => sum + unitPrice(it, region) * it.qty, 0);
 
   async function checkout() {
     setError("");
@@ -82,7 +87,7 @@ export default function CartDrawer() {
               {items.map((it) => {
                 const id = lineId(it);
                 const c = COLOURWAYS[it.colour];
-                const unit = region === "IN" ? it.priceInr : it.priceAud;
+                const unit = unitPrice(it, region);
                 return (
                   <div className="drawer-item" key={id}>
                     <div className="drawer-thumb" style={swatchStyle(it.colour)} aria-hidden="true" />

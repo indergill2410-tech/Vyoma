@@ -5,7 +5,15 @@ import Link from "next/link";
 import { useCart, useRegion } from "@/components/Providers";
 import { getRegion } from "@/lib/regions";
 import { formatMoney } from "@/lib/format";
-import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
+import { COLOURWAYS, swatchStyle, getProduct } from "@/lib/catalog";
+
+// Resolve a line's unit price live from the catalog (falls back to the cart
+// snapshot if the product was retired), so a price change is always reflected.
+function unitPrice(it, region) {
+  const product = getProduct(it.slug);
+  if (product) return region === "IN" ? product.priceInr : product.priceAud;
+  return region === "IN" ? it.priceInr : it.priceAud;
+}
 
 export default function CartPage() {
   const { items, count, updateQty, removeItem, lineId } = useCart();
@@ -14,10 +22,7 @@ export default function CartPage() {
   const [error, setError] = useState("");
   const r = getRegion(region);
 
-  const subtotal = items.reduce(
-    (sum, it) => sum + (region === "IN" ? it.priceInr : it.priceAud) * it.qty,
-    0
-  );
+  const subtotal = items.reduce((sum, it) => sum + unitPrice(it, region) * it.qty, 0);
 
   async function checkout() {
     setError("");
@@ -55,7 +60,7 @@ export default function CartPage() {
         <>
           {items.map((it) => {
             const id = lineId(it);
-            const unit = region === "IN" ? it.priceInr : it.priceAud;
+            const unit = unitPrice(it, region);
             return (
               <div className="drawer-item" key={id} style={{ background: "#fff", border: "1px solid var(--mist)", borderRadius: 12, padding: 16, marginBottom: 14 }}>
                 <div className="drawer-thumb" style={swatchStyle(it.colour)} aria-hidden="true" />
