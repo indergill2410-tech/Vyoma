@@ -40,6 +40,6 @@ No code changes are needed when you add or replace photos in Shopify.
 ## Alternative: generate locally, upload yourself
 
 If you'd rather generate outside Shopify (e.g. `scripts/generate-images.mjs` with
-Google Imagen / Pollinations), you can upload the resulting files to each product
+Google Imagen/Gemini), you can upload the resulting files to each product
 in the Shopify admin. Ask and we can add a `scripts/upload-to-shopify.mjs` that
 pushes a folder of images onto products via the Shopify **Admin API**.

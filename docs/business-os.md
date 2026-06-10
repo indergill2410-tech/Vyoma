@@ -10,7 +10,7 @@ falls back gracefully and never breaks.
 | --- | --- | --- |
 | **Shopify** | Storefront, checkout, payments, orders | ✅ wired (`lib/shopify.js`) — set 2 env vars |
 | **Twilio** | SMS / WhatsApp comms | ✅ wired (`lib/twilio.js`, `/api/notify`) — set 4 env vars |
-| **Cloudflare** | Image storage (R2) + free AI photos (Workers AI) | ✅ image provider in `scripts/generate-images.mjs` |
+| **Cloudflare** | Image storage (R2) + DNS | optional |
 | **GitHub Actions** | Scheduled automation | ✅ weekly report (`.github/workflows/weekly-report.yml`) |
 | **Supabase** | Production Postgres | 📋 guided setup below (Prisma swap) |
 | **Sentry** | Error monitoring | 📋 one-command setup below |
@@ -32,11 +32,14 @@ checkout go live. See `docs/shopify-photos.md` for on-model photos.
 4. Test: `POST /api/notify` (admin token) `{ "to":"+61...", "body":"hi", "channel":"whatsapp" }`.
 - *India tip:* WhatsApp is the channel — use it for drop alerts and order updates.
 
-### Cloudflare — storage + free AI photos
-1. Get `CLOUDFLARE_ACCOUNT_ID` and an API token with **Workers AI** + **R2** perms.
-2. Free product photos: `IMAGE_PROVIDER=cloudflare npm run images` (Flux on Workers AI).
-3. R2 for hosting generated assets (bucket can be created via the Cloudflare MCP).
-4. Optional: host the site on Cloudflare Pages + put DNS for vyomawear.com here.
+### Cloudflare — storage + DNS (optional)
+1. Get `CLOUDFLARE_ACCOUNT_ID` and an API token with **R2** perms.
+2. R2 for hosting assets (bucket can be created via the Cloudflare MCP).
+3. Optional: host the site on Cloudflare Pages + put DNS for vyomawear.com here.
+
+### Product photos
+- Real on-model photos via a Shopify app (see `docs/ai-model-photos.md`), or
+- `npm run images` (Gemini/Imagen — needs a billing-enabled Google project).
 
 ### Supabase — production database
 Prisma already abstracts the DB; switch the managed Postgres in:

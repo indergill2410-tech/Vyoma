@@ -22,7 +22,7 @@ Keep it < 6 MB, 1080p, ~8–12s, muted.
 ## Product photos
 - Per product: an on-model shot + a detail shot (more angles = richer gallery).
 - Routes: a Shopify photo app (Botika/Pebblely) → auto-appears; or
-  `scripts/generate-images.mjs` (Imagen / Pollinations / Cloudflare) → commit to
+  `scripts/generate-images.mjs` (Gemini/Imagen) → commit to
   `public/products/<slug>/`.
 - Until photos exist, the branded colourway swatch shows — never broken.
 
