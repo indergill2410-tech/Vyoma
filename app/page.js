@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/catalog";
 import SkyHero from "@/components/SkyHero";
+import ScrollSky from "@/components/ScrollSky";
 import Countdown from "@/components/Countdown";
 import Waitlist from "@/components/Waitlist";
 import ProductCard from "@/components/ProductCard";
@@ -37,7 +38,8 @@ export default function Home() {
   const featured = PRODUCTS.filter((p) => p.hero).slice(0, 3);
 
   return (
-    <main>
+    <main className="home">
+      <ScrollSky />
       <SkyHero>
         <span className="sky-eyebrow">Made where yoga began</span>
         <h1>Room to breathe.</h1>
@@ -130,8 +132,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Closing waitlist */}
-      <section className="section section-light" style={{ background: "var(--horizon)" }}>
+      {/* Closing waitlist — left transparent so it sits in the warmest dawn */}
+      <section className="section section-light">
         <div className="container">
           <div className="section-head" data-reveal>
             <span className="section-eyebrow">Don't miss the drop</span>
