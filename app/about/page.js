@@ -64,6 +64,23 @@ export default function About() {
             a practice gives you. We carry that name with pride: made in India, rooted in
             the tradition that gave the world yoga, and built to move with you for years.
           </p>
+
+          <h2 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(24px,4vw,34px)", margin: "40px 0 16px" }}>
+            Not made of plastic.
+          </h2>
+          <p className="muted" style={{ fontSize: 17 }}>
+            Most activewear is plastic — polyester, nylon and elastane. We build the other
+            way: natural fibre first, nothing synthetic against your skin unless it has to
+            be there. The layer closest to you should be the cleanest — which is why we made{" "}
+            <Link href="/product/vyoma-pure-brief-women" style={{ textDecoration: "underline" }}>Vyoma Pure</Link>,
+            our natural-cotton everyday basics.
+          </p>
+          <p className="muted" style={{ fontSize: 15, marginTop: 16, fontStyle: "italic" }}>
+            We don&apos;t make medical claims. No item of clothing treats, cures or
+            prevents any condition. What we can tell you is exactly what our fabric is
+            made of — and let you decide what you want against your skin all day.
+          </p>
+
           <div style={{ marginTop: 30 }}>
             <Waitlist source="about" />
           </div>

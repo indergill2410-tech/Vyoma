@@ -13,13 +13,13 @@ const PILLARS = [
   },
   {
     glyph: "✦",
-    title: "Nothing to hide",
-    body: "We only say what we can prove. Soft on skin, tested safe, and honest about every single thread.",
+    title: "Not made of plastic",
+    body: "Most activewear is synthetic. We build the other way — natural fibre first, gentler against your skin.",
   },
   {
     glyph: "◯",
-    title: "Made with intention",
-    body: "Crafted with care, never mass-produced — made to be lived in, season after season.",
+    title: "Nothing to hide",
+    body: "We only say what we can prove, and tell you exactly what's in the fabric. You decide what you wear all day.",
   },
 ];
 
@@ -43,8 +43,8 @@ export default function Home() {
         <h1>Room to breathe.</h1>
         <p className="sky-pron">Vyoma (vee-OH-ma) — Sanskrit for sky, ether, infinite space.</p>
         <p className="sky-lead">
-          Yoga wear made for you, the day you order it. Never mass-produced,
-          never wasted. From India — to India and Australia.
+          Yoga wear made in India — natural fibre, not plastic, next to your skin.
+          Worn in India &amp; Australia.
         </p>
         <div className="sky-cta">
           <Link href="/#shop" className="btn">Explore the collection</Link>
