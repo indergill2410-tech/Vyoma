@@ -84,21 +84,39 @@ async function viaPollinations(prompt, seed) {
 async function viaGemini(prompt, referenceB64) {
   const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!key) throw new Error("Set GEMINI_API_KEY (free at https://aistudio.google.com/apikey)");
+  const base = "https://generativelanguage.googleapis.com/v1beta/models";
+
+  // Imagen models use the :predict endpoint (different payload + response).
+  if (GEMINI_MODEL.startsWith("imagen")) {
+    const res = await fetch(`${base}/${GEMINI_MODEL}:predict?key=${key}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        instances: [{ prompt }],
+        parameters: { sampleCount: 1, aspectRatio: "3:4" },
+      }),
+    });
+    if (!res.ok) throw new Error(`Imagen ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    const data = await res.json();
+    const b64 = data?.predictions?.[0]?.bytesBase64Encoded;
+    if (!b64) throw new Error("Imagen returned no image");
+    return Buffer.from(b64, "base64");
+  }
+
+  // Gemini image models (e.g. gemini-2.5-flash-image) use :generateContent and
+  // can take a reference image for subject consistency.
   const parts = [{ text: prompt }];
   if (referenceB64) {
     parts.push({ inline_data: { mime_type: "image/png", data: referenceB64 } });
   }
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${key}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts }],
-        generationConfig: { responseModalities: ["IMAGE"] },
-      }),
-    }
-  );
+  const res = await fetch(`${base}/${GEMINI_MODEL}:generateContent?key=${key}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ role: "user", parts }],
+      generationConfig: { responseModalities: ["IMAGE"] },
+    }),
+  });
   if (!res.ok) throw new Error(`Gemini ${res.status}: ${(await res.text()).slice(0, 200)}`);
   const data = await res.json();
   const out = data?.candidates?.[0]?.content?.parts?.find((p) => p.inlineData || p.inline_data);
@@ -118,6 +136,14 @@ async function viaCloudflare(prompt) {
     body: JSON.stringify({ prompt }),
   });
   if (!res.ok) throw new Error(`Cloudflare ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  // Some models (flux-1-schnell) return JSON { result: { image: base64 } };
+  // others (SDXL) return the raw PNG stream. Handle both.
+  if ((res.headers.get("content-type") || "").includes("application/json")) {
+    const data = await res.json();
+    const b64 = data?.result?.image;
+    if (!b64) throw new Error("Cloudflare returned no image");
+    return Buffer.from(b64, "base64");
+  }
   return Buffer.from(await res.arrayBuffer());
 }
 

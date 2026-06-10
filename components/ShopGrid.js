@@ -21,11 +21,12 @@ export default async function ShopGrid() {
             <Link key={p.id} href={`/product/${p.handle}`} className="card" data-reveal>
               <div className="card-media">
                 {p.featuredImage ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={p.featuredImage.url}
                     alt={p.featuredImage.altText || p.title}
-                    loading="lazy"
+                    fill
+                    sizes="(min-width: 980px) 32vw, (min-width: 640px) 46vw, 100vw"
+                    className="product-img"
                   />
                 ) : (
                   <div className="swatch-fallback" role="img" aria-label={p.title} />

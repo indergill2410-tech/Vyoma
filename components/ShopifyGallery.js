@@ -23,8 +23,14 @@ export default function ShopifyGallery({ images, title }) {
   return (
     <div className="pdp-media">
       <div className="pdp-frame" key={active}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="pdp-photo" src={main.url} alt={main.altText || title} />
+        <Image
+          className="product-img"
+          src={main.url}
+          alt={main.altText || title}
+          fill
+          sizes="(min-width: 820px) 45vw, 100vw"
+          priority
+        />
         <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       {images.length > 1 && (
@@ -37,8 +43,7 @@ export default function ShopifyGallery({ images, title }) {
               aria-label={`View image ${i + 1}`}
               aria-pressed={active === i}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img.url} alt={img.altText || `${title} ${i + 1}`} loading="lazy" />
+              <Image src={img.url} alt={img.altText || `${title} ${i + 1}`} fill sizes="80px" />
             </button>
           ))}
         </div>
