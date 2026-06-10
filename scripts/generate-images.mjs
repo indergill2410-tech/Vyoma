@@ -5,7 +5,8 @@
 //   IMAGE_PROVIDER=gemini GEMINI_API_KEY=xxx node scripts/generate-images.mjs
 //
 // Options (env):
-//   IMAGE_PROVIDER      "gemini" (default) or "pollinations" (free, no key)
+//   IMAGE_PROVIDER      "gemini" (default), "pollinations" (free, no key),
+//                       or "cloudflare" (Workers AI free tier; needs account+token)
 //   GEMINI_API_KEY      free key from https://aistudio.google.com/apikey
 //   GEMINI_IMAGE_MODEL  default "gemini-2.5-flash-image"
 //   FORCE=1             regenerate even if a file already exists
@@ -90,6 +91,23 @@ async function viaGemini(prompt, referenceB64) {
   return Buffer.from(b64, "base64");
 }
 
+async function viaCloudflare(prompt) {
+  const acct = process.env.CLOUDFLARE_ACCOUNT_ID;
+  const token = process.env.CLOUDFLARE_API_TOKEN;
+  if (!acct || !token) throw new Error("Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN");
+  const model = process.env.CLOUDFLARE_IMAGE_MODEL || "@cf/black-forest-labs/flux-1-schnell";
+  const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/${model}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+  if (!res.ok) throw new Error(`Cloudflare ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  const data = await res.json();
+  const b64 = data?.result?.image;
+  if (!b64) throw new Error("Cloudflare returned no image");
+  return Buffer.from(b64, "base64");
+}
+
 async function main() {
   console.log(`▶ Generating product images via "${PROVIDER}"…\n`);
   let made = 0;
@@ -120,6 +138,8 @@ async function main() {
         let buf;
         if (PROVIDER === "pollinations") {
           buf = await viaPollinations(shot.prompt, i * 10 + (shot.slot === "model" ? 1 : 2));
+        } else if (PROVIDER === "cloudflare") {
+          buf = await viaCloudflare(shot.prompt);
         } else {
           buf = await viaGemini(shot.prompt, shot.slot === "detail" ? modelBuf?.toString("base64") : null);
         }
