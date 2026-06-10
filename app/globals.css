@@ -258,13 +258,18 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
 /* ── PDP ─────────────────────────────────────────────────── */
-.pdp { display: grid; gap: 44px; grid-template-columns: 1fr; padding: 44px 0 70px; }
+.pdp { display: grid; gap: 44px; grid-template-columns: 1fr; padding: 44px 0 70px;
+  --cw-base: #262A4E; --cw-accent: #3A3F66; --cw-ink: #EDEFF3; }
 @media (min-width: 820px) { .pdp { grid-template-columns: 1fr 1fr; align-items: start; } }
 .pdp-media { position: sticky; top: 84px; }
 .pdp-swatch {
-  aspect-ratio: 3/4; border-radius: var(--r); box-shadow: var(--shadow-lg);
+  aspect-ratio: 3/4; border-radius: var(--r);
+  box-shadow: var(--shadow-lg), 0 24px 60px -24px var(--cw-base);
   display: grid; place-items: center;
+  animation: cw-in .55s cubic-bezier(.16,1,.3,1);
 }
+@keyframes cw-in { from { opacity: 0; transform: scale(1.025); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .pdp-swatch { animation: none; } }
 .pdp-glyph { font-family: var(--serif); font-size: clamp(54px, 11vw, 96px); opacity: .22; letter-spacing: .04em; }
 .pdp-thumbs { display: flex; gap: 10px; margin-top: 14px; }
 .pdp-thumb { width: 56px; height: 70px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; }
@@ -295,7 +300,9 @@ a { color: inherit; text-decoration: none; }
 .pdp-specs dd { color: var(--slate); font-weight: 300; }
 .error { color: #A03B2E; font-size: 14px; margin-top: 10px; }
 
-.made-for-you { margin-top: 30px; background: var(--horizon); border-radius: var(--r); padding: 24px; }
+.made-for-you { margin-top: 30px; border-radius: var(--r); padding: 24px;
+  background: color-mix(in srgb, var(--cw-base) 7%, var(--horizon));
+  transition: background .55s ease; }
 .made-for-you h4 { font-family: var(--serif); font-weight: 400; font-size: 18px; margin-bottom: 14px; }
 .moto-timeline { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .moto-timeline li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dusk); }

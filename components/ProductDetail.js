@@ -20,6 +20,7 @@ export default function ProductDetail({ product }) {
 
   const r = getRegion(region);
   const unit = priceFor(product, region);
+  const cw = COLOURWAYS[colour];
 
   function build() {
     if (!size) {
@@ -75,9 +76,18 @@ export default function ProductDetail({ product }) {
   }
 
   return (
-    <div className="pdp">
+    <div
+      className="pdp"
+      style={{ "--cw-base": cw?.base, "--cw-accent": cw?.accent, "--cw-ink": cw?.ink }}
+    >
       <div className="pdp-media">
-        <div className="pdp-swatch" style={swatchStyle(colour)} role="img" aria-label={COLOURWAYS[colour]?.name}>
+        <div
+          key={colour}
+          className="pdp-swatch"
+          style={swatchStyle(colour)}
+          role="img"
+          aria-label={COLOURWAYS[colour]?.name}
+        >
           <span className="pdp-glyph" style={{ color: COLOURWAYS[colour]?.ink }}>व्योम</span>
         </div>
         <div className="pdp-thumbs">
