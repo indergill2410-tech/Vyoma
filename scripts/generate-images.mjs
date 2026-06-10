@@ -55,6 +55,9 @@ function prompts(product) {
       `in a serene yoga studio. Full-body, three-quarter pose, natural and relaxed, calm expression. ` +
       `The actual garment is the clear hero, fits beautifully, and carries ${brand}, spelled correctly. ` +
       `Vertical 3:4 framing.`,
+    back:
+      `${STYLE} Back view of the same model wearing the ${product.name} in ${c}, same studio and styling. ` +
+      `Full-body, showing the fit and lines from behind. Vertical 3:4 framing.`,
     detail:
       `${STYLE} Tight close-up of the same ${product.name} in ${c}: real fabric texture and stitching, ` +
       `clearly showing ${brand}, spelled correctly and crisp, worn on the same model, soft directional light. ` +
@@ -163,10 +166,12 @@ async function main() {
     let modelBuf = null;
     const shots = [
       { slot: "model", prompt: p.model },
+      { slot: "back", prompt: p.back },
       { slot: "detail", prompt: p.detail },
     ];
 
-    for (const shot of shots) {
+    for (let s = 0; s < shots.length; s++) {
+      const shot = shots[s];
       const file = join(dir, `${shot.slot}.png`);
       if (!FORCE && (await exists(file))) {
         skipped++;
@@ -176,11 +181,13 @@ async function main() {
       try {
         let buf;
         if (PROVIDER === "pollinations") {
-          buf = await viaPollinations(shot.prompt, i * 10 + (shot.slot === "model" ? 1 : 2));
+          buf = await viaPollinations(shot.prompt, i * 10 + s + 1);
         } else if (PROVIDER === "cloudflare") {
           buf = await viaCloudflare(shot.prompt);
         } else {
-          buf = await viaGemini(shot.prompt, shot.slot === "detail" ? modelBuf?.toString("base64") : null);
+          // Reuse the on-model shot as a reference so the other shots keep the
+          // same model + garment (Gemini image models only).
+          buf = await viaGemini(shot.prompt, shot.slot !== "model" ? modelBuf?.toString("base64") : null);
         }
         if (shot.slot === "model") modelBuf = buf;
         await writeFile(file, buf);
