@@ -25,7 +25,7 @@ const OUT = join(ROOT, "public", "products");
 
 const PROVIDER = process.env.IMAGE_PROVIDER || "gemini";
 const FORCE = process.env.FORCE === "1";
-const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-2.5-flash-image";
+const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "imagen-3.0-generate-002";
 
 const STYLE =
   "Realistic studio product photograph for Vyoma, a premium yoga-wear brand. " +
