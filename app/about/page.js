@@ -72,7 +72,7 @@ export default function About() {
             Most activewear is plastic — polyester, nylon and elastane. We build the other
             way: natural fibre first, nothing synthetic against your skin unless it has to
             be there. The layer closest to you should be the cleanest — which is why we made{" "}
-            <Link href="/product/vyoma-pure-brief-women" style={{ textDecoration: "underline" }}>Vyoma Pure</Link>,
+            Vyoma Pure (available for <Link href="/product/vyoma-pure-brief-women" style={{ textDecoration: "underline" }}>women</Link> and <Link href="/product/vyoma-pure-trunk-men" style={{ textDecoration: "underline" }}>men</Link>),
             our natural-cotton everyday basics.
           </p>
           <p className="muted" style={{ fontSize: 15, marginTop: 16, fontStyle: "italic" }}>
