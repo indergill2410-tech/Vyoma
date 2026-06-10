@@ -118,10 +118,7 @@ async function viaCloudflare(prompt) {
     body: JSON.stringify({ prompt }),
   });
   if (!res.ok) throw new Error(`Cloudflare ${res.status}: ${(await res.text()).slice(0, 200)}`);
-  const data = await res.json();
-  const b64 = data?.result?.image;
-  if (!b64) throw new Error("Cloudflare returned no image");
-  return Buffer.from(b64, "base64");
+  return Buffer.from(await res.arrayBuffer());
 }
 
 async function main() {
