@@ -98,6 +98,9 @@ export default function Home() {
             <span className="section-eyebrow">The Collection</span>
             <h2>Pieces, not product.</h2>
             <p>Made to be worn, not stored. Every piece has to earn its place in your week — or it doesn't make the cut.</p>
+            <p style={{ marginTop: 14 }}>
+              <Link href="/sky-series" className="link-btn">See the Sky Series →</Link>
+            </p>
           </div>
           <div className="grid">
             {PRODUCTS.map((p) => (

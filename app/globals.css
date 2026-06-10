@@ -431,6 +431,23 @@ a { color: inherit; text-decoration: none; }
 .crumb { font-size: 13px; color: var(--slate); padding-top: 22px; }
 .crumb a:hover { color: var(--ink); text-decoration: underline; }
 
+/* ── Sky Series lookbook ─────────────────────────────────── */
+.lb-intro { max-width: 720px; margin: 0 auto; text-align: center; padding: 80px 24px 50px; }
+.lb-intro h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 6vw, 60px); line-height: 1.06; letter-spacing: -0.02em; margin: 14px 0 16px; }
+.lb-intro p { color: var(--slate); font-weight: 300; font-size: 17px; }
+.lb-scene { position: relative; min-height: 84vh; display: flex; align-items: center; padding: 80px 24px; overflow: hidden; }
+.lb-scene.left { justify-content: flex-start; }
+.lb-scene.right { justify-content: flex-end; text-align: right; }
+.lb-scene-inner { max-width: 480px; }
+.lb-moment { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; opacity: .75; display: inline-flex; gap: 10px; }
+.lb-moment::before { content: "✦"; opacity: .8; }
+.lb-scene h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 5.2vw, 52px); line-height: 1.08; letter-spacing: -0.015em; margin: 16px 0 18px; }
+.lb-scene p { font-weight: 300; font-size: 17px; opacity: .9; }
+.lb-name { margin-top: 22px !important; font-family: var(--serif); font-style: italic; font-size: 16px; opacity: .8 !important; }
+.lb-outro { text-align: center; padding: 90px 24px; background: var(--ink); color: var(--horizon); }
+.lb-outro h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 5vw, 48px); letter-spacing: -0.015em; margin-bottom: 26px; }
+.lb-outro-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
 /* ── Fit Finder ──────────────────────────────────────────── */
 .fit-page { padding: 56px 24px 90px; }
 .fit { max-width: 620px; margin: 0 auto; }
