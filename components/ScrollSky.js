@@ -21,8 +21,12 @@ export default function ScrollSky() {
     }
 
     let raf = 0;
+    let max = 0;
+
+    function measure() {
+      max = document.documentElement.scrollHeight - window.innerHeight;
+    }
     function update() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       el.style.setProperty("--dawn", p.toFixed(3));
       raf = 0;
@@ -30,13 +34,18 @@ export default function ScrollSky() {
     function onScroll() {
       if (!raf) raf = requestAnimationFrame(update);
     }
+    function onResize() {
+      measure();
+      onScroll();
+    }
 
+    measure();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);

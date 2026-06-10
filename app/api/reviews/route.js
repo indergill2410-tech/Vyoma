@@ -67,7 +67,7 @@ export async function PATCH(req) {
     const review = await prisma.review.update({ where: { id }, data: { status } });
     return NextResponse.json({ review });
   } catch (err) {
-    if (err.code === "P2025") {
+    if (err && err.code === "P2025") {
       return NextResponse.json({ error: "Review not found." }, { status: 404 });
     }
     throw err;

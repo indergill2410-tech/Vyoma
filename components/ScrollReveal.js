@@ -41,13 +41,25 @@ export default function ScrollReveal() {
         });
     }
 
+    // Debounce to one scan per frame — the homepage countdown mutates the DOM
+    // every second, so we must not run querySelectorAll on every mutation.
+    let rafId = null;
+    function queueScan() {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        scan();
+        rafId = null;
+      });
+    }
+
     scan();
-    const mo = new MutationObserver(scan);
+    const mo = new MutationObserver(queueScan);
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       io.disconnect();
       mo.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 

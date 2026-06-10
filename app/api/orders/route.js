@@ -30,7 +30,7 @@ export async function PATCH(req) {
     const order = await prisma.order.update({ where: { id }, data });
     return NextResponse.json({ order });
   } catch (err) {
-    if (err.code === "P2025") {
+    if (err && err.code === "P2025") {
       return NextResponse.json({ error: "Order not found." }, { status: 404 });
     }
     throw err;
