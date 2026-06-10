@@ -21,6 +21,7 @@ export default function Gallery({ product, colour }) {
           priority
           mark
         />
+        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       <div className="pdp-thumbs">
         {shots.map((s, i) => (

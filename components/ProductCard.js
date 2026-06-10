@@ -15,6 +15,7 @@ export default function ProductCard({ product }) {
           sizes="(min-width: 980px) 32vw, (min-width: 640px) 46vw, 100vw"
           mark
         />
+        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       <div className="card-body">
         <div className="card-top">

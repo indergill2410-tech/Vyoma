@@ -29,6 +29,7 @@ export default async function ShopGrid() {
                 ) : (
                   <div className="swatch-fallback" role="img" aria-label={p.title} />
                 )}
+                <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
               </div>
               <div className="card-body">
                 <div className="card-top">

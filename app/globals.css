@@ -273,6 +273,14 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) { .pdp-frame { animation: none; } }
 .product-img { object-fit: cover; }
 .swatch-fallback { position: absolute; inset: 0; display: grid; place-items: center; }
+/* Crisp "Vyoma" wordmark stamped on every product image (over photo or swatch) */
+.brand-stamp {
+  position: absolute; left: 12px; bottom: 11px; z-index: 3; pointer-events: none;
+  font-family: var(--serif); font-weight: 500; font-size: 15px; letter-spacing: .02em;
+  color: #fff; opacity: .92; text-shadow: 0 1px 8px rgba(20,22,46,.45);
+}
+.card-media .brand-stamp { font-size: 12.5px; left: 10px; bottom: 9px; }
+.brand-stamp .bs-dev { margin-right: 5px; opacity: .95; }
 /* Plain <img> from Shopify CDN — fill their positioned frames */
 .card-media img, .pdp-photo, .pdp-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pdp-glyph { font-family: var(--serif); font-size: clamp(54px, 11vw, 96px); opacity: .22; letter-spacing: .04em; }

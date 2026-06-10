@@ -28,21 +28,37 @@ const FORCE = process.env.FORCE === "1";
 const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-2.5-flash-image";
 
 const STYLE =
-  "Editorial e-commerce photography for Vyoma, a premium yoga-wear brand. " +
+  "Realistic studio product photograph for Vyoma, a premium yoga-wear brand. " +
   "Soft natural studio light, minimalist seamless warm off-white backdrop, calm airy mood, " +
-  "photorealistic, sharp detail, true-to-life colour.";
+  "photorealistic, sharp detail, true-to-life colour, no graphic overlays.";
+
+// Where the brand mark sits on each kind of garment. We carry BOTH the Sanskrit
+// "व्योम" (the brand's USP) and the "Vyoma" wordmark.
+const MARK = "the brand mark — the Sanskrit word 'व्योम' next to 'Vyoma', both spelled correctly";
+function brandingFor(category) {
+  const c = (category || "").toLowerCase();
+  if (c.includes("bra")) return `${MARK} on the elastic underband`;
+  if (c.includes("top")) return `${MARK} on a small woven label at the hem`;
+  if (c.includes("layer")) return `${MARK} on a small woven label at the neckline`;
+  if (c.includes("accessor")) return `${MARK} screen-printed on the front`;
+  if (c.includes("set")) return `${MARK} on the legging waistband`;
+  return `${MARK} on the waistband`; // bottoms / default
+}
 
 function prompts(product) {
   const colour = COLOURWAYS[product.colourways[0]];
   const c = `${colour?.name} (${colour?.base})`;
+  const brand = brandingFor(product.category);
   return {
     model:
       `${STYLE} A female model wearing the ${product.name} — a ${c} ${product.category} piece — ` +
       `in a serene yoga studio. Full-body, three-quarter pose, natural and relaxed, calm expression. ` +
-      `The garment is the clear hero and fits beautifully. Vertical 3:4 framing.`,
+      `The actual garment is the clear hero, fits beautifully, and carries ${brand}, spelled correctly. ` +
+      `Vertical 3:4 framing.`,
     detail:
-      `${STYLE} Close-up detail of the same ${product.name} in ${c}: fabric texture, waistband and ` +
-      `stitching, worn on the same model, soft directional light. Vertical 3:4 framing.`,
+      `${STYLE} Tight close-up of the same ${product.name} in ${c}: real fabric texture and stitching, ` +
+      `clearly showing ${brand}, spelled correctly and crisp, worn on the same model, soft directional light. ` +
+      `Vertical 3:4 framing.`,
   };
 }
 

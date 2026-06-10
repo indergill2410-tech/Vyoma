@@ -24,6 +24,7 @@ export default function ShopifyGallery({ images, title }) {
       <div className="pdp-frame" key={active}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="pdp-photo" src={main.url} alt={main.altText || title} />
+        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       {images.length > 1 && (
         <div className="pdp-thumbs">
