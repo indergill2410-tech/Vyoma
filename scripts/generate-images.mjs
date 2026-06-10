@@ -76,10 +76,17 @@ async function exists(p) {
 
 // ── Providers ─────────────────────────────────────────────────────────────────
 async function viaPollinations(prompt, seed) {
+  const token = process.env.POLLINATIONS_TOKEN;
   const url =
     `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}` +
-    `?width=1024&height=1365&nologo=true&seed=${seed}`;
-  const res = await fetch(url);
+    `?width=1024&height=1365&nologo=true&seed=${seed}` +
+    (token ? `&token=${token}` : "");
+  const res = await fetch(url, token ? { headers: { Authorization: `Bearer ${token}` } } : {});
+  if (res.status === 402 || res.status === 401) {
+    throw new Error(
+      "Pollinations now needs a (free) token. Get one at https://auth.pollinations.ai and set POLLINATIONS_TOKEN — or use IMAGE_PROVIDER=cloudflare."
+    );
+  }
   if (!res.ok) throw new Error(`Pollinations ${res.status}`);
   return Buffer.from(await res.arrayBuffer());
 }
