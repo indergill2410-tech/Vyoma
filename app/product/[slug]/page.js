@@ -1,26 +1,49 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProduct, PRODUCTS } from "@/lib/catalog";
+import { getProduct as getLocalProduct, PRODUCTS } from "@/lib/catalog";
+import { shopifyConfigured, getProduct as getShopifyProduct } from "@/lib/shopify";
 import ProductDetail from "@/components/ProductDetail";
+import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import Reviews from "@/components/Reviews";
 
+// Local slugs are pre-rendered; Shopify handles render on demand (dynamicParams).
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const product = getProduct(params.slug);
-  if (!product) return { title: "Not found" };
+async function resolve(slug) {
+  const local = getLocalProduct(slug);
+  if (local) return { kind: "local", product: local };
+  if (shopifyConfigured()) {
+    try {
+      const sp = await getShopifyProduct(slug);
+      if (sp) return { kind: "shopify", product: sp };
+    } catch {
+      /* fall through */
+    }
+  }
+  return null;
+}
+
+export async function generateMetadata({ params }) {
+  const found = await resolve(params.slug);
+  if (!found) return { title: "Not found" };
+  const p = found.product;
   return {
-    title: product.name,
-    description: product.description,
+    title: found.kind === "shopify" ? p.title : p.name,
+    description: (found.kind === "shopify" ? p.description : p.description) || "",
   };
 }
 
-export default function ProductPage({ params }) {
-  const product = getProduct(params.slug);
-  if (!product) notFound();
+export default async function ProductPage({ params }) {
+  const found = await resolve(params.slug);
+  if (!found) notFound();
 
+  if (found.kind === "shopify") {
+    return <ShopifyProductDetail product={found.product} />;
+  }
+
+  const product = found.product;
   return (
     <main>
       <div className="container">

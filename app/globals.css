@@ -221,6 +221,7 @@ a { color: inherit; text-decoration: none; }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card-media { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--horizon); }
 .swatch { position: relative; display: grid; place-items: center; }
 .swatch-mark { font-family: var(--serif); font-size: clamp(30px, 6vw, 46px); letter-spacing: .04em; }
 .card-body { padding: 22px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
@@ -262,18 +263,31 @@ a { color: inherit; text-decoration: none; }
   --cw-base: #262A4E; --cw-accent: #3A3F66; --cw-ink: #EDEFF3; }
 @media (min-width: 820px) { .pdp { grid-template-columns: 1fr 1fr; align-items: start; } }
 .pdp-media { position: sticky; top: 84px; }
-.pdp-swatch {
-  aspect-ratio: 3/4; border-radius: var(--r);
+.pdp-frame {
+  position: relative; aspect-ratio: 3/4; border-radius: var(--r); overflow: hidden;
   box-shadow: var(--shadow-lg), 0 24px 60px -24px var(--cw-base);
   display: grid; place-items: center;
   animation: cw-in .55s cubic-bezier(.16,1,.3,1);
 }
 @keyframes cw-in { from { opacity: 0; transform: scale(1.025); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .pdp-swatch { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .pdp-frame { animation: none; } }
+.product-img { object-fit: cover; }
+.swatch-fallback { position: absolute; inset: 0; display: grid; place-items: center; }
+/* Crisp "Vyoma" wordmark stamped on every product image (over photo or swatch) */
+.brand-stamp {
+  position: absolute; left: 12px; bottom: 11px; z-index: 3; pointer-events: none;
+  font-family: var(--serif); font-weight: 500; font-size: 15px; letter-spacing: .02em;
+  color: #fff; opacity: .92; text-shadow: 0 1px 8px rgba(20,22,46,.45);
+}
+.card-media .brand-stamp { font-size: 12.5px; left: 10px; bottom: 9px; }
+.brand-stamp .bs-dev { margin-right: 5px; opacity: .95; }
+/* Plain <img> from Shopify CDN — fill their positioned frames */
+.card-media img, .pdp-photo, .pdp-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pdp-glyph { font-family: var(--serif); font-size: clamp(54px, 11vw, 96px); opacity: .22; letter-spacing: .04em; }
 .pdp-thumbs { display: flex; gap: 10px; margin-top: 14px; }
-.pdp-thumb { width: 56px; height: 70px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; }
+.pdp-thumb { position: relative; width: 60px; height: 76px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; overflow: hidden; padding: 0; background: none; }
 .pdp-thumb.active { border-color: var(--ink); }
+.pdp-thumb .swatch-mark { font-size: 18px; }
 .pdp-cat { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--marigold); font-weight: 600; }
 .pdp-info h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 4vw, 40px); line-height: 1.14; margin: 8px 0; }
 .pdp-price { font-family: var(--serif); font-size: 26px; }

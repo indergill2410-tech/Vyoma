@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "db:push": "prisma db push",
-    "db:seed": "node prisma/seed.mjs"
+    "db:seed": "node prisma/seed.mjs",
+    "images": "node scripts/generate-images.mjs",
+    "report": "node scripts/weekly-report.mjs"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",

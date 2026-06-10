@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useCart, useRegion } from "./Providers";
-import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
+import { COLOURWAYS } from "@/lib/catalog";
 import { getRegion } from "@/lib/regions";
 import { formatMoney, priceFor } from "@/lib/format";
 import { toast, celebrateFrom } from "@/lib/fx";
+import Gallery from "./Gallery";
 import SizeGuide from "./SizeGuide";
 
 export default function ProductDetail({ product }) {
@@ -80,29 +81,7 @@ export default function ProductDetail({ product }) {
       className="pdp"
       style={{ "--cw-base": cw?.base, "--cw-accent": cw?.accent, "--cw-ink": cw?.ink }}
     >
-      <div className="pdp-media">
-        <div
-          key={colour}
-          className="pdp-swatch"
-          style={swatchStyle(colour)}
-          role="img"
-          aria-label={COLOURWAYS[colour]?.name}
-        >
-          <span className="pdp-glyph" style={{ color: COLOURWAYS[colour]?.ink }}>व्योम</span>
-        </div>
-        <div className="pdp-thumbs">
-          {product.colourways.map((key) => (
-            <button
-              key={key}
-              className={`pdp-thumb ${colour === key ? "active" : ""}`}
-              style={swatchStyle(key)}
-              onClick={() => setColour(key)}
-              aria-label={COLOURWAYS[key]?.name}
-              aria-pressed={colour === key}
-            />
-          ))}
-        </div>
-      </div>
+      <Gallery product={product} colour={colour} />
 
       <div className="pdp-info">
         <p className="pdp-cat">{product.category} · {product.tagline}</p>

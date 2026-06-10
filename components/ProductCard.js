@@ -1,11 +1,22 @@
 import Link from "next/link";
-import Swatch from "./Swatch";
+import ProductImage from "./ProductImage";
 import Price from "./Price";
+import { productShots } from "@/lib/catalog";
 
 export default function ProductCard({ product }) {
+  const model = productShots(product)[0];
   return (
     <Link href={`/product/${product.slug}`} className="card" data-reveal>
-      <Swatch colourway={product.colourways[0]} mark />
+      <div className="card-media">
+        <ProductImage
+          src={model.src}
+          alt={model.alt}
+          colour={product.colourways[0]}
+          sizes="(min-width: 980px) 32vw, (min-width: 640px) 46vw, 100vw"
+          mark
+        />
+        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
+      </div>
       <div className="card-body">
         <div className="card-top">
           <h3>{product.name}</h3>

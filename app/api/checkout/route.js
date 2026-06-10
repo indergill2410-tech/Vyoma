@@ -2,16 +2,42 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { getProduct, isValidColourway, COLOURWAYS } from "@/lib/catalog";
 import { getRegion, isRegion } from "@/lib/regions";
+import { createCheckout } from "@/lib/shopify";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// POST /api/checkout  { region, items: [{ slug, colour, size, quantity }] }
+// POST /api/checkout
+//   Shopify mode: { variantId, quantity }  → Shopify-hosted checkout URL
+//   Local mode:   { region, items: [{ slug, colour, size, quantity }] } → Stripe
 //
-// SECURITY: prices, names and currency are resolved server-side from the catalog
-// and region. The client only sends what was chosen — never a price.
+// SECURITY (local mode): prices, names and currency are resolved server-side
+// from the catalog and region. The client only sends what was chosen.
 export async function POST(req) {
+  let payload;
   try {
-    const { region: regionCode, items } = await req.json();
+    payload = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Bad request." }, { status: 400 });
+  }
+
+  // ── Shopify mode ──────────────────────────────────────────────────────────
+  if (payload && payload.variantId) {
+    try {
+      const qty = Math.min(Math.max(parseInt(payload.quantity, 10) || 1, 1), 10);
+      const url = await createCheckout([{ merchandiseId: payload.variantId, quantity: qty }]);
+      return NextResponse.json({ url });
+    } catch (err) {
+      console.error("shopify checkout error", err);
+      return NextResponse.json(
+        { error: "Could not start checkout. Please try again." },
+        { status: 500 }
+      );
+    }
+  }
+
+  // ── Local (Stripe) mode ───────────────────────────────────────────────────
+  try {
+    const { region: regionCode, items } = payload;
 
     if (!isRegion(regionCode)) {
       return NextResponse.json({ error: "Unknown region." }, { status: 400 });
