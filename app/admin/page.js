@@ -21,22 +21,31 @@ export default function Admin() {
 
   async function loadAll(tk = token) {
     setError("");
-    const opts = { headers: { "x-admin-token": tk } };
-    const [m, o, w, r] = await Promise.all([
-      fetch("/api/metrics", opts),
-      fetch("/api/orders", opts),
-      fetch("/api/waitlist", opts),
-      fetch("/api/reviews?admin=1", opts),
-    ]);
-    if (m.status === 401) {
-      setError("That admin token isn't right.");
+    try {
+      const opts = { headers: { "x-admin-token": tk } };
+      const [m, o, w, r] = await Promise.all([
+        fetch("/api/metrics", opts),
+        fetch("/api/orders", opts),
+        fetch("/api/waitlist", opts),
+        fetch("/api/reviews?admin=1", opts),
+      ]);
+      if (m.status === 401) {
+        setError("That admin token isn't right.");
+        return false;
+      }
+      if (!m.ok || !o.ok || !w.ok || !r.ok) {
+        setError("Couldn't load the dashboard. Please try again.");
+        return false;
+      }
+      setMetrics((await m.json()).metrics);
+      setOrders((await o.json()).orders || []);
+      setWaitlist((await w.json()).entries || []);
+      setReviews((await r.json()).reviews || []);
+      return true;
+    } catch {
+      setError("A network error occurred. Please try again.");
       return false;
     }
-    setMetrics((await m.json()).metrics);
-    setOrders((await o.json()).orders || []);
-    setWaitlist((await w.json()).entries || []);
-    setReviews((await r.json()).reviews || []);
-    return true;
   }
 
   async function gate() {

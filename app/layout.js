@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Providers } from "@/components/Providers";
 import Nav from "@/components/Nav";
 import CartDrawer from "@/components/CartDrawer";
+import Fx from "@/components/Fx";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -24,6 +26,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('reveal-ready')",
+          }}
+        />
         <Providers>
           <Nav />
           {children}
@@ -35,6 +42,10 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-links">
                 <Link href="/#shop">Shop</Link>
+                <Link href="/drops">The Drops</Link>
+                <Link href="/sky-series">The Sky Series</Link>
+                <Link href="/making">The Making</Link>
+                <Link href="/fit">Fit Finder</Link>
                 <Link href="/about">Story</Link>
                 <Link href="/track">Track order</Link>
                 <Link href="/admin">Admin</Link>
@@ -47,6 +58,8 @@ export default function RootLayout({ children }) {
             </div>
           </footer>
           <CartDrawer />
+          <Fx />
+          <ScrollReveal />
         </Providers>
       </body>
     </html>

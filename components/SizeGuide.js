@@ -1,6 +1,6 @@
 "use client";
 
-// Fit content prevents returns (business plan §10). Generic apparel size chart.
+// Body measurements, in cm. Helps you land the right size first time.
 const ROWS = [
   { size: "XS", bust: "76–81", waist: "60–65", hip: "84–89" },
   { size: "S", bust: "81–86", waist: "65–70", hip: "89–94" },

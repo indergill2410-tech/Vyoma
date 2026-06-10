@@ -25,6 +25,9 @@ export async function POST(req) {
     const record = []; // compact record for the webhook to enrich
 
     for (const raw of items.slice(0, 20)) {
+      if (!raw || typeof raw !== "object") {
+        return NextResponse.json({ error: "Invalid item in your bag." }, { status: 400 });
+      }
       const product = getProduct(raw.slug);
       if (!product) {
         return NextResponse.json({ error: `Unknown product: ${raw.slug}` }, { status: 400 });
@@ -35,7 +38,8 @@ export async function POST(req) {
       if (!product.sizes.includes(raw.size)) {
         return NextResponse.json({ error: `Pick a size for ${product.name}.` }, { status: 400 });
       }
-      const qty = Math.min(Math.max(parseInt(raw.quantity || 1, 10), 1), 10);
+      const parsedQty = parseInt(raw.quantity, 10);
+      const qty = Math.min(Math.max(Number.isNaN(parsedQty) ? 1 : parsedQty, 1), 10);
       const unitAmount = product[region.priceKey];
       const colourName = COLOURWAYS[raw.colour]?.name || raw.colour;
 

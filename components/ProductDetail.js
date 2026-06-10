@@ -5,6 +5,7 @@ import { useCart, useRegion } from "./Providers";
 import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
 import { getRegion } from "@/lib/regions";
 import { formatMoney, priceFor } from "@/lib/format";
+import { toast, celebrateFrom } from "@/lib/fx";
 import SizeGuide from "./SizeGuide";
 
 export default function ProductDetail({ product }) {
@@ -19,10 +20,11 @@ export default function ProductDetail({ product }) {
 
   const r = getRegion(region);
   const unit = priceFor(product, region);
+  const cw = COLOURWAYS[colour];
 
   function build() {
     if (!size) {
-      setError("Choose a size to continue.");
+      setError("Pick your size first ✦");
       return null;
     }
     setError("");
@@ -39,9 +41,13 @@ export default function ProductDetail({ product }) {
     };
   }
 
-  function add() {
+  function add(e) {
     const item = build();
-    if (item) addItem(item);
+    if (item) {
+      celebrateFrom(e);
+      addItem(item);
+      toast(`${product.name} — added to your bag`);
+    }
   }
 
   async function buyNow() {
@@ -70,9 +76,18 @@ export default function ProductDetail({ product }) {
   }
 
   return (
-    <div className="pdp">
+    <div
+      className="pdp"
+      style={{ "--cw-base": cw?.base, "--cw-accent": cw?.accent, "--cw-ink": cw?.ink }}
+    >
       <div className="pdp-media">
-        <div className="pdp-swatch" style={swatchStyle(colour)} role="img" aria-label={COLOURWAYS[colour]?.name}>
+        <div
+          key={colour}
+          className="pdp-swatch"
+          style={swatchStyle(colour)}
+          role="img"
+          aria-label={COLOURWAYS[colour]?.name}
+        >
           <span className="pdp-glyph" style={{ color: COLOURWAYS[colour]?.ink }}>व्योम</span>
         </div>
         <div className="pdp-thumbs">
@@ -158,14 +173,14 @@ export default function ProductDetail({ product }) {
           <div><dt>Care</dt><dd>{product.care}</dd></div>
         </dl>
 
-        <div className="made-for-you">
+        <div className="made-for-you" data-reveal>
           <h4>Made for you, not for a warehouse</h4>
           <ol className="moto-timeline">
-            <li><span>1</span> You order — your piece enters production in Tiruppur, India</li>
-            <li><span>2</span> Cut, sewn &amp; quality-checked to order</li>
-            <li><span>3</span> Tracked courier to your door</li>
+            <li><span>1</span> You order — and your piece begins, in Tiruppur, India</li>
+            <li><span>2</span> Cut, sewn and checked by hand, just for you</li>
+            <li><span>3</span> Couriered to your door, with tracking the whole way</li>
           </ol>
-          <p className="muted small">Nothing mass-produced. Nothing landfilled. That's the whole idea.</p>
+          <p className="muted small">Nothing mass-produced. Nothing wasted. That's the whole idea.</p>
         </div>
       </div>
 

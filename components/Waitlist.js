@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRegion } from "./Providers";
 
-// Email capture for the drop waitlist. Owning the audience is channel #3 in the
-// plan — drops are announced here first.
+// Email capture for the drop waitlist — drops are announced here first.
 export default function Waitlist({ source = "homepage", compact = false }) {
   const { region } = useRegion();
   const [email, setEmail] = useState("");

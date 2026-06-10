@@ -63,6 +63,13 @@ export async function PATCH(req) {
   if (!["pending", "approved", "hidden"].includes(status)) {
     return NextResponse.json({ error: "Bad status" }, { status: 400 });
   }
-  const review = await prisma.review.update({ where: { id }, data: { status } });
-  return NextResponse.json({ review });
+  try {
+    const review = await prisma.review.update({ where: { id }, data: { status } });
+    return NextResponse.json({ review });
+  } catch (err) {
+    if (err && err.code === "P2025") {
+      return NextResponse.json({ error: "Review not found." }, { status: 404 });
+    }
+    throw err;
+  }
 }
