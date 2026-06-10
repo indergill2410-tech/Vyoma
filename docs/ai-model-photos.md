@@ -1,27 +1,37 @@
-# Botika — real on-model product photos
+# AI model photos (Shopify app)
 
-The durable way to get photography onto the site. Botika (a Shopify app) turns a
-simple garment photo into realistic on-model shots and saves them to the product.
-The storefront already displays whatever Shopify holds — **no code changes needed.**
+The durable way to get real on-model photography onto the site. A Shopify app turns
+a simple garment photo into model shots and saves them to the product. The storefront
+already displays whatever Shopify holds — **no code changes needed.**
+
+## Which app
+Botika isn't available in every region. From the Shopify App Store, any of these do
+the job (same workflow):
+
+| App | What it does |
+| --- | --- |
+| **MODA: AI Model Photos+Video** *(recommended)* | AI fashion models, ~10 angles from one input. Free, no subscription. |
+| **GenLook: AI Virtual Try-On** | Built for Shopify; puts your garment on AI models. Free plan. |
+| **VideoPoint — Fashion AI Videos** | AI product videos for PDPs/reels (great for the hero film). Free plan. |
+| Botika / Pebblely | If available in your region. |
 
 ## One-time setup
 
-### 1. Install Botika
-Shopify admin → **Apps** → search **"Botika"** → Install. (Free trial; alternatives:
-Pebblely, VModel.AI.)
+### 1. Install the app
+Shopify admin → **Apps** → search (e.g. **"MODA"**) → Install.
 
 ### 2. Add products in Shopify
 For each product:
-- Title, description, price (set INR and AUD via **Markets** for dual pricing).
+- Title, description, price (set INR + AUD via **Markets** for dual pricing).
 - A **"Size"** option (XS–XL). A **"Colour"** option works too — the PDP handles both.
 - Upload one basic reference photo (hanger, flat-lay, or mannequin is fine).
 
-### 3. Generate with Botika
+### 3. Generate
 - Create **2+ images per product**: a full **on-model** shot and a **detail/back** shot
   (more angles = a richer gallery; the PDP shows up to 6).
 - Save them to the product. Set the best on-model shot as the **featured image**
   (used by the collection grid + social previews).
-- Tip: feed Botika the real garment so the product stays accurate and the model
+- Tip: feed the app the real garment so the product stays accurate and the model
   is consistent across shots.
 
 ### 4. Connect the store to this site
@@ -46,6 +56,5 @@ The collection grid and product galleries switch to live Shopify products + phot
 - Until a product has photos, the branded colourway swatch shows — never broken.
 
 ## Related
-- `docs/shopify-photos.md` — photo-app overview
 - `docs/art-direction.md` — the look to aim for
 - `.env.example` — all env vars
