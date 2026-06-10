@@ -431,6 +431,42 @@ a { color: inherit; text-decoration: none; }
 .crumb { font-size: 13px; color: var(--slate); padding-top: 22px; }
 .crumb a:hover { color: var(--ink); text-decoration: underline; }
 
+/* ── The Drops ───────────────────────────────────────────── */
+.drops-intro { max-width: 720px; margin: 0 auto; text-align: center; padding: 80px 24px 30px; }
+.drops-intro h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 6vw, 58px); line-height: 1.06; letter-spacing: -0.02em; margin: 14px 0 16px; }
+.drops-intro p { color: var(--slate); font-weight: 300; font-size: 17px; }
+.drop-feature { max-width: 760px; margin: 0 auto; padding: 20px 24px 30px; }
+.drop-feature-card {
+  position: relative; border-radius: 18px; padding: 40px 32px; text-align: center; color: var(--horizon);
+  background:
+    radial-gradient(120% 80% at 50% -10%, #2b2f5c 0%, transparent 60%),
+    linear-gradient(180deg, #14162E 0%, #1B1E3C 55%, #3A3F66 100%);
+  box-shadow: var(--shadow-lg); display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.drop-feature-card .countdown { margin-top: 4px; }
+.drop-feature-wait { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 6px; }
+.drop-feature-wait .muted { color: rgba(237,239,243,.6); }
+.drop-edition { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--marigold); }
+.drop-feature-card h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 6vw, 56px); line-height: 1; letter-spacing: -0.02em; }
+.drop-blurb { font-weight: 300; opacity: .9; max-width: 460px; }
+.drop-status { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px; padding: 5px 12px; }
+.drop-status.upcoming, .drop-status.live { background: var(--marigold); color: var(--ink); }
+.drop-status.planned { background: var(--horizon); color: var(--dusk); }
+.drop-dots { display: flex; gap: 8px; justify-content: center; }
+.drop-dots span { width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
+.drops-grid { display: grid; gap: 22px; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .drops-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .drops-grid { grid-template-columns: repeat(3, 1fr); } }
+.drop-card { background: #fff; border: 1px solid var(--mist); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform .2s ease, box-shadow .2s ease; }
+.drop-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.drop-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.drop-card .drop-dots { justify-content: flex-start; margin-top: 4px; }
+.drop-card .drop-dots span { box-shadow: 0 0 0 1px var(--mist); }
+.drop-when { font-size: 12px; color: var(--slate); }
+.drop-card h3 { font-family: var(--serif); font-weight: 400; font-size: 24px; }
+.drop-card .drop-blurb { color: var(--slate); font-size: 14.5px; }
+.drops-outro h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 4.4vw, 40px); letter-spacing: -0.015em; }
+
 /* ── The Making (scrollytelling) ─────────────────────────── */
 .mk-intro { max-width: 720px; margin: 0 auto; text-align: center; padding: 80px 24px 40px; }
 .mk-intro h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 6vw, 58px); line-height: 1.06; letter-spacing: -0.02em; margin: 14px 0 16px; }

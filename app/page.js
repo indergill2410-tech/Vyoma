@@ -61,6 +61,7 @@ export default function Home() {
         <Countdown date={dropDate} />
         <Waitlist source="homepage" />
         <p className="muted small">Be first in line. No spam, ever. Leave whenever you like.</p>
+        <Link href="/drops" className="link-btn" style={{ color: "var(--marigold)" }}>See the drops calendar →</Link>
       </section>
 
       {/* Pillars */}
