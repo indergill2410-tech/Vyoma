@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { shopifyConfigured, getProducts, formatMoney } from "@/lib/shopify";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
