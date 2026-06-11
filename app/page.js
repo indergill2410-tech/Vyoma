@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SkyHero from "@/components/SkyHero";
 import ScrollSky from "@/components/ScrollSky";
+import HeroTile from "@/components/HeroTile";
 import Countdown from "@/components/Countdown";
 import Waitlist from "@/components/Waitlist";
 import ShopGrid from "@/components/ShopGrid";
@@ -39,16 +40,21 @@ export default function Home() {
     <main className="home">
       <ScrollSky />
       <SkyHero>
-        <span className="sky-eyebrow">Made where yoga began</span>
-        <h1>Room to breathe.</h1>
-        <p className="sky-pron">Vyoma (vee-OH-ma) — Sanskrit for sky, ether, infinite space.</p>
-        <p className="sky-lead">
-          Yoga wear made in India — natural fibre, not plastic, next to your skin.
-          Worn in India &amp; Australia.
-        </p>
-        <div className="sky-cta">
-          <Link href="/#shop" className="btn">Explore the collection</Link>
-          <Link href="/about" className="btn light">Our story</Link>
+        <div className="sky-grid">
+          <div className="sky-copy">
+            <span className="sky-eyebrow">Organic yoga wear · Made in India</span>
+            <h1>Born in soil,<br />not a chemical plant.</h1>
+            <p className="sky-pron">Vyoma (vee-OH-ma) — Sanskrit for sky.</p>
+            <p className="sky-lead">
+              Yoga wear grown from natural fibre, not plastic — made where yoga began.
+              The cleaner layer, next to the skin that notices everything.
+            </p>
+            <div className="sky-cta">
+              <Link href="/#shop" className="btn">Explore the collection</Link>
+              <Link href="/fabric" className="btn light">Why natural fibre →</Link>
+            </div>
+          </div>
+          <HeroTile />
         </div>
       </SkyHero>
 
