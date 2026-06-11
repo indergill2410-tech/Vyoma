@@ -5,9 +5,19 @@ import Link from "next/link";
 import { useCart } from "./Providers";
 import RegionToggle from "./RegionToggle";
 
+const LINKS = [
+  { href: "/#shop", label: "Shop" },
+  { href: "/pure", label: "Pure" },
+  { href: "/fabric", label: "Fabric" },
+  { href: "/drops", label: "Drops" },
+  { href: "/about", label: "Story" },
+  { href: "/track", label: "Track order" },
+];
+
 export default function Nav() {
   const { count, setDrawerOpen } = useCart();
   const [bump, setBump] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const prev = useRef(count);
 
   useEffect(() => {
@@ -23,17 +33,14 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="nav-inner container">
-        <Link href="/" className="mark" aria-label="Vyomawear home">
+        <Link href="/" className="mark" aria-label="Vyomawear home" onClick={() => setMenuOpen(false)}>
           Vyoma<span className="mark-thin">wear</span>
         </Link>
 
         <nav className="nav-links" aria-label="Primary">
-          <Link href="/#shop">Shop</Link>
-          <Link href="/pure">Pure</Link>
-          <Link href="/fabric">Fabric</Link>
-          <Link href="/drops">Drops</Link>
-          <Link href="/about">Story</Link>
-          <Link href="/track">Track order</Link>
+          {LINKS.map((l) => (
+            <Link key={l.href} href={l.href}>{l.label}</Link>
+          ))}
         </nav>
 
         <div className="nav-right">
@@ -48,7 +55,22 @@ export default function Nav() {
             Cart
             <span className={`cart-count ${count > 0 ? "on" : ""} ${bump ? "bump" : ""}`}>{count}</span>
           </button>
+          <button
+            type="button"
+            className={`nav-toggle ${menuOpen ? "open" : ""}`}
+            aria-label="Menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span /><span /><span />
+          </button>
         </div>
+      </div>
+
+      <div className={`nav-mobile ${menuOpen ? "open" : ""}`}>
+        {LINKS.map((l) => (
+          <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>
+        ))}
       </div>
     </header>
   );
