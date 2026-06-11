@@ -473,6 +473,30 @@ a { color: inherit; text-decoration: none; }
 .footer-links a:hover { color: #fff; }
 .footer-meta .dev { font-size: 26px; color: rgba(237,239,243,.85); display: block; margin-bottom: 8px; }
 
+/* ── Article pages (Fabric / Pure) ───────────────────────── */
+.article-h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 6.5vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 12px 0 18px; }
+.lede { font-size: clamp(17px, 2.2vw, 20px); color: var(--dusk); font-weight: 300; line-height: 1.6; }
+.article h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 3.4vw, 30px); margin: 36px 0 12px; }
+.article p { color: var(--slate); font-weight: 300; font-size: 16.5px; line-height: 1.7; margin-bottom: 14px; }
+.article p strong { color: var(--ink); font-weight: 600; }
+.cite-note { font-size: 13px; color: var(--slate); font-style: italic; }
+.chem { margin: 18px 0 8px; border-top: 1px solid var(--mist); }
+.chem-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--horizon); }
+.chem-row strong { font-family: var(--serif); font-weight: 500; color: var(--ink); }
+.chem-row span { color: var(--slate); font-size: 14.5px; font-weight: 300; }
+@media (max-width: 560px) { .chem-row { grid-template-columns: 1fr; gap: 4px; } }
+.honest-box { background: var(--horizon); border-radius: var(--r); padding: 24px 26px; margin: 30px 0; border-left: 3px solid var(--marigold); }
+.honest-box h3 { font-family: var(--serif); font-weight: 400; font-size: 19px; margin-bottom: 10px; }
+.honest-box p { color: var(--dusk); margin-bottom: 0; }
+.io-grid { display: grid; gap: 22px; grid-template-columns: 1fr; max-width: 920px; margin: 0 auto; }
+@media (min-width: 720px) { .io-grid { grid-template-columns: 1fr 1fr; } }
+.io-col { background: #fff; border: 1px solid var(--mist); border-radius: var(--r); padding: 26px 28px; }
+.io-col h3 { font-family: var(--serif); font-weight: 400; font-size: 20px; margin-bottom: 14px; }
+.io-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.io-col li { font-size: 15px; color: var(--dusk); font-weight: 300; padding-left: 22px; position: relative; }
+.io-in li::before { content: "✦"; color: var(--green); position: absolute; left: 0; }
+.io-out li::before { content: "✕"; color: var(--slate); position: absolute; left: 0; }
+
 /* ── Breadcrumb ──────────────────────────────────────────── */
 .crumb { font-size: 13px; color: var(--slate); padding-top: 22px; }
 .crumb a:hover { color: var(--ink); text-decoration: underline; }

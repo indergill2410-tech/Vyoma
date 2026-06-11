@@ -29,8 +29,9 @@ export default function Nav() {
 
         <nav className="nav-links" aria-label="Primary">
           <Link href="/#shop">Shop</Link>
+          <Link href="/pure">Pure</Link>
+          <Link href="/fabric">Fabric</Link>
           <Link href="/drops">Drops</Link>
-          <Link href="/fit">Fit Finder</Link>
           <Link href="/about">Story</Link>
           <Link href="/track">Track order</Link>
         </nav>
