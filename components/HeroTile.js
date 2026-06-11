@@ -4,12 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
 
 const KEYS = Object.keys(COLOURWAYS);
+// When this photo exists (e.g. after `npm run images` or via Shopify), the tile
+// upgrades from the gamified swatch to the real shot automatically.
+const HERO_PHOTO = "/products/vyoma-pure-brief-women/model.png";
 
 // The gamified hero product tile: click a colourway and the sky cross-dissolves
 // with a ✦ sparkle burst; the tile tilts in 3D to the pointer; a light sheen
 // sweeps across. Doubles as the drop-in slot for real product photos later.
 export default function HeroTile() {
   const [active, setActive] = useState(0);
+  const [hasPhoto, setHasPhoto] = useState(false);
   const stageRef = useRef(null);
   const tileRef = useRef(null);
   const reduceRef = useRef(false);
@@ -76,8 +80,16 @@ export default function HeroTile() {
 
   return (
     <div className="hero-tile-stage" ref={stageRef}>
-      <div className="hero-tile" ref={tileRef}>
+      <div className={`hero-tile ${hasPhoto ? "has-photo" : ""}`} ref={tileRef}>
         <div className="hero-tile-bg" key={key} style={swatchStyle(key)} aria-hidden="true" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="ht-photo"
+          src={HERO_PHOTO}
+          alt="Vyoma Pure, worn"
+          onLoad={() => setHasPhoto(true)}
+          onError={() => setHasPhoto(false)}
+        />
         <span className="ht-sheen" aria-hidden="true" />
         <span className="ht-stamp">व्योम Vyoma</span>
         <span className="ht-tag">New</span>
