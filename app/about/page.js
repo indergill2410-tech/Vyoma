@@ -42,7 +42,7 @@ export default function About() {
             <div className="pillar">
               <span className="glyph">✦</span>
               <h3>Nothing to hide</h3>
-              <p>Soft on skin, tested safe, honest about every thread. We only ever say what we can prove.</p>
+              <p>Natural fibre, not plastic. We only ever say what we can prove — and tell you what&apos;s in the fabric.</p>
             </div>
             <div className="pillar">
               <span className="glyph">◯</span>
