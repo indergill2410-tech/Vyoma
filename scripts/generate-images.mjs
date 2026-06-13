@@ -8,7 +8,7 @@
 //   GEMINI_API_KEY       key from https://aistudio.google.com/apikey
 //                        NOTE: image models require a BILLING-enabled project
 //                        (the free tier returns quota 0 for image generation).
-//   GEMINI_IMAGE_MODEL   default "imagen-3.0-generate-002"
+//   GEMINI_IMAGE_MODEL   default "gemini-2.5-flash-image"
 //                        (e.g. "gemini-2.5-flash-image" for the Nano-Banana model)
 //   FORCE=1              regenerate even if a file already exists
 //
@@ -25,7 +25,7 @@ const ROOT = join(__dirname, "..");
 const OUT = join(ROOT, "public", "products");
 
 const FORCE = process.env.FORCE === "1";
-const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "imagen-3.0-generate-002";
+const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-2.5-flash-image";
 
 const STYLE =
   "Realistic studio product photograph for Vyoma, a premium India-made yoga-wear brand. " +
