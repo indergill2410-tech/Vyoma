@@ -5,6 +5,8 @@
 //   GEMINI_API_KEY=xxx node scripts/generate-images.mjs
 //
 // Options (env):
+//   IMAGE_PROVIDER       "gemini" (default) or "cloudflare" (Workers AI, FREE — no billing)
+//   CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN   (for IMAGE_PROVIDER=cloudflare)
 //   GEMINI_API_KEY       key from https://aistudio.google.com/apikey
 //                        NOTE: image models require a BILLING-enabled project
 //                        (the free tier returns quota 0 for image generation).
@@ -25,7 +27,11 @@ const ROOT = join(__dirname, "..");
 const OUT = join(ROOT, "public", "products");
 
 const FORCE = process.env.FORCE === "1";
+const PROVIDER = process.env.IMAGE_PROVIDER || "gemini"; // "gemini" | "cloudflare"
 const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-2.5-flash-image";
+const CF_ACCT = process.env.CLOUDFLARE_ACCOUNT_ID;
+const CF_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+const CF_MODEL = process.env.CLOUDFLARE_IMAGE_MODEL || "@cf/black-forest-labs/flux-1-schnell";
 
 const STYLE =
   "Realistic studio product photograph for Vyoma, a premium India-made yoga-wear brand. " +
@@ -116,8 +122,27 @@ async function generate(prompt, referenceB64) {
   return Buffer.from(b64, "base64");
 }
 
+// Cloudflare Workers AI — free tier, no billing. Flux returns JSON {result:{image}};
+// other models stream raw PNG. Handle both.
+async function viaCloudflare(prompt) {
+  if (!CF_ACCT || !CF_TOKEN) throw new Error("Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN");
+  const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${CF_ACCT}/ai/run/${CF_MODEL}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${CF_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+  if (!res.ok) throw new Error(`Cloudflare ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  if ((res.headers.get("content-type") || "").includes("application/json")) {
+    const d = await res.json();
+    const b64 = d?.result?.image;
+    if (!b64) throw new Error("Cloudflare returned no image");
+    return Buffer.from(b64, "base64");
+  }
+  return Buffer.from(await res.arrayBuffer());
+}
+
 async function main() {
-  console.log(`▶ Generating product images via Gemini (${GEMINI_MODEL})…\n`);
+  console.log(`▶ Generating product images via ${PROVIDER === "cloudflare" ? "Cloudflare Workers AI (" + CF_MODEL + ")" : "Gemini (" + GEMINI_MODEL + ")"}…\n`);
   let made = 0;
   let skipped = 0;
 
@@ -141,10 +166,10 @@ async function main() {
         continue;
       }
       try {
-        const buf = await generate(
-          shot.prompt,
-          shot.slot !== "model" ? modelBuf?.toString("base64") : null
-        );
+        const buf =
+          PROVIDER === "cloudflare"
+            ? await viaCloudflare(shot.prompt)
+            : await generate(shot.prompt, shot.slot !== "model" ? modelBuf?.toString("base64") : null);
         if (shot.slot === "model") modelBuf = buf;
         await writeFile(file, buf);
         made++;
