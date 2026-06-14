@@ -15,21 +15,21 @@ export default function PurePage() {
 
   return (
     <main className="article-page">
-      <section className="section" style={{ textAlign: "center" }}>
-        <div className="container" style={{ maxWidth: 720 }}>
+      <section className="section center">
+        <div className="container prose">
           <span className="section-eyebrow">Vyoma Pure</span>
           <h1 className="article-h1">
             The layer closest to you<br />should be the cleanest.
           </h1>
-          <p className="lede" style={{ margin: "0 auto" }}>
+          <p className="lede">
             Natural-cotton underwear for women and men — grown in soil, not synthesized
-            from oil. Made in India. No plastic against your most sensitive skin.
+            from oil. Made in India. The cleanest layer against your most sensitive skin.
           </p>
         </div>
       </section>
 
       <section className="section" style={{ background: "#fff" }}>
-        <div className="container article" style={{ maxWidth: 760 }}>
+        <div className="container prose article">
           <p>
             Most underwear is polyester, nylon and elastane — plastics — finished with
             chemicals to make them stretchy. Independent lab testing has found BPA in
@@ -101,17 +101,13 @@ export default function PurePage() {
         </div>
       </section>
 
-      <section className="section section-light" style={{ textAlign: "center" }}>
-        <div className="container" style={{ maxWidth: 620 }}>
-          <h2 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(28px,4.4vw,40px)" }}>
-            Made clean.
-          </h2>
-          <p className="muted" style={{ margin: "10px auto 0" }}>
-            The everyday layer, the way it should be.
-          </p>
-          <p style={{ marginTop: 22 }}>
-            <Link href="/fabric" className="btn ghost">Why it matters →</Link>
-          </p>
+      <section className="section section-light center">
+        <div className="container narrow">
+          <div className="section-head">
+            <h2>Made clean.</h2>
+            <p>The everyday layer, the way it should be.</p>
+          </div>
+          <Link href="/fabric" className="btn ghost">Why it matters →</Link>
         </div>
       </section>
     </main>

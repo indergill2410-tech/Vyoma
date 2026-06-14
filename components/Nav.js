@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/pure", label: "Pure" },
   { href: "/fabric", label: "Fabric" },
   { href: "/drops", label: "Drops" },
+  { href: "/circle", label: "The Circle" },
   { href: "/about", label: "Story" },
   { href: "/track", label: "Track order" },
 ];

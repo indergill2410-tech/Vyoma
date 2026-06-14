@@ -80,7 +80,7 @@ export default function SkySeries() {
       <section className="lb-outro">
         <h2>Find your sky.</h2>
         <div className="lb-outro-cta">
-          <Link href="/#shop" className="btn">Explore the collection</Link>
+          <Link href="/#shop" className="btn">Shop the collection</Link>
           <Link href="/fit" className="btn ghost">Take the Fit Finder</Link>
         </div>
       </section>

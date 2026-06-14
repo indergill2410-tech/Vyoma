@@ -75,10 +75,10 @@ export default function DropsPage() {
         </div>
       </section>
 
-      <section className="section section-light drops-outro" data-reveal>
-        <div className="container" style={{ maxWidth: 620, textAlign: "center" }}>
+      <section className="section section-light drops-outro center" data-reveal>
+        <div className="container narrow">
           <h2>One list. Every drop.</h2>
-          <p className="muted" style={{ margin: "10px auto 24px" }}>
+          <p className="muted" style={{ margin: "10px auto 24px", maxWidth: "46ch" }}>
             Join once and you'll hear about every sky before anyone else.
           </p>
           <Waitlist source="drops-outro" />
