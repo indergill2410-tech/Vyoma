@@ -2,10 +2,30 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct as getLocalProduct, PRODUCTS, relatedProducts } from "@/lib/catalog";
 import { shopifyConfigured, getProduct as getShopifyProduct } from "@/lib/shopify";
+import { abs } from "@/lib/seo";
+import { prisma } from "@/lib/db";
 import ProductDetail from "@/components/ProductDetail";
 import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import ProductCard from "@/components/ProductCard";
 import Reviews from "@/components/Reviews";
+
+// Approved-review summary for structured data (rich-result stars). Defensive:
+// if the DB is unreachable (e.g. at build time) we just omit the rating.
+async function approvedReviewSummary(slug) {
+  try {
+    const reviews = await prisma.review.findMany({
+      where: { productSlug: slug, status: "approved" },
+      orderBy: { createdAt: "desc" },
+      take: 50,
+    });
+    const count = reviews.length;
+    if (!count) return null;
+    const average = reviews.reduce((s, r) => s + r.rating, 0) / count;
+    return { count, average, reviews };
+  } catch {
+    return null;
+  }
+}
 
 // Local slugs are pre-rendered; Shopify handles render on demand (dynamicParams).
 export function generateStaticParams() {
@@ -30,9 +50,22 @@ export async function generateMetadata({ params }) {
   const found = await resolve(params.slug);
   if (!found) return { title: "Not found" };
   const p = found.product;
+  const title = found.kind === "shopify" ? p.title : p.name;
+  const description =
+    (p.description || "").slice(0, 200) ||
+    "Premium yoga wear, made in India — the birthplace of yoga.";
+  const url = abs(`/product/${params.slug}`);
   return {
-    title: found.kind === "shopify" ? p.title : p.name,
-    description: (found.kind === "shopify" ? p.description : p.description) || "",
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      url,
+      title: `${title} · Vyomawear`,
+      description,
+    },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
@@ -45,25 +78,72 @@ export default async function ProductPage({ params }) {
   }
 
   const product = found.product;
+  const url = abs(`/product/${product.slug}`);
+  const reviewSummary = await approvedReviewSummary(product.slug);
+
+  // Offers valid for a year from build; same garment served in two currencies.
+  const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  const offer = (currency, minorAmount) => ({
+    "@type": "Offer",
+    url,
+    priceCurrency: currency,
+    price: (minorAmount / 100).toFixed(2),
+    priceValidUntil,
+    itemCondition: "https://schema.org/NewCondition",
+    availability: "https://schema.org/InStock",
+    seller: { "@type": "Organization", name: "Vyomawear" },
+  });
+
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description,
+    image: [abs(`/product/${product.slug}/opengraph-image`)],
+    sku: product.slug,
+    url,
     brand: { "@type": "Brand", name: "Vyomawear" },
     category: product.category,
-    offers: {
-      "@type": "Offer",
-      price: (product.priceAud / 100).toFixed(2),
-      priceCurrency: "AUD",
-      availability: "https://schema.org/InStock",
-    },
+    offers: [offer("AUD", product.priceAud), offer("INR", product.priceInr)],
+    ...(reviewSummary && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: reviewSummary.average.toFixed(1),
+        reviewCount: reviewSummary.count,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      review: reviewSummary.reviews.slice(0, 5).map((r) => ({
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+        author: { "@type": "Person", name: r.author },
+        ...(r.title && { name: r.title }),
+        reviewBody: r.body,
+        datePublished: r.createdAt.toISOString().slice(0, 10),
+      })),
+    }),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: abs("/") },
+      { "@type": "ListItem", position: 2, name: "Collection", item: abs("/#shop") },
+      { "@type": "ListItem", position: 3, name: product.name, item: url },
+    ],
   };
   return (
     <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <div className="container">
         <p className="crumb">

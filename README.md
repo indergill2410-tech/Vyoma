@@ -24,6 +24,7 @@ reviews, and an admin dashboard.
 | **Order tracking** | `/track` | Order number + email → live status timeline |
 | **Reviews** | `/api/reviews` | Submit (pending) → admin approves → shown with average rating |
 | **Waitlist** | `/api/waitlist` | The pre-order drop list (how a $0 brand funds run #1) |
+| **The Circle** | `/circle` | Referral waitlist: share code, place in line, Founding-Member perk ladder (`lib/circle.js`) |
 | **Admin** | `/admin` | Token-gated: dashboard metrics, orders, waitlist, reviews |
 
 ## Region & currency

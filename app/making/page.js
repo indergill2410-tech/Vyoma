@@ -25,7 +25,7 @@ export default function MakingPage() {
         <h2>Nothing mass-produced. Nothing wasted.</h2>
         <p>That's the whole idea.</p>
         <div className="mk-outro-cta">
-          <Link href="/#shop" className="btn">Explore the collection</Link>
+          <Link href="/#shop" className="btn">Shop the collection</Link>
           <Link href="/about" className="btn ghost">Our story</Link>
         </div>
       </section>
