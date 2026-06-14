@@ -52,10 +52,13 @@ const reviews = [
   },
 ];
 
+// A small Circle with a referral chain so the founder mechanic looks alive:
+// SKY-AARTI brought in two friends (→ Early access tier).
 const waitlist = [
-  { email: "early1@example.com", region: "AU", source: "homepage" },
-  { email: "early2@example.com", region: "IN", source: "homepage" },
-  { email: "early3@example.com", region: "AU", source: "drop" },
+  { email: "aarti@example.com", region: "IN", source: "circle", referralCode: "SKY-AARTI" },
+  { email: "early2@example.com", region: "IN", source: "circle", referralCode: "SKY-EAR2X", referredBy: "SKY-AARTI" },
+  { email: "early3@example.com", region: "AU", source: "circle", referralCode: "SKY-EAR3Y", referredBy: "SKY-AARTI" },
+  { email: "early4@example.com", region: "AU", source: "homepage", referralCode: "SKY-EAR4Z" },
 ];
 
 async function main() {

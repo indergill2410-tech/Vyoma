@@ -4,6 +4,7 @@ import ScrollSky from "@/components/ScrollSky";
 import HeroTile from "@/components/HeroTile";
 import Countdown from "@/components/Countdown";
 import Waitlist from "@/components/Waitlist";
+import WaitlistCount from "@/components/WaitlistCount";
 import ShopGrid from "@/components/ShopGrid";
 
 const PILLARS = [
@@ -61,11 +62,12 @@ export default function Home() {
       {/* Drop + waitlist */}
       <section className="drop" id="drop">
         <span className="drop-label">✦ The First Drop ✦</span>
-        <h2>Small batch. The list hears first.</h2>
+        <h2>Small batch. The circle hears first.</h2>
         <Countdown date={dropDate} />
+        <WaitlistCount />
         <Waitlist source="homepage" />
-        <p className="muted small">Be first in line. No spam, ever. Leave whenever you like.</p>
-        <Link href="/drops" className="link-btn" style={{ color: "var(--marigold)" }}>See the drops calendar →</Link>
+        <p className="muted small">Bring a friend, move up the line. No spam, ever. Leave whenever you like.</p>
+        <Link href="/circle" className="link-btn" style={{ color: "var(--marigold)" }}>How The Circle works →</Link>
       </section>
 
       {/* Pillars */}

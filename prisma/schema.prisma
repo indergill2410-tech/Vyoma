@@ -28,15 +28,20 @@ model Order {
 }
 
 // Pre-launch / drop waitlist. The pre-order drop is how a $0-capital brand
-// funds its first production run (see business plan §9).
+// funds its first production run (see business plan §9). "The Circle" turns it
+// into a referral movement: each member gets a share code; referrals move them
+// up the line and up the Founding-Member perk ladder. See lib/circle.js.
 model WaitlistEntry {
-  id        String   @id @default(cuid())
-  email     String
-  region    String   @default("AU")
-  source    String   @default("homepage") // homepage | product:<slug> | drop
-  createdAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  email        String
+  region       String   @default("AU")
+  source       String   @default("homepage") // homepage | product:<slug> | drop | circle
+  referralCode String? // this member's own share code (one per email, reused across sources)
+  referredBy   String? // the referralCode of whoever brought them in
+  createdAt    DateTime @default(now())
 
   @@unique([email, source])
+  @@index([referredBy])
 }
 
 // Customer reviews. New reviews land as "pending" and are approved in admin —

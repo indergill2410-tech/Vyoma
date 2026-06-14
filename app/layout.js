@@ -106,6 +106,7 @@ export default function RootLayout({ children }) {
                 <Link href="/pure">Vyoma Pure</Link>
                 <Link href="/fabric">Fabric</Link>
                 <Link href="/drops">The Drops</Link>
+                <Link href="/circle">The Circle</Link>
                 <Link href="/sky-series">The Sky Series</Link>
                 <Link href="/making">The Making</Link>
                 <Link href="/fit">Fit Finder</Link>
