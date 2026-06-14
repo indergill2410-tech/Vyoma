@@ -894,3 +894,45 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
   .circle-stat { min-width: 92px; }
   .circle-share .btn { flex: 1 1 auto; }
 }
+
+/* ── Polish: prose measure, forms, link motion, a11y ─────────
+   Phase 3–4 refinements applied across the story pages and forms. */
+.container.prose { max-width: 760px; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 32px; }
+.pron { font-family: var(--serif); font-style: italic; color: var(--dusk); font-size: 19px; }
+
+/* Unified text-field focus (light forms) — a calm marigold ring */
+.review-form input, .review-form textarea, .track-form input,
+.admin-gate input, .circle-check input {
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.review-form input:focus, .review-form textarea:focus, .track-form input:focus,
+.admin-gate input:focus, .circle-check input:focus {
+  outline: none; border-color: var(--marigold);
+  box-shadow: 0 0 0 3px rgba(217, 154, 43, .18);
+}
+
+/* Refined marigold underline for links inside prose */
+.article a:not(.btn):not(.link-btn) {
+  color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: var(--marigold); text-decoration-thickness: 1.5px;
+  transition: text-decoration-color .2s ease;
+}
+.article a:not(.btn):not(.link-btn):hover { text-decoration-color: var(--ink); }
+.link-btn { transition: color .2s ease; }
+
+/* Footer legibility bump (contrast) */
+.site-footer { color: rgba(237, 239, 243, .72); }
+.site-footer .muted { color: rgba(237, 239, 243, .6); }
+
+/* Gentle entrance for form confirmations */
+.review-thanks, .waitlist-done { animation: rise .5s cubic-bezier(.16, 1, .3, 1) backwards; }
+
+/* Keyboard focus rings for the remaining custom controls */
+.colour-dot:focus-visible, .ht-dot:focus-visible, .region-btn:focus-visible,
+.pdp-thumb:focus-visible, .star:focus-visible {
+  outline: 2px solid var(--marigold); outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .review-thanks, .waitlist-done { animation: none; }
+}

@@ -10,7 +10,7 @@ export default function FabricPage() {
   return (
     <main className="article-page">
       <section className="section" style={{ paddingBottom: 24 }}>
-        <div className="container" style={{ maxWidth: 760 }}>
+        <div className="container prose">
           <span className="section-eyebrow">Fabric</span>
           <h1 className="article-h1">A field, or a refinery.</h1>
           <p className="lede">
@@ -23,7 +23,7 @@ export default function FabricPage() {
       </section>
 
       <section className="section" style={{ background: "#fff", paddingTop: 40 }}>
-        <div className="container article" style={{ maxWidth: 760 }}>
+        <div className="container prose article">
           <h2>What independent testing found</h2>
           <p>
             The Center for Environmental Health (CEH), a US non-profit, lab-tested
@@ -82,10 +82,10 @@ export default function FabricPage() {
             here, batch by batch. Until then, we only say what we can prove. Made in India.
           </p>
 
-          <p style={{ marginTop: 36 }}>
+          <div className="btn-row">
             <Link href="/#shop" className="btn">Shop the collection</Link>
-            <Link href="/pure" className="btn ghost" style={{ marginLeft: 12 }}>Meet Vyoma Pure</Link>
-          </p>
+            <Link href="/pure" className="btn ghost">Meet Vyoma Pure</Link>
+          </div>
         </div>
       </section>
     </main>

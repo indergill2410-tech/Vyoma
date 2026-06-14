@@ -9,83 +9,77 @@ export const metadata = {
 
 export default function About() {
   return (
-    <main>
-      <section className="section" style={{ paddingBottom: 40 }}>
-        <div className="container" style={{ maxWidth: 760 }}>
+    <main className="article-page">
+      <section className="section" style={{ paddingBottom: 36 }}>
+        <div className="container prose article">
           <span className="section-eyebrow">Our story</span>
-          <h1 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(34px,6vw,56px)", lineHeight: 1.1, margin: "12px 0 18px" }}>
-            Vyoma means sky.
-          </h1>
-          <p style={{ fontFamily: "var(--serif)", fontStyle: "italic", color: "var(--dusk)", fontSize: 19 }}>
+          <h1 className="article-h1">Vyoma means sky.</h1>
+          <p className="pron">
             व्योम · vee-OH-ma · Sanskrit for sky, ether, the infinite space that holds everything.
           </p>
-          <p className="muted" style={{ marginTop: 22, fontSize: 17 }}>
-            Yoga was born in India. So is everything we make. That's not a line we
-            borrowed — it's where our hands actually are, alongside artisans who have
+          <p style={{ marginTop: 22 }}>
+            Yoga was born in India. So is everything we make. That&apos;s not a line we
+            borrowed — it&apos;s where our hands actually are, alongside artisans who have
             shaped beautiful cloth for generations.
           </p>
-          <p className="muted" style={{ marginTop: 16, fontSize: 17 }}>
+          <p>
             We make with care, not in haste — each piece considered, never mass-produced.
-            We think that's a fair trade for something made to be loved, and to last.
+            A fair trade, we think, for something made to be loved, and to last.
           </p>
         </div>
       </section>
 
-      <section className="section" style={{ background: "#fff", paddingTop: 50 }}>
+      <section className="section" style={{ background: "#fff" }}>
         <div className="container">
           <div className="pillars">
-            <div className="pillar">
+            <div className="pillar" data-reveal>
               <span className="glyph">॥</span>
-              <h3>Made in India</h3>
-              <p>Crafted in yoga's homeland by artisans who have practised the craft for generations.</p>
+              <h3>From the birthplace of yoga</h3>
+              <p>Crafted in yoga&apos;s homeland by artisans who have practised the craft for generations.</p>
             </div>
-            <div className="pillar">
+            <div className="pillar" data-reveal>
               <span className="glyph">✦</span>
-              <h3>Nothing to hide</h3>
-              <p>Natural fibre, not plastic. We only ever say what we can prove — and tell you what&apos;s in the fabric.</p>
+              <h3>A cleaner layer</h3>
+              <p>Natural fibre first, not plastic. We tell you exactly what&apos;s in the fabric — and only ever say what we can prove.</p>
             </div>
-            <div className="pillar">
+            <div className="pillar" data-reveal>
               <span className="glyph">◯</span>
               <h3>Made to last</h3>
-              <p>Considered, never mass-produced. Beautiful and responsible aren't a trade-off.</p>
+              <p>Considered, never mass-produced. Beautiful and responsible were never a trade-off.</p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="section">
-        <div className="container" style={{ maxWidth: 760 }}>
+        <div className="container prose article">
           <span className="section-eyebrow">Our name</span>
-          <h2 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(26px,4vw,38px)", margin: "12px 0 16px" }}>
-            व्योम — the sky that holds everything.
-          </h2>
-          <p className="muted" style={{ fontSize: 17 }}>
+          <h2>व्योम — the sky that holds everything.</h2>
+          <p>
             Vyoma is Sanskrit for sky, ether, infinite space — the room to breathe that
             a practice gives you. We carry that name with pride: made in India, rooted in
             the tradition that gave the world yoga, and built to move with you for years.
           </p>
 
-          <h2 style={{ fontFamily: "var(--serif)", fontWeight: 300, fontSize: "clamp(24px,4vw,34px)", margin: "40px 0 16px" }}>
-            Not made of plastic.
-          </h2>
-          <p className="muted" style={{ fontSize: 17 }}>
-            Most activewear is plastic — polyester, nylon and elastane. We build the other
+          <h2>A cleaner layer.</h2>
+          <p>
+            Most activewear is plastic — polyester, nylon and elastane. We begin the other
             way: natural fibre first, nothing synthetic against your skin unless it has to
             be there. The layer closest to you should be the cleanest — which is why we made{" "}
-            Vyoma Pure (available for <Link href="/product/vyoma-pure-brief-women" style={{ textDecoration: "underline" }}>women</Link> and <Link href="/product/vyoma-pure-trunk-men" style={{ textDecoration: "underline" }}>men</Link>),
-            our natural-cotton everyday basics.
+            Vyoma Pure (for <Link href="/product/vyoma-pure-brief-women">women</Link> and{" "}
+            <Link href="/product/vyoma-pure-trunk-men">men</Link>), our natural-cotton everyday basics.
           </p>
-          <p className="muted" style={{ fontSize: 15, marginTop: 16, fontStyle: "italic" }}>
-            We don&apos;t make medical claims. No item of clothing treats, cures or
-            prevents any condition. What we can tell you is exactly what our fabric is
-            made of — and let you decide what you want against your skin all day.
+          <p className="cite-note">
+            We don&apos;t make medical claims. No item of clothing treats, cures or prevents
+            any condition. What we can tell you is exactly what our fabric is made of — and
+            let you decide what you want against your skin all day.
           </p>
 
-          <div style={{ marginTop: 30 }}>
+          <div className="btn-row">
             <Waitlist source="about" />
           </div>
           <p style={{ marginTop: 28 }}>
-            <Link href="/#shop" className="btn">See the collection</Link>
+            <Link href="/#shop" className="btn">Shop the collection</Link>
           </p>
         </div>
       </section>
