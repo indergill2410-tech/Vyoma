@@ -6,20 +6,40 @@ import AnnounceBar from "@/components/AnnounceBar";
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
+import { abs, SITE_URL, BRAND } from "@/lib/seo";
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Vyomawear — Yoga wear, made where yoga was born",
     template: "%s · Vyomawear",
   },
-  description:
-    "Premium yoga wear, made in India — the birthplace of yoga. Shipping to India and Australia. Vyoma (vee-OH-ma): Sanskrit for sky, ether, infinite space.",
+  description: BRAND.description,
+  keywords: [
+    "yoga wear",
+    "yoga clothes India",
+    "made in India activewear",
+    "organic yoga wear",
+    "natural fibre leggings",
+    "yoga leggings Australia",
+    "Vyoma",
+    "Vyomawear",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Vyomawear",
     title: "Vyomawear — Room to breathe.",
     description:
       "Premium yoga wear, made in India — the birthplace of yoga. India & Australia.",
-    type: "website",
+    locale: "en_AU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vyomawear — Yoga wear, made where yoga was born",
+    description:
+      "Premium yoga wear, made in India — the birthplace of yoga. India & Australia.",
   },
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
@@ -30,14 +50,32 @@ export const viewport = {
   themeColor: "#14162E",
 };
 
-const ORG_JSONLD = {
+const SITE_JSONLD = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Vyomawear",
-  description: "Premium yoga wear, made in India — the birthplace of yoga.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://vyoma-imsr.onrender.com",
-  logo: "/icon.svg",
-  areaServed: ["IN", "AU"],
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: BRAND.name,
+      legalName: BRAND.legalName,
+      description: "Premium yoga wear, made in India — the birthplace of yoga.",
+      slogan: BRAND.slogan,
+      url: SITE_URL,
+      logo: abs("/icon.svg"),
+      image: abs("/opengraph-image"),
+      areaServed: ["IN", "AU"],
+      foundingLocation: { "@type": "Place", name: "India" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: BRAND.name,
+      description: BRAND.description,
+      url: SITE_URL,
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -51,7 +89,7 @@ export default function RootLayout({ children }) {
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
         <Providers>
           <AnnounceBar />
