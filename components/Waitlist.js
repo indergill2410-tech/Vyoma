@@ -116,7 +116,7 @@ export default function Waitlist({ source = "homepage", compact = false }) {
         )}
 
         <div className="circle-share">
-          <button type="button" className="btn" onClick={nativeShare}>Share your link</button>
+          <button type="button" className="btn accent" onClick={nativeShare}>Share your link</button>
           <button type="button" className="btn ghost" onClick={copy}>
             {copied ? "Copied ✦" : "Copy link"}
           </button>
@@ -156,7 +156,7 @@ export default function Waitlist({ source = "homepage", compact = false }) {
         aria-label="Email address"
         required
       />
-      <button className="btn" type="submit" disabled={state === "loading"}>
+      <button className="btn accent" type="submit" disabled={state === "loading"}>
         {state === "loading" ? "Joining…" : "Join the circle"}
       </button>
       {ref ? <p className="waitlist-msg muted small">A friend invited you ✦ you'll both move up.</p> : null}

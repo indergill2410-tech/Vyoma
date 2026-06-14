@@ -10,18 +10,18 @@ import ShopGrid from "@/components/ShopGrid";
 const PILLARS = [
   {
     glyph: "॥",
-    title: "Born where yoga was born",
-    body: "Made in India — the land that gave the world yoga. Heritage you can wear.",
+    title: "From the birthplace of yoga",
+    body: "Made in India — the land that gave the world yoga. A lineage you can feel, and wear.",
   },
   {
     glyph: "✦",
-    title: "Not made of plastic",
-    body: "Most activewear is synthetic. We build the other way — natural fibre first, gentler against your skin.",
+    title: "A cleaner layer",
+    body: "We begin with natural fibre, not plastic — gentler against the skin that notices everything.",
   },
   {
     glyph: "◯",
-    title: "Nothing to hide",
-    body: "We only say what we can prove, and tell you exactly what's in the fabric. You decide what you wear all day.",
+    title: "Honest by design",
+    body: "We tell you exactly what's in the fabric, and only ever say what we can prove. You decide what you wear all day.",
   },
 ];
 
@@ -43,16 +43,16 @@ export default function Home() {
       <SkyHero>
         <div className="sky-grid">
           <div className="sky-copy">
-            <span className="sky-eyebrow">Organic yoga wear · Made in India</span>
-            <h1>Born in soil,<br />not a chemical plant.</h1>
+            <span className="sky-eyebrow">Made where yoga was born</span>
+            <h1>Room to breathe.</h1>
             <p className="sky-pron">Vyoma (vee-OH-ma) — Sanskrit for sky.</p>
             <p className="sky-lead">
-              Yoga wear grown from natural fibre, not plastic — made where yoga began.
+              Yoga wear grown from natural fibre — made in India, the birthplace of yoga.
               The cleaner layer, next to the skin that notices everything.
             </p>
             <div className="sky-cta">
-              <Link href="/#shop" className="btn">Explore the collection</Link>
-              <Link href="/fabric" className="btn light">Why natural fibre →</Link>
+              <Link href="/#shop" className="btn">Shop the collection</Link>
+              <Link href="/fabric" className="btn light">The fabric story →</Link>
             </div>
           </div>
           <HeroTile />
