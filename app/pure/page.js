@@ -3,9 +3,9 @@ import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
 
 export const metadata = {
-  title: "Vyoma Pure — Natural-cotton underwear",
+  title: "Vyoma Pure — Organic-cotton underwear",
   description:
-    "Natural-cotton underwear for women and men, made in India. The layer closest to you, made clean — no plastic against your most sensitive skin.",
+    "Organic-cotton underwear for women and men, made in India. The layer closest to you, made clean — no plastic against your most sensitive skin.",
 };
 
 export default function PurePage() {
@@ -22,7 +22,7 @@ export default function PurePage() {
             The layer closest to you<br />should be the cleanest.
           </h1>
           <p className="lede">
-            Natural-cotton underwear for women and men — grown in soil, not synthesized
+            Organic-cotton underwear for women and men — grown in soil, not synthesized
             from oil. Made in India. The cleanest layer against your most sensitive skin.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function PurePage() {
       <section className="section" style={{ background: "#fff" }}>
         <div className="container prose article">
           <p>
-            Most underwear is polyester, nylon and elastane — plastics — finished with
+            Most underwear is polyester, nylon, elastane and spandex — plastics — finished with
             chemicals to make them stretchy. Independent lab testing has found BPA in
             synthetic activewear at many times the limit California considers safe, and
             skin contact is a real exposure route. Underwear is the definition of warm,
@@ -57,9 +57,9 @@ export default function PurePage() {
             <div className="io-col io-in">
               <h3>What&apos;s in</h3>
               <ul>
-                <li>Natural cotton body — soft and breathable</li>
-                <li>An organic + OEKO-TEX standard, certified batch by batch as issued</li>
-                <li>The smallest possible stretch, only in the waistband</li>
+                <li>Organic cotton body — soft and breathable</li>
+                <li>GOTS + OEKO-TEX standards, certified batch by batch as issued</li>
+                <li>Natural movement from knit structure and construction</li>
                 <li>Made in India</li>
               </ul>
             </div>
@@ -70,7 +70,7 @@ export default function PurePage() {
                 <li>Phthalates</li>
                 <li>PFAS &ldquo;forever chemicals&rdquo;</li>
                 <li>Formaldehyde finishes</li>
-                <li>Polyester or nylon against the skin</li>
+                <li>Polyester, nylon, elastane or spandex against the skin</li>
               </ul>
             </div>
           </div>

@@ -18,9 +18,10 @@ export default function ProductCard({ product }) {
         <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       <div className="card-body">
+        <p className="card-kicker">{product.category}</p>
         <div className="card-top">
           <h3>{product.name}</h3>
-          {product.hero && <span className="card-badge">Most loved</span>}
+          {product.hero && <span className="card-badge">First drop</span>}
         </div>
         <p className="card-tagline">{product.tagline}</p>
         <p className="card-desc">{product.description}</p>

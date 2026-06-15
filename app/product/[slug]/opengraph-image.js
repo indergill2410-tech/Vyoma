@@ -7,6 +7,7 @@ import { SKY } from "@/lib/seo";
 export const alt = "Vyomawear product";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const runtime = "edge";
 
 export default function ProductOpengraphImage({ params }) {
   const p = getProduct(params.slug);
