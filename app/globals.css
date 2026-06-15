@@ -370,6 +370,37 @@ a { color: inherit; text-decoration: none; }
 .pillar h3 { font-family: var(--serif); font-weight: 400; font-size: 20px; margin-bottom: 8px; }
 .pillar p { color: var(--slate); font-size: 14.5px; font-weight: 300; }
 
+/* ── House standard ──────────────────────────────────────── */
+.house-standard {
+  padding: var(--space-section) 0;
+  background:
+    radial-gradient(90% 120% at 85% 8%, rgba(217, 154, 43, .18) 0%, transparent 54%),
+    linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+  color: var(--horizon);
+}
+.standard-grid { display: grid; gap: 42px; align-items: start; grid-template-columns: 1fr; }
+@media (min-width: 880px) { .standard-grid { grid-template-columns: .82fr 1.18fr; } }
+.standard-copy { max-width: 440px; }
+.standard-copy h2 {
+  font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 4.8vw, 48px);
+  line-height: 1.08; letter-spacing: -0.018em; margin: 14px 0 18px;
+}
+.standard-copy p { color: rgba(237,239,243,.74); font-weight: 300; margin-bottom: 22px; }
+.standard-copy .link-btn { color: var(--marigold-lt); }
+.standard-list { display: grid; gap: 1px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.14); }
+.standard-item {
+  display: grid; grid-template-columns: 54px 1fr; gap: 18px;
+  background: rgba(20,22,46,.72); padding: 24px 26px;
+}
+.standard-item > span {
+  font-family: var(--serif); font-size: 18px; color: var(--marigold-lt);
+}
+.standard-item h3 { font-family: var(--serif); font-weight: 400; font-size: 20px; margin-bottom: 5px; }
+.standard-item p { color: rgba(237,239,243,.68); font-size: 14.5px; font-weight: 300; }
+@media (max-width: 560px) {
+  .standard-item { grid-template-columns: 1fr; gap: 8px; padding: 22px; }
+}
+
 /* ── Product grid + cards ────────────────────────────────── */
 .grid { display: grid; gap: 26px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
@@ -378,13 +409,19 @@ a { color: inherit; text-decoration: none; }
 .card {
   background: #fff; border: 1px solid var(--mist); border-radius: var(--r);
   overflow: hidden; display: flex; flex-direction: column;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .24s cubic-bezier(.16,1,.3,1), box-shadow .24s ease, border-color .24s ease;
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.card-media { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--horizon); }
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(58,63,102,.26); }
+.card-media { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--horizon); }
+.card-media .product-img, .card-media .swatch-fallback { transition: transform .8s cubic-bezier(.16,1,.3,1); }
+.card:hover .card-media .product-img, .card:hover .card-media .swatch-fallback { transform: scale(1.045); }
 .swatch { position: relative; display: grid; place-items: center; }
 .swatch-mark { font-family: var(--serif); font-size: clamp(30px, 6vw, 46px); letter-spacing: .04em; }
-.card-body { padding: 22px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.card-body { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.card-kicker {
+  font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--slate);
+  font-weight: 700; margin-bottom: 2px;
+}
 .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .card h3 { font-family: var(--serif); font-weight: 400; font-size: 19px; line-height: 1.2; }
 .card-badge {
@@ -396,6 +433,10 @@ a { color: inherit; text-decoration: none; }
 .card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
 .card-price { font-family: var(--serif); font-size: 19px; }
 .card-cta { font-size: 13px; font-weight: 600; color: var(--dusk); }
+@media (prefers-reduced-motion: reduce) {
+  .card, .card-media .product-img, .card-media .swatch-fallback { transition: none; }
+  .card:hover .card-media .product-img, .card:hover .card-media .swatch-fallback { transform: none; }
+}
 
 /* ── Origin / split section ──────────────────────────────── */
 .split { display: grid; gap: 40px; align-items: center; grid-template-columns: 1fr; }

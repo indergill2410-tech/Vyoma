@@ -63,11 +63,11 @@ export default function About() {
 
           <h2>A cleaner layer.</h2>
           <p>
-            Most activewear is plastic — polyester, nylon and elastane. We begin the other
-            way: natural fibre first, nothing synthetic against your skin unless it has to
-            be there. The layer closest to you should be the cleanest — which is why we made{" "}
+            Most activewear is plastic — polyester, nylon, elastane and spandex. We begin
+            the other way: organic natural fibre, engineered to move without synthetic
+            stretch against your skin. The layer closest to you should be the cleanest — which is why we made{" "}
             Vyoma Pure (for <Link href="/product/vyoma-pure-brief-women">women</Link> and{" "}
-            <Link href="/product/vyoma-pure-trunk-men">men</Link>), our natural-cotton everyday basics.
+            <Link href="/product/vyoma-pure-trunk-men">men</Link>), our organic-cotton everyday basics.
           </p>
           <p className="cite-note">
             We don&apos;t make medical claims. No item of clothing treats, cures or prevents

@@ -15,8 +15,8 @@ export default function FabricPage() {
           <h1 className="article-h1">A field, or a refinery.</h1>
           <p className="lede">
             Every fabric on earth begins in one of two places. Polyester, nylon and
-            elastane are plastics — made from oil and finished with industrial
-            chemicals. Ours begins the other way: cotton grown in living soil. Here&apos;s
+            elastane and spandex are plastics — made from oil and finished with industrial
+            chemicals. Ours begins the other way: organic cotton grown in living soil. Here&apos;s
             the research behind why that matters.
           </p>
         </div>
@@ -50,9 +50,9 @@ export default function FabricPage() {
 
           <h2>Our standard</h2>
           <p>
-            We build to a simple standard: a natural, plant-grown cotton body, with the
-            smallest possible amount of stretch only where a garment genuinely needs it
-            (like a waistband). Our standard is to exclude the chemicals below —
+            We build to a simple standard: organic, plant-grown cotton engineered with
+            natural stretch from knit structure and construction, not polyester, nylon,
+            elastane or spandex against the skin. Our standard is to exclude the chemicals below —
             verified by independent testing, with certificates published here as each
             batch is issued.
           </p>
@@ -78,7 +78,7 @@ export default function FabricPage() {
           <h2>Certificates</h2>
           <p className="muted">
             Certificates, not promises. As our fabric is certified — GOTS for organic
-            fibre, OEKO-TEX Standard 100 for the finished blend — we&apos;ll publish each one
+            fibre, OEKO-TEX Standard 100 for the finished garment — we&apos;ll publish each one
             here, batch by batch. Until then, we only say what we can prove. Made in India.
           </p>
 
