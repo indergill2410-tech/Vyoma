@@ -186,7 +186,7 @@ export default function ResearchPage() {
             <ul>
               {SOURCES.map((source) => (
                 <li key={source.href}>
-                  <a href={source.href} target="_blank" rel="noreferrer">
+                  <a href={source.href} target="_blank" rel="noopener noreferrer">
                     {source.title}
                   </a>
                 </li>
