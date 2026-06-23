@@ -9,6 +9,7 @@
   --home-rose: #c98c82;
   --home-line: rgba(20, 22, 46, 0.12);
   position: relative;
+  isolation: isolate;
   overflow-x: hidden;
   background: transparent;
   color: var(--home-ink);
