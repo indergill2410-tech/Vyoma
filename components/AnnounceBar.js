@@ -1,8 +1,8 @@
-// Slim top bar — pride + reassurance, no claims we can't keep.
+// Slim top bar - material promise, shipping reassurance, checkout confidence.
 export default function AnnounceBar() {
   const items = [
-    "✦ Made in India — the birthplace of yoga",
-    "Shipping to 🇮🇳 India & 🇦🇺 Australia",
+    "Research-led activewear - natural fibre first",
+    "Shipping to India & Australia",
     "Secure checkout",
   ];
   return (
