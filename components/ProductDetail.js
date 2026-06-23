@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useCart, useRegion } from "./Providers";
 import { COLOURWAYS } from "@/lib/catalog";
 import { getRegion } from "@/lib/regions";
@@ -9,7 +10,7 @@ import { toast, celebrateFrom } from "@/lib/fx";
 import Gallery from "./Gallery";
 import SizeGuide from "./SizeGuide";
 
-export default function ProductDetail({ product }) {
+export default function ProductDetail({ product, commerceEnabled = true }) {
   const { addItem } = useCart();
   const { region } = useRegion();
   const [colour, setColour] = useState(product.colourways[0]);
@@ -43,6 +44,10 @@ export default function ProductDetail({ product }) {
   }
 
   function add(e) {
+    if (!commerceEnabled) {
+      setError("This piece is being prepared for the first drop.");
+      return;
+    }
     const item = build();
     if (item) {
       celebrateFrom(e);
@@ -52,6 +57,10 @@ export default function ProductDetail({ product }) {
   }
 
   async function buyNow() {
+    if (!commerceEnabled) {
+      setError("This piece is being prepared for the first drop.");
+      return;
+    }
     const item = build();
     if (!item) return;
     setBusy(true);
@@ -137,10 +146,18 @@ export default function ProductDetail({ product }) {
         </div>
 
         <div className="pdp-actions">
-          <button className="btn block" onClick={add}>Add to bag</button>
-          <button className="btn ghost block" onClick={buyNow} disabled={busy}>
-            {busy ? "Opening checkout…" : "Buy it now"}
-          </button>
+          {commerceEnabled ? (
+            <>
+              <button className="btn block" onClick={add}>Add to bag</button>
+              <button className="btn ghost block" onClick={buyNow} disabled={busy}>
+                {busy ? "Opening checkout…" : "Buy it now"}
+              </button>
+            </>
+          ) : (
+            <Link href="/circle" className="btn block">
+              Join The Circle for first access
+            </Link>
+          )}
         </div>
         {error && <p className="error" role="alert">{error}</p>}
 
@@ -174,7 +191,11 @@ export default function ProductDetail({ product }) {
           <strong>{product.name}</strong>
           <span>{formatMoney(unit, region)}</span>
         </div>
-        <button className="btn" onClick={add}>Add to bag</button>
+        {commerceEnabled ? (
+          <button className="btn" onClick={add}>Add to bag</button>
+        ) : (
+          <Link href="/circle" className="btn">First access</Link>
+        )}
       </div>
 
       <SizeGuide open={guideOpen} onClose={() => setGuideOpen(false)} fit={product.fit} />
