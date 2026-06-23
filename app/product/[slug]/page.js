@@ -9,6 +9,10 @@ import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import ProductCard from "@/components/ProductCard";
 import Reviews from "@/components/Reviews";
 
+function localCatalogAllowed() {
+  return process.env.NODE_ENV !== "production";
+}
+
 // Approved-review summary for structured data (rich-result stars). Defensive:
 // if the DB is unreachable (e.g. at build time) we just omit the rating.
 async function approvedReviewSummary(slug) {
@@ -27,10 +31,10 @@ async function approvedReviewSummary(slug) {
   }
 }
 
-// Local slugs remain pre-rendered for development fallback; Shopify products
-// render on demand and take priority whenever the store is configured.
+// Local slugs are only pre-rendered for non-production fallback. Shopify
+// products render on demand and take priority whenever the store is configured.
 export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
+  return localCatalogAllowed() ? PRODUCTS.map((p) => ({ slug: p.slug })) : [];
 }
 
 async function resolve(slug) {
@@ -38,13 +42,16 @@ async function resolve(slug) {
     try {
       const sp = await getShopifyProduct(slug);
       if (sp) return { kind: "shopify", product: sp };
-    } catch {
-      /* fall through to local demo catalog */
+    } catch (err) {
+      console.error("Shopify product lookup failed", err);
     }
   }
 
-  const local = getLocalProduct(slug);
-  if (local) return { kind: "local", product: local };
+  if (localCatalogAllowed()) {
+    const local = getLocalProduct(slug);
+    if (local) return { kind: "local", product: local };
+  }
+
   return null;
 }
 
