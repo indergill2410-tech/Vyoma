@@ -35,6 +35,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  will-change: opacity;
 }
 
 .skyField::before {
@@ -378,8 +379,7 @@
 }
 
 .researchTeaser {
-  background: rgba(247, 244, 238, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(247, 244, 238, 0.9);
 }
 
 .sectionIntro {
