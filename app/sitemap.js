@@ -8,13 +8,14 @@ export default function sitemap() {
 
   const staticRoutes = [
     { path: "/", priority: 1.0, changeFrequency: "daily" },
+    { path: "/shop", priority: 0.95, changeFrequency: "daily" },
     { path: "/pure", priority: 0.8, changeFrequency: "weekly" },
     { path: "/sky-series", priority: 0.7, changeFrequency: "weekly" },
     { path: "/fabric", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/research", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/research", priority: 0.7, changeFrequency: "monthly" },
     { path: "/making", priority: 0.6, changeFrequency: "monthly" },
     { path: "/drops", priority: 0.8, changeFrequency: "weekly" },
-    { path: "/fit", priority: 0.5, changeFrequency: "monthly" },
+    { path: "/fit", priority: 0.6, changeFrequency: "monthly" },
     { path: "/about", priority: 0.6, changeFrequency: "monthly" },
     { path: "/track", priority: 0.3, changeFrequency: "yearly" },
   ].map((r) => ({
