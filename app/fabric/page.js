@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -42,11 +43,12 @@ export default function FabricPage() {
               <Link href="/research" className="btn ghost">Read the sources</Link>
             </div>
           </div>
-          <div className="fabric-sample" aria-hidden="true">
-            <span>soft</span>
-            <span>breathable</span>
-            <span>clear</span>
-          </div>
+          <EditorialImage
+            name="fabricMacro"
+            alt="Close-up natural fibre weave in soft studio light"
+            className="fabric-sample"
+            priority
+          />
         </div>
       </section>
 
