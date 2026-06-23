@@ -135,7 +135,7 @@ export default function ResearchPage() {
                 <strong>{item.stat}</strong>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
-                <a href={item.href} target="_blank" rel="noreferrer">
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
                   {item.source}
                 </a>
               </article>
