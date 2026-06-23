@@ -134,7 +134,7 @@ export default async function ProductPage({ params }) {
   };
 
   return (
-    <main>
+    <main className="commerce-page local-product-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}

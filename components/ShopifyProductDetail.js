@@ -11,7 +11,7 @@ export default function ShopifyProductDetail({ product }) {
     : [];
 
   return (
-    <main className="shopify-product-page">
+    <main className="commerce-page shopify-product-page">
       <div className="container">
         <p className="crumb">
           <Link href="/shop">Collection</Link> / {product.title}
