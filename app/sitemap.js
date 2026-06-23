@@ -11,6 +11,7 @@ export default function sitemap() {
     { path: "/pure", priority: 0.8, changeFrequency: "weekly" },
     { path: "/sky-series", priority: 0.7, changeFrequency: "weekly" },
     { path: "/fabric", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/research", priority: 0.8, changeFrequency: "monthly" },
     { path: "/making", priority: 0.6, changeFrequency: "monthly" },
     { path: "/drops", priority: 0.8, changeFrequency: "weekly" },
     { path: "/fit", priority: 0.5, changeFrequency: "monthly" },
