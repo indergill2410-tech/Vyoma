@@ -1,125 +1,89 @@
-"use client";
+import Link from "next/link";
+import { abs } from "@/lib/seo";
 
-import { useState } from "react";
-import { formatMoney } from "@/lib/format";
-import { COLOURWAYS } from "@/lib/catalog";
+export const metadata = {
+  title: "Track your order",
+  description:
+    "How to follow your Vyomawear order from confirmation to tracked delivery.",
+  alternates: { canonical: abs("/track") },
+};
 
 const STEPS = [
-  { key: "paid", title: "It's official", desc: "We've got your order. Your piece is next in line." },
-  { key: "in_production", title: "Being made for you", desc: "Cut, sewn and checked by hand in India." },
-  { key: "shipped", title: "On its way", desc: "Handed to the courier and heading straight to you." },
-  { key: "delivered", title: "It's yours", desc: "Delivered. Here's to plenty of room to grow." },
+  {
+    title: "Order confirmed",
+    body: "Your confirmation email includes your order summary and the secure order-status link.",
+  },
+  {
+    title: "Made or prepared",
+    body: "First-drop pieces are prepared with care in India. If a piece is made for you, timing appears on the product page before checkout.",
+  },
+  {
+    title: "Tracked delivery",
+    body: "When your parcel is on the way, your tracking details arrive by email so you can follow it to your door.",
+  },
 ];
 
-export default function Track() {
-  const [orderNumber, setOrderNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [order, setOrder] = useState(null);
-  const [state, setState] = useState("idle");
-  const [error, setError] = useState("");
-
-  async function lookup(e) {
-    e.preventDefault();
-    setError("");
-    setState("loading");
-    try {
-      const res = await fetch("/api/track", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderNumber: orderNumber.trim(), email: email.trim() }),
-      });
-      const data = await res.json();
-      if (res.ok && data.order) {
-        setOrder(data.order);
-        setState("done");
-      } else {
-        setOrder(null);
-        setState("idle");
-        setError(data.error || "We couldn't find that order. Check the number and email.");
-      }
-    } catch {
-      setState("idle");
-      setError("Network error. Please try again.");
-    }
-  }
-
-  const activeIndex = order ? STEPS.findIndex((s) => s.key === order.status) : -1;
-  const items = order ? safeItems(order.items) : [];
-
+export default function TrackPage() {
   return (
-    <main className="center-page">
-      <span className="dev">व्योम</span>
-      <h1>Track your order</h1>
-      <p>Enter your order number (like VY-7F3K2) and the email you used at checkout.</p>
-
-      <form className="track-form" onSubmit={lookup}>
-        <input
-          placeholder="Order number"
-          value={orderNumber}
-          onChange={(e) => setOrderNumber(e.target.value.toUpperCase())}
-          aria-label="Order number"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          aria-label="Email"
-          required
-        />
-        <button className="btn" type="submit" disabled={state === "loading"}>
-          {state === "loading" ? "Looking…" : "Track"}
-        </button>
-      </form>
-      {error && <p className="error" style={{ textAlign: "center" }}>{error}</p>}
-
-      {order && (
-        <>
-          <div className="order-card">
-            <div className="order-card-head">
-              <strong style={{ fontFamily: "var(--serif)", fontSize: 18 }}>{order.orderNumber}</strong>
-              <span className={`status ${order.status}`}>{order.status.replaceAll("_", " ")}</span>
-            </div>
-            {items.map((it, i) => (
-              <p key={i} className="muted small" style={{ margin: "2px 0" }}>
-                {it.name} — {COLOURWAYS[it.colour]?.name || it.colour}, size {it.size} × {it.quantity}
-              </p>
-            ))}
-            <p style={{ marginTop: 12, fontFamily: "var(--serif)" }}>
-              Total {formatMoney(order.amountTotal, order.region)}
+    <main className="commerce-page track-page">
+      <section className="commerce-hero track-hero">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">Track order</p>
+            <h1>Your order has a quiet paper trail.</h1>
+            <p className="commerce-lead">
+              Use the secure order-status link in your confirmation email to follow your piece.
+              If tracking is not visible yet, it usually means the order is still being prepared.
             </p>
-            {order.trackingNumber && (
-              <p className="small" style={{ marginTop: 8 }}>
-                Tracking: <strong>{order.trackingNumber}</strong>
-              </p>
-            )}
+            <div className="commerce-actions">
+              <Link href="/shop" className="btn accent">Keep browsing</Link>
+              <Link href="/making" className="btn ghost">See how it is made</Link>
+            </div>
           </div>
+          <div className="track-ticket" aria-label="Order status steps">
+            <span>Confirmed</span>
+            <span>Prepared</span>
+            <span>Tracked</span>
+          </div>
+        </div>
+      </section>
 
-          <div className="timeline">
-            {STEPS.map((step, i) => {
-              const cls = i < activeIndex ? "done" : i === activeIndex ? "current done" : "";
-              return (
-                <div className={`tl-step ${cls}`} key={step.key}>
-                  <div className="tl-dot">{i <= activeIndex ? "✓" : i + 1}</div>
-                  <div className="tl-body">
-                    <h4>{step.title}</h4>
-                    <p>{step.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
+      <section className="commerce-section commerce-section-tight">
+        <div className="commerce-shell narrow-shell">
+          <div className="commerce-section-head">
+            <p className="commerce-eyebrow">What to expect</p>
+            <h2>From checkout to your door.</h2>
+            <p>
+              Vyoma uses secure hosted checkout and email updates for order status.
+              Keep your confirmation email close; it is the fastest way back to tracking.
+            </p>
           </div>
-        </>
-      )}
+          <ol className="track-steps">
+            {STEPS.map((step, index) => (
+              <li key={step.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="commerce-section track-help-band">
+        <div className="commerce-shell confidence-grid">
+          <div>
+            <p className="commerce-eyebrow">Need a hand?</p>
+            <h2>Reply to your order email.</h2>
+          </div>
+          <p>
+            That keeps your order number, email and purchase details in one place so support can help quickly
+            once your support inbox is connected to the live store.
+          </p>
+        </div>
+      </section>
     </main>
   );
-}
-
-function safeItems(json) {
-  try {
-    return JSON.parse(json) || [];
-  } catch {
-    return [];
-  }
 }
