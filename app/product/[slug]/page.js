@@ -9,8 +9,6 @@ import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import ProductCard from "@/components/ProductCard";
 import Reviews from "@/components/Reviews";
 
-// Approved-review summary for structured data (rich-result stars). Defensive:
-// if the DB is unreachable (e.g. at build time) we just omit the rating.
 async function approvedReviewSummary(slug) {
   try {
     const reviews = await prisma.review.findMany({
@@ -27,8 +25,6 @@ async function approvedReviewSummary(slug) {
   }
 }
 
-// Keep the existing catalog pages available so current products and their
-// picture fallbacks are preserved. Shopify products still take priority.
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
@@ -83,7 +79,6 @@ export default async function ProductPage({ params }) {
   const url = abs(`/product/${product.slug}`);
   const reviewSummary = await approvedReviewSummary(product.slug);
 
-  // Offers valid for a year from build; same garment served in two currencies.
   const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .slice(0, 10);
@@ -133,10 +128,11 @@ export default async function ProductPage({ params }) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: abs("/") },
-      { "@type": "ListItem", position: 2, name: "Collection", item: abs("/#shop") },
+      { "@type": "ListItem", position: 2, name: "Collection", item: abs("/shop") },
       { "@type": "ListItem", position: 3, name: product.name, item: url },
     ],
   };
+
   return (
     <main>
       <script
@@ -149,7 +145,7 @@ export default async function ProductPage({ params }) {
       />
       <div className="container">
         <p className="crumb">
-          <Link href="/#shop">Collection</Link> / {product.name}
+          <Link href="/shop">Collection</Link> / {product.name}
         </p>
         <ProductDetail product={product} commerceEnabled={false} />
       </div>

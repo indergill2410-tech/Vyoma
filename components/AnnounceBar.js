@@ -1,7 +1,6 @@
-// Slim top bar - material promise, shipping reassurance, checkout confidence.
 export default function AnnounceBar() {
   const items = [
-    "Research-led activewear - natural fibre first",
+    "Soft natural fibres",
     "Shipping to India & Australia",
     "Secure checkout",
   ];
