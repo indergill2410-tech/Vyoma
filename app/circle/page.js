@@ -2,6 +2,7 @@ import Link from "next/link";
 import Waitlist from "@/components/Waitlist";
 import WaitlistCount from "@/components/WaitlistCount";
 import CircleStatusCheck from "@/components/CircleStatusCheck";
+import EditorialImage from "@/components/EditorialImage";
 import { TIERS } from "@/lib/circle-config";
 import { abs } from "@/lib/seo";
 
@@ -43,11 +44,12 @@ export default function CirclePage() {
             <Waitlist source="circle" />
             <p className="muted small">No spam. Leave whenever you like.</p>
           </div>
-          <div className="circle-proof-orbit" aria-hidden="true">
-            <span>Bring a friend</span>
-            <strong>Move up</strong>
-            <em>founder perks</em>
-          </div>
+          <EditorialImage
+            name="circleDrops"
+            alt="Founder drop invitation and fabric swatches in warm dusk light"
+            className="circle-proof-orbit"
+            priority
+          />
         </div>
       </section>
 

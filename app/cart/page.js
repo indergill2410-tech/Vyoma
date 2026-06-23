@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useCart, useRegion } from "@/components/Providers";
+import EditorialImage from "@/components/EditorialImage";
 import { getRegion } from "@/lib/regions";
 import { formatMoney } from "@/lib/format";
 import { COLOURWAYS, swatchStyle, getProduct } from "@/lib/catalog";
@@ -62,6 +63,11 @@ export default function CartPage() {
         <div className="commerce-shell">
           {count === 0 ? (
             <div className="empty-bag-panel">
+              <EditorialImage
+                name="fitPackaging"
+                alt="Vyoma packaging and fit cards ready for checkout"
+                className="empty-bag-image"
+              />
               <span className="commerce-motif">व्योम</span>
               <h2>Nothing here yet.</h2>
               <p>

@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./conversion.css";
+import "./editorial.css";
 import Link from "next/link";
 import { Providers } from "@/components/Providers";
 import Nav from "@/components/Nav";
@@ -7,6 +8,7 @@ import AnnounceBar from "@/components/AnnounceBar";
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
+import SkyAtmosphere from "@/components/SkyAtmosphere";
 import { abs, SITE_URL, BRAND } from "@/lib/seo";
 
 export const metadata = {
@@ -92,6 +94,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
+        <SkyAtmosphere />
         <Providers>
           <AnnounceBar />
           <Nav />

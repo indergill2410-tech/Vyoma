@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" role="img" aria-label="Dawn studio still life with indigo activewear fabric">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12162f"/>
+      <stop offset="0.34" stop-color="#343b66"/>
+      <stop offset="0.68" stop-color="#d7a18f"/>
+      <stop offset="1" stop-color="#f4eadb"/>
+    </linearGradient>
+    <linearGradient id="cloth" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#10142e"/>
+      <stop offset="1" stop-color="#34385c"/>
+    </linearGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.16"/></feComponentTransfer></filter>
+    <pattern id="weave" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="2" height="26" fill="#fff" opacity="0.12"/></pattern>
+  </defs>
+  <rect width="900" height="1120" fill="url(#sky)"/>
+  <rect width="900" height="1120" filter="url(#grain)" opacity="0.32"/>
+  <circle cx="734" cy="222" r="94" fill="#fff2cb" opacity="0.28"/>
+  <ellipse cx="230" cy="916" rx="430" ry="118" fill="#7b5a41" opacity="0.16"/>
+  <rect x="108" y="680" width="684" height="244" rx="18" fill="#f7f1e7" opacity="0.62"/>
+  <path d="M292 246c104-50 231-34 285 58 56 96 16 216 54 326 20 58 66 101 64 163-4 115-119 168-259 153-139-15-252-78-256-191-3-89 64-134 75-220 13-101-56-229 37-289Z" fill="url(#cloth)"/>
+  <path d="M286 264c96 45 250 33 314-3" fill="none" stroke="#f5ead8" stroke-width="7" opacity="0.2"/>
+  <path d="M229 795c112 54 288 70 459 20" fill="none" stroke="#fff" stroke-width="8" opacity="0.12"/>
+  <rect x="108" y="680" width="684" height="244" rx="18" fill="url(#weave)" opacity="0.65"/>
+  <path d="M142 978c186-64 443-72 620 0" fill="none" stroke="#f3dec0" stroke-width="28" opacity="0.58"/>
+</svg>

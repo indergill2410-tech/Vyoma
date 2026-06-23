@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShopGrid from "@/components/ShopGrid";
 import ProductCard from "@/components/ProductCard";
+import EditorialImage from "@/components/EditorialImage";
 import { PRODUCTS } from "@/lib/catalog";
 import { abs } from "@/lib/seo";
 
@@ -42,10 +43,12 @@ export default function ShopPage() {
               <span>Opaque promise</span>
             </div>
           </div>
-          <div className="commerce-visual" aria-hidden="true">
-            <span className="commerce-motif">व्योम</span>
-            <span className="commerce-caption">Night-sky indigo</span>
-          </div>
+          <EditorialImage
+            name="shopHero"
+            alt="Folded Vyoma movement layers and yoga mat in soft dusk light"
+            className="commerce-visual"
+            priority
+          />
         </div>
       </section>
 

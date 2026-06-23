@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Waitlist from "@/components/Waitlist";
 import ProductCard from "@/components/ProductCard";
+import EditorialImage from "@/components/EditorialImage";
 import { PRODUCTS } from "@/lib/catalog";
 import { abs } from "@/lib/seo";
 
@@ -36,11 +37,12 @@ export default function DropsPage() {
               <Link href="#circle" className="btn ghost">Get restock notes</Link>
             </div>
           </div>
-          <div className="drop-orbit" aria-hidden="true">
-            <span>Live</span>
-            <strong>First drop</strong>
-            <em>made in India</em>
-          </div>
+          <EditorialImage
+            name="circleDrops"
+            alt="First-drop invitation with fabric swatches in warm dusk light"
+            className="drop-orbit"
+            priority
+          />
         </div>
       </section>
 

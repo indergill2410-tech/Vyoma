@@ -2,6 +2,7 @@ import Link from "next/link";
 import LandingSky from "@/components/LandingSky";
 import Waitlist from "@/components/Waitlist";
 import ShopGrid from "@/components/ShopGrid";
+import EditorialImage from "@/components/EditorialImage";
 import styles from "./HomePage.module.css";
 
 const MATERIAL_POINTS = [
@@ -122,10 +123,12 @@ export default function Home() {
             </div>
 
             <div className={styles.heroVisual} aria-label="The Vyoma Set preview">
-              <div className={styles.heroFrame}>
-                <span className={styles.heroMark}>Vyoma</span>
-                <span className={styles.heroCaption}>the first set</span>
-              </div>
+              <EditorialImage
+                name="homeHero"
+                alt="Indigo Vyoma movement layer in soft dawn studio light"
+                className={`${styles.heroFrame} editorial-home-frame`}
+                priority
+              />
               <div className={styles.swatchNote}>
                 <span />
                 Night-sky indigo
@@ -302,9 +305,11 @@ export default function Home() {
       <section className={styles.origin} aria-labelledby="origin-heading">
         <div className={styles.shell}>
           <div className={styles.originPanel}>
-            <div className={styles.originArt}>
-              <span>Vyoma</span>
-            </div>
+            <EditorialImage
+              name="makingAtelier"
+              alt="Natural fabric being prepared on a warm atelier cutting table"
+              className={`${styles.originArt} home-origin-image`}
+            />
             <div className={styles.originCopy}>
               <p className={styles.eyebrow}>How it is made</p>
               <h2 id="origin-heading">Made slowly, by hands that care.</h2>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShopifyGallery from "./ShopifyGallery";
 import ShopifyBuyPanel from "./ShopifyBuyPanel";
+import EditorialImage from "./EditorialImage";
 
 export default function ShopifyProductDetail({ product }) {
   const images = product.images?.nodes?.length
@@ -26,6 +27,11 @@ export default function ShopifyProductDetail({ product }) {
           <div className="sticky-copy">
             <p className="commerce-eyebrow">Why it belongs</p>
             <h2 id="pdp-story-heading">A piece should earn its place before it reaches your drawer.</h2>
+            <EditorialImage
+              name="fabricMacro"
+              alt="Close-up natural fibre texture supporting the product material story"
+              className="fabric-sample pdp-story-image"
+            />
           </div>
           <div className="commerce-card-grid two">
             <article className="commerce-card">

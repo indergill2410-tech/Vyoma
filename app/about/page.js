@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -40,10 +41,12 @@ export default function About() {
               <Link href="/making" className="btn ghost">See the making</Link>
             </div>
           </div>
-          <div className="about-wordmark" aria-hidden="true">
-            <span>व्योम</span>
-            <strong>sky / space / breath</strong>
-          </div>
+          <EditorialImage
+            name="makingAtelier"
+            alt="Natural fabric being prepared in a warm atelier setting"
+            className="about-wordmark"
+            priority
+          />
         </div>
       </section>
 

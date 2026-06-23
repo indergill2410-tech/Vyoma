@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" role="img" aria-label="Stack of Vyoma sky colour fabric swatches from night to dawn">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#11162f"/><stop offset="0.38" stop-color="#394164"/><stop offset="0.72" stop-color="#d1998f"/><stop offset="1" stop-color="#f6ead8"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency="0.9" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.14"/></feComponentTransfer></filter>
+    <pattern id="weave" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(34)"><rect width="2" height="20" fill="#fff" opacity="0.17"/></pattern>
+  </defs>
+  <rect width="900" height="1120" fill="url(#bg)"/>
+  <rect width="900" height="1120" filter="url(#grain)" opacity="0.35"/>
+  <circle cx="720" cy="170" r="88" fill="#fff1c6" opacity="0.22"/>
+  <g transform="translate(150 230)">
+    <rect x="0" y="0" width="600" height="132" rx="22" fill="#10142e"/>
+    <rect x="38" y="116" width="560" height="132" rx="22" fill="#d1998f"/>
+    <rect x="0" y="232" width="600" height="132" rx="22" fill="#6b7280"/>
+    <rect x="38" y="348" width="560" height="132" rx="22" fill="#c98a22"/>
+    <rect x="0" y="464" width="600" height="132" rx="22" fill="#e7e3da"/>
+    <rect x="0" y="0" width="600" height="596" rx="22" fill="url(#weave)" opacity="0.66"/>
+    <path d="M34 68h532M74 184h486M34 300h532M74 416h486M34 532h532" stroke="#fff" stroke-width="3" opacity="0.18"/>
+  </g>
+  <path d="M94 930c186-72 442-72 710 0" fill="none" stroke="#f7e4c7" stroke-width="32" opacity="0.44"/>
+</svg>

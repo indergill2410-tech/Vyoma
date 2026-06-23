@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FitFinder from "@/components/FitFinder";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -41,9 +42,12 @@ export default function FitPage() {
               <Link href="/shop" className="btn ghost">Shop first</Link>
             </div>
           </div>
-          <div className="fit-scale" aria-hidden="true">
-            <span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span>
-          </div>
+          <EditorialImage
+            name="fitPackaging"
+            alt="Vyoma fit cards, soft packaging and measuring tape in dawn light"
+            className="fit-scale"
+            priority
+          />
         </div>
       </section>
 

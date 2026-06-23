@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" role="img" aria-label="Fit cards, packaging and measuring tape in soft dawn light">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f1e7"/><stop offset="0.54" stop-color="#d9a8a0"/><stop offset="1" stop-color="#3a3f66"/></linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf2"/><stop offset="1" stop-color="#cdd4de"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency="0.82" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.13"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1100" height="900" fill="url(#bg)"/>
+  <rect width="1100" height="900" filter="url(#grain)" opacity="0.34"/>
+  <ellipse cx="560" cy="742" rx="414" ry="112" fill="#10142e" opacity="0.13"/>
+  <rect x="254" y="246" width="486" height="356" rx="24" fill="url(#box)"/>
+  <path d="M254 342h486" stroke="#10142e" stroke-width="4" opacity="0.12"/>
+  <path d="M330 420h330M330 476h268M330 532h306" stroke="#10142e" stroke-width="16" stroke-linecap="round" opacity="0.14"/>
+  <rect x="676" y="360" width="190" height="252" rx="22" fill="#10142e" opacity="0.92"/>
+  <circle cx="772" cy="438" r="48" fill="#d99a2b" opacity="0.88"/>
+  <path d="M186 636c130-104 268-104 414 0 101 72 225 72 338 8" fill="none" stroke="#fff7ea" stroke-width="34" stroke-linecap="round" opacity="0.78"/>
+  <path d="M220 616l22 26m78-70l18 28m83-18l6 32m90-12l-6 33m85 20l-20 27m91 18l-28 20" stroke="#10142e" stroke-width="5" opacity="0.28"/>
+  <rect x="166" y="238" width="86" height="118" rx="10" fill="#fffaf1" opacity="0.8" transform="rotate(-12 166 238)"/>
+  <rect x="184" y="268" width="50" height="14" rx="7" fill="#10142e" opacity="0.35" transform="rotate(-12 184 268)"/>
+  <rect x="184" y="302" width="42" height="14" rx="7" fill="#d1998f" opacity="0.8" transform="rotate(-12 184 302)"/>
+</svg>

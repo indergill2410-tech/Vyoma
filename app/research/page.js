@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -56,11 +57,12 @@ export default function ResearchPage() {
               <Link href="/shop" className="btn ghost">Shop the first drop</Link>
             </div>
           </div>
-          <div className="research-ledger" aria-hidden="true">
-            <span>Read</span>
-            <span>Verify</span>
-            <span>Claim carefully</span>
-          </div>
+          <EditorialImage
+            name="fabricMacro"
+            alt="Natural fibre detail with a quiet evidence-led material mood"
+            className="research-ledger"
+            priority
+          />
         </div>
       </section>
 
