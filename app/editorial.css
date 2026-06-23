@@ -62,6 +62,145 @@ main,
   object-fit: cover;
 }
 
+.editorial-photo-scene {
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background:
+    radial-gradient(88% 76% at 84% 10%, rgba(239, 213, 184, 0.45), transparent 54%),
+    radial-gradient(76% 72% at 12% 92%, rgba(17, 22, 47, 0.5), transparent 64%),
+    linear-gradient(135deg, rgba(17, 22, 47, 0.92), rgba(101, 86, 118, 0.74) 54%, rgba(239, 213, 184, 0.74));
+}
+
+.editorial-photo-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 82% 14%, rgba(255, 244, 218, 0.18), transparent 62%),
+    linear-gradient(180deg, rgba(17, 22, 47, 0.2), rgba(17, 22, 47, 0.04) 44%, rgba(239, 213, 184, 0.12));
+  mix-blend-mode: screen;
+}
+
+.editorial-photo-scene::after {
+  z-index: 3;
+}
+
+.editorial-photo-glow {
+  position: absolute;
+  inset: -16%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(44% 34% at 22% 18%, rgba(217, 154, 43, 0.32), transparent 68%),
+    radial-gradient(46% 42% at 82% 84%, rgba(16, 20, 46, 0.34), transparent 70%);
+}
+
+.editorial-photo-collage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.editorial-photo-tile {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(248, 245, 239, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 70px rgba(8, 12, 28, 0.24);
+}
+
+.editorial-photo-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(16, 20, 46, 0.03), rgba(16, 20, 46, 0.16));
+}
+
+.editorial-photo-img {
+  object-fit: cover;
+  transform: scale(1.01);
+}
+
+.editorial-photo-tile--primary {
+  inset: 8% 10% 8% 34%;
+}
+
+.editorial-photo-tile--secondary {
+  inset: 12% 52% 42% 8%;
+}
+
+.editorial-photo-tile--accent {
+  inset: 54% 50% 10% 12%;
+}
+
+.editorial-photo-tile--detail {
+  inset: 32% 6% 44% 66%;
+}
+
+.editorial-photo-scene--home .editorial-photo-tile--primary {
+  inset: 6% 8% 6% 32%;
+}
+
+.editorial-photo-scene--home .editorial-photo-tile--secondary {
+  inset: 12% 58% 40% 7%;
+}
+
+.editorial-photo-scene--home .editorial-photo-tile--accent {
+  inset: 58% 52% 8% 10%;
+}
+
+.editorial-photo-scene--shop .editorial-photo-tile--primary,
+.editorial-photo-scene--sky .editorial-photo-tile--primary {
+  inset: 8% 8% 10% 42%;
+}
+
+.editorial-photo-scene--shop .editorial-photo-tile--secondary,
+.editorial-photo-scene--sky .editorial-photo-tile--secondary {
+  inset: 10% 54% 48% 8%;
+}
+
+.editorial-photo-scene--shop .editorial-photo-tile--accent,
+.editorial-photo-scene--sky .editorial-photo-tile--accent {
+  inset: 48% 58% 8% 8%;
+}
+
+.editorial-photo-scene--fabric .editorial-photo-tile--primary,
+.editorial-photo-scene--pure .editorial-photo-tile--primary {
+  inset: 6% 38% 8% 8%;
+}
+
+.editorial-photo-scene--fabric .editorial-photo-tile--secondary,
+.editorial-photo-scene--pure .editorial-photo-tile--secondary {
+  inset: 12% 8% 48% 58%;
+}
+
+.editorial-photo-scene--fabric .editorial-photo-tile--accent,
+.editorial-photo-scene--pure .editorial-photo-tile--accent {
+  inset: 56% 8% 8% 54%;
+}
+
+.editorial-photo-scene--making .editorial-photo-tile--primary,
+.editorial-photo-scene--circle .editorial-photo-tile--primary,
+.editorial-photo-scene--fit .editorial-photo-tile--primary {
+  inset: 8% 8% 8% 44%;
+}
+
+.editorial-photo-scene--making .editorial-photo-tile--secondary,
+.editorial-photo-scene--circle .editorial-photo-tile--secondary,
+.editorial-photo-scene--fit .editorial-photo-tile--secondary {
+  inset: 10% 54% 42% 8%;
+}
+
+.editorial-photo-scene--making .editorial-photo-tile--accent,
+.editorial-photo-scene--circle .editorial-photo-tile--accent,
+.editorial-photo-scene--fit .editorial-photo-tile--accent {
+  inset: 56% 50% 8% 10%;
+}
+
 .commerce-visual.editorial-image,
 .pure-visual.editorial-image,
 .fabric-sample.editorial-image,
@@ -299,6 +438,46 @@ main,
   .about-wordmark.editorial-image {
     min-height: 300px;
   }
+
+  .editorial-photo-tile--primary,
+  .editorial-photo-scene--home .editorial-photo-tile--primary,
+  .editorial-photo-scene--shop .editorial-photo-tile--primary,
+  .editorial-photo-scene--sky .editorial-photo-tile--primary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--primary,
+  .editorial-photo-scene--pure .editorial-photo-tile--primary,
+  .editorial-photo-scene--making .editorial-photo-tile--primary,
+  .editorial-photo-scene--circle .editorial-photo-tile--primary,
+  .editorial-photo-scene--fit .editorial-photo-tile--primary {
+    inset: 8% 8% 18% 28%;
+  }
+
+  .editorial-photo-tile--secondary,
+  .editorial-photo-scene--home .editorial-photo-tile--secondary,
+  .editorial-photo-scene--shop .editorial-photo-tile--secondary,
+  .editorial-photo-scene--sky .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--secondary,
+  .editorial-photo-scene--pure .editorial-photo-tile--secondary,
+  .editorial-photo-scene--making .editorial-photo-tile--secondary,
+  .editorial-photo-scene--circle .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fit .editorial-photo-tile--secondary {
+    inset: 16% 62% 44% 8%;
+  }
+
+  .editorial-photo-tile--accent,
+  .editorial-photo-scene--home .editorial-photo-tile--accent,
+  .editorial-photo-scene--shop .editorial-photo-tile--accent,
+  .editorial-photo-scene--sky .editorial-photo-tile--accent,
+  .editorial-photo-scene--fabric .editorial-photo-tile--accent,
+  .editorial-photo-scene--pure .editorial-photo-tile--accent,
+  .editorial-photo-scene--making .editorial-photo-tile--accent,
+  .editorial-photo-scene--circle .editorial-photo-tile--accent,
+  .editorial-photo-scene--fit .editorial-photo-tile--accent {
+    inset: 60% 54% 8% 8%;
+  }
+
+  .editorial-photo-tile--detail {
+    display: none;
+  }
 }
 
 @media (max-width: 620px) {
@@ -308,6 +487,46 @@ main,
 
   .editorial-home-frame {
     min-height: 430px;
+  }
+
+  .editorial-photo-scene {
+    min-height: 320px;
+  }
+
+  .editorial-photo-tile--primary,
+  .editorial-photo-scene--home .editorial-photo-tile--primary,
+  .editorial-photo-scene--shop .editorial-photo-tile--primary,
+  .editorial-photo-scene--sky .editorial-photo-tile--primary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--primary,
+  .editorial-photo-scene--pure .editorial-photo-tile--primary,
+  .editorial-photo-scene--making .editorial-photo-tile--primary,
+  .editorial-photo-scene--circle .editorial-photo-tile--primary,
+  .editorial-photo-scene--fit .editorial-photo-tile--primary {
+    inset: 7% 7% 24% 7%;
+  }
+
+  .editorial-photo-tile--secondary,
+  .editorial-photo-scene--home .editorial-photo-tile--secondary,
+  .editorial-photo-scene--shop .editorial-photo-tile--secondary,
+  .editorial-photo-scene--sky .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--secondary,
+  .editorial-photo-scene--pure .editorial-photo-tile--secondary,
+  .editorial-photo-scene--making .editorial-photo-tile--secondary,
+  .editorial-photo-scene--circle .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fit .editorial-photo-tile--secondary {
+    inset: 66% 52% 7% 7%;
+  }
+
+  .editorial-photo-tile--accent,
+  .editorial-photo-scene--home .editorial-photo-tile--accent,
+  .editorial-photo-scene--shop .editorial-photo-tile--accent,
+  .editorial-photo-scene--sky .editorial-photo-tile--accent,
+  .editorial-photo-scene--fabric .editorial-photo-tile--accent,
+  .editorial-photo-scene--pure .editorial-photo-tile--accent,
+  .editorial-photo-scene--making .editorial-photo-tile--accent,
+  .editorial-photo-scene--circle .editorial-photo-tile--accent,
+  .editorial-photo-scene--fit .editorial-photo-tile--accent {
+    inset: 66% 7% 7% 52%;
   }
 
   .empty-bag-image {
