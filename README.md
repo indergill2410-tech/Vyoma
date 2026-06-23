@@ -1,94 +1,71 @@
-# Vyomawear — Full-Stack Store
+# Vyomawear
 
-> *Vyoma (vee-OH-ma): Sanskrit for sky, ether, infinite space.*
+Vyomawear is a custom Next.js storefront for organic-first activewear. The front end lives here; products, variants, stock, payments, checkout, tax, shipping and orders are handled by Shopify.
 
-Premium, made-to-order yoga wear from the birthplace of yoga — built as a complete
-Next.js 14 storefront for **two markets** (🇮🇳 India · INR and 🇦🇺 Australia · AUD)
-from one Indian supply base.
+Primary brand domain target: `https://vyomawear.com.au`
+Current temporary Render URL: `https://vyoma-imsr.onrender.com`
 
-A living-sky brand experience on top of a real commerce engine: Stripe Checkout,
-a Prisma orders database, customer order tracking, a drop waitlist, moderated
-reviews, and an admin dashboard.
+## Commerce Model
 
-## What's inside
+- Shopify is the live commerce backend.
+- `/api/checkout` creates a Shopify cart and redirects to Shopify hosted checkout.
+- Stripe is not used for checkout.
+- The local product catalogue remains as a visual fallback so current catalogue pages and product imagery are not lost while Shopify data is being connected.
 
-| Area | Path | Notes |
-|---|---|---|
-| **Living-sky homepage** | `/` | Animated constellation canvas, drop countdown, waitlist, story pillars, social proof |
-| **Story** | `/about` | The Vyoma origin, pronunciation, made-to-order ethos |
-| **Collection** | `/#shop` | Catalog from `lib/catalog.js` — prices live server-side only |
-| **Product** | `/product/[slug]` | Colourways, size guide, made-to-order timeline, reviews |
-| **Cart** | drawer + `/cart` | Multi-item, persisted to localStorage |
-| **Checkout** | `/api/checkout` | Builds Stripe line items server-side; client can never set a price |
-| **Webhook** | `/api/webhook` | Signature-verified; the ONLY thing that creates orders |
-| **Order tracking** | `/track` | Order number + email → live status timeline |
-| **Reviews** | `/api/reviews` | Submit (pending) → admin approves → shown with average rating |
-| **Waitlist** | `/api/waitlist` | The pre-order drop list (how a $0 brand funds run #1) |
-| **The Circle** | `/circle` | Referral waitlist: share code, place in line, Founding-Member perk ladder (`lib/circle.js`) |
-| **Admin** | `/admin` | Token-gated: dashboard metrics, orders, waitlist, reviews |
+## Required Production Env Vars
 
-## Region & currency
+```bash
+NEXT_PUBLIC_SITE_URL="https://vyoma-imsr.onrender.com" # switch to https://vyomawear.com.au after DNS is connected
+SHOPIFY_STORE_DOMAIN="your-store.myshopify.com"
+SHOPIFY_STOREFRONT_TOKEN="your-storefront-access-token"
+SHOPIFY_WEBHOOK_SECRET=""
+DATABASE_URL="..."
+ADMIN_TOKEN="..."
+```
 
-`lib/regions.js` defines the two markets. The toggle in the nav switches currency,
-pricing (`priceAud` / `priceInr` in the catalog), and the shipping country Stripe
-collects. Australia ships duty-free under the India–Australia ECTA agreement.
+## Custom Domain Setup
 
-> **India payments note:** Stripe doesn't onboard new Indian merchants. This repo
-> uses Stripe for the demo in both currencies; for a real India launch, add Razorpay
-> as a parallel checkout route (the checkout API is structured to make that swap easy).
+Until `vyomawear.com.au` is connected, keep `NEXT_PUBLIC_SITE_URL` on the Render URL so canonical tags, sitemap, robots and social previews do not point to a dead domain.
 
-## Local setup
+When the domain is ready:
+
+1. Add `vyomawear.com.au` as a custom domain in Render for the web service.
+2. Add the DNS records Render gives you at the domain/DNS provider.
+3. Add `www.vyomawear.com.au` too if you want the `www` version supported.
+4. After DNS and SSL are active, set `NEXT_PUBLIC_SITE_URL="https://vyomawear.com.au"` in Render.
+5. In Shopify, connect `vyomawear.com.au` as the store domain if you want Shopify checkout/customer emails to use the brand domain.
+6. Configure Shopify webhooks to post to `https://vyomawear.com.au/api/shopify-webhook`.
+
+The app includes middleware to redirect `www.vyomawear.com.au`, `vyomawear.com`, and `www.vyomawear.com` to `https://vyomawear.com.au` once those domains point at the app.
+
+## Local Setup
 
 ```bash
 npm install
-cp .env.example .env        # fill in your Stripe TEST keys
-npm run db:push             # creates the SQLite dev database
-npm run db:seed             # optional — a few sample reviews so it looks alive
-npm run dev                 # http://localhost:3000
+cp .env.example .env
+npm run db:push
+npm run dev
 ```
 
-### Test the payment loop locally
+Local development runs at `http://localhost:3000`. If Shopify env vars are set locally, the shop grid and product pages pull live Shopify data; otherwise the local catalogue is shown.
 
-1. Install the Stripe CLI, then:
-   ```bash
-   stripe listen --forward-to localhost:3000/api/webhook
-   ```
-   Copy the printed `whsec_...` into `.env` as `STRIPE_WEBHOOK_SECRET`.
-2. Buy with Stripe's test card `4242 4242 4242 4242`, any future date, any CVC.
-3. Open `/admin`, sign in with your `ADMIN_TOKEN` — the order is there. Grab the
-   order number, then try `/track` with that number + the email you paid with.
+## Important Paths
 
-## Deploy (Vercel + Neon/Supabase Postgres)
+| Area | Path |
+|---|---|
+| Home | `/` |
+| Collection | `/#shop` |
+| Product detail | `/product/[slug]` |
+| Shopify checkout API | `/api/checkout` |
+| Shopify webhook | `/api/shopify-webhook` |
+| Research | `/research` |
+| Circle | `/circle` |
+| Admin | `/admin` |
 
-SQLite does NOT work on Vercel (serverless filesystem). For production:
+## Current Production Priorities
 
-1. Create a free Postgres DB at neon.tech (or Supabase).
-2. In `prisma/schema.prisma`, change `provider = "sqlite"` → `"postgresql"`.
-3. Push to GitHub → import to Vercel.
-4. Set env vars in Vercel: `DATABASE_URL`, `STRIPE_SECRET_KEY` (LIVE),
-   `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_DROP_DATE`, `ADMIN_TOKEN`.
-5. Run `npx prisma db push` once against the production DB.
-6. Stripe dashboard → Webhooks → add `https://yourdomain.com/api/webhook` for
-   `checkout.session.completed`; use its signing secret as `STRIPE_WEBHOOK_SECRET`.
-7. Activate your Stripe account before taking live payments.
-
-## Security model
-
-- **Prices are server-side.** The browser sends only `slug / colour / size / quantity`;
-  prices come from `lib/catalog.js` and the active region. Never trust a client price.
-- **Orders come only from the verified webhook.** The success page proves nothing.
-- **No card data touches the server** — Stripe hosts the payment page (out of PCI scope).
-- **Order tracking requires order number AND matching email** — one alone reveals nothing.
-- **Admin is token-gated** via header (`lib/auth.js`). Move to real auth (NextAuth)
-  before adding team members.
-
-## Honest gaps (deliberate — add when needed)
-
-- **India payments** — wire up Razorpay for a real India launch (see note above).
-- **Transactional email** — Stripe sends receipts; add Resend/Postmark for branded
-  "being made / shipped" emails.
-- **Tracking sync** — set status + tracking number manually in admin for now.
-- **Inventory caps** — made-to-order needs none; add a cap for a limited drop.
-- **Refunds** — handle from the Stripe dashboard.
-
-*Vyoma — room to grow.*
+- Connect `vyomawear.com.au` to Render and Shopify.
+- Ensure all live Shopify products have matching images, variants and prices.
+- Strengthen PDP trust blocks: reviews, fit/model notes, certifications, returns, stock status.
+- Upgrade product cards with swatches, badges, price hierarchy and quick actions.
+- Turn The Circle into a referral/community engine rather than the primary purchase CTA.
