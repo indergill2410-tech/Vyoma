@@ -4,35 +4,9 @@ import { shopifyConfigured, getProducts, formatMoney } from "@/lib/shopify";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
 
-function localCatalogAllowed() {
-  return process.env.NODE_ENV !== "production";
-}
-
-function EmptyDropState() {
-  return (
-    <div className="grid">
-      <div className="card" data-reveal>
-        <div className="card-body">
-          <div className="card-top">
-            <h3>The first drop is being prepared.</h3>
-          </div>
-          <p className="card-desc">
-            The pieces are almost ready. Join The Circle for first access when
-            the Shopify collection opens.
-          </p>
-          <div className="card-foot">
-            <Link href="/circle" className="card-cta">
-              Join The Circle -&gt;
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// The collection grid. Production reads live products from Shopify; the local
-// catalog is only a development fallback.
+// The collection grid. Shopify is the live source of truth when configured.
+// The existing catalog stays as the visual fallback so current products and
+// product imagery are never hidden by a temporary Shopify/API issue.
 export default async function ShopGrid() {
   if (shopifyConfigured()) {
     let products = [];
@@ -76,10 +50,6 @@ export default async function ShopGrid() {
         </div>
       );
     }
-  }
-
-  if (!localCatalogAllowed()) {
-    return <EmptyDropState />;
   }
 
   return (
