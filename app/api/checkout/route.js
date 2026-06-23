@@ -1,18 +1,31 @@
-import Stripe from "stripe";
 import { NextResponse } from "next/server";
-import { getProduct, isValidColourway, COLOURWAYS } from "@/lib/catalog";
-import { getRegion, isRegion } from "@/lib/regions";
-import { createCheckout } from "@/lib/shopify";
+import { createCheckout, shopifyConfigured } from "@/lib/shopify";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+function normaliseLine(raw) {
+  const merchandiseId = raw?.merchandiseId || raw?.variantId;
+  if (!merchandiseId || typeof merchandiseId !== "string") return null;
+
+  const parsedQty = parseInt(raw.quantity, 10);
+  const quantity = Math.min(Math.max(Number.isNaN(parsedQty) ? 1 : parsedQty, 1), 10);
+
+  return {
+    merchandiseId,
+    quantity,
+    ...(Array.isArray(raw.attributes) ? { attributes: raw.attributes } : {}),
+  };
+}
 
 // POST /api/checkout
-//   Shopify mode: { variantId, quantity }  → Shopify-hosted checkout URL
-//   Local mode:   { region, items: [{ slug, colour, size, quantity }] } → Stripe
-//
-// SECURITY (local mode): prices, names and currency are resolved server-side
-// from the catalog and region. The client only sends what was chosen.
+// Shopify is the only production checkout backend. Products, variants, stock,
+// taxes, shipping, payments, orders and customer checkout all stay in Shopify.
 export async function POST(req) {
+  if (!shopifyConfigured()) {
+    return NextResponse.json(
+      { error: "Shopify checkout is not configured yet." },
+      { status: 503 }
+    );
+  }
+
   let payload;
   try {
     payload = await req.json();
@@ -20,90 +33,26 @@ export async function POST(req) {
     return NextResponse.json({ error: "Bad request." }, { status: 400 });
   }
 
-  // ── Shopify mode ──────────────────────────────────────────────────────────
-  if (payload && payload.variantId) {
-    try {
-      const qty = Math.min(Math.max(parseInt(payload.quantity, 10) || 1, 1), 10);
-      const url = await createCheckout([{ merchandiseId: payload.variantId, quantity: qty }]);
-      return NextResponse.json({ url });
-    } catch (err) {
-      console.error("shopify checkout error", err);
-      return NextResponse.json(
-        { error: "Could not start checkout. Please try again." },
-        { status: 500 }
-      );
-    }
+  const lines = Array.isArray(payload?.lines)
+    ? payload.lines.map(normaliseLine).filter(Boolean)
+    : payload?.variantId
+    ? [normaliseLine(payload)]
+    : [];
+
+  if (!lines.length) {
+    return NextResponse.json(
+      { error: "Shopify checkout requires a product variant." },
+      { status: 400 }
+    );
   }
 
-  // ── Local (Stripe) mode ───────────────────────────────────────────────────
   try {
-    const { region: regionCode, items } = payload;
-
-    if (!isRegion(regionCode)) {
-      return NextResponse.json({ error: "Unknown region." }, { status: 400 });
-    }
-    if (!Array.isArray(items) || items.length === 0) {
-      return NextResponse.json({ error: "Your bag is empty." }, { status: 400 });
-    }
-
-    const region = getRegion(regionCode);
-    const lineItems = [];
-    const record = []; // compact record for the webhook to enrich
-
-    for (const raw of items.slice(0, 20)) {
-      if (!raw || typeof raw !== "object") {
-        return NextResponse.json({ error: "Invalid item in your bag." }, { status: 400 });
-      }
-      const product = getProduct(raw.slug);
-      if (!product) {
-        return NextResponse.json({ error: `Unknown product: ${raw.slug}` }, { status: 400 });
-      }
-      if (!isValidColourway(product, raw.colour)) {
-        return NextResponse.json({ error: `Pick a colour for ${product.name}.` }, { status: 400 });
-      }
-      if (!product.sizes.includes(raw.size)) {
-        return NextResponse.json({ error: `Pick a size for ${product.name}.` }, { status: 400 });
-      }
-      const parsedQty = parseInt(raw.quantity, 10);
-      const qty = Math.min(Math.max(Number.isNaN(parsedQty) ? 1 : parsedQty, 1), 10);
-      const unitAmount = product[region.priceKey];
-      const colourName = COLOURWAYS[raw.colour]?.name || raw.colour;
-
-      lineItems.push({
-        quantity: qty,
-        price_data: {
-          currency: region.currency,
-          unit_amount: unitAmount,
-          product_data: {
-            name: `${product.name} — ${raw.size}`,
-            description: `${colourName} · ${product.leadTime}`,
-          },
-        },
-      });
-
-      record.push({ slug: product.slug, colour: raw.colour, size: raw.size, quantity: qty, unitAmount });
-    }
-
-    const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items: lineItems,
-      shipping_address_collection: { allowed_countries: region.shippingCountries },
-      phone_number_collection: { enabled: true },
-      metadata: {
-        region: region.code,
-        items: JSON.stringify(record),
-      },
-      success_url: `${site}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${site}/cart`,
-    });
-
-    return NextResponse.json({ url: session.url });
+    const url = await createCheckout(lines);
+    return NextResponse.json({ url });
   } catch (err) {
-    console.error("checkout error", err);
+    console.error("shopify checkout error", err);
     return NextResponse.json(
-      { error: "Could not start checkout. Please try again." },
+      { error: "Could not start Shopify checkout. Please try again." },
       { status: 500 }
     );
   }

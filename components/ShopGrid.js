@@ -4,14 +4,42 @@ import { shopifyConfigured, getProducts, formatMoney } from "@/lib/shopify";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
 
-// The collection grid. Pulls live from Shopify when configured (real products +
-// photos), otherwise renders the local catalog so the site always works.
+function localCatalogAllowed() {
+  return process.env.NODE_ENV !== "production";
+}
+
+function EmptyDropState() {
+  return (
+    <div className="grid">
+      <div className="card" data-reveal>
+        <div className="card-body">
+          <div className="card-top">
+            <h3>The first drop is being prepared.</h3>
+          </div>
+          <p className="card-desc">
+            The pieces are almost ready. Join The Circle for first access when
+            the Shopify collection opens.
+          </p>
+          <div className="card-foot">
+            <Link href="/circle" className="card-cta">
+              Join The Circle -&gt;
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// The collection grid. Production reads live products from Shopify; the local
+// catalog is only a development fallback.
 export default async function ShopGrid() {
   if (shopifyConfigured()) {
     let products = [];
     try {
       products = await getProducts();
-    } catch {
+    } catch (err) {
+      console.error("Shopify product fetch failed", err);
       products = [];
     }
     if (products.length) {
@@ -50,7 +78,10 @@ export default async function ShopGrid() {
     }
   }
 
-  // Fallback: local catalog.
+  if (!localCatalogAllowed()) {
+    return <EmptyDropState />;
+  }
+
   return (
     <div className="grid">
       {PRODUCTS.map((p) => (
