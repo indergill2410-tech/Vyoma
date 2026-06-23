@@ -4,6 +4,27 @@ import { shopifyConfigured, getProducts, formatMoney } from "@/lib/shopify";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
 
+const FALLBACK_SWATCHES = ["#262A4E", "#D1998F", "#6B7280", "#C98A22", "#E7E3DA"];
+
+function swatchFor(value, index) {
+  const named = {
+    indigo: "#262A4E",
+    navy: "#262A4E",
+    rose: "#D1998F",
+    pink: "#D1998F",
+    grey: "#6B7280",
+    gray: "#6B7280",
+    marigold: "#C98A22",
+    yellow: "#C98A22",
+    ether: "#E7E3DA",
+    white: "#F7F6F2",
+    black: "#14162E",
+  };
+  const lower = String(value || "").toLowerCase();
+  const hit = Object.entries(named).find(([key]) => lower.includes(key));
+  return hit ? hit[1] : FALLBACK_SWATCHES[index % FALLBACK_SWATCHES.length];
+}
+
 // The collection grid. Shopify is the live source of truth when configured.
 // The existing catalog stays as the visual fallback so current products and
 // product imagery are never hidden by a temporary Shopify/API issue.
@@ -51,8 +72,13 @@ export default async function ShopGrid() {
                   )}
                   {colourOption?.values?.length > 0 && (
                     <div className="card-swatches" aria-label="Available colours">
-                      {colourOption.values.slice(0, 5).map((value) => (
-                        <span key={value} className="card-swatch" title={value} />
+                      {colourOption.values.slice(0, 5).map((value, index) => (
+                        <span
+                          key={value}
+                          className="card-swatch"
+                          style={{ background: swatchFor(value, index) }}
+                          title={value}
+                        />
                       ))}
                     </div>
                   )}
