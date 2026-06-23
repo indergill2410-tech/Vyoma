@@ -103,9 +103,10 @@ export default function RootLayout({ children }) {
                 <p className="muted small">Vyoma (vee-OH-ma) — Sanskrit for sky, ether, infinite space.</p>
               </div>
               <div className="footer-links">
-                <Link href="/#shop">Shop</Link>
+                <Link href="/shop">Shop</Link>
                 <Link href="/pure">Vyoma Pure</Link>
                 <Link href="/fabric">Fabric</Link>
+                <Link href="/research">Research</Link>
                 <Link href="/drops">The Drops</Link>
                 <Link href="/circle">The Circle</Link>
                 <Link href="/sky-series">The Sky Series</Link>
@@ -113,7 +114,6 @@ export default function RootLayout({ children }) {
                 <Link href="/fit">Fit Finder</Link>
                 <Link href="/about">Story</Link>
                 <Link href="/track">Track order</Link>
-                <Link href="/admin">Admin</Link>
               </div>
               <div className="footer-meta">
                 <span className="dev">व्योम</span>
