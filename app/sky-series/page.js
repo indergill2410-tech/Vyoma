@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditorialImage from "@/components/EditorialImage";
 import { COLOURWAYS } from "@/lib/catalog";
 import { abs } from "@/lib/seo";
 
@@ -47,6 +48,7 @@ function sceneStyle(key) {
   return {
     background: `radial-gradient(120% 90% at 22% 18%, ${colour.accent} 0%, transparent 60%), linear-gradient(150deg, ${colour.base} 0%, ${colour.weave} 70%, ${colour.base} 100%)`,
     color: colour.ink,
+    "--scene-image": "url('/editorial/sky-series-fabrics.svg')",
   };
 }
 
@@ -67,17 +69,18 @@ export default function SkySeries() {
               <Link href="/fit" className="btn ghost">Find your fit</Link>
             </div>
           </div>
-          <div className="sky-stack" aria-hidden="true">
-            {SCENES.map((scene) => (
-              <span key={scene.key} style={{ background: COLOURWAYS[scene.key].base }} />
-            ))}
-          </div>
+          <EditorialImage
+            name="skySeries"
+            alt="Stacked Vyoma sky colour fabric swatches from night to dawn"
+            className="sky-stack"
+            priority
+          />
         </div>
       </section>
 
       {SCENES.map((scene, index) => (
         <section
-          className={`sky-shop-scene ${index % 2 ? "right" : "left"}`}
+          className={`sky-shop-scene with-editorial-scene ${index % 2 ? "right" : "left"}`}
           style={sceneStyle(scene.key)}
           key={scene.key}
         >
