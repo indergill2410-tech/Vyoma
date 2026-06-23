@@ -6,12 +6,34 @@
   position: fixed;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
   opacity: 0.18;
+  contain: paint;
+}
+
+.site-sky-atmosphere::before,
+.site-sky-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  will-change: opacity;
+}
+
+.site-sky-atmosphere::before {
   background:
-    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, calc(0.26 * (1 - var(--site-sky)))) 0%, transparent 60%),
-    radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, calc(0.2 + 0.22 * var(--site-sky))) 0%, transparent 58%),
-    radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, calc(0.12 + 0.24 * var(--site-sky))) 0%, transparent 60%);
+    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, 0.26) 0%, transparent 60%),
+    radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, 0.2) 0%, transparent 58%),
+    radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, 0.12) 0%, transparent 60%);
+  opacity: calc(1 - var(--site-sky));
+}
+
+.site-sky-atmosphere::after {
+  background:
+    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, 0) 0%, transparent 60%),
+    radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, 0.42) 0%, transparent 58%),
+    radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, 0.36) 0%, transparent 60%);
+  opacity: var(--site-sky);
 }
 
 .announce,

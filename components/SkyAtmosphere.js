@@ -8,12 +8,24 @@ function clamp(value) {
 
 export default function SkyAtmosphere() {
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce =
+      typeof window.matchMedia === "function"
+        ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        : false;
     const root = document.documentElement;
     if (reduce) {
       root.style.setProperty("--site-sky", "0.42");
       return;
     }
+
+    const scheduleFrame =
+      typeof window.requestAnimationFrame === "function"
+        ? window.requestAnimationFrame.bind(window)
+        : (callback) => window.setTimeout(callback, 16);
+    const cancelFrame =
+      typeof window.cancelAnimationFrame === "function"
+        ? window.cancelAnimationFrame.bind(window)
+        : window.clearTimeout.bind(window);
 
     let raf = 0;
 
@@ -24,7 +36,7 @@ export default function SkyAtmosphere() {
     }
 
     function requestUpdate() {
-      if (!raf) raf = requestAnimationFrame(update);
+      if (!raf) raf = scheduleFrame(update);
     }
 
     update();
@@ -34,7 +46,7 @@ export default function SkyAtmosphere() {
     return () => {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
-      if (raf) cancelAnimationFrame(raf);
+      if (raf) cancelFrame(raf);
     };
   }, []);
 
