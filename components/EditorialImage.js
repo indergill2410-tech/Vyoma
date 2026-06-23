@@ -26,7 +26,7 @@ export default function EditorialImage({
         alt={alt}
         className={`editorial-image-img ${imageClassName}`.trim()}
         loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
+        decoding={priority ? "auto" : "async"}
         fetchPriority={priority ? "high" : undefined}
       />
     </figure>
