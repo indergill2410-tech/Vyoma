@@ -79,8 +79,8 @@ export default function TrackPage() {
             <h2>Reply to your order email.</h2>
           </div>
           <p>
-            That keeps your order number, email and purchase details in one place so support can help quickly
-            once your support inbox is connected to the live store.
+            That keeps your order number, email and purchase details in one place,
+            so you do not have to repeat them when you need help.
           </p>
         </div>
       </section>
