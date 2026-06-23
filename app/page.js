@@ -107,8 +107,8 @@ export default function Home() {
                 <Link href="/#shop" className={styles.primaryCta}>
                   Shop the first drop
                 </Link>
-                <Link href="/fabric" className={styles.secondaryCta}>
-                  Feel the fabric
+                <Link href="/fabric" className={styles.textCta}>
+                  See the fabric promise
                 </Link>
                 <Link href="/circle" className={styles.textCta}>
                   Join The Circle
@@ -117,7 +117,7 @@ export default function Home() {
               <div className={styles.trustStrip} aria-label="Material promise">
                 <span>Soft natural fibres</span>
                 <span>Made in India</span>
-                <span>Secure Shopify checkout</span>
+                <span>Secure checkout</span>
               </div>
             </div>
 
