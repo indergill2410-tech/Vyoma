@@ -9,10 +9,6 @@ import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import ProductCard from "@/components/ProductCard";
 import Reviews from "@/components/Reviews";
 
-function localCatalogAllowed() {
-  return process.env.NODE_ENV !== "production";
-}
-
 // Approved-review summary for structured data (rich-result stars). Defensive:
 // if the DB is unreachable (e.g. at build time) we just omit the rating.
 async function approvedReviewSummary(slug) {
@@ -31,10 +27,10 @@ async function approvedReviewSummary(slug) {
   }
 }
 
-// Local slugs are only pre-rendered for non-production fallback. Shopify
-// products render on demand and take priority whenever the store is configured.
+// Keep the existing catalog pages available so current products and their
+// picture fallbacks are preserved. Shopify products still take priority.
 export function generateStaticParams() {
-  return localCatalogAllowed() ? PRODUCTS.map((p) => ({ slug: p.slug })) : [];
+  return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
 
 async function resolve(slug) {
@@ -47,11 +43,8 @@ async function resolve(slug) {
     }
   }
 
-  if (localCatalogAllowed()) {
-    const local = getLocalProduct(slug);
-    if (local) return { kind: "local", product: local };
-  }
-
+  const local = getLocalProduct(slug);
+  if (local) return { kind: "local", product: local };
   return null;
 }
 
@@ -158,7 +151,7 @@ export default async function ProductPage({ params }) {
         <p className="crumb">
           <Link href="/#shop">Collection</Link> / {product.name}
         </p>
-        <ProductDetail product={product} />
+        <ProductDetail product={product} commerceEnabled={false} />
       </div>
       <Reviews slug={product.slug} />
       <section className="section" style={{ paddingTop: 20 }}>
