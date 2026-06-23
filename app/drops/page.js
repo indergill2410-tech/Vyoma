@@ -81,7 +81,7 @@ export default function DropsPage() {
         </section>
       )}
 
-      <section id="circle" className="commerce-section drops-circle-band" aria-labelledby="drop-circle-heading">
+      <section id="circle" className="commerce-section section-light drops-circle-band" aria-labelledby="drop-circle-heading">
         <div className="commerce-shell drops-circle-grid">
           <div>
             <p className="commerce-eyebrow">The Circle</p>
