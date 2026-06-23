@@ -18,14 +18,15 @@ export default function SkyAtmosphere() {
       return;
     }
 
-    const scheduleFrame =
-      typeof window.requestAnimationFrame === "function"
-        ? window.requestAnimationFrame.bind(window)
-        : (callback) => window.setTimeout(callback, 16);
-    const cancelFrame =
-      typeof window.cancelAnimationFrame === "function"
-        ? window.cancelAnimationFrame.bind(window)
-        : window.clearTimeout.bind(window);
+    const hasAnimationFrame =
+      typeof window.requestAnimationFrame === "function" &&
+      typeof window.cancelAnimationFrame === "function";
+    const scheduleFrame = hasAnimationFrame
+      ? window.requestAnimationFrame.bind(window)
+      : (callback) => window.setTimeout(callback, 16);
+    const cancelFrame = hasAnimationFrame
+      ? window.cancelAnimationFrame.bind(window)
+      : (id) => window.clearTimeout(id);
 
     let raf = 0;
 
