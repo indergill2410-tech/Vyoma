@@ -27,22 +27,24 @@ async function approvedReviewSummary(slug) {
   }
 }
 
-// Local slugs are pre-rendered; Shopify handles render on demand (dynamicParams).
+// Local slugs remain pre-rendered for development fallback; Shopify products
+// render on demand and take priority whenever the store is configured.
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
 
 async function resolve(slug) {
-  const local = getLocalProduct(slug);
-  if (local) return { kind: "local", product: local };
   if (shopifyConfigured()) {
     try {
       const sp = await getShopifyProduct(slug);
       if (sp) return { kind: "shopify", product: sp };
     } catch {
-      /* fall through */
+      /* fall through to local demo catalog */
     }
   }
+
+  const local = getLocalProduct(slug);
+  if (local) return { kind: "local", product: local };
   return null;
 }
 
@@ -53,7 +55,7 @@ export async function generateMetadata({ params }) {
   const title = found.kind === "shopify" ? p.title : p.name;
   const description =
     (p.description || "").slice(0, 200) ||
-    "Premium yoga wear, made in India — the birthplace of yoga.";
+    "Premium yoga wear, made in India - the birthplace of yoga.";
   const url = abs(`/product/${params.slug}`);
   return {
     title,
