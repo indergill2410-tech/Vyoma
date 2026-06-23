@@ -104,11 +104,11 @@ export default function Home() {
                 plastic-first performance wear.
               </p>
               <div className={styles.actions}>
-                <Link href="/research" className={styles.primaryCta}>
-                  Read the research
-                </Link>
-                <Link href="/#shop" className={styles.secondaryCta}>
+                <Link href="/#shop" className={styles.primaryCta}>
                   Shop the collection
+                </Link>
+                <Link href="/research" className={styles.secondaryCta}>
+                  Read the research
                 </Link>
                 <Link href="/circle" className={styles.textCta}>
                   Join The Circle
