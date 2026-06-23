@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" role="img" aria-label="Indian atelier cutting table with natural fabric and warm evening light">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#11162f"/><stop offset="0.46" stop-color="#334064"/><stop offset="1" stop-color="#d99a2b"/></linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4ebdb"/><stop offset="1" stop-color="#b9a58e"/></linearGradient>
+    <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ede7d9"/><stop offset="1" stop-color="#cad0db"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency="0.72" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.14"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1100" height="900" fill="url(#wall)"/>
+  <rect width="1100" height="900" filter="url(#grain)" opacity="0.36"/>
+  <rect x="108" y="350" width="884" height="390" rx="18" fill="url(#table)"/>
+  <path d="M156 444c184-60 345 58 511-5 92-35 165-93 292-55v234c-133-48-215 4-335 43-160 52-318-44-468 9Z" fill="url(#cloth)"/>
+  <path d="M194 512c172-39 314 42 457 0 89-27 149-74 272-42" fill="none" stroke="#10142e" stroke-width="5" opacity="0.22"/>
+  <path d="M216 582c170-35 310 42 450 2 88-25 152-75 260-46" fill="none" stroke="#10142e" stroke-width="4" opacity="0.16"/>
+  <circle cx="865" cy="268" r="74" fill="#fff0c2" opacity="0.36"/>
+  <rect x="210" y="230" width="104" height="250" rx="52" fill="#10142e" opacity="0.85"/>
+  <rect x="714" y="604" width="174" height="18" rx="9" fill="#10142e" opacity="0.38" transform="rotate(-18 714 604)"/>
+  <circle cx="714" cy="614" r="26" fill="#10142e" opacity="0.72"/>
+  <circle cx="765" cy="596" r="22" fill="#10142e" opacity="0.62"/>
+  <path d="M88 796c244-68 711-68 932 0" fill="none" stroke="#f4d9b2" stroke-width="32" opacity="0.38"/>
+</svg>
