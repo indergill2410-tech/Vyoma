@@ -9,7 +9,7 @@
   pointer-events: none;
   opacity: 0.18;
   background:
-    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, calc(0.26 * (1 - var(--site-sky)))), transparent 60%),
+    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, calc(0.26 * (1 - var(--site-sky))), transparent 60%),
     radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, calc(0.2 + 0.22 * var(--site-sky))), transparent 58%),
     radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, calc(0.12 + 0.24 * var(--site-sky))), transparent 60%);
 }
@@ -112,6 +112,13 @@ main,
   border: 1px solid rgba(201, 210, 222, 0.68);
 }
 
+.pdp-story-image {
+  min-height: 280px !important;
+  margin-top: 24px;
+  border-color: rgba(201, 210, 222, 0.78) !important;
+  box-shadow: 0 22px 54px rgba(20, 22, 46, 0.12) !important;
+}
+
 .sky-shop-scene.with-editorial-scene {
   position: relative;
   overflow: hidden;
@@ -159,5 +166,9 @@ main,
 
   .empty-bag-image {
     aspect-ratio: 1;
+  }
+
+  .pdp-story-image {
+    min-height: 220px !important;
   }
 }
