@@ -5,62 +5,62 @@ import ShopGrid from "@/components/ShopGrid";
 import styles from "./HomePage.module.css";
 
 const MATERIAL_POINTS = [
-  "Polyester, nylon, acrylic and elastane are synthetic polymer fibres.",
-  "Many performance finishes are invisible at checkout, so testing matters.",
-  "Tight, warm, high-friction layers deserve a higher material standard.",
-  "We publish the standard first, then verify each batch as certification arrives.",
+  "Most leggings are built on polyester, nylon and elastane - plastic-based fibres.",
+  "Finishes can be hard to see, but you still feel the fabric all day.",
+  "Tight, warm layers should feel soft, breathable and considered.",
+  "A better wardrobe starts with knowing what sits against your skin.",
 ];
 
 const VYOMA_POINTS = [
-  "Natural fibre first, chosen for breathability and softness.",
-  "Organic and OEKO-TEX targets, published batch by batch.",
-  "Made in India in small runs, with fewer untraceable assumptions.",
-  "No health claims, just clearer facts about what touches your skin.",
+  "Natural fibre first, chosen for softness, breathability and ease.",
+  "Organic and OEKO-TEX targets as each batch is documented.",
+  "Made in India in smaller runs, with care visible in the finish.",
+  "No scare tactics. Just better-feeling clothes with a clearer story.",
 ];
 
-const RESEARCH_CARDS = [
+const CARE_CARDS = [
   {
-    title: "Synthetic fibres shed",
+    title: "Less plastic against skin",
     body:
-      "Studies show synthetic garments can release large numbers of microfibres during washing. Fibre type, yarn structure and garment construction all matter.",
+      "Your activewear is one of the closest layers you own. Vyoma starts by reducing avoidable synthetic contact where softness matters most.",
   },
   {
-    title: "Finishes deserve scrutiny",
+    title: "Breathes through movement",
     body:
-      "PFAS, BPA, phthalates and other chemical classes are studied because some can persist, migrate or interact with hormone systems.",
+      "Made for heat, stretch, stillness and the long hours after practice. The feeling should stay calm, not clingy.",
   },
   {
-    title: "Certification beats promises",
+    title: "A clearer promise",
     body:
-      "A premium claim should be backed by batch-level documents, clear material composition and a willingness to say what is still being tested.",
+      "The fabric story is part of the product, not an afterthought. We keep the claims simple and the standards visible.",
   },
 ];
 
 const PILLARS = [
   {
     mark: "01",
-    title: "Designed for skin contact",
+    title: "Close-to-skin comfort",
     body:
-      "The closer a layer sits, the more its fibre, finish and feel matter. Vyoma starts with the material standard.",
+      "Soft where it touches, supportive where you move, breathable through the parts of the day you did not plan for.",
   },
   {
     mark: "02",
-    title: "Organic-first performance",
+    title: "Made to move quietly",
     body:
-      "Movement, drape and breathability without treating petroleum-based synthetics as the only way to make activewear.",
+      "Clean lines, easy stretch and a polished finish that belongs in practice, travel, errands and the pause after.",
   },
   {
     mark: "03",
-    title: "Proof over persuasion",
+    title: "Care you can feel",
     body:
-      "We keep the language careful, publish the research trail and verify batches as certificates are issued.",
+      "Materials, making and batch notes kept clear, because trust should feel calm before you even put it on.",
   },
 ];
 
 const STANDARDS = [
   {
     num: "01",
-    title: "Natural fibre first",
+    title: "Soft natural fibres",
     body:
       "Cotton performance knits and cotton-modal jerseys selected for comfort, breathability and daily wear.",
   },
@@ -72,15 +72,15 @@ const STANDARDS = [
   },
   {
     num: "03",
-    title: "Small-batch discipline",
+    title: "Small-batch care",
     body:
-      "Limited drops keep quality visible, reduce overproduction and make batch documentation practical.",
+      "Limited drops keep quality visible, reduce overproduction and make each release feel considered.",
   },
   {
     num: "04",
-    title: "Claims we can stand behind",
+    title: "Clear claims",
     body:
-      "No medical claims. No vague wellness theatre. Just materials, testing and evidence shown plainly.",
+      "No medical claims. No vague wellness theatre. Just materials, making and standards shown plainly.",
   },
 ];
 
@@ -93,38 +93,38 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
-              <p className={styles.eyebrow}>Research-led organic activewear</p>
+              <p className={styles.eyebrow}>Organic activewear for softer days</p>
               <h1>
                 Room to breathe.
-                <span>Proof to move.</span>
+                <span>Built to move.</span>
               </h1>
               <p className={styles.lead}>
-                Vyoma is activewear for the layer closest to your skin: natural
-                fibre first, transparent testing, and a calmer alternative to
-                plastic-first performance wear.
+                Vyoma is the layer you reach for when you want your body to feel
+                calm: organic-first activewear, made close to the source, with
+                less plastic against your skin.
               </p>
               <div className={styles.actions}>
                 <Link href="/#shop" className={styles.primaryCta}>
-                  Shop the collection
+                  Shop the first drop
                 </Link>
-                <Link href="/research" className={styles.secondaryCta}>
-                  Read the research
+                <Link href="/fabric" className={styles.secondaryCta}>
+                  Feel the fabric
                 </Link>
                 <Link href="/circle" className={styles.textCta}>
                   Join The Circle
                 </Link>
               </div>
               <div className={styles.trustStrip} aria-label="Material promise">
-                <span>Natural fibre first</span>
-                <span>Batch proof</span>
-                <span>No medical claims</span>
+                <span>Soft natural fibres</span>
+                <span>Made in India</span>
+                <span>Secure Shopify checkout</span>
               </div>
             </div>
 
             <div className={styles.heroVisual} aria-label="The Vyoma Set preview">
               <div className={styles.heroFrame}>
                 <span className={styles.heroMark}>Vyoma</span>
-                <span className={styles.heroCaption}>model - the vyoma set</span>
+                <span className={styles.heroCaption}>the first set</span>
               </div>
               <div className={styles.swatchNote}>
                 <span />
@@ -138,15 +138,15 @@ export default function Home() {
 
       <div className={styles.marquee} aria-hidden="true">
         <div className={styles.marqueeTrack}>
-          <span>Research-led materials</span>
+          <span>Soft against skin</span>
           <span>Made in India</span>
           <span>Small-batch first drop</span>
-          <span>Certified batch by batch</span>
+          <span>Organic-first fibres</span>
           <span>Built for practice, finished for life</span>
-          <span>Research-led materials</span>
+          <span>Soft against skin</span>
           <span>Made in India</span>
           <span>Small-batch first drop</span>
-          <span>Certified batch by batch</span>
+          <span>Organic-first fibres</span>
           <span>Built for practice, finished for life</span>
         </div>
       </div>
@@ -155,19 +155,19 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.splitIntro}>
             <div>
-              <p className={styles.eyebrow}>The research behind the standard</p>
-              <h2 id="research-heading">Plastic-first clothing is convenient. It is not neutral.</h2>
+              <p className={styles.eyebrow}>Why plastic-free feels different</p>
+              <h2 id="research-heading">The closest layer should feel like care, not compromise.</h2>
             </div>
             <p>
-              Synthetic fibres changed activewear, but the science around microfibres,
-              chemical finishes and long-term exposure is still developing. Vyoma takes
-              the practical route: reduce avoidable synthetic contact, test what we can,
-              and explain the evidence plainly.
+              The material story matters because you live in these clothes - in
+              heat, stretch, sweat, stillness and the rush between places. Vyoma
+              keeps the choice simple: softer natural fibres, fewer unknowns and
+              a calmer feeling on skin.
             </p>
           </div>
 
           <div className={styles.researchGrid}>
-            {RESEARCH_CARDS.map((card) => (
+            {CARE_CARDS.map((card) => (
               <article key={card.title} className={styles.researchCard}>
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
@@ -177,7 +177,7 @@ export default function Home() {
 
           <div className={styles.centerAction}>
             <Link href="/research" className={styles.primaryCta}>
-              Explore the evidence
+              Learn why it matters
             </Link>
           </div>
         </div>
@@ -188,18 +188,17 @@ export default function Home() {
           <div className={styles.sectionIntro}>
             <p className={styles.eyebrow}>The layer closest to you</p>
             <h2 id="materials-heading">
-              Most activewear starts with synthetic plastic. Yours does not have to.
+              Most activewear starts with plastic. Vyoma starts with how you want to feel.
             </h2>
             <p>
-              We are not here to scare you out of your wardrobe. We are here to
-              make the material choice visible, especially for garments worn tight,
-              warm and close to skin.
+              No fear. No lecture. Just a more thoughtful choice for the pieces
+              you wear tight, warm and often.
             </p>
           </div>
 
           <div className={styles.compareGrid}>
             <div className={styles.compareCard}>
-              <h3>What the category often relies on</h3>
+              <h3>What the category often asks you to accept</h3>
               <ul>
                 {MATERIAL_POINTS.map((item) => (
                   <li key={item}>{item}</li>
@@ -207,20 +206,20 @@ export default function Home() {
               </ul>
             </div>
             <div className={`${styles.compareCard} ${styles.compareDark}`}>
-              <h3>What Vyoma is building instead</h3>
+              <h3>What Vyoma chooses instead</h3>
               <ul>
                 {VYOMA_POINTS.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
               <Link href="/fabric" className={styles.inverseCta}>
-                Read the fabric story
+                Meet the fabric
               </Link>
             </div>
           </div>
 
           <p className={styles.pullQuote}>
-            Fewer assumptions. Better evidence. A calmer layer against the skin.
+            A calmer layer for practice, travel, errands and everything after.
           </p>
         </div>
       </section>
@@ -229,10 +228,11 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.sectionIntro}>
             <p className={styles.eyebrow}>Why Vyomawear</p>
-            <h2 id="why-heading">A new standard for the layer closest to you.</h2>
+            <h2 id="why-heading">Clothes that make space for your body.</h2>
             <p>
-              What touches your skin, what it is made of, and the proof to back
-              it. The things a serious activewear house should make clear from day one.
+              The first feeling should be relief: nothing scratchy, nothing loud,
+              nothing you have to fight. Just a soft, beautiful layer that moves
+              with you.
             </p>
           </div>
 
@@ -254,16 +254,16 @@ export default function Home() {
             <div className={styles.standardIntro}>
               <p className={styles.eyebrow}>The House Standard</p>
               <h2 id="standard-heading">
-                Not just softer.
-                <span>More accountable.</span>
+                Soft first.
+                <span>Clear always.</span>
               </h2>
               <p>
-                Enduring brands are built on standards people can understand.
-                Ours is simple: make the layer beautiful, make it functional,
-                and make the material facts easy to inspect.
+                A beautiful brand still needs a backbone. Ours is simple: make
+                the layer feel incredible, make it useful beyond the mat, and
+                keep the material story honest.
               </p>
               <Link href="/research" className={styles.inverseCta}>
-                Read the research
+                Why we choose this
               </Link>
             </div>
 
@@ -288,11 +288,11 @@ export default function Home() {
             <div>
               <p className={styles.eyebrow}>The Collection</p>
               <h2 id="collection-heading">
-                The first wardrobe of organic performance layers.
+                The first drop of soft organic movement layers.
               </h2>
             </div>
             <Link href="/sky-series" className={styles.textCta}>
-              See the Sky Series
+              Explore the Sky Series
             </Link>
           </div>
           <ShopGrid />
@@ -330,8 +330,8 @@ export default function Home() {
           <p className={styles.eyebrow}>The First Drop</p>
           <h2 id="circle-heading">Small batch. The circle hears first.</h2>
           <p>
-            The first circle is small. Join to be among the founders, and bring
-            a friend to move up the line.
+            Join for early access to the pieces, founder notes, and the quiet
+            thrill of building a better wardrobe from the first drop.
           </p>
           <Waitlist source="homepage" />
           <div className={styles.circleMeta}>
