@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -37,10 +38,12 @@ export default function PurePage() {
               <Link href="/fabric" className="btn ghost">See the fabric promise</Link>
             </div>
           </div>
-          <div className="pure-visual" aria-hidden="true">
-            <span>Pure</span>
-            <strong>closest to skin</strong>
-          </div>
+          <EditorialImage
+            name="pureStillLife"
+            alt="Soft organic cotton Pure layers arranged in warm dawn light"
+            className="pure-visual"
+            priority
+          />
         </div>
       </section>
 
