@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MakingJourney from "@/components/MakingJourney";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -32,9 +33,12 @@ export default function MakingPage() {
               <Link href="/track" className="btn ghost">Track an order</Link>
             </div>
           </div>
-          <div className="making-stamp" aria-hidden="true">
-            <span>cut</span><span>sewn</span><span>checked</span>
-          </div>
+          <EditorialImage
+            name="makingAtelier"
+            alt="Natural fabric on an atelier cutting table in warm Indian evening light"
+            className="making-stamp"
+            priority
+          />
         </div>
       </section>
 
