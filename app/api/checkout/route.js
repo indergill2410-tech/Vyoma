@@ -16,12 +16,13 @@ function normaliseLine(raw) {
 }
 
 // POST /api/checkout
-// Shopify is the only production checkout backend. Products, variants, stock,
-// taxes, shipping, payments, orders and customer checkout all stay in Shopify.
+// Shopify is the production checkout backend. The public UI should simply say
+// secure checkout; Shopify remains an implementation detail unless the hosted
+// checkout itself displays it.
 export async function POST(req) {
   if (!shopifyConfigured()) {
     return NextResponse.json(
-      { error: "Shopify checkout is not configured yet." },
+      { error: "Checkout is not configured yet." },
       { status: 503 }
     );
   }
@@ -41,7 +42,7 @@ export async function POST(req) {
 
   if (!lines.length) {
     return NextResponse.json(
-      { error: "Shopify checkout requires a product variant." },
+      { error: "Checkout requires a product variant." },
       { status: 400 }
     );
   }
@@ -52,7 +53,7 @@ export async function POST(req) {
   } catch (err) {
     console.error("shopify checkout error", err);
     return NextResponse.json(
-      { error: "Could not start Shopify checkout. Please try again." },
+      { error: "Could not start secure checkout. Please try again." },
       { status: 500 }
     );
   }
