@@ -1,87 +1,97 @@
 import Link from "next/link";
-import { DROPS, STATUS_LABEL } from "@/lib/drops";
-import { COLOURWAYS } from "@/lib/catalog";
-import Countdown from "@/components/Countdown";
 import Waitlist from "@/components/Waitlist";
+import ProductCard from "@/components/ProductCard";
+import { PRODUCTS } from "@/lib/catalog";
+import { abs } from "@/lib/seo";
 
 export const metadata = {
   title: "The Drops",
   description:
-    "Small, considered runs made in India. See what's launching and what's on the horizon.",
+    "Follow Vyomawear's first drop, restocks and small-batch releases.",
+  alternates: { canonical: abs("/drops") },
 };
 
-function Dots({ colourways }) {
-  return (
-    <div className="drop-dots" aria-hidden="true">
-      {colourways.map((k) => (
-        <span key={k} style={{ background: COLOURWAYS[k]?.base }} title={COLOURWAYS[k]?.name} />
-      ))}
-    </div>
-  );
-}
+const FIRST_DROP = PRODUCTS.filter((product) => product.hero).slice(0, 3);
+
+const DROP_STAGES = [
+  { label: "01", title: "First drop", body: "The opening edit: practice layers, Pure basics and the sky palette." },
+  { label: "02", title: "Restock notes", body: "The Circle hears first when a size, colour or small batch returns." },
+  { label: "03", title: "Next sky", body: "Future colours and pieces release slowly, so every drop can be made with care." },
+];
 
 export default function DropsPage() {
-  const dropDate = process.env.NEXT_PUBLIC_DROP_DATE;
-  const featured = DROPS.find((d) => d.featured) || DROPS[0];
-  const rest = DROPS.filter((d) => d !== featured);
-
   return (
-    <main className="drops">
-      <section className="drops-intro">
-        <span className="section-eyebrow">The Drops</span>
-        <h1>We don't do seasons. We do skies.</h1>
-        <p>
-          Small, considered runs — each a moment in the sky, made in India.
-          Join the list to be the first to know.
-        </p>
-      </section>
-
-      <section className="drop-feature">
-        <div className="drop-feature-card">
-          <span className="drop-status upcoming">{STATUS_LABEL[featured.status]}</span>
-          <p className="drop-edition">{featured.edition}</p>
-          <h2>{featured.name}</h2>
-          <p className="drop-blurb">{featured.blurb}</p>
-          <Dots colourways={featured.colourways} />
-          <Countdown date={dropDate} />
-          <div className="drop-feature-wait">
-            <Waitlist source="drops" />
-            <p className="muted small">Be first in line. No spam, leave whenever you like.</p>
+    <main className="commerce-page drops-page">
+      <section className="commerce-hero drops-hero">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">The Drops</p>
+            <h1>Small batches, released with room to breathe.</h1>
+            <p className="commerce-lead">
+              Vyoma does not need a loud season calendar. The first drop is a focused edit,
+              followed by restocks and future colour moments when the making is ready.
+            </p>
+            <div className="commerce-actions">
+              <Link href="/shop" className="btn accent">Shop the live drop</Link>
+              <Link href="#circle" className="btn ghost">Get restock notes</Link>
+            </div>
+          </div>
+          <div className="drop-orbit" aria-hidden="true">
+            <span>Live</span>
+            <strong>First drop</strong>
+            <em>made in India</em>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="section-head" data-reveal>
-            <span className="section-eyebrow">On the horizon</span>
-            <h2>What's coming next.</h2>
-            <p>A rough sky map. Dates land on the list before they land here.</p>
+      <section className="commerce-section commerce-section-tight" aria-labelledby="drop-flow-heading">
+        <div className="commerce-shell">
+          <div className="commerce-section-head">
+            <p className="commerce-eyebrow">How drops work</p>
+            <h2 id="drop-flow-heading">The calendar stays calm. The pieces stay considered.</h2>
           </div>
-          <div className="drops-grid">
-            {rest.map((d) => (
-              <article className="drop-card" key={d.key} data-reveal>
-                <div className="drop-card-top">
-                  <span className="drop-status planned">{STATUS_LABEL[d.status]}</span>
-                  <span className="drop-when">{d.when}</span>
-                </div>
-                <p className="drop-edition">{d.edition}</p>
-                <h3>{d.name}</h3>
-                <p className="drop-blurb">{d.blurb}</p>
-                <Dots colourways={d.colourways} />
+          <div className="drop-stage-grid">
+            {DROP_STAGES.map((stage) => (
+              <article className="drop-stage" key={stage.label}>
+                <span>{stage.label}</span>
+                <h3>{stage.title}</h3>
+                <p>{stage.body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section section-light drops-outro center" data-reveal>
-        <div className="container narrow">
-          <h2>One list. Every drop.</h2>
-          <p className="muted" style={{ margin: "10px auto 24px", maxWidth: "46ch" }}>
-            Join once and you'll hear about every sky before anyone else.
-          </p>
-          <Waitlist source="drops-outro" />
+      {FIRST_DROP.length > 0 && (
+        <section className="commerce-section" aria-labelledby="first-drop-heading">
+          <div className="commerce-shell">
+            <div className="commerce-section-head split">
+              <div>
+                <p className="commerce-eyebrow">Available now</p>
+                <h2 id="first-drop-heading">The pieces leading the first drop.</h2>
+              </div>
+              <Link href="/shop" className="link-btn">See every piece</Link>
+            </div>
+            <div className="grid">
+              {FIRST_DROP.map((product) => (
+                <ProductCard key={product.slug} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section id="circle" className="commerce-section drops-circle-band" aria-labelledby="drop-circle-heading">
+        <div className="commerce-shell drops-circle-grid">
+          <div>
+            <p className="commerce-eyebrow">The Circle</p>
+            <h2 id="drop-circle-heading">Restocks should not feel random.</h2>
+            <p>
+              Join for early notes on size returns, colour stories and small-batch releases.
+              The store stays open; The Circle simply hears first.
+            </p>
+          </div>
+          <Waitlist source="drops" />
         </div>
       </section>
     </main>
