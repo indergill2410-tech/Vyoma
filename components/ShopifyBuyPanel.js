@@ -8,7 +8,7 @@ import { toast, celebrateFrom } from "@/lib/fx";
 const TRUST_BADGES = [
   "Soft natural fibres",
   "Opaque promise",
-  "Secure Shopify checkout",
+  "Secure checkout",
 ];
 
 const CERT_BADGES = ["Organic-first", "OEKO-TEX target", "GOTS target"];
@@ -41,7 +41,7 @@ export default function ShopifyBuyPanel({ product }) {
   );
   const complete = options.every((o) => selected[o.name]);
   const price = match ? match.price : product.priceRange.minVariantPrice;
-  const soldOut = complete && match && !match.availableForSale;
+  const soldOut = Boolean(complete && match && !match.availableForSale);
 
   function pick(name, value) {
     setError("");
@@ -69,7 +69,7 @@ export default function ShopifyBuyPanel({ product }) {
       const data = await res.json();
       if (data.url) {
         toast(`${product.title} — to checkout`);
-        window.location.href = data.url; // Shopify-hosted checkout
+        window.location.href = data.url;
       } else {
         setError(data.error || "Could not start checkout. Please try again.");
         setBusy(false);
@@ -184,7 +184,7 @@ export default function ShopifyBuyPanel({ product }) {
         </div>
         <div>
           <dt>Checkout</dt>
-          <dd>Payments, taxes and order emails are handled securely by Shopify.</dd>
+          <dd>Encrypted checkout, payment confirmation and order emails.</dd>
         </div>
         <div>
           <dt>Guarantee</dt>
