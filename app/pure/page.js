@@ -1,12 +1,20 @@
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
+import { abs } from "@/lib/seo";
 
 export const metadata = {
-  title: "Vyoma Pure — Organic-cotton underwear",
+  title: "Vyoma Pure",
   description:
-    "Organic-cotton underwear for women and men, made in India. The layer closest to you, made clean — no plastic against your most sensitive skin.",
+    "Organic-cotton underwear for women and men, made in India. The closest layer, made softer and clearer.",
+  alternates: { canonical: abs("/pure") },
 };
+
+const PURE_POINTS = [
+  { title: "Soft where it matters", body: "A breathable everyday layer for warm, close contact and long wear." },
+  { title: "Natural fibre first", body: "Organic cotton-led comfort, with product claims tied to what can be shown." },
+  { title: "Made in India", body: "Small-batch basics made close to the source, with the same care as the practice line." },
+];
 
 export default function PurePage() {
   const pure = PRODUCTS.filter((p) => p.category === "Vyoma Pure");
@@ -14,100 +22,81 @@ export default function PurePage() {
   const men = pure.filter((p) => /men/i.test(p.name));
 
   return (
-    <main className="article-page">
-      <section className="section center">
-        <div className="container prose">
-          <span className="section-eyebrow">Vyoma Pure</span>
-          <h1 className="article-h1">
-            The layer closest to you<br />should be the cleanest.
-          </h1>
-          <p className="lede">
-            Organic-cotton underwear for women and men — grown in soil, not synthesized
-            from oil. Made in India. The cleanest layer against your most sensitive skin.
-          </p>
-        </div>
-      </section>
-
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="container prose article">
-          <p>
-            Most underwear is polyester, nylon, elastane and spandex — plastics — finished with
-            chemicals to make them stretchy. Independent lab testing has found BPA in
-            synthetic activewear at many times the limit California considers safe, and
-            skin contact is a real exposure route. Underwear is the definition of warm,
-            damp and high-friction — worn over the most sensitive areas, many hours a day.
-          </p>
-          <p>
-            <strong>
-              We&apos;re not making a medical claim, and we never will. We&apos;re making a
-              simpler point: reducing avoidable, everyday exposure is a reasonable thing
-              to want — and it starts with the layer that touches you first.
-            </strong>
-          </p>
-          <p className="cite-note">
-            See the full research on the{" "}
-            <Link href="/fabric" className="link-btn">Fabric page →</Link>
-          </p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="io-grid">
-            <div className="io-col io-in">
-              <h3>What&apos;s in</h3>
-              <ul>
-                <li>Organic cotton body — soft and breathable</li>
-                <li>GOTS + OEKO-TEX standards, certified batch by batch as issued</li>
-                <li>Natural movement from knit structure and construction</li>
-                <li>Made in India</li>
-              </ul>
-            </div>
-            <div className="io-col io-out">
-              <h3>Designed without</h3>
-              <ul>
-                <li>BPA and other bisphenols</li>
-                <li>Phthalates</li>
-                <li>PFAS &ldquo;forever chemicals&rdquo;</li>
-                <li>Formaldehyde finishes</li>
-                <li>Polyester, nylon, elastane or spandex against the skin</li>
-              </ul>
+    <main className="commerce-page pure-page">
+      <section className="commerce-hero pure-hero">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">Vyoma Pure</p>
+            <h1>The closest layer should feel the cleanest.</h1>
+            <p className="commerce-lead">
+              Organic-cotton underwear for women and men, made for the skin that notices everything.
+              No drama. Just softer daily comfort and a clearer material story.
+            </p>
+            <div className="commerce-actions">
+              <Link href="#women" className="btn accent">Shop Pure</Link>
+              <Link href="/fabric" className="btn ghost">See the fabric promise</Link>
             </div>
           </div>
+          <div className="pure-visual" aria-hidden="true">
+            <span>Pure</span>
+            <strong>closest to skin</strong>
+          </div>
         </div>
       </section>
 
-      <section className="section" id="women" style={{ background: "#fff" }}>
-        <div className="container">
-          <div className="section-head" data-reveal>
-            <span className="section-eyebrow">Vyoma Pure · Women</span>
-            <h2>Soft on the skin that notices everything.</h2>
+      <section className="commerce-section commerce-section-tight">
+        <div className="commerce-shell">
+          <div className="commerce-card-grid three">
+            {PURE_POINTS.map((point) => (
+              <article className="commerce-card" key={point.title}>
+                <h3>{point.title}</h3>
+                <p>{point.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="women" className="commerce-section" aria-labelledby="pure-women-heading">
+        <div className="commerce-shell">
+          <div className="commerce-section-head split">
+            <div>
+              <p className="commerce-eyebrow">Pure · Women</p>
+              <h2 id="pure-women-heading">Soft on the skin that notices everything.</h2>
+            </div>
+            <Link href="/fit" className="link-btn">Need size help?</Link>
           </div>
           <div className="grid">
-            {women.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {women.map((product) => <ProductCard key={product.slug} product={product} />)}
           </div>
         </div>
       </section>
 
-      <section className="section" id="men">
-        <div className="container">
-          <div className="section-head" data-reveal>
-            <span className="section-eyebrow">Vyoma Pure · Men</span>
-            <h2>All-day comfort. Nothing synthetic where it counts.</h2>
+      <section id="men" className="commerce-section section-light" aria-labelledby="pure-men-heading">
+        <div className="commerce-shell">
+          <div className="commerce-section-head split">
+            <div>
+              <p className="commerce-eyebrow">Pure · Men</p>
+              <h2 id="pure-men-heading">All-day comfort without the noise.</h2>
+            </div>
+            <Link href="/shop" className="link-btn">See the full drop</Link>
           </div>
           <div className="grid">
-            {men.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {men.map((product) => <ProductCard key={product.slug} product={product} />)}
           </div>
         </div>
       </section>
 
-      <section className="section section-light center">
-        <div className="container narrow">
-          <div className="section-head">
-            <h2>Made clean.</h2>
-            <p>The everyday layer, the way it should be.</p>
+      <section className="commerce-section pure-closing-band">
+        <div className="commerce-shell confidence-grid">
+          <div>
+            <p className="commerce-eyebrow">The simple promise</p>
+            <h2>Made to be reached for without thinking.</h2>
           </div>
-          <Link href="/fabric" className="btn ghost">Why it matters →</Link>
+          <p>
+            Vyoma Pure is not about fear. It is about caring for the layer you wear closest,
+            most often and for the longest stretches of the day.
+          </p>
         </div>
       </section>
     </main>
