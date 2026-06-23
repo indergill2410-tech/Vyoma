@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
@@ -40,11 +41,12 @@ export default function TrackPage() {
               <Link href="/making" className="btn ghost">See how it is made</Link>
             </div>
           </div>
-          <div className="track-ticket" aria-label="Order status steps">
-            <span>Confirmed</span>
-            <span>Prepared</span>
-            <span>Tracked</span>
-          </div>
+          <EditorialImage
+            name="fitPackaging"
+            alt="Vyoma order packaging and fit cards in calm dawn light"
+            className="track-ticket"
+            priority
+          />
         </div>
       </section>
 
