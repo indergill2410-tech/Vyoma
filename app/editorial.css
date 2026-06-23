@@ -1,0 +1,163 @@
+:root {
+  --site-sky: 0;
+}
+
+.site-sky-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background:
+    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, calc(0.26 * (1 - var(--site-sky)))), transparent 60%),
+    radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, calc(0.2 + 0.22 * var(--site-sky))), transparent 58%),
+    radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, calc(0.12 + 0.24 * var(--site-sky))), transparent 60%);
+}
+
+.announce,
+.nav,
+main,
+.site-footer,
+.drawer,
+.cart-drawer,
+.toast-stack,
+.fly-star {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-image {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.editorial-image-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commerce-visual.editorial-image,
+.pure-visual.editorial-image,
+.fabric-sample.editorial-image,
+.fit-scale.editorial-image,
+.drop-orbit.editorial-image,
+.circle-proof-orbit.editorial-image,
+.research-ledger.editorial-image,
+.making-stamp.editorial-image,
+.track-ticket.editorial-image,
+.sky-stack.editorial-image,
+.about-wordmark.editorial-image {
+  padding: 0;
+  display: block;
+  min-height: 440px;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.26);
+}
+
+.commerce-visual.editorial-image::after,
+.pure-visual.editorial-image::after,
+.fabric-sample.editorial-image::after,
+.fit-scale.editorial-image::after,
+.drop-orbit.editorial-image::after,
+.circle-proof-orbit.editorial-image::after,
+.research-ledger.editorial-image::after,
+.making-stamp.editorial-image::after,
+.track-ticket.editorial-image::after,
+.sky-stack.editorial-image::after,
+.about-wordmark.editorial-image::after,
+.editorial-home-frame::after,
+.home-origin-image::after,
+.empty-bag-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(16, 20, 46, 0), rgba(16, 20, 46, 0.14));
+}
+
+.editorial-home-frame {
+  display: block;
+  padding: 0;
+}
+
+.editorial-home-frame::before {
+  display: none;
+}
+
+.editorial-home-frame .editorial-image-img {
+  position: absolute;
+  inset: 0;
+}
+
+.home-origin-image {
+  min-height: 430px;
+  border: 1px solid rgba(16, 20, 46, 0.09);
+  box-shadow: 0 28px 70px rgba(16, 20, 46, 0.12);
+}
+
+.empty-bag-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.empty-bag-image {
+  width: min(360px, 100%);
+  aspect-ratio: 1.12;
+  margin: 0 auto 22px;
+  border: 1px solid rgba(201, 210, 222, 0.68);
+}
+
+.sky-shop-scene.with-editorial-scene {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.sky-shop-scene.with-editorial-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--scene-image) center / cover no-repeat;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+}
+
+.sky-shop-scene.with-editorial-scene .sky-shop-inner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .commerce-visual.editorial-image,
+  .pure-visual.editorial-image,
+  .fabric-sample.editorial-image,
+  .fit-scale.editorial-image,
+  .drop-orbit.editorial-image,
+  .circle-proof-orbit.editorial-image,
+  .research-ledger.editorial-image,
+  .making-stamp.editorial-image,
+  .track-ticket.editorial-image,
+  .sky-stack.editorial-image,
+  .about-wordmark.editorial-image {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-sky-atmosphere {
+    opacity: 0.12;
+  }
+
+  .editorial-home-frame {
+    min-height: 430px;
+  }
+
+  .empty-bag-image {
+    aspect-ratio: 1;
+  }
+}
