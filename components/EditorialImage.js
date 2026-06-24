@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const PRODUCT_PHOTOS = {
   akashaWrap: "/products/vyoma-akasha-wrap/model.png",
   cloudBra: "/products/vyoma-cloud-bra/model.png",
@@ -92,25 +90,29 @@ export default function EditorialImage({
   return (
     <figure
       className={`editorial-image editorial-photo-scene editorial-photo-scene--${scene.variant} ${className}`.trim()}
+      data-photo-board="true"
     >
       <div className="editorial-photo-glow" aria-hidden="true" />
       <div className="editorial-photo-collage">
-        {scene.images.map((image, index) => (
-          <span
-            className={`editorial-photo-tile editorial-photo-tile--${image.tile}`}
-            key={`${image.src}-${image.tile}`}
-          >
-            <Image
-              src={image.src}
-              alt={index === 0 ? alt : ""}
-              fill
-              priority={priority && index === 0}
-              sizes="(max-width: 620px) 86vw, (max-width: 1100px) 46vw, 640px"
-              quality={92}
-              className={`editorial-image-img editorial-photo-img ${imageClassName}`.trim()}
-            />
-          </span>
-        ))}
+        {scene.images.map((image, index) => {
+          const isPriorityImage = priority && index === 0;
+
+          return (
+            <span
+              className={`editorial-photo-tile editorial-photo-tile--${image.tile}`}
+              key={`${image.src}-${image.tile}`}
+            >
+              <img
+                src={image.src}
+                alt={index === 0 ? alt : ""}
+                loading={isPriorityImage ? "eager" : "lazy"}
+                decoding={isPriorityImage ? "sync" : "async"}
+                fetchPriority={isPriorityImage ? "high" : undefined}
+                className={`editorial-image-img editorial-photo-img ${imageClassName}`.trim()}
+              />
+            </span>
+          );
+        })}
       </div>
     </figure>
   );
