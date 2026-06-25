@@ -1,10 +1,25 @@
 import "./globals.css";
 import "./conversion.css";
 import "./editorial.css";
+import { Fraunces, Karla } from "next/font/google";
 import Link from "next/link";
 import { Providers } from "@/components/Providers";
 import Nav from "@/components/Nav";
 import AnnounceBar from "@/components/AnnounceBar";
+
+// Self-hosted, preloaded fonts — no render-blocking @import to Google, no
+// extra DNS/round-trips, and `swap` + size matching avoids layout shift.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-fraunces",
+});
+const karla = Karla({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-karla",
+});
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -89,7 +104,13 @@ const SITE_JSONLD = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fraunces.variable} ${karla.variable}`}>
+      <head>
+        {/* Warm up the Shopify image CDN early so product photos start
+            downloading sooner (Next hoists these into <head>). */}
+        <link rel="preconnect" href="https://cdn.shopify.com" />
+        <link rel="dns-prefetch" href="https://cdn.shopify.com" />
+      </head>
       <body>
         <script
           dangerouslySetInnerHTML={{

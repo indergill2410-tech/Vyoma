@@ -42,9 +42,6 @@ export default function ProductCard({ product }) {
           <Price product={product} className="card-price" />
           <span className="card-cta">View →</span>
         </div>
-        <div className="card-actions">
-          <span className="card-quick">Choose size</span>
-        </div>
       </div>
     </Link>
   );

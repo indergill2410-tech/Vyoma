@@ -87,9 +87,6 @@ export default async function ShopGrid() {
                     <span className="card-price">{formatMoney(p.priceRange.minVariantPrice)}</span>
                     <span className="card-cta">View →</span>
                   </div>
-                  <div className="card-actions">
-                    <span className="card-quick">Choose options</span>
-                  </div>
                 </div>
               </Link>
             );
