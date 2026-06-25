@@ -108,7 +108,7 @@ export default function RootLayout({ children }) {
       <head>
         {/* Warm up the Shopify image CDN early so product photos start
             downloading sooner (Next hoists these into <head>). */}
-        <link rel="preconnect" href="https://cdn.shopify.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdn.shopify.com" />
         <link rel="dns-prefetch" href="https://cdn.shopify.com" />
       </head>
       <body>
