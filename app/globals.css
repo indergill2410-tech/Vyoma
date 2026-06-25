@@ -33,6 +33,12 @@ html {
   /* Stop iOS from auto-inflating text when the phone is rotated to landscape. */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Clip stray horizontal overflow at the root. This is what contains the
+     off-canvas cart drawer (position:fixed, translateX(100%)) — a body-level
+     clip can't catch fixed descendants, so without this the closed drawer
+     widens the page and iOS shrink-to-fits the whole site. `clip` (not
+     `hidden`) keeps position:sticky working for the nav. */
+  overflow-x: clip;
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
@@ -1070,6 +1076,13 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
      options — on a single column that just eats the whole screen. Let it
      scroll away normally. */
   .pdp-media { position: static; top: auto; }
+
+  /* Grid items default to min-width:auto, which refuses to shrink below their
+     content's min-content size — that let the single PDP column blow past the
+     viewport and clip the product info. Allow the column to shrink to fit. */
+  .pdp { min-width: 0; }
+  .pdp > * { min-width: 0; }
+  .pdp img, .pdp .product-img, .pdp .swatch-fallback { max-width: 100%; }
 
   /* The thumbnail rail becomes a horizontal, swipeable strip so it never
      overflows narrow phones. Momentum scroll + snap, no visible scrollbar,
