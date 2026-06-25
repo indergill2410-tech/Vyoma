@@ -34,10 +34,10 @@ const EVIDENCE = [
 ];
 
 const PRINCIPLES = [
-  "Keep claims tied to what can be shown.",
-  "Choose softer natural fibres where they can meet the use case.",
-  "Publish batch documents when real certificates are ready.",
-  "Let the product feel beautiful before the proof needs to speak.",
+  "We only claim what we can actually show you.",
+  "We choose softer natural fibres wherever they can do the job.",
+  "We publish batch documents once the certificates are real.",
+  "We let the clothes feel beautiful before the proof needs to speak.",
 ];
 
 export default function ResearchPage() {
@@ -47,19 +47,20 @@ export default function ResearchPage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">The quiet proof</p>
-            <h1>The research stays behind the feeling.</h1>
+            <h1>Why we lead with natural fibre.</h1>
             <p className="commerce-lead">
-              Vyoma should not sound clinical on the surface. This page is for customers who want
-              to know why we care about less plastic, clearer finishes and softer close-to-skin layers.
+              We'd rather you felt the softness than read a lecture. But if you want to know
+              why we choose natural fibres, fewer finishes and gentler close-to-skin layers,
+              here's the reading behind it.
             </p>
             <div className="commerce-actions">
-              <Link href="/fabric" className="btn accent">Back to the fabric promise</Link>
-              <Link href="/shop" className="btn ghost">Shop the first drop</Link>
+              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/fabric" className="btn ghost">Read the fabric promise</Link>
             </div>
           </div>
           <EditorialImage
             name="fabricMacro"
-            alt="Natural fibre detail with a quiet evidence-led material mood"
+            alt="Close-up of soft natural-fibre fabric"
             className="research-ledger"
             priority
           />
@@ -70,10 +71,10 @@ export default function ResearchPage() {
         <div className="commerce-shell">
           <div className="commerce-section-head">
             <p className="commerce-eyebrow">Material questions</p>
-            <h2 id="evidence-heading">The points that shaped the Vyoma standard.</h2>
+            <h2 id="evidence-heading">The questions behind our material choices.</h2>
             <p>
-              This is not fear-based marketing. It is the reading trail behind a softer,
-              simpler material choice.
+              We're not here to scare you. These are simply the studies we read while choosing
+              softer, simpler materials — linked so you can read them too.
             </p>
           </div>
           <div className="commerce-card-grid three evidence-cards">
@@ -93,10 +94,10 @@ export default function ResearchPage() {
         <div className="commerce-shell two-column-section">
           <div className="sticky-copy">
             <p className="commerce-eyebrow">How we use it</p>
-            <h2 id="principles-heading">Evidence should make the brand calmer, not louder.</h2>
+            <h2 id="principles-heading">We'd rather show than shout.</h2>
             <p>
-              The customer should feel softness first. The proof is there to build confidence,
-              especially around claims that could otherwise become vague or exaggerated.
+              You should feel the softness first. The evidence is here for when you want to
+              look closer — especially on the claims that are easy to exaggerate and hard to back up.
             </p>
           </div>
           <ul className="principle-list">

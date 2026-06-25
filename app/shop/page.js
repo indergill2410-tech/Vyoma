@@ -90,8 +90,8 @@ export default function ShopPage() {
             <p className="commerce-eyebrow">Full collection</p>
             <h2 id="collection-heading">Choose the layer your body wants first.</h2>
             <p>
-              Browse every current piece without losing the calm of the brand. Product pages carry
-              sizing, material notes, delivery timing and the buy path.
+              Take your time with the full collection. Each product page has the sizing,
+              material notes and delivery details you need when you're ready to choose.
             </p>
           </div>
           <ShopGrid />

@@ -20,11 +20,11 @@ const BENEFITS = [
   },
   {
     title: "Founder perks",
-    body: "Bring friends, move up the line and unlock small thank-you moments as the brand grows.",
+    body: "Bring friends, move up the line and unlock small thank-you moments as we grow.",
   },
   {
     title: "Quiet notes",
-    body: "No noisy marketing cycle. Just considered release notes, material updates and useful timing.",
+    body: "No spam, no noise — just early word on new pieces, material updates and when the next drop lands.",
   },
 ];
 
@@ -37,8 +37,8 @@ export default function CirclePage() {
             <p className="commerce-eyebrow">The Circle</p>
             <h1>The store is open. The Circle hears first.</h1>
             <p className="commerce-lead">
-              Join for restock notes, early access to small drops and founder perks. It is not a hard sell;
-              it is the quiet line for people building the brand from the beginning.
+              Join for restock notes, early access to small drops and founder perks. It's not a hard sell —
+              it's the quiet line for the people here from the very beginning.
             </p>
             <WaitlistCount className="big" />
             <Waitlist source="circle" />
@@ -70,7 +70,7 @@ export default function CirclePage() {
         <div className="commerce-shell two-column-section">
           <div className="sticky-copy">
             <p className="commerce-eyebrow">How it rises</p>
-            <h2 id="circle-ladder-heading">Share the brand. Unlock the ladder.</h2>
+            <h2 id="circle-ladder-heading">Share Vyoma. Unlock the ladder.</h2>
             <p>
               Every friend who joins through your link moves you up and unlocks the next founder perk.
               The goal is simple: grow through people who actually care about the clothes.
