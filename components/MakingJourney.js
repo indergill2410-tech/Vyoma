@@ -24,7 +24,7 @@ const STEPS = [
     b: "Every seam, every stitch, every waistband. If it isn't good enough to keep, it doesn't leave." },
   { key: "door", word: "Yours", colour: "night-sky-indigo",
     h: "Couriered to your door.",
-    b: "From India to your mat — in Mumbai, in Melbourne, anywhere. Tracked the whole way, made with care." },
+    b: "From India to your door, wherever you train in Australia. Tracked the whole way, made with care." },
 ];
 
 function sceneStyle(key) {

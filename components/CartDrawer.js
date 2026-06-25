@@ -1,27 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { useCart, useRegion } from "./Providers";
-import { getRegion } from "@/lib/regions";
-import { formatMoney } from "@/lib/format";
-import { COLOURWAYS, swatchStyle, getProduct } from "@/lib/catalog";
+import Image from "next/image";
+import { useCart } from "./Providers";
+import { formatMoney } from "@/lib/shopify";
 
-// Resolve a line's unit price live from the catalog (snapshot fallback), so the
-// drawer always reflects current pricing rather than what localStorage stored.
-function unitPrice(it, region) {
-  const product = getProduct(it.slug);
-  if (product) return region === "IN" ? product.priceInr : product.priceAud;
-  return region === "IN" ? it.priceInr : it.priceAud;
-}
-
+// The bag. Lines are Shopify variants; checkout creates a Shopify cart with every
+// line and redirects to Shopify's hosted, secure checkout.
 export default function CartDrawer() {
   const { items, count, updateQty, removeItem, lineId, drawerOpen, setDrawerOpen } = useCart();
-  const { region } = useRegion();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
-  const r = getRegion(region);
-  const subtotal = items.reduce((sum, it) => sum + unitPrice(it, region) * it.qty, 0);
+  const currencyCode = items[0]?.currencyCode || "AUD";
+  const subtotal = items.reduce((sum, it) => sum + parseFloat(it.amount || 0) * it.qty, 0);
+  const money = (amount) => formatMoney({ amount, currencyCode });
 
   async function checkout() {
     setError("");
@@ -31,13 +24,7 @@ export default function CartDrawer() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          region,
-          items: items.map((it) => ({
-            slug: it.slug,
-            colour: it.colour,
-            size: it.size,
-            quantity: it.qty,
-          })),
+          lines: items.map((it) => ({ merchandiseId: it.variantId, quantity: it.qty })),
         }),
       });
       const data = await res.json();
@@ -76,7 +63,7 @@ export default function CartDrawer() {
           <div className="drawer-empty">
             <span className="dev">व्योम</span>
             <p>Your bag is empty.</p>
-            <p className="muted">Crafted in India, with care — made to be lived in.</p>
+            <p className="muted">Made in India, with care — built for the studio, the gym and everything after.</p>
             <button className="btn" onClick={() => setDrawerOpen(false)}>
               Browse the collection
             </button>
@@ -86,28 +73,34 @@ export default function CartDrawer() {
             <div className="drawer-items">
               {items.map((it) => {
                 const id = lineId(it);
-                const c = COLOURWAYS[it.colour];
-                const unit = unitPrice(it, region);
                 return (
                   <div className="drawer-item" key={id}>
-                    <div className="drawer-thumb" style={swatchStyle(it.colour)} aria-hidden="true" />
+                    {it.image?.url ? (
+                      <Image
+                        className="drawer-thumb"
+                        src={it.image.url}
+                        alt={it.image.alt || it.productTitle}
+                        width={64}
+                        height={80}
+                      />
+                    ) : (
+                      <div className="drawer-thumb" aria-hidden="true" />
+                    )}
                     <div className="drawer-item-body">
                       <div className="drawer-item-top">
-                        <strong>{it.name}</strong>
-                        <button className="link-btn" onClick={() => removeItem(id)} aria-label={`Remove ${it.name}`}>
+                        <strong>{it.productTitle}</strong>
+                        <button className="link-btn" onClick={() => removeItem(id)} aria-label={`Remove ${it.productTitle}`}>
                           Remove
                         </button>
                       </div>
-                      <p className="muted small">
-                        {c?.name} · Size {it.size}
-                      </p>
+                      {it.variantTitle && <p className="muted small">{it.variantTitle}</p>}
                       <div className="drawer-item-foot">
                         <div className="qty-mini">
                           <button onClick={() => updateQty(id, Math.max(0, it.qty - 1))} aria-label="Decrease quantity">−</button>
                           <span>{it.qty}</span>
                           <button onClick={() => updateQty(id, Math.min(10, it.qty + 1))} aria-label="Increase quantity">+</button>
                         </div>
-                        <span className="drawer-line-price">{formatMoney(unit * it.qty, region)}</span>
+                        <span className="drawer-line-price">{money(parseFloat(it.amount || 0) * it.qty)}</span>
                       </div>
                     </div>
                   </div>
@@ -118,15 +111,15 @@ export default function CartDrawer() {
             <div className="drawer-foot">
               <div className="drawer-subtotal">
                 <span>Subtotal</span>
-                <strong>{formatMoney(subtotal, region)}</strong>
+                <strong>{money(subtotal)}</strong>
               </div>
-              <p className="muted small">{r.shipping}</p>
+              <p className="muted small">Shipping &amp; taxes calculated at checkout.</p>
               {error && <p className="error">{error}</p>}
               <button className="btn block" onClick={checkout} disabled={busy}>
-                {busy ? "Opening secure checkout…" : `Checkout · ${formatMoney(subtotal, region)}`}
+                {busy ? "Opening secure checkout…" : `Checkout · ${money(subtotal)}`}
               </button>
               <p className="muted xsmall center">
-                Secure checkout. {r.note}
+                Secure checkout, powered by Shopify.
               </p>
             </div>
           </>

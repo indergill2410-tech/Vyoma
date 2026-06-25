@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-const STATUSES = ["paid", "in_production", "shipped", "delivered"];
-
+// Orders, revenue and fulfilment live in the Shopify admin. This dashboard covers
+// what Vyoma owns: The Circle waitlist and review moderation.
 export default function Admin() {
   const [token, setToken] = useState("");
   const [authed, setAuthed] = useState(false);
@@ -11,7 +11,6 @@ export default function Admin() {
   const [error, setError] = useState("");
 
   const [metrics, setMetrics] = useState(null);
-  const [orders, setOrders] = useState([]);
   const [waitlist, setWaitlist] = useState([]);
   const [reviews, setReviews] = useState([]);
 
@@ -23,9 +22,8 @@ export default function Admin() {
     setError("");
     try {
       const opts = { headers: { "x-admin-token": tk } };
-      const [m, o, w, r] = await Promise.all([
+      const [m, w, r] = await Promise.all([
         fetch("/api/metrics", opts),
-        fetch("/api/orders", opts),
         fetch("/api/waitlist", opts),
         fetch("/api/reviews?admin=1", opts),
       ]);
@@ -33,12 +31,11 @@ export default function Admin() {
         setError("That admin token isn't right.");
         return false;
       }
-      if (!m.ok || !o.ok || !w.ok || !r.ok) {
+      if (!m.ok || !w.ok || !r.ok) {
         setError("Couldn't load the dashboard. Please try again.");
         return false;
       }
       setMetrics((await m.json()).metrics);
-      setOrders((await o.json()).orders || []);
       setWaitlist((await w.json()).entries || []);
       setReviews((await r.json()).reviews || []);
       return true;
@@ -53,18 +50,6 @@ export default function Admin() {
     if (ok) setAuthed(true);
   }
 
-  async function setStatus(id, status) {
-    await fetch("/api/orders", { method: "PATCH", headers: headers(), body: JSON.stringify({ id, status }) });
-    loadAll();
-  }
-
-  async function setTracking(id) {
-    const trackingNumber = prompt("Tracking number for this order:");
-    if (trackingNumber == null) return;
-    await fetch("/api/orders", { method: "PATCH", headers: headers(), body: JSON.stringify({ id, trackingNumber }) });
-    loadAll();
-  }
-
   async function moderate(id, status) {
     await fetch("/api/reviews", { method: "PATCH", headers: headers(), body: JSON.stringify({ id, status }) });
     loadAll();
@@ -74,7 +59,7 @@ export default function Admin() {
     return (
       <main className="container admin">
         <h1>Admin</h1>
-        <p className="muted" style={{ marginBottom: 20 }}>Enter the admin token to view orders, the waitlist and reviews.</p>
+        <p className="muted" style={{ marginBottom: 20 }}>Enter the admin token to view The Circle and reviews.</p>
         <div className="admin-gate">
           <input
             type="password"
@@ -93,10 +78,10 @@ export default function Admin() {
   return (
     <main className="container admin">
       <h1>Mission control</h1>
-      <p className="muted">Vyomawear · live store data</p>
+      <p className="muted">Vyomawear · The Circle &amp; reviews. Orders live in your Shopify admin.</p>
 
       <div className="admin-tabs">
-        {["dashboard", "orders", "waitlist", "reviews"].map((t) => (
+        {["dashboard", "waitlist", "reviews"].map((t) => (
           <button key={t} className={`admin-tab ${tab === t ? "active" : ""}`} onClick={() => setTab(t)}>
             {t === "waitlist" ? `Waitlist (${waitlist.length})` : t === "reviews" ? `Reviews (${reviews.filter((r) => r.status === "pending").length})` : t[0].toUpperCase() + t.slice(1)}
           </button>
@@ -104,70 +89,28 @@ export default function Admin() {
       </div>
 
       {tab === "dashboard" && metrics && (
-        <>
-          <div className="metrics">
-            <div className="metric">
-              <div className="m-label">Revenue (AUD)</div>
-              <div className="m-value">A${(metrics.revenueAud / 100).toLocaleString()}</div>
-              <div className="m-sub">{metrics.ordersAud} AU orders</div>
-            </div>
-            <div className="metric">
-              <div className="m-label">Revenue (INR)</div>
-              <div className="m-value">₹{(metrics.revenueInr / 100).toLocaleString()}</div>
-              <div className="m-sub">{metrics.ordersIn} IN orders</div>
-            </div>
-            <div className="metric">
-              <div className="m-label">Total orders</div>
-              <div className="m-value">{metrics.totalOrders}</div>
-              <div className="m-sub">{metrics.unfulfilled} to fulfil</div>
-            </div>
-            <div className="metric">
-              <div className="m-label">Waitlist</div>
-              <div className="m-value">{metrics.waitlist}</div>
-              <div className="m-sub">future customers</div>
-            </div>
+        <div className="metrics">
+          <div className="metric">
+            <div className="m-label">The Circle</div>
+            <div className="m-value">{metrics.members}</div>
+            <div className="m-sub">distinct members</div>
           </div>
-          <div className="metrics">
-            {STATUSES.map((s) => (
-              <div className="metric" key={s}>
-                <div className="m-label">{s.replaceAll("_", " ")}</div>
-                <div className="m-value">{metrics.byStatus?.[s] || 0}</div>
-              </div>
-            ))}
+          <div className="metric">
+            <div className="m-label">Signups</div>
+            <div className="m-value">{metrics.waitlist}</div>
+            <div className="m-sub">across all sources</div>
           </div>
-        </>
-      )}
-
-      {tab === "orders" && (
-        orders.length === 0 ? (
-          <p className="muted">No orders yet. When the first one lands, it appears here.</p>
-        ) : (
-          <table className="table">
-            <thead>
-              <tr><th>When</th><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Move to</th></tr>
-            </thead>
-            <tbody>
-              {orders.map((o) => (
-                <tr key={o.id}>
-                  <td><small>{new Date(o.createdAt).toLocaleString()}</small></td>
-                  <td><strong>{o.orderNumber}</strong><br /><small>{o.region}</small></td>
-                  <td>{o.customerName || "—"}<br /><small>{o.email}</small></td>
-                  <td>{renderItems(o.items)}</td>
-                  <td>{(o.amountTotal / 100).toFixed(0)} {o.currency.toUpperCase()}</td>
-                  <td><span className={`status ${o.status}`}>{o.status.replaceAll("_", " ")}</span>{o.trackingNumber && <><br /><small>#{o.trackingNumber}</small></>}</td>
-                  <td>
-                    <div className="admin-actions">
-                      {STATUSES.filter((s) => s !== o.status).map((s) => (
-                        <button key={s} className="mini-btn" onClick={() => setStatus(o.id, s)}>{s.replaceAll("_", " ")}</button>
-                      ))}
-                      <button className="mini-btn" onClick={() => setTracking(o.id)}>+ tracking</button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )
+          <div className="metric">
+            <div className="m-label">Reviews to moderate</div>
+            <div className="m-value">{metrics.pendingReviews}</div>
+            <div className="m-sub">pending approval</div>
+          </div>
+          <div className="metric">
+            <div className="m-label">Approved reviews</div>
+            <div className="m-value">{metrics.approvedReviews}</div>
+            <div className="m-sub">live on the site</div>
+          </div>
+        </div>
       )}
 
       {tab === "waitlist" && (
@@ -175,14 +118,15 @@ export default function Admin() {
           <p className="muted">No signups yet.</p>
         ) : (
           <table className="table">
-            <thead><tr><th>When</th><th>Email</th><th>Region</th><th>Source</th></tr></thead>
+            <thead><tr><th>When</th><th>Email</th><th>Source</th><th>Code</th><th>Referred by</th></tr></thead>
             <tbody>
               {waitlist.map((w) => (
                 <tr key={w.id}>
                   <td><small>{new Date(w.createdAt).toLocaleDateString()}</small></td>
                   <td>{w.email}</td>
-                  <td>{w.region}</td>
                   <td><small>{w.source}</small></td>
+                  <td><small>{w.referralCode || "—"}</small></td>
+                  <td><small>{w.referredBy || "—"}</small></td>
                 </tr>
               ))}
             </tbody>
@@ -218,15 +162,4 @@ export default function Admin() {
       )}
     </main>
   );
-}
-
-function renderItems(json) {
-  try {
-    const items = JSON.parse(json);
-    return items.map((it, i) => (
-      <div key={i}><small>{it.name} · {it.size} × {it.quantity}</small></div>
-    ));
-  } catch {
-    return <small>—</small>;
-  }
 }

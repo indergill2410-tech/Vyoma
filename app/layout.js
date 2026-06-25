@@ -11,17 +11,18 @@ import { abs, SITE_URL, BRAND } from "@/lib/seo";
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Vyomawear — Yoga wear, made where yoga was born",
+    default: "Vyomawear — Activewear with a yoga soul",
     template: "%s · Vyomawear",
   },
   description: BRAND.description,
   keywords: [
-    "yoga wear",
-    "yoga clothes India",
-    "made in India activewear",
-    "organic yoga wear",
+    "activewear Australia",
+    "natural fibre activewear",
+    "organic cotton activewear",
+    "yoga wear Australia",
+    "gym wear",
     "natural fibre leggings",
-    "yoga leggings Australia",
+    "made in India activewear",
     "Vyoma",
     "Vyomawear",
   ],
@@ -30,16 +31,16 @@ export const metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Vyomawear",
-    title: "Vyomawear — Room to breathe.",
+    title: "Vyomawear — Activewear with a yoga soul.",
     description:
-      "Premium yoga wear, made in India — the birthplace of yoga. India & Australia.",
+      "Premium natural-fibre activewear, made in India for the studio, the gym and everyday life. Shipping across Australia.",
     locale: "en_AU",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vyomawear — Yoga wear, made where yoga was born",
+    title: "Vyomawear — Activewear with a yoga soul",
     description:
-      "Premium yoga wear, made in India — the birthplace of yoga. India & Australia.",
+      "Premium natural-fibre activewear, made in India. Built for the studio, the gym and everyday life. Shipping across Australia.",
   },
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
@@ -58,12 +59,12 @@ const SITE_JSONLD = {
       "@id": `${SITE_URL}/#organization`,
       name: BRAND.name,
       legalName: BRAND.legalName,
-      description: "Premium yoga wear, made in India — the birthplace of yoga.",
+      description: "Premium natural-fibre activewear, made in India for the studio, the gym and everyday life.",
       slogan: BRAND.slogan,
       url: SITE_URL,
       logo: abs("/icon.svg"),
       image: abs("/opengraph-image"),
-      areaServed: ["IN", "AU"],
+      areaServed: ["AU"],
       foundingLocation: { "@type": "Place", name: "India" },
     },
     {
@@ -111,12 +112,11 @@ export default function RootLayout({ children }) {
                 <Link href="/making">The Making</Link>
                 <Link href="/fit">Fit Finder</Link>
                 <Link href="/about">Story</Link>
-                <Link href="/track">Track order</Link>
                 <Link href="/admin">Admin</Link>
               </div>
               <div className="footer-meta">
                 <span className="dev">व्योम</span>
-                <p className="muted small">Made in India · Shipping to India &amp; Australia</p>
+                <p className="muted small">Made in India · Shipping across Australia</p>
                 <p className="muted xsmall">© {new Date().getFullYear()} Vyomawear · Room to grow.</p>
               </div>
             </div>

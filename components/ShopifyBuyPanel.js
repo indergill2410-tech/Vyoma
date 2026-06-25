@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import { formatMoney } from "@/lib/shopify";
+import { useCart } from "./Providers";
 import { toast, celebrateFrom } from "@/lib/fx";
 
 // Option-aware buy panel for a Shopify product. Tracks a selection per option
-// (Size, Colour, …), resolves the matching variant, and starts Shopify's hosted
-// checkout. Works for single-option (just sizes) and multi-option products.
+// (Size, Colour, …), resolves the matching variant, and adds it to the cart.
+// Checkout (Shopify-hosted) happens from the cart drawer. Works for single-option
+// (just sizes) and multi-option products.
 export default function ShopifyBuyPanel({ product }) {
+  const { addItem } = useCart();
   const options = (product.options || []).filter(
     (o) => !(o.values.length === 1 && o.values[0] === "Default Title")
   );
@@ -17,7 +20,6 @@ export default function ShopifyBuyPanel({ product }) {
     variants.length === 1 ? variantOptions(variants[0]) : {}
   );
   const [qty, setQty] = useState(1);
-  const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
   function variantOptions(v) {
@@ -31,13 +33,14 @@ export default function ShopifyBuyPanel({ product }) {
   );
   const complete = options.every((o) => selected[o.name]);
   const price = match ? match.price : product.priceRange.minVariantPrice;
+  const image = product.featuredImage || product.images?.nodes?.[0] || null;
 
   function pick(name, value) {
     setError("");
     setSelected((s) => ({ ...s, [name]: value }));
   }
 
-  async function buy(e) {
+  function addToBag(e) {
     setError("");
     if (!complete || !match) {
       setError("Choose your options to continue.");
@@ -47,26 +50,18 @@ export default function ShopifyBuyPanel({ product }) {
       setError("That option is sold out.");
       return;
     }
-    setBusy(true);
-    try {
-      celebrateFrom(e);
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ variantId: match.id, quantity: qty }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        toast(`${product.title} — to checkout`);
-        window.location.href = data.url; // Shopify-hosted checkout
-      } else {
-        setError(data.error || "Could not start checkout. Please try again.");
-        setBusy(false);
-      }
-    } catch {
-      setError("Could not start checkout. Check your connection and try again.");
-      setBusy(false);
-    }
+    celebrateFrom(e);
+    addItem({
+      variantId: match.id,
+      handle: product.handle,
+      productTitle: product.title,
+      variantTitle: match.title && match.title !== "Default Title" ? match.title : "",
+      image: image ? { url: image.url, alt: image.altText || product.title } : null,
+      amount: match.price.amount,
+      currencyCode: match.price.currencyCode,
+      qty,
+    });
+    toast(`${product.title} — added to your bag`);
   }
 
   return (
@@ -110,14 +105,12 @@ export default function ShopifyBuyPanel({ product }) {
         <div className="qty">
           <button aria-label="Decrease quantity" onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
           <span aria-live="polite">{qty}</span>
-          <button aria-label="Increase quantity" onClick={() => setQty(Math.min(5, qty + 1))}>+</button>
+          <button aria-label="Increase quantity" onClick={() => setQty(Math.min(10, qty + 1))}>+</button>
         </div>
       </div>
 
       <div className="pdp-actions">
-        <button className="btn block" onClick={buy} disabled={busy}>
-          {busy ? "Opening secure checkout…" : "Buy now — secure checkout"}
-        </button>
+        <button className="btn block" onClick={addToBag}>Add to bag</button>
       </div>
       {error && <p className="error" role="alert">{error}</p>}
 
