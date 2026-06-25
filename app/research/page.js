@@ -60,10 +60,23 @@ const STANDARD = [
   },
 ];
 
+// Studies & public-agency reading.
 const SOURCES = [
+  {
+    title: "De Falco et al. — microfibre release from clothing, Scientific Reports (2019)",
+    href: "https://www.nature.com/articles/s41598-019-43023-x",
+  },
+  {
+    title: "Napper & Thompson — microfibres from laundering, Marine Pollution Bulletin (2016)",
+    href: "https://www.sciencedirect.com/science/article/abs/pii/S0025326X16307639",
+  },
   {
     title: "US EPA: PFAS health and environmental risks",
     href: "https://www.epa.gov/pfas/our-current-understanding-human-health-and-environmental-risks-pfas",
+  },
+  {
+    title: "ECHA: Per- and polyfluoroalkyl substances (PFAS) restriction",
+    href: "https://echa.europa.eu/hot-topics/perfluoroalkyl-chemicals-pfas",
   },
   {
     title: "NIEHS: Endocrine disruptors",
@@ -74,8 +87,32 @@ const SOURCES = [
     href: "https://www.niehs.nih.gov/health/topics/agents/pfc",
   },
   {
-    title: "De Falco et al., Scientific Reports, 2019",
-    href: "https://www.nature.com/articles/s41598-019-43023-x",
+    title: "Ellen MacArthur Foundation: A new textiles economy",
+    href: "https://www.ellenmacarthurfoundation.org/a-new-textiles-economy-redesigning-fashions-future",
+  },
+];
+
+// Standards & certifications we measure our material story against.
+const CERTIFICATIONS = [
+  {
+    title: "OEKO-TEX STANDARD 100",
+    body: "Tests textiles for a long list of harmful substances. A target for our fabrics as certificates are issued.",
+    href: "https://www.oeko-tex.com/en/our-standards/oeko-tex-standard-100",
+  },
+  {
+    title: "Global Organic Textile Standard (GOTS)",
+    body: "The leading standard for organic fibres, covering ecological and social criteria across the supply chain.",
+    href: "https://global-standard.org/",
+  },
+  {
+    title: "OEKO-TEX MADE IN GREEN",
+    body: "A traceable label for textiles tested for harmful substances and made in safer, more responsible facilities.",
+    href: "https://www.oeko-tex.com/en/our-standards/made-in-green-by-oeko-tex",
+  },
+  {
+    title: "Textile Exchange: preferred materials",
+    body: "Industry guidance on lower-impact and natural fibres we use to choose what goes into a Vyoma piece.",
+    href: "https://textileexchange.org/",
   },
 ];
 
@@ -168,6 +205,32 @@ export default function ResearchPage() {
                 </article>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section} aria-labelledby="certs-heading">
+        <div className={styles.shell}>
+          <div className={styles.sectionHead}>
+            <p className={styles.eyebrow}>Standards &amp; certifications</p>
+            <h2 id="certs-heading">The benchmarks we hold our materials to.</h2>
+            <p>
+              These are the independent standards and bodies we use to choose
+              fibres and verify what we make — published here so you can read them
+              yourself.
+            </p>
+          </div>
+
+          <div className={styles.evidenceGrid}>
+            {CERTIFICATIONS.map((cert) => (
+              <article className={styles.evidenceCard} key={cert.title}>
+                <h3>{cert.title}</h3>
+                <p>{cert.body}</p>
+                <a href={cert.href} target="_blank" rel="noopener noreferrer">
+                  Learn more
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>

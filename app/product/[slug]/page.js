@@ -27,22 +27,25 @@ async function approvedReviewSummary(slug) {
   }
 }
 
-// Local slugs are pre-rendered; Shopify handles render on demand (dynamicParams).
+// Shopify handles render on demand (dynamicParams); local slugs seed the build
+// so the site still renders before the Storefront token is set.
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
 
+// Shopify is authoritative. We only fall back to the local catalog (read-only
+// preview) when Shopify isn't connected yet or the handle isn't found there.
 async function resolve(slug) {
-  const local = getLocalProduct(slug);
-  if (local) return { kind: "local", product: local };
   if (shopifyConfigured()) {
     try {
       const sp = await getShopifyProduct(slug);
       if (sp) return { kind: "shopify", product: sp };
     } catch {
-      /* fall through */
+      /* fall through to local preview */
     }
   }
+  const local = getLocalProduct(slug);
+  if (local) return { kind: "local", product: local };
   return null;
 }
 
@@ -53,7 +56,7 @@ export async function generateMetadata({ params }) {
   const title = found.kind === "shopify" ? p.title : p.name;
   const description =
     (p.description || "").slice(0, 200) ||
-    "Premium yoga wear, made in India — the birthplace of yoga.";
+    "Premium natural-fibre activewear, made in India — built for the studio, the gym and everyday life.";
   const url = abs(`/product/${params.slug}`);
   return {
     title,
@@ -106,7 +109,7 @@ export default async function ProductPage({ params }) {
     url,
     brand: { "@type": "Brand", name: "Vyomawear" },
     category: product.category,
-    offers: [offer("AUD", product.priceAud), offer("INR", product.priceInr)],
+    offers: [offer("AUD", product.priceAud)],
     ...(reviewSummary && {
       aggregateRating: {
         "@type": "AggregateRating",

@@ -1,0 +1,49 @@
+# Render Blueprint — Vyomawear.
+# A Next.js web service + a managed Postgres for The Circle waitlist & reviews.
+# Shopify owns the catalogue, checkout and orders, so the DB stays small.
+#
+# After "New → Blueprint", set the `sync: false` env vars in the Render dashboard.
+services:
+  - type: web
+    name: vyomawear
+    runtime: node
+    plan: starter
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    # Sync the schema (WaitlistEntry, Review) before each deploy goes live.
+    preDeployCommand: npx prisma db push --skip-generate
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vyoma-db
+          property: connectionString
+      - key: NODE_VERSION
+        value: "20"
+      - key: SHOPIFY_STORE_DOMAIN
+        sync: false
+      - key: SHOPIFY_STOREFRONT_TOKEN
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: NEXT_PUBLIC_DROP_DATE
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: SHOPIFY_WEBHOOK_SECRET
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_FROM
+        sync: false
+      - key: TWILIO_WHATSAPP_FROM
+        sync: false
+
+databases:
+  - name: vyoma-db
+    plan: basic-256mb
+    region: singapore

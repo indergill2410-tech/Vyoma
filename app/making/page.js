@@ -4,7 +4,7 @@ import MakingJourney from "@/components/MakingJourney";
 export const metadata = {
   title: "The Making",
   description:
-    "Made in India, the birthplace of yoga. Follow a Vyoma piece from your order to your door — crafted with care, made to last.",
+    "Made in India. Follow a Vyoma piece from your order to your door — crafted with care, made to last.",
 };
 
 export default function MakingPage() {

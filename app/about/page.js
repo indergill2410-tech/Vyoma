@@ -4,7 +4,7 @@ import Waitlist from "@/components/Waitlist";
 export const metadata = {
   title: "Our story",
   description:
-    "Vyoma means sky. Yoga wear made in India — the birthplace of yoga — to order, never wasted.",
+    "Vyoma means sky. Natural-fibre activewear with a yoga soul, made in India — considered, never wasted.",
 };
 
 export default function About() {

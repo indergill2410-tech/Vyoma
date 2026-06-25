@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useCart } from "./Providers";
-import RegionToggle from "./RegionToggle";
 
 const LINKS = [
   { href: "/#shop", label: "Shop" },
@@ -13,7 +12,6 @@ const LINKS = [
   { href: "/drops", label: "Drops" },
   { href: "/circle", label: "The Circle" },
   { href: "/about", label: "Story" },
-  { href: "/track", label: "Track order" },
 ];
 
 export default function Nav() {
@@ -46,7 +44,6 @@ export default function Nav() {
         </nav>
 
         <div className="nav-right">
-          <RegionToggle compact />
           <button
             type="button"
             id="cart-button"

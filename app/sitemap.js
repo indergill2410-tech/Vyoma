@@ -16,7 +16,6 @@ export default function sitemap() {
     { path: "/drops", priority: 0.8, changeFrequency: "weekly" },
     { path: "/fit", priority: 0.5, changeFrequency: "monthly" },
     { path: "/about", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/track", priority: 0.3, changeFrequency: "yearly" },
   ].map((r) => ({
     url: abs(r.path),
     lastModified: now,

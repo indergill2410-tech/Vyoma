@@ -1,94 +1,90 @@
-# Vyomawear — Full-Stack Store
+# Vyomawear — Natural-fibre activewear store
 
 > *Vyoma (vee-OH-ma): Sanskrit for sky, ether, infinite space.*
 
-Premium, made-to-order yoga wear from the birthplace of yoga — built as a complete
-Next.js 14 storefront for **two markets** (🇮🇳 India · INR and 🇦🇺 Australia · AUD)
-from one Indian supply base.
+Premium **natural-fibre activewear with a yoga soul** — made in India for the studio,
+the gym and everyday life. A living-sky brand experience on top of **Shopify** as the
+commerce backend, launching in **Australia (AUD)**.
 
-A living-sky brand experience on top of a real commerce engine: Stripe Checkout,
-a Prisma orders database, customer order tracking, a drop waitlist, moderated
-reviews, and an admin dashboard.
+Shopify owns the catalogue, checkout, orders, fulfilment and customer emails. This
+Next.js 14 app is the custom storefront on top of it, plus the two things Vyoma owns
+itself: **The Circle** (a referral waitlist) and **moderated reviews**.
 
 ## What's inside
 
 | Area | Path | Notes |
 |---|---|---|
-| **Living-sky homepage** | `/` | Animated constellation canvas, drop countdown, waitlist, story pillars, social proof |
-| **Story** | `/about` | The Vyoma origin, pronunciation, made-to-order ethos |
-| **Collection** | `/#shop` | Catalog from `lib/catalog.js` — prices live server-side only |
-| **Product** | `/product/[slug]` | Colourways, size guide, made-to-order timeline, reviews |
-| **Cart** | drawer + `/cart` | Multi-item, persisted to localStorage |
-| **Checkout** | `/api/checkout` | Builds Stripe line items server-side; client can never set a price |
-| **Webhook** | `/api/webhook` | Signature-verified; the ONLY thing that creates orders |
-| **Order tracking** | `/track` | Order number + email → live status timeline |
+| **Living-sky homepage** | `/` | Animated sky, brand story, collection grid, The Circle waitlist |
+| **Story** | `/about` | The Vyoma origin and pronunciation |
+| **Why natural fibre** | `/research` | The material research, with sources to read further |
+| **Fabric** | `/fabric` | The natural-fibre fabric story |
+| **Collection** | `/#shop` | Live from Shopify (`lib/shopify.js`) |
+| **Product** | `/product/[handle]` | Shopify product: variants, gallery, add-to-bag, reviews |
+| **Cart** | drawer + `/cart` | Multi-item, Shopify-variant lines, persisted to localStorage |
+| **Checkout** | `/api/checkout` | Creates a Shopify cart from the line list → hosted checkout |
+| **Order updates** | `/api/shopify-webhook` | Signature-verified; fires WhatsApp/SMS via Twilio |
 | **Reviews** | `/api/reviews` | Submit (pending) → admin approves → shown with average rating |
-| **Waitlist** | `/api/waitlist` | The pre-order drop list (how a $0 brand funds run #1) |
-| **The Circle** | `/circle` | Referral waitlist: share code, place in line, Founding-Member perk ladder (`lib/circle.js`) |
-| **Admin** | `/admin` | Token-gated: dashboard metrics, orders, waitlist, reviews |
+| **The Circle** | `/circle` | Referral waitlist: share code, place in line, perk ladder (`lib/circle.js`) |
+| **Admin** | `/admin` | Token-gated: The Circle waitlist + review moderation |
 
-## Region & currency
+Orders, revenue and fulfilment live in your **Shopify admin** — not in this app.
 
-`lib/regions.js` defines the two markets. The toggle in the nav switches currency,
-pricing (`priceAud` / `priceInr` in the catalog), and the shipping country Stripe
-collects. Australia ships duty-free under the India–Australia ECTA agreement.
+## Architecture
 
-> **India payments note:** Stripe doesn't onboard new Indian merchants. This repo
-> uses Stripe for the demo in both currencies; for a real India launch, add Razorpay
-> as a parallel checkout route (the checkout API is structured to make that swap easy).
+- **Commerce:** Shopify Storefront API (`lib/shopify.js`). Products, prices (AUD),
+  checkout and orders are all Shopify's. The app reads products and creates carts;
+  it never sets a price.
+- **Database (Postgres):** only `WaitlistEntry` + `Review` (`prisma/schema.prisma`).
+  No order data is stored here.
+- **Graceful fallback:** without the Shopify env vars the site still renders from the
+  local catalogue in `lib/catalog.js` as a **read-only preview** (no checkout), so dev
+  and previews work before the store is connected.
 
 ## Local setup
 
 ```bash
 npm install
-cp .env.example .env        # fill in your Stripe TEST keys
-npm run db:push             # creates the SQLite dev database
-npm run db:seed             # optional — a few sample reviews so it looks alive
+cp .env.example .env        # fill in Shopify + a Postgres DATABASE_URL
+npm run db:push             # create the waitlist/review tables
 npm run dev                 # http://localhost:3000
 ```
 
-### Test the payment loop locally
+### Connect Shopify
 
-1. Install the Stripe CLI, then:
-   ```bash
-   stripe listen --forward-to localhost:3000/api/webhook
-   ```
-   Copy the printed `whsec_...` into `.env` as `STRIPE_WEBHOOK_SECRET`.
-2. Buy with Stripe's test card `4242 4242 4242 4242`, any future date, any CVC.
-3. Open `/admin`, sign in with your `ADMIN_TOKEN` — the order is there. Grab the
-   order number, then try `/track` with that number + the email you paid with.
+1. Shopify admin → **Settings → Apps and sales channels → Develop apps → Create app**.
+2. Enable Storefront API scopes: `unauthenticated_read_product_listings`,
+   `unauthenticated_write_checkouts`. Install the app, copy the **Storefront access token**.
+3. Set `SHOPIFY_STORE_DOMAIN` (e.g. `vyomawear.myshopify.com`) and
+   `SHOPIFY_STOREFRONT_TOKEN` in `.env`. The grid, product pages and checkout now go live.
+4. (Optional) Set `SHOPIFY_WEBHOOK_SECRET` and the `TWILIO_*` vars to send WhatsApp/SMS
+   order updates from `orders/create` and `orders/fulfilled` webhooks.
 
-## Deploy (Vercel + Neon/Supabase Postgres)
+## Deploy (Render + Postgres)
 
-SQLite does NOT work on Vercel (serverless filesystem). For production:
+The repo ships a `render.yaml` Blueprint (a web service + a managed Postgres):
 
-1. Create a free Postgres DB at neon.tech (or Supabase).
-2. In `prisma/schema.prisma`, change `provider = "sqlite"` → `"postgresql"`.
-3. Push to GitHub → import to Vercel.
-4. Set env vars in Vercel: `DATABASE_URL`, `STRIPE_SECRET_KEY` (LIVE),
-   `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_DROP_DATE`, `ADMIN_TOKEN`.
-5. Run `npx prisma db push` once against the production DB.
-6. Stripe dashboard → Webhooks → add `https://yourdomain.com/api/webhook` for
-   `checkout.session.completed`; use its signing secret as `STRIPE_WEBHOOK_SECRET`.
-7. Activate your Stripe account before taking live payments.
+1. Push to GitHub → Render → **New → Blueprint** → pick this repo.
+2. Render provisions the Postgres DB and wires `DATABASE_URL` automatically.
+3. Set the remaining env vars in the Render dashboard: `SHOPIFY_STORE_DOMAIN`,
+   `SHOPIFY_STOREFRONT_TOKEN`, `NEXT_PUBLIC_SITE_URL`, `ADMIN_TOKEN`,
+   `NEXT_PUBLIC_DROP_DATE`, and optionally `SHOPIFY_WEBHOOK_SECRET` + `TWILIO_*`.
+4. The build runs `prisma generate && next build`; the pre-deploy step runs
+   `prisma db push` to sync the waitlist/review tables.
 
 ## Security model
 
-- **Prices are server-side.** The browser sends only `slug / colour / size / quantity`;
-  prices come from `lib/catalog.js` and the active region. Never trust a client price.
-- **Orders come only from the verified webhook.** The success page proves nothing.
-- **No card data touches the server** — Stripe hosts the payment page (out of PCI scope).
-- **Order tracking requires order number AND matching email** — one alone reveals nothing.
-- **Admin is token-gated** via header (`lib/auth.js`). Move to real auth (NextAuth)
-  before adding team members.
+- **Prices and orders are Shopify's.** The browser only sends variant ids + quantities;
+  Shopify hosts the payment page (out of PCI scope).
+- **The Circle / reviews** live in your Postgres; reviews are moderated before they show.
+- **Admin is token-gated** via header (`lib/auth.js`). Move to real auth (NextAuth or
+  Shopify customer accounts) before adding team members.
 
 ## Honest gaps (deliberate — add when needed)
 
-- **India payments** — wire up Razorpay for a real India launch (see note above).
-- **Transactional email** — Stripe sends receipts; add Resend/Postmark for branded
-  "being made / shipped" emails.
-- **Tracking sync** — set status + tracking number manually in admin for now.
-- **Inventory caps** — made-to-order needs none; add a cap for a limited drop.
-- **Refunds** — handle from the Stripe dashboard.
+- **India market** — kept dormant in `lib/regions.js`; re-enable (Shopify market for INR
+  + the region toggle) when ready.
+- **Transactional email** — Shopify sends order/shipping emails; add Resend/Postmark for
+  extra branded touches.
+- **Reviews auth** — reviews are open + moderated; tie to verified orders when useful.
 
 *Vyoma — room to grow.*
