@@ -25,7 +25,12 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Stop iOS from auto-inflating text when the phone is rotated to landscape. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   font-family: var(--sans);
@@ -34,6 +39,11 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* No grey flash on tap (we provide our own :focus-visible rings). */
+  -webkit-tap-highlight-color: transparent;
+  /* Guard against stray horizontal scroll on small screens. `clip` (unlike
+     `hidden`) doesn't create a scroll container, so position:sticky still works. */
+  overflow-x: clip;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -936,3 +946,67 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .review-thanks, .waitlist-done { animation: none; }
 }
+
+/* ── Mobile optimisation pass ─────────────────────────────────
+   Cross-cutting fixes for touch / small-screen devices. The layout was
+   already responsive; these address the device-level details that pure
+   breakpoints don't: iOS focus-zoom, the home-indicator safe area, touch
+   target sizing, and tables overflowing the viewport. */
+
+/* 1. Stop iOS Safari zooming the page when a text field is focused — it does
+   that for any input with a computed font-size below 16px. We only bump the
+   size on small screens so the desktop type scale is untouched. */
+@media (max-width: 600px) {
+  .waitlist input,
+  .review-form input,
+  .review-form textarea,
+  .track-form input,
+  .admin-gate input,
+  .circle-check input,
+  input[type="text"], input[type="email"], input[type="search"],
+  input[type="tel"], input[type="number"], input[type="password"],
+  select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* 2. Respect the iOS home-indicator / notch safe area for anything pinned to
+   a screen edge. env() is 0 on devices without insets, so desktop is unaffected. */
+.pdp-sticky { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+.drawer-foot { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+.toast-stack { bottom: calc(26px + env(safe-area-inset-bottom)); }
+.sky-scroll { bottom: calc(22px + env(safe-area-inset-bottom)); }
+.container { padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+@media (min-width: 601px) {
+  .container { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+}
+
+/* 3. Comfortable touch targets (~44px) for the smaller controls, applied only
+   on coarse-pointer devices so mouse-driven layouts keep their tighter sizing. */
+@media (hover: none) and (pointer: coarse) {
+  .cart-btn { min-height: 44px; }
+  .region-btn { min-height: 40px; padding-top: 9px; padding-bottom: 9px; }
+  .size { min-height: 44px; }
+  .qty button { width: 44px; height: 44px; }
+  .qty-mini button { width: 30px; height: 30px; }
+  .colour-dot { width: 34px; height: 34px; }
+  .drawer-close { width: 40px; height: 40px; }
+  .nav-mobile a { padding-top: 16px; padding-bottom: 16px; }
+  .footer-links a { padding: 4px 0; }
+  .link-btn { display: inline-block; padding: 6px 0; }
+}
+
+/* 4. Keep wide tables from forcing the whole page to scroll sideways — let the
+   table itself scroll within its column on small screens. */
+@media (max-width: 600px) {
+  .table, .size-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+}
+
+/* 5. Use dynamic viewport units for the tall lookbook scenes so the mobile
+   browser's collapsing address bar doesn't leave an awkward gap. */
+.lb-scene { min-height: 84vh; min-height: 84dvh; }

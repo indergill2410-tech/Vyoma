@@ -48,6 +48,11 @@ export const metadata = {
 };
 
 export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // viewport-fit=cover is required for env(safe-area-inset-*) to resolve to
+  // real values on notched iPhones — without it the insets are always 0.
+  viewportFit: "cover",
   themeColor: "#14162E",
 };
 
