@@ -1,276 +1,109 @@
 import Link from "next/link";
-import styles from "./Research.module.css";
+import EditorialImage from "@/components/EditorialImage";
+import { abs } from "@/lib/seo";
 
 export const metadata = {
   title: "Research",
   description:
-    "The research behind Vyomawear's natural-fibre activewear standard: synthetic microfibres, PFAS, endocrine-disrupting chemicals and transparent testing.",
+    "The quiet proof behind Vyomawear's material choices: microfibres, PFAS, skin contact and clearer standards.",
+  alternates: { canonical: abs("/research") },
 };
 
 const EVIDENCE = [
   {
     label: "Microfibres",
-    stat: "124-308 mg/kg",
-    title: "Synthetic clothing can shed during washing.",
-    body:
-      "A 2019 Scientific Reports study measured microfiber release from synthetic garments and found that construction, yarn and fibre type all change how much is released.",
-    source: "Scientific Reports, 2019",
+    title: "Synthetic garments can shed.",
+    body: "Published research has measured microfiber release from synthetic garments and found that construction, yarn and fibre type all influence how much is released.",
+    source: "Scientific Reports",
     href: "https://www.nature.com/articles/s41598-019-43023-x",
   },
   {
     label: "PFAS",
-    stat: "Slow to break down",
-    title: "Some performance finishes persist.",
-    body:
-      "The US EPA notes that PFAS have been used in consumer products including stain- and water-resistant clothing, and that many PFAS break down slowly over time.",
-    source: "US EPA, updated 2026",
+    title: "Some finishes are made to last.",
+    body: "Public health agencies note that PFAS have been used in consumer products including stain- and water-resistant clothing, and many break down slowly over time.",
+    source: "US EPA",
     href: "https://www.epa.gov/pfas/our-current-understanding-human-health-and-environmental-risks-pfas",
   },
   {
-    label: "Hormone systems",
-    stat: "Everyday exposure",
-    title: "Chemical classes deserve careful screening.",
-    body:
-      "NIEHS explains that endocrine-disrupting chemicals can be found in everyday products, with exposure possible through air, food, water and skin contact.",
+    label: "Skin contact",
+    title: "The closest layer deserves care.",
+    body: "Everyday chemical exposure can happen through multiple routes, including skin contact. Clothing is not medicine, but material choice can still be considered.",
     source: "NIEHS",
     href: "https://www.niehs.nih.gov/health/topics/agents/endocrine",
   },
 ];
 
-const STANDARD = [
-  {
-    title: "Natural fibre first",
-    body:
-      "Use cotton-led and cotton-modal fabrics where they can meet the performance need, instead of treating petroleum-based synthetics as the default.",
-  },
-  {
-    title: "Transparent testing",
-    body:
-      "Publish batch documentation as certification arrives, and keep the language tied to what has actually been verified.",
-  },
-  {
-    title: "Low-assumption design",
-    body:
-      "Choose fewer finishes, clearer compositions and small-batch production so the material story stays inspectable.",
-  },
-  {
-    title: "No medical theatre",
-    body:
-      "Clothing does not treat or prevent disease. Vyoma is about better material choices, clearer evidence and a calmer daily layer.",
-  },
-];
-
-// Studies & public-agency reading.
-const SOURCES = [
-  {
-    title: "De Falco et al. — microfibre release from clothing, Scientific Reports (2019)",
-    href: "https://www.nature.com/articles/s41598-019-43023-x",
-  },
-  {
-    title: "Napper & Thompson — microfibres from laundering, Marine Pollution Bulletin (2016)",
-    href: "https://www.sciencedirect.com/science/article/abs/pii/S0025326X16307639",
-  },
-  {
-    title: "US EPA: PFAS health and environmental risks",
-    href: "https://www.epa.gov/pfas/our-current-understanding-human-health-and-environmental-risks-pfas",
-  },
-  {
-    title: "ECHA: Per- and polyfluoroalkyl substances (PFAS) restriction",
-    href: "https://echa.europa.eu/hot-topics/perfluoroalkyl-chemicals-pfas",
-  },
-  {
-    title: "NIEHS: Endocrine disruptors",
-    href: "https://www.niehs.nih.gov/health/topics/agents/endocrine",
-  },
-  {
-    title: "NIEHS: Perfluoroalkyl and polyfluoroalkyl substances",
-    href: "https://www.niehs.nih.gov/health/topics/agents/pfc",
-  },
-  {
-    title: "Ellen MacArthur Foundation: A new textiles economy",
-    href: "https://www.ellenmacarthurfoundation.org/a-new-textiles-economy-redesigning-fashions-future",
-  },
-];
-
-// Standards & certifications we measure our material story against.
-const CERTIFICATIONS = [
-  {
-    title: "OEKO-TEX STANDARD 100",
-    body: "Tests textiles for a long list of harmful substances. A target for our fabrics as certificates are issued.",
-    href: "https://www.oeko-tex.com/en/our-standards/oeko-tex-standard-100",
-  },
-  {
-    title: "Global Organic Textile Standard (GOTS)",
-    body: "The leading standard for organic fibres, covering ecological and social criteria across the supply chain.",
-    href: "https://global-standard.org/",
-  },
-  {
-    title: "OEKO-TEX MADE IN GREEN",
-    body: "A traceable label for textiles tested for harmful substances and made in safer, more responsible facilities.",
-    href: "https://www.oeko-tex.com/en/our-standards/made-in-green-by-oeko-tex",
-  },
-  {
-    title: "Textile Exchange: preferred materials",
-    body: "Industry guidance on lower-impact and natural fibres we use to choose what goes into a Vyoma piece.",
-    href: "https://textileexchange.org/",
-  },
+const PRINCIPLES = [
+  "Keep claims tied to what can be shown.",
+  "Choose softer natural fibres where they can meet the use case.",
+  "Publish batch documents when real certificates are ready.",
+  "Let the product feel beautiful before the proof needs to speak.",
 ];
 
 export default function ResearchPage() {
   return (
-    <main className={styles.research}>
-      <section className={styles.hero}>
-        <div className={styles.shell}>
-          <div className={styles.heroGrid}>
-            <div>
-              <p className={styles.eyebrow}>Vyoma Research</p>
-              <h1>Why the closest layer deserves evidence.</h1>
-              <p className={styles.lead}>
-                Synthetic activewear works. It also comes with material questions
-                that are easy to miss at checkout: microfiber release, chemical
-                finishes and long daily skin contact. Vyoma takes a practical
-                position - reduce avoidable synthetic contact, test what we can,
-                and explain the evidence plainly.
-              </p>
-              <div className={styles.actions}>
-                <Link href="/#shop" className={styles.primaryCta}>
-                  Shop the collection
-                </Link>
-                <Link href="/fabric" className={styles.secondaryCta}>
-                  Read the fabric story
-                </Link>
-              </div>
+    <main className="commerce-page research-page-redesign">
+      <section className="commerce-hero research-hero-redesign">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">The quiet proof</p>
+            <h1>The research stays behind the feeling.</h1>
+            <p className="commerce-lead">
+              Vyoma should not sound clinical on the surface. This page is for customers who want
+              to know why we care about less plastic, clearer finishes and softer close-to-skin layers.
+            </p>
+            <div className="commerce-actions">
+              <Link href="/fabric" className="btn accent">Back to the fabric promise</Link>
+              <Link href="/shop" className="btn ghost">Shop the first drop</Link>
             </div>
-
-            <aside className={styles.proofPanel} aria-label="Research summary">
-              <span>Evidence model</span>
-              <strong>Reduce. Test. Publish.</strong>
-              <p>
-                A precautionary standard for activewear worn warm, tight and
-                close to skin.
-              </p>
-            </aside>
           </div>
+          <EditorialImage
+            name="fabricMacro"
+            alt="Natural fibre detail with a quiet evidence-led material mood"
+            className="research-ledger"
+            priority
+          />
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="evidence-heading">
-        <div className={styles.shell}>
-          <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>The evidence map</p>
-            <h2 id="evidence-heading">Three material issues shape our standard.</h2>
+      <section className="commerce-section commerce-section-tight" aria-labelledby="evidence-heading">
+        <div className="commerce-shell">
+          <div className="commerce-section-head">
+            <p className="commerce-eyebrow">Material questions</p>
+            <h2 id="evidence-heading">The points that shaped the Vyoma standard.</h2>
             <p>
-              This is not fear-based marketing. It is the reason we are building
-              activewear with a higher burden of proof.
+              This is not fear-based marketing. It is the reading trail behind a softer,
+              simpler material choice.
             </p>
           </div>
-
-          <div className={styles.evidenceGrid}>
+          <div className="commerce-card-grid three evidence-cards">
             {EVIDENCE.map((item) => (
-              <article className={styles.evidenceCard} key={item.title}>
-                <p className={styles.cardLabel}>{item.label}</p>
-                <strong>{item.stat}</strong>
+              <article className="commerce-card evidence-card" key={item.title}>
+                <span>{item.label}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
-                <a href={item.href} target="_blank" rel="noopener noreferrer">
-                  {item.source}
-                </a>
+                <a href={item.href} target="_blank" rel="noopener noreferrer">{item.source}</a>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.standard} aria-labelledby="standard-heading">
-        <div className={styles.shell}>
-          <div className={styles.standardGrid}>
-            <div className={styles.stickyIntro}>
-              <p className={styles.eyebrow}>The Vyoma USP model</p>
-              <h2 id="standard-heading">A cleaner material story people can inspect.</h2>
-              <p>
-                The USP is not simply "organic activewear." It is a visible
-                system: natural fibre first, source-led manufacturing, small
-                batches and batch-level proof.
-              </p>
-            </div>
-
-            <div className={styles.standardList}>
-              {STANDARD.map((item, index) => (
-                <article className={styles.standardItem} key={item.title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section} aria-labelledby="certs-heading">
-        <div className={styles.shell}>
-          <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Standards &amp; certifications</p>
-            <h2 id="certs-heading">The benchmarks we hold our materials to.</h2>
+      <section className="commerce-section research-standard-band" aria-labelledby="principles-heading">
+        <div className="commerce-shell two-column-section">
+          <div className="sticky-copy">
+            <p className="commerce-eyebrow">How we use it</p>
+            <h2 id="principles-heading">Evidence should make the brand calmer, not louder.</h2>
             <p>
-              These are the independent standards and bodies we use to choose
-              fibres and verify what we make — published here so you can read them
-              yourself.
+              The customer should feel softness first. The proof is there to build confidence,
+              especially around claims that could otherwise become vague or exaggerated.
             </p>
           </div>
-
-          <div className={styles.evidenceGrid}>
-            {CERTIFICATIONS.map((cert) => (
-              <article className={styles.evidenceCard} key={cert.title}>
-                <h3>{cert.title}</h3>
-                <p>{cert.body}</p>
-                <a href={cert.href} target="_blank" rel="noopener noreferrer">
-                  Learn more
-                </a>
-              </article>
+          <ul className="principle-list">
+            {PRINCIPLES.map((item, index) => (
+              <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section} aria-labelledby="sources-heading">
-        <div className={styles.shell}>
-          <div className={styles.sourcesPanel}>
-            <div>
-              <p className={styles.eyebrow}>Sources</p>
-              <h2 id="sources-heading">The reading behind this page.</h2>
-              <p>
-                We will keep expanding this page as supplier testing, batch
-                certificates and product-specific documents are ready to publish.
-              </p>
-            </div>
-            <ul>
-              {SOURCES.map((source) => (
-                <li key={source.href}>
-                  <a href={source.href} target="_blank" rel="noopener noreferrer">
-                    {source.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.closing} aria-labelledby="closing-heading">
-        <div className={styles.shell}>
-          <p className={styles.eyebrow}>The simple choice</p>
-          <h2 id="closing-heading">Less mystery in the layer you wear all day.</h2>
-          <div className={styles.actions}>
-            <Link href="/#shop" className={styles.inverseCta}>
-              Shop Vyoma
-            </Link>
-            <Link href="/circle" className={styles.lightCta}>
-              Join The Circle
-            </Link>
-          </div>
+          </ul>
         </div>
       </section>
     </main>

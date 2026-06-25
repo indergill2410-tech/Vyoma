@@ -1,86 +1,86 @@
 import Link from "next/link";
-import Waitlist from "@/components/Waitlist";
+import EditorialImage from "@/components/EditorialImage";
+import { abs } from "@/lib/seo";
 
 export const metadata = {
   title: "Our story",
   description:
     "Vyoma means sky. Natural-fibre activewear with a yoga soul, made in India — considered, never wasted.",
+  alternates: { canonical: abs("/about") },
 };
+
+const STORY_PILLARS = [
+  {
+    title: "The name",
+    body: "Vyoma means sky, ether and the space that holds everything. The clothes should feel like that: room, breath, ease.",
+  },
+  {
+    title: "The origin",
+    body: "Yoga was born in India. Vyoma is made there too, close to textile craft and the story that inspired the brand.",
+  },
+  {
+    title: "The standard",
+    body: "Softer natural fibres, fewer unknowns and claims that stay close to what can be verified.",
+  },
+];
 
 export default function About() {
   return (
-    <main className="article-page">
-      <section className="section" style={{ paddingBottom: 36 }}>
-        <div className="container prose article">
-          <span className="section-eyebrow">Our story</span>
-          <h1 className="article-h1">Vyoma means sky.</h1>
-          <p className="pron">
-            व्योम · vee-OH-ma · Sanskrit for sky, ether, the infinite space that holds everything.
-          </p>
-          <p style={{ marginTop: 22 }}>
-            Yoga was born in India. So is everything we make. That&apos;s not a line we
-            borrowed — it&apos;s where our hands actually are, alongside artisans who have
-            shaped beautiful cloth for generations.
-          </p>
-          <p>
-            We make with care, not in haste — each piece considered, never mass-produced.
-            A fair trade, we think, for something made to be loved, and to last.
-          </p>
+    <main className="commerce-page about-redesign">
+      <section className="commerce-hero about-hero">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">Our story</p>
+            <h1>Vyoma means sky.</h1>
+            <p className="commerce-lead">
+              व्योम · vee-OH-ma · the room to breathe that a practice gives back to you.
+              We make activewear in India with softer materials and a clearer conscience.
+            </p>
+            <div className="commerce-actions">
+              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/making" className="btn ghost">See the making</Link>
+            </div>
+          </div>
+          <EditorialImage
+            name="makingAtelier"
+            alt="Natural fabric being prepared in a warm atelier setting"
+            className="about-wordmark"
+            priority
+          />
         </div>
       </section>
 
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="container">
-          <div className="pillars">
-            <div className="pillar" data-reveal>
-              <span className="glyph">॥</span>
-              <h3>From the birthplace of yoga</h3>
-              <p>Crafted in yoga&apos;s homeland by artisans who have practised the craft for generations.</p>
-            </div>
-            <div className="pillar" data-reveal>
-              <span className="glyph">✦</span>
-              <h3>A cleaner layer</h3>
-              <p>Natural fibre first, not plastic. We tell you exactly what&apos;s in the fabric — and only ever say what we can prove.</p>
-            </div>
-            <div className="pillar" data-reveal>
-              <span className="glyph">◯</span>
-              <h3>Made to last</h3>
-              <p>Considered, never mass-produced. Beautiful and responsible were never a trade-off.</p>
-            </div>
+      <section className="commerce-section commerce-section-tight">
+        <div className="commerce-shell">
+          <div className="commerce-card-grid three">
+            {STORY_PILLARS.map((pillar) => (
+              <article className="commerce-card" key={pillar.title}>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container prose article">
-          <span className="section-eyebrow">Our name</span>
-          <h2>व्योम — the sky that holds everything.</h2>
-          <p>
-            Vyoma is Sanskrit for sky, ether, infinite space — the room to breathe that
-            a practice gives you. We carry that name with pride: made in India, rooted in
-            the tradition that gave the world yoga, and built to move with you for years.
-          </p>
-
-          <h2>A cleaner layer.</h2>
-          <p>
-            Most activewear is plastic — polyester, nylon and elastane. We begin the other
-            way: natural fibre first, nothing synthetic against your skin unless it has to
-            be there. The layer closest to you should be the cleanest — which is why we made{" "}
-            Vyoma Pure (for <Link href="/product/vyoma-pure-brief-women">women</Link> and{" "}
-            <Link href="/product/vyoma-pure-trunk-men">men</Link>), our natural-cotton everyday basics.
-          </p>
-          <p className="cite-note">
-            We don&apos;t make medical claims. No item of clothing treats, cures or prevents
-            any condition. What we can tell you is exactly what our fabric is made of — and
-            let you decide what you want against your skin all day.
-          </p>
-
-          <div className="btn-row">
-            <Waitlist source="about" />
+      <section className="commerce-section story-manifesto" aria-labelledby="manifesto-heading">
+        <div className="commerce-shell two-column-section">
+          <div className="sticky-copy">
+            <p className="commerce-eyebrow">Why it exists</p>
+            <h2 id="manifesto-heading">The body knows when a layer is kind.</h2>
           </div>
-          <p style={{ marginTop: 28 }}>
-            <Link href="/#shop" className="btn">Shop the collection</Link>
-          </p>
+          <div className="story-copy-block">
+            <p>
+              Most activewear asks you to accept plastic-heavy stretch as the default.
+              Vyoma begins somewhere softer: with the feeling of cotton-led fibres, the discipline
+              of small batches and the belief that what touches your skin should be easier to trust.
+            </p>
+            <p>
+              We are not building a brand to shout. We are building one that can sit quietly in a drawer,
+              be reached for every week and still feel beautiful years from now.
+            </p>
+            <Link href="/fabric" className="btn ghost">Read the fabric promise</Link>
+          </div>
         </div>
       </section>
     </main>

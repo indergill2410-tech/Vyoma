@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" role="img" aria-label="Premium activewear still life in soft dusk light">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#171b39"/><stop offset="0.45" stop-color="#4d557d"/><stop offset="1" stop-color="#e7c2a4"/></linearGradient>
+    <linearGradient id="mat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f1e6"/><stop offset="1" stop-color="#cdd4de"/></linearGradient>
+    <linearGradient id="indigo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#111632"/><stop offset="1" stop-color="#2f3558"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency="0.75" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.13"/></feComponentTransfer></filter>
+    <pattern id="rib" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><rect width="2" height="18" fill="#fff" opacity="0.18"/></pattern>
+  </defs>
+  <rect width="1100" height="900" fill="url(#bg)"/>
+  <rect width="1100" height="900" filter="url(#grain)" opacity="0.35"/>
+  <circle cx="918" cy="144" r="120" fill="#fff0c4" opacity="0.25"/>
+  <rect x="154" y="150" width="792" height="582" rx="20" fill="url(#mat)" opacity="0.74"/>
+  <rect x="154" y="150" width="792" height="582" rx="20" fill="url(#rib)"/>
+  <path d="M322 272h236c45 0 72 32 68 76l-16 191c-4 44-37 76-81 76H276c-45 0-72-32-68-76l16-191c4-44 53-76 98-76Z" fill="url(#indigo)"/>
+  <path d="M608 328c84 11 152 74 152 154 0 78-64 135-151 135h-95c-32 0-52-27-45-58l35-160c10-47 55-78 104-71Z" fill="#d39a8f" opacity="0.93"/>
+  <rect x="650" y="624" width="164" height="42" rx="21" fill="#10142e" opacity="0.9"/>
+  <rect x="276" y="664" width="356" height="34" rx="17" fill="#f6eadb" opacity="0.82"/>
+  <path d="M202 804c226-70 528-74 756-8" fill="none" stroke="#f4dec0" stroke-width="34" opacity="0.38"/>
+</svg>

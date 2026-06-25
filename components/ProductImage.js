@@ -1,18 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { swatchStyle, COLOURWAYS } from "@/lib/catalog";
 
 // A product photo that gracefully falls back to the generated colourway swatch
 // if the image is missing (e.g. before scripts/generate-images.mjs has run).
-// Always renders inside a positioned, aspect-ratio'd parent (uses `fill`).
+// Always renders inside a positioned, aspect-ratio'd parent.
 export default function ProductImage({
   src,
   alt,
   colour,
-  sizes = "100vw",
-  priority = false,
   mark = false,
   className = "",
 }) {
@@ -36,14 +33,15 @@ export default function ProductImage({
   }
 
   return (
-    <Image
+    // Local product photos live in /public/products. Render them directly so
+    // deployment image optimization cannot hide committed assets behind fallbacks.
+    <img
       src={src}
       alt={alt}
-      fill
-      sizes={sizes}
-      priority={priority}
       className={`product-img ${className}`}
       onError={() => setFailed(true)}
+      loading="lazy"
+      decoding="async"
     />
   );
 }

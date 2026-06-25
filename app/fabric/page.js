@@ -1,91 +1,99 @@
 import Link from "next/link";
+import EditorialImage from "@/components/EditorialImage";
+import { abs } from "@/lib/seo";
 
 export const metadata = {
   title: "Fabric",
   description:
-    "Why we build yoga wear and underwear from natural, plant-grown fibre — and what independent research says about synthetic activewear.",
+    "The Vyoma fabric promise: soft natural fibres, fewer unknowns and clearer material standards.",
+  alternates: { canonical: abs("/fabric") },
 };
+
+const MATERIALS = [
+  {
+    title: "Natural fibre first",
+    body: "Cotton-led knits and cotton-modal jerseys chosen for softness, breathability and daily wear.",
+  },
+  {
+    title: "Fewer unknowns",
+    body: "Simpler compositions, fewer finish promises and clearer batch language as documentation arrives.",
+  },
+  {
+    title: "No overclaiming",
+    body: "We do not make medical claims. We explain what the garment is, what it avoids and what is verified.",
+  },
+];
+
+const AVOIDS = ["Polyester as the default", "Nylon-heavy close layers", "Elastane-first storytelling", "Vague wellness claims"];
 
 export default function FabricPage() {
   return (
-    <main className="article-page">
-      <section className="section" style={{ paddingBottom: 24 }}>
-        <div className="container prose">
-          <span className="section-eyebrow">Fabric</span>
-          <h1 className="article-h1">A field, or a refinery.</h1>
-          <p className="lede">
-            Every fabric on earth begins in one of two places. Polyester, nylon and
-            elastane are plastics — made from oil and finished with industrial
-            chemicals. Ours begins the other way: cotton grown in living soil. Here&apos;s
-            the research behind why that matters.
-          </p>
+    <main className="commerce-page fabric-page">
+      <section className="commerce-hero fabric-hero">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">Fabric promise</p>
+            <h1>Less mystery in the layer closest to you.</h1>
+            <p className="commerce-lead">
+              Vyoma begins with how fabric feels on warm, moving skin: soft, breathable,
+              clear and considered. The science sits behind the choice; the feeling comes first.
+            </p>
+            <div className="commerce-actions">
+              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/research" className="btn ghost">Read the sources</Link>
+            </div>
+          </div>
+          <EditorialImage
+            name="fabricMacro"
+            alt="Close-up natural fibre weave in soft studio light"
+            className="fabric-sample"
+            priority
+          />
         </div>
       </section>
 
-      <section className="section" style={{ background: "#fff", paddingTop: 40 }}>
-        <div className="container prose article">
-          <h2>What independent testing found</h2>
-          <p>
-            The Center for Environmental Health (CEH), a US non-profit, lab-tested
-            activewear from major brands and reported BPA in some sports bras and tops
-            at many times the limit California considers safe — and issued legal
-            notices to a long list of well-known labels. BPA is a widely studied
-            endocrine-disrupting chemical that can mimic estrogen and interfere with
-            the body&apos;s hormonal signalling.
-          </p>
-          <p className="cite-note">
-            Sources: Center for Environmental Health testing &amp; press releases
-            (2022–2023); CNN Business reporting, May 2023.
-          </p>
-
-          <h2>Why activewear is a special case</h2>
-          <p>
-            Two things set tight, synthetic activewear apart from a loose cotton shirt.
-            Absorption: BPA and phthalates can pass through skin, and warm, damp,
-            high-friction conditions — exactly what exercise creates — can increase how
-            much migrates from fabric to skin. And contact time: leggings, bras and
-            underwear sit tight against the body, often over the most sensitive areas,
-            for many hours a day.
-          </p>
-
-          <h2>Our standard</h2>
-          <p>
-            We build to a simple standard: a natural, plant-grown cotton body, with the
-            smallest possible amount of stretch only where a garment genuinely needs it
-            (like a waistband). Our standard is to exclude the chemicals below —
-            verified by independent testing, with certificates published here as each
-            batch is issued.
-          </p>
-          <div className="chem">
-            <div className="chem-row"><strong>BPA</strong><span>A well-studied endocrine disruptor used in some synthetic textiles.</span></div>
-            <div className="chem-row"><strong>Phthalates</strong><span>Plasticisers used to soften synthetics and in printed graphics.</span></div>
-            <div className="chem-row"><strong>PFAS</strong><span>&ldquo;Forever chemicals&rdquo; used for stain- and water-resistance.</span></div>
-            <div className="chem-row"><strong>Formaldehyde finishes</strong><span>Used to make fabrics wrinkle-resistant; a known irritant.</span></div>
+      <section className="commerce-section commerce-section-tight">
+        <div className="commerce-shell">
+          <div className="commerce-card-grid three">
+            {MATERIALS.map((item) => (
+              <article className="commerce-card" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="honest-box">
-            <h3>What we are — and aren&apos;t — saying</h3>
+      <section className="commerce-section fabric-compare-band" aria-labelledby="fabric-choice-heading">
+        <div className="commerce-shell two-column-section">
+          <div className="sticky-copy">
+            <p className="commerce-eyebrow">The choice</p>
+            <h2 id="fabric-choice-heading">Activewear does not have to start with plastic.</h2>
             <p>
-              We are not making a medical claim. No item of clothing treats, cures or
-              prevents any disease, and we will never tell you otherwise. What we can
-              tell you is what our fabric is made of and what it&apos;s tested to be free of
-              — and let you decide what you want against your skin all day. Reducing
-              avoidable, everyday exposure is a reasonable thing to want. That&apos;s the
-              whole idea behind Vyomawear.
+              Some synthetics perform beautifully. But for tight, warm, close-to-skin layers,
+              we believe a softer natural-fibre path deserves to exist.
             </p>
           </div>
-
-          <h2>Certificates</h2>
-          <p className="muted">
-            Certificates, not promises. As our fabric is certified — GOTS for organic
-            fibre, OEKO-TEX Standard 100 for the finished blend — we&apos;ll publish each one
-            here, batch by batch. Until then, we only say what we can prove. Made in India.
-          </p>
-
-          <div className="btn-row">
-            <Link href="/#shop" className="btn">Shop the collection</Link>
-            <Link href="/pure" className="btn ghost">Meet Vyoma Pure</Link>
+          <div className="avoid-panel">
+            <h3>Designed away from</h3>
+            <ul>
+              {AVOIDS.map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="commerce-section section-light" aria-labelledby="cert-heading">
+        <div className="commerce-shell confidence-grid">
+          <div>
+            <p className="commerce-eyebrow">Standards</p>
+            <h2 id="cert-heading">Certificates, not costume jewellery.</h2>
+          </div>
+          <p>
+            As GOTS, OEKO-TEX or product-specific batch documentation is issued, it should live here
+            plainly. Until then, Vyoma should only claim what can be proven.
+          </p>
         </div>
       </section>
     </main>

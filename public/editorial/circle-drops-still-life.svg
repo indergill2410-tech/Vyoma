@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" role="img" aria-label="Founder drop invitation still life with fabric swatches">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14162e"/><stop offset="0.5" stop-color="#454d77"/><stop offset="1" stop-color="#f0d3ad"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8ec"/><stop offset="1" stop-color="#dfe4eb"/></linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c98a22"/><stop offset="1" stop-color="#f0bd58"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency="0.78" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.14"/></feComponentTransfer></filter>
+    <pattern id="lines" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(34)"><rect width="2" height="22" fill="#10142e" opacity="0.08"/></pattern>
+  </defs>
+  <rect width="1100" height="900" fill="url(#bg)"/>
+  <rect width="1100" height="900" filter="url(#grain)" opacity="0.36"/>
+  <circle cx="905" cy="152" r="92" fill="#fff1c9" opacity="0.26"/>
+  <rect x="210" y="205" width="520" height="384" rx="18" fill="url(#card)" transform="rotate(-6 210 205)"/>
+  <rect x="210" y="205" width="520" height="384" rx="18" fill="url(#lines)" transform="rotate(-6 210 205)"/>
+  <rect x="374" y="148" width="118" height="536" rx="59" fill="url(#ribbon)" transform="rotate(18 374 148)" opacity="0.96"/>
+  <rect x="608" y="338" width="270" height="326" rx="18" fill="#111632" opacity="0.92"/>
+  <rect x="642" y="374" width="202" height="34" rx="17" fill="#d1998f" opacity="0.9"/>
+  <rect x="642" y="430" width="172" height="24" rx="12" fill="#f7f1e7" opacity="0.7"/>
+  <rect x="642" y="488" width="198" height="102" rx="12" fill="#e7e3da" opacity="0.82"/>
+  <path d="M132 752c246-78 632-78 840 0" fill="none" stroke="#f1d6b0" stroke-width="34" opacity="0.34"/>
+</svg>

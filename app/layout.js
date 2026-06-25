@@ -1,4 +1,6 @@
 import "./globals.css";
+import "./conversion.css";
+import "./editorial.css";
 import Link from "next/link";
 import { Providers } from "@/components/Providers";
 import Nav from "@/components/Nav";
@@ -6,6 +8,7 @@ import AnnounceBar from "@/components/AnnounceBar";
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
+import SkyAtmosphere from "@/components/SkyAtmosphere";
 import { abs, SITE_URL, BRAND } from "@/lib/seo";
 
 export const metadata = {
@@ -97,6 +100,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
+        <SkyAtmosphere />
         <Providers>
           <AnnounceBar />
           <Nav />
@@ -108,9 +112,10 @@ export default function RootLayout({ children }) {
                 <p className="muted small">Vyoma (vee-OH-ma) — Sanskrit for sky, ether, infinite space.</p>
               </div>
               <div className="footer-links">
-                <Link href="/#shop">Shop</Link>
+                <Link href="/shop">Shop</Link>
                 <Link href="/pure">Vyoma Pure</Link>
                 <Link href="/fabric">Fabric</Link>
+                <Link href="/research">Research</Link>
                 <Link href="/drops">The Drops</Link>
                 <Link href="/circle">The Circle</Link>
                 <Link href="/sky-series">The Sky Series</Link>

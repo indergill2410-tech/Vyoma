@@ -2,63 +2,91 @@ import Link from "next/link";
 import Waitlist from "@/components/Waitlist";
 import WaitlistCount from "@/components/WaitlistCount";
 import CircleStatusCheck from "@/components/CircleStatusCheck";
+import EditorialImage from "@/components/EditorialImage";
 import { TIERS } from "@/lib/circle-config";
 import { abs } from "@/lib/seo";
 
 export const metadata = {
-  title: "The Circle — join the founders",
+  title: "The Circle",
   description:
-    "The Circle is the founding list for Vyoma. Join before the first drop, bring your friends, and rise from early access to a numbered Founding-Member gift. Yoga wear, made where yoga was born.",
+    "Join The Circle for Vyomawear restock notes, first access to small drops and founder perks.",
   alternates: { canonical: abs("/circle") },
-  openGraph: {
-    type: "website",
-    url: abs("/circle"),
-    title: "The Circle — join the founders · Vyomawear",
-    description:
-      "Join the founding list, bring your friends, and rise from early access to a numbered Founding-Member gift.",
-  },
 };
+
+const BENEFITS = [
+  {
+    title: "Restocks first",
+    body: "Hear when a size, colour or first-drop piece returns before the wider list does.",
+  },
+  {
+    title: "Founder perks",
+    body: "Bring friends, move up the line and unlock small thank-you moments as the brand grows.",
+  },
+  {
+    title: "Quiet notes",
+    body: "No noisy marketing cycle. Just considered release notes, material updates and useful timing.",
+  },
+];
 
 export default function CirclePage() {
   return (
-    <main className="circle-page">
-      <section className="circle-hero">
-        <div className="container narrow">
-          <span className="drop-label">✦ The Circle ✦</span>
-          <h1>Be one of the founders.</h1>
-          <p className="lead">
-            Vyoma launches with a small first drop. The Circle is how the first few
-            thousand people get in — early, together, and rewarded for bringing the
-            ones they practise with. No paid ads. Just the list, growing itself.
-          </p>
-          <WaitlistCount className="big" />
-          <div className="circle-join">
+    <main className="commerce-page circle-redesign">
+      <section className="commerce-hero circle-hero-redesign">
+        <div className="commerce-shell commerce-hero-grid">
+          <div className="commerce-copy">
+            <p className="commerce-eyebrow">The Circle</p>
+            <h1>The store is open. The Circle hears first.</h1>
+            <p className="commerce-lead">
+              Join for restock notes, early access to small drops and founder perks. It is not a hard sell;
+              it is the quiet line for people building the brand from the beginning.
+            </p>
+            <WaitlistCount className="big" />
             <Waitlist source="circle" />
+            <p className="muted small">No spam. Leave whenever you like.</p>
           </div>
-          <p className="muted small">No spam, ever. Leave whenever you like.</p>
+          <EditorialImage
+            name="circleDrops"
+            alt="Founder drop invitation and fabric swatches in warm dusk light"
+            className="circle-proof-orbit"
+            priority
+          />
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="section-head" data-reveal>
-            <span className="section-eyebrow">How it rises</span>
-            <h2>Bring your circle. Climb the ladder.</h2>
-            <p>
-              Every friend who joins on your link moves you ten places up the line —
-              and up this ladder of Founding-Member perks. The earlier and the more
-              you share, the more you keep.
-            </p>
+      <section className="commerce-section commerce-section-tight">
+        <div className="commerce-shell">
+          <div className="commerce-card-grid three">
+            {BENEFITS.map((benefit) => (
+              <article className="commerce-card" key={benefit.title}>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.body}</p>
+              </article>
+            ))}
           </div>
-          <ol className="circle-ladder big">
-            {TIERS.map((t) => (
-              <li key={t.key} data-reveal>
-                <span className="ladder-mark">{t.at === 0 ? "✦" : t.at}</span>
+        </div>
+      </section>
+
+      <section className="commerce-section circle-ladder-section" aria-labelledby="circle-ladder-heading">
+        <div className="commerce-shell two-column-section">
+          <div className="sticky-copy">
+            <p className="commerce-eyebrow">How it rises</p>
+            <h2 id="circle-ladder-heading">Share the brand. Unlock the ladder.</h2>
+            <p>
+              Every friend who joins through your link moves you up and unlocks the next founder perk.
+              The goal is simple: grow through people who actually care about the clothes.
+            </p>
+            <Link href="/shop" className="btn ghost">Shop while you wait</Link>
+          </div>
+
+          <ol className="circle-ladder big redesigned">
+            {TIERS.map((tier) => (
+              <li key={tier.key}>
+                <span className="ladder-mark">{tier.at === 0 ? "✦" : tier.at}</span>
                 <span className="ladder-body">
-                  <strong>{t.label}</strong>
-                  <span className="ladder-perk">{t.perk}</span>
+                  <strong>{tier.label}</strong>
+                  <span className="ladder-perk">{tier.perk}</span>
                   <span className="ladder-req">
-                    {t.at === 0 ? "The moment you join" : `${t.at} ${t.at === 1 ? "friend" : "friends"} joined`}
+                    {tier.at === 0 ? "The moment you join" : `${tier.at} ${tier.at === 1 ? "friend" : "friends"} joined`}
                   </span>
                 </span>
               </li>
@@ -67,17 +95,14 @@ export default function CirclePage() {
         </div>
       </section>
 
-      <section className="section section-light">
-        <div className="container narrow">
-          <div className="section-head" data-reveal>
-            <span className="section-eyebrow">Already in?</span>
-            <h2>Check your place in line.</h2>
-            <p>Enter your code (starts with SKY-) to see your rank, your referrals, and what's next.</p>
+      <section className="commerce-section section-light" aria-labelledby="circle-status-heading">
+        <div className="commerce-shell narrow-shell">
+          <div className="commerce-section-head">
+            <p className="commerce-eyebrow">Already in?</p>
+            <h2 id="circle-status-heading">Check your place in line.</h2>
+            <p>Enter your Circle code to see your rank, referrals and next unlock.</p>
           </div>
           <CircleStatusCheck />
-          <p className="muted small center" style={{ marginTop: 18 }}>
-            <Link href="/drops" className="link-btn">See the drops calendar →</Link>
-          </p>
         </div>
       </section>
     </main>

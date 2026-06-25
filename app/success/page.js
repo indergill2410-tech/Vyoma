@@ -1,22 +1,30 @@
 import Link from "next/link";
 import CartClearer from "@/components/CartClearer";
+import EditorialImage from "@/components/EditorialImage";
 
 export const metadata = { title: "Order confirmed" };
 
 export default function Success() {
   return (
-    <main className="center-page">
+    <main className="commerce-page success-page">
       <CartClearer />
-      <span className="dev">व्योम</span>
-      <h1>Yours is on its way to being made.</h1>
-      <p>
-        It&apos;s official — a receipt and order details are heading to your inbox.
-        Your piece is now being crafted in India, and we&apos;ll email you tracking
-        the moment it ships. Thank you for choosing something made with care.
-      </p>
-      <p style={{ marginTop: 28, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-        <Link href="/#shop" className="btn">Keep browsing</Link>
-      </p>
+      <section className="success-confirmation">
+        <EditorialImage
+          name="fitPackaging"
+          alt="Vyoma packaging and order cards ready for delivery"
+          className="empty-bag-image"
+        />
+        <span className="commerce-motif">व्योम</span>
+        <p className="commerce-eyebrow">Order confirmed</p>
+        <h1>Your piece is on its way to becoming yours.</h1>
+        <p>
+          Your confirmation and order details are heading to your inbox. The order-status link in
+          that email is the easiest way to follow your piece from preparation to tracked delivery.
+        </p>
+        <div className="commerce-actions center-actions">
+          <Link href="/shop" className="btn accent">Keep browsing</Link>
+        </div>
+      </section>
     </main>
   );
 }

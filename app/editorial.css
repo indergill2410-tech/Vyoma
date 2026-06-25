@@ -1,0 +1,544 @@
+:root {
+  --site-sky: 0;
+}
+
+.site-sky-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.18;
+  contain: paint;
+}
+
+.site-sky-atmosphere::before,
+.site-sky-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  will-change: opacity;
+}
+
+.site-sky-atmosphere::before {
+  background:
+    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, 0.26) 0%, transparent 60%),
+    radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, 0.2) 0%, transparent 58%),
+    radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, 0.12) 0%, transparent 60%);
+  opacity: calc(1 - var(--site-sky));
+}
+
+.site-sky-atmosphere::after {
+  background:
+    radial-gradient(90% 70% at 18% 12%, rgba(17, 22, 47, 0) 0%, transparent 60%),
+    radial-gradient(90% 70% at 84% 20%, rgba(217, 154, 43, 0.42) 0%, transparent 58%),
+    radial-gradient(85% 72% at 50% 94%, rgba(209, 153, 143, 0.36) 0%, transparent 60%);
+  opacity: var(--site-sky);
+}
+
+.announce,
+main,
+.site-footer,
+.drawer,
+.cart-drawer,
+.toast-stack,
+.fly-star {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-image {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.editorial-image-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.editorial-photo-scene {
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background:
+    radial-gradient(88% 76% at 84% 10%, rgba(239, 213, 184, 0.45), transparent 54%),
+    radial-gradient(76% 72% at 12% 92%, rgba(17, 22, 47, 0.5), transparent 64%),
+    linear-gradient(135deg, rgba(17, 22, 47, 0.92), rgba(101, 86, 118, 0.74) 54%, rgba(239, 213, 184, 0.74));
+}
+
+.editorial-photo-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 82% 14%, rgba(255, 244, 218, 0.18), transparent 62%),
+    linear-gradient(180deg, rgba(17, 22, 47, 0.2), rgba(17, 22, 47, 0.04) 44%, rgba(239, 213, 184, 0.12));
+  mix-blend-mode: screen;
+}
+
+.editorial-photo-scene::after {
+  z-index: 3;
+}
+
+.editorial-photo-glow {
+  position: absolute;
+  inset: -16%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(44% 34% at 22% 18%, rgba(217, 154, 43, 0.32), transparent 68%),
+    radial-gradient(46% 42% at 82% 84%, rgba(16, 20, 46, 0.34), transparent 70%);
+}
+
+.editorial-photo-collage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.editorial-photo-tile {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(248, 245, 239, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 70px rgba(8, 12, 28, 0.24);
+}
+
+.editorial-photo-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(16, 20, 46, 0.03), rgba(16, 20, 46, 0.16));
+}
+
+.editorial-photo-img {
+  object-fit: cover;
+  transform: scale(1.01);
+}
+
+.editorial-photo-tile--primary {
+  inset: 8% 10% 8% 34%;
+}
+
+.editorial-photo-tile--secondary {
+  inset: 12% 52% 42% 8%;
+}
+
+.editorial-photo-tile--accent {
+  inset: 54% 50% 10% 12%;
+}
+
+.editorial-photo-tile--detail {
+  inset: 32% 6% 44% 66%;
+}
+
+.editorial-photo-scene--home .editorial-photo-tile--primary {
+  inset: 6% 8% 6% 32%;
+}
+
+.editorial-photo-scene--home .editorial-photo-tile--secondary {
+  inset: 12% 58% 40% 7%;
+}
+
+.editorial-photo-scene--home .editorial-photo-tile--accent {
+  inset: 58% 52% 8% 10%;
+}
+
+.editorial-photo-scene--shop .editorial-photo-tile--primary,
+.editorial-photo-scene--sky .editorial-photo-tile--primary {
+  inset: 8% 8% 10% 42%;
+}
+
+.editorial-photo-scene--shop .editorial-photo-tile--secondary,
+.editorial-photo-scene--sky .editorial-photo-tile--secondary {
+  inset: 10% 54% 48% 8%;
+}
+
+.editorial-photo-scene--shop .editorial-photo-tile--accent,
+.editorial-photo-scene--sky .editorial-photo-tile--accent {
+  inset: 48% 58% 8% 8%;
+}
+
+.editorial-photo-scene--fabric .editorial-photo-tile--primary,
+.editorial-photo-scene--pure .editorial-photo-tile--primary {
+  inset: 6% 38% 8% 8%;
+}
+
+.editorial-photo-scene--fabric .editorial-photo-tile--secondary,
+.editorial-photo-scene--pure .editorial-photo-tile--secondary {
+  inset: 12% 8% 48% 58%;
+}
+
+.editorial-photo-scene--fabric .editorial-photo-tile--accent,
+.editorial-photo-scene--pure .editorial-photo-tile--accent {
+  inset: 56% 8% 8% 54%;
+}
+
+.editorial-photo-scene--making .editorial-photo-tile--primary,
+.editorial-photo-scene--circle .editorial-photo-tile--primary,
+.editorial-photo-scene--fit .editorial-photo-tile--primary {
+  inset: 8% 8% 8% 44%;
+}
+
+.editorial-photo-scene--making .editorial-photo-tile--secondary,
+.editorial-photo-scene--circle .editorial-photo-tile--secondary,
+.editorial-photo-scene--fit .editorial-photo-tile--secondary {
+  inset: 10% 54% 42% 8%;
+}
+
+.editorial-photo-scene--making .editorial-photo-tile--accent,
+.editorial-photo-scene--circle .editorial-photo-tile--accent,
+.editorial-photo-scene--fit .editorial-photo-tile--accent {
+  inset: 56% 50% 8% 10%;
+}
+
+.commerce-visual.editorial-image,
+.pure-visual.editorial-image,
+.fabric-sample.editorial-image,
+.fit-scale.editorial-image,
+.drop-orbit.editorial-image,
+.circle-proof-orbit.editorial-image,
+.research-ledger.editorial-image,
+.making-stamp.editorial-image,
+.track-ticket.editorial-image,
+.sky-stack.editorial-image,
+.about-wordmark.editorial-image {
+  padding: 0;
+  display: block;
+  min-height: 440px;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.26);
+}
+
+.commerce-visual.editorial-image::after,
+.pure-visual.editorial-image::after,
+.fabric-sample.editorial-image::after,
+.fit-scale.editorial-image::after,
+.drop-orbit.editorial-image::after,
+.circle-proof-orbit.editorial-image::after,
+.research-ledger.editorial-image::after,
+.making-stamp.editorial-image::after,
+.track-ticket.editorial-image::after,
+.sky-stack.editorial-image::after,
+.about-wordmark.editorial-image::after,
+.editorial-home-frame::after,
+.home-origin-image::after,
+.empty-bag-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(16, 20, 46, 0), rgba(16, 20, 46, 0.14));
+}
+
+.editorial-home-frame {
+  display: block;
+  padding: 0;
+}
+
+.editorial-home-frame::before {
+  display: none;
+}
+
+.editorial-home-frame .editorial-image-img {
+  position: absolute;
+  inset: 0;
+}
+
+.home-origin-image {
+  min-height: 430px;
+  border: 1px solid rgba(16, 20, 46, 0.09);
+  box-shadow: 0 28px 70px rgba(16, 20, 46, 0.12);
+}
+
+.empty-bag-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.empty-bag-image {
+  width: min(360px, 100%);
+  aspect-ratio: 1.12;
+  margin: 0 auto 22px;
+  border: 1px solid rgba(201, 210, 222, 0.68);
+}
+
+.pdp-story-image {
+  min-height: 280px !important;
+  margin-top: 24px;
+  border-color: rgba(201, 210, 222, 0.78) !important;
+  box-shadow: 0 22px 54px rgba(20, 22, 46, 0.12) !important;
+}
+
+.sky-shop-scene.with-editorial-scene {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.sky-shop-scene.with-editorial-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--scene-image) center / cover no-repeat;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+}
+
+.sky-shop-scene.with-editorial-scene .sky-shop-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.commerce-page {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(110% 62% at 18% 8%, rgba(17, 22, 47, 0.34) 0%, transparent 58%),
+    radial-gradient(90% 58% at 86% 24%, rgba(76, 84, 124, 0.26) 0%, transparent 60%),
+    radial-gradient(82% 52% at 12% 66%, rgba(217, 154, 43, 0.18) 0%, transparent 62%),
+    linear-gradient(180deg, #11162f 0%, #202848 18%, #675a78 38%, #c18d83 58%, #efd5b8 76%, #f8f5ef 100%);
+}
+
+.commerce-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 84% 13%, rgba(255, 242, 203, 0.18) 0 7%, transparent 16%),
+    radial-gradient(circle at 16% 30%, rgba(255, 255, 255, 0.18) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 72% 42%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1.6px),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.22) 72%, rgba(248,245,239,0.78) 100%);
+}
+
+.commerce-page > section,
+.commerce-page > div {
+  position: relative;
+  z-index: 1;
+}
+
+.commerce-page .commerce-hero {
+  overflow: hidden;
+  background:
+    radial-gradient(72% 62% at 84% 12%, rgba(217, 154, 43, 0.34) 0%, transparent 58%),
+    radial-gradient(88% 80% at 12% 90%, rgba(209, 153, 143, 0.22) 0%, transparent 62%),
+    linear-gradient(135deg, rgba(17, 22, 47, 0.96) 0%, rgba(31, 39, 74, 0.94) 46%, rgba(101, 86, 118, 0.92) 72%, rgba(190, 138, 124, 0.9) 100%);
+}
+
+.pure-page .commerce-hero,
+.fit-page-main .commerce-hero,
+.track-page .commerce-hero {
+  background:
+    radial-gradient(78% 64% at 82% 12%, rgba(255, 236, 190, 0.3) 0%, transparent 58%),
+    radial-gradient(84% 70% at 16% 88%, rgba(209, 153, 143, 0.32) 0%, transparent 62%),
+    linear-gradient(135deg, rgba(19, 24, 50, 0.97) 0%, rgba(60, 55, 86, 0.95) 46%, rgba(173, 117, 112, 0.94) 100%);
+}
+
+.fabric-page .commerce-hero,
+.research-page-redesign .commerce-hero {
+  background:
+    radial-gradient(78% 62% at 82% 12%, rgba(232, 211, 176, 0.24) 0%, transparent 58%),
+    radial-gradient(74% 74% at 18% 86%, rgba(201, 210, 222, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(16, 21, 46, 0.98) 0%, rgba(38, 48, 82, 0.95) 50%, rgba(115, 98, 123, 0.92) 100%);
+}
+
+.circle-redesign .commerce-hero,
+.drops-page .commerce-hero {
+  background:
+    radial-gradient(82% 64% at 84% 14%, rgba(217, 154, 43, 0.38) 0%, transparent 58%),
+    radial-gradient(78% 72% at 14% 88%, rgba(209, 153, 143, 0.22) 0%, transparent 62%),
+    linear-gradient(135deg, rgba(17, 22, 47, 0.98) 0%, rgba(43, 46, 82, 0.96) 48%, rgba(121, 86, 92, 0.93) 100%);
+}
+
+.making-page-redesign .commerce-hero,
+.about-redesign .commerce-hero {
+  background:
+    radial-gradient(80% 64% at 84% 14%, rgba(217, 154, 43, 0.32) 0%, transparent 58%),
+    radial-gradient(76% 72% at 10% 88%, rgba(241, 214, 176, 0.18) 0%, transparent 62%),
+    linear-gradient(135deg, rgba(17, 22, 47, 0.98) 0%, rgba(52, 57, 89, 0.96) 48%, rgba(150, 103, 83, 0.94) 100%);
+}
+
+.commerce-page .commerce-section,
+.commerce-page .commerce-section-tight {
+  background: rgba(248, 245, 239, 0.32);
+  backdrop-filter: blur(2px);
+}
+
+.commerce-page .commerce-section:nth-of-type(odd) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.commerce-page .section-light,
+.commerce-page .final-shop-band,
+.commerce-page .pure-closing-band,
+.commerce-page .track-help-band,
+.commerce-page .making-close-band,
+.commerce-page .sky-close-band,
+.commerce-page .pdp-next-section,
+.commerce-page .fit-tool-section,
+.commerce-page .cart-hero,
+.commerce-page .drops-circle-band,
+.commerce-page .research-standard-band,
+.commerce-page .fabric-compare-band,
+.commerce-page .story-manifesto,
+.commerce-page .circle-ladder-section,
+.commerce-page .pdp-story-section {
+  background:
+    radial-gradient(78% 70% at 84% 12%, rgba(217, 154, 43, 0.12), transparent 58%),
+    rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(8px);
+}
+
+.commerce-page .commerce-card,
+.commerce-page .category-tile,
+.commerce-page .drop-stage,
+.commerce-page .cart-line,
+.commerce-page .cart-summary,
+.commerce-page .empty-bag-panel,
+.commerce-page .avoid-panel,
+.commerce-page .success-confirmation {
+  background: rgba(255, 255, 255, 0.86);
+  border-color: rgba(201, 210, 222, 0.58);
+  box-shadow: 0 18px 48px rgba(16, 20, 46, 0.08);
+}
+
+.commerce-page .commerce-section-head,
+.commerce-page .sticky-copy,
+.commerce-page .confidence-grid,
+.commerce-page .drops-circle-grid,
+.commerce-page .story-copy-block,
+.commerce-page .track-steps,
+.commerce-page .principle-list,
+.commerce-page .cart-hero-inner {
+  text-shadow: 0 1px 22px rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 900px) {
+  .commerce-visual.editorial-image,
+  .pure-visual.editorial-image,
+  .fabric-sample.editorial-image,
+  .fit-scale.editorial-image,
+  .drop-orbit.editorial-image,
+  .circle-proof-orbit.editorial-image,
+  .research-ledger.editorial-image,
+  .making-stamp.editorial-image,
+  .track-ticket.editorial-image,
+  .sky-stack.editorial-image,
+  .about-wordmark.editorial-image {
+    min-height: 300px;
+  }
+
+  .editorial-photo-tile--primary,
+  .editorial-photo-scene--home .editorial-photo-tile--primary,
+  .editorial-photo-scene--shop .editorial-photo-tile--primary,
+  .editorial-photo-scene--sky .editorial-photo-tile--primary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--primary,
+  .editorial-photo-scene--pure .editorial-photo-tile--primary,
+  .editorial-photo-scene--making .editorial-photo-tile--primary,
+  .editorial-photo-scene--circle .editorial-photo-tile--primary,
+  .editorial-photo-scene--fit .editorial-photo-tile--primary {
+    inset: 8% 8% 18% 28%;
+  }
+
+  .editorial-photo-tile--secondary,
+  .editorial-photo-scene--home .editorial-photo-tile--secondary,
+  .editorial-photo-scene--shop .editorial-photo-tile--secondary,
+  .editorial-photo-scene--sky .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--secondary,
+  .editorial-photo-scene--pure .editorial-photo-tile--secondary,
+  .editorial-photo-scene--making .editorial-photo-tile--secondary,
+  .editorial-photo-scene--circle .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fit .editorial-photo-tile--secondary {
+    inset: 16% 62% 44% 8%;
+  }
+
+  .editorial-photo-tile--accent,
+  .editorial-photo-scene--home .editorial-photo-tile--accent,
+  .editorial-photo-scene--shop .editorial-photo-tile--accent,
+  .editorial-photo-scene--sky .editorial-photo-tile--accent,
+  .editorial-photo-scene--fabric .editorial-photo-tile--accent,
+  .editorial-photo-scene--pure .editorial-photo-tile--accent,
+  .editorial-photo-scene--making .editorial-photo-tile--accent,
+  .editorial-photo-scene--circle .editorial-photo-tile--accent,
+  .editorial-photo-scene--fit .editorial-photo-tile--accent {
+    inset: 60% 54% 8% 8%;
+  }
+
+  .editorial-photo-tile--detail {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-sky-atmosphere {
+    opacity: 0.12;
+  }
+
+  .editorial-home-frame {
+    min-height: 430px;
+  }
+
+  .editorial-photo-scene {
+    min-height: 320px;
+  }
+
+  .editorial-photo-tile--primary,
+  .editorial-photo-scene--home .editorial-photo-tile--primary,
+  .editorial-photo-scene--shop .editorial-photo-tile--primary,
+  .editorial-photo-scene--sky .editorial-photo-tile--primary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--primary,
+  .editorial-photo-scene--pure .editorial-photo-tile--primary,
+  .editorial-photo-scene--making .editorial-photo-tile--primary,
+  .editorial-photo-scene--circle .editorial-photo-tile--primary,
+  .editorial-photo-scene--fit .editorial-photo-tile--primary {
+    inset: 7% 7% 24% 7%;
+  }
+
+  .editorial-photo-tile--secondary,
+  .editorial-photo-scene--home .editorial-photo-tile--secondary,
+  .editorial-photo-scene--shop .editorial-photo-tile--secondary,
+  .editorial-photo-scene--sky .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fabric .editorial-photo-tile--secondary,
+  .editorial-photo-scene--pure .editorial-photo-tile--secondary,
+  .editorial-photo-scene--making .editorial-photo-tile--secondary,
+  .editorial-photo-scene--circle .editorial-photo-tile--secondary,
+  .editorial-photo-scene--fit .editorial-photo-tile--secondary {
+    inset: 66% 52% 7% 7%;
+  }
+
+  .editorial-photo-tile--accent,
+  .editorial-photo-scene--home .editorial-photo-tile--accent,
+  .editorial-photo-scene--shop .editorial-photo-tile--accent,
+  .editorial-photo-scene--sky .editorial-photo-tile--accent,
+  .editorial-photo-scene--fabric .editorial-photo-tile--accent,
+  .editorial-photo-scene--pure .editorial-photo-tile--accent,
+  .editorial-photo-scene--making .editorial-photo-tile--accent,
+  .editorial-photo-scene--circle .editorial-photo-tile--accent,
+  .editorial-photo-scene--fit .editorial-photo-tile--accent {
+    inset: 66% 7% 7% 52%;
+  }
+
+  .empty-bag-image {
+    aspect-ratio: 1;
+  }
+
+  .pdp-story-image {
+    min-height: 220px !important;
+  }
+
+  .commerce-page .commerce-section,
+  .commerce-page .commerce-section-tight {
+    backdrop-filter: none;
+  }
+}

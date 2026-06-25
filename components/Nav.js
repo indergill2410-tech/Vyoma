@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "./Providers";
 
 const LINKS = [
-  { href: "/#shop", label: "Shop" },
+  { href: "/shop", label: "Shop" },
   { href: "/pure", label: "Pure" },
   { href: "/fabric", label: "Fabric" },
   { href: "/research", label: "Research" },

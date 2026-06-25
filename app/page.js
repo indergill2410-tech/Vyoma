@@ -2,65 +2,66 @@ import Link from "next/link";
 import LandingSky from "@/components/LandingSky";
 import Waitlist from "@/components/Waitlist";
 import ShopGrid from "@/components/ShopGrid";
+import EditorialImage from "@/components/EditorialImage";
 import styles from "./HomePage.module.css";
 
 const MATERIAL_POINTS = [
-  "Most performance wear leans heavily on polyester, nylon and elastane.",
-  "Some chemical finishes are invisible at checkout, so the details matter.",
-  "Tight, warm, high-friction layers deserve a higher material standard.",
-  "We lead with natural fibres and stay honest about what's still being tested.",
+  "Most leggings are built on polyester, nylon and elastane - plastic-based fibres.",
+  "Finishes can be hard to see, but you still feel the fabric all day.",
+  "Tight, warm layers should feel soft, breathable and considered.",
+  "A better wardrobe starts with knowing what sits against your skin.",
 ];
 
 const VYOMA_POINTS = [
-  "Natural fibre first, chosen for breathability and softness.",
-  "Cotton-led and cotton-modal fabrics that move with you.",
-  "Made in India in small runs, with fewer untraceable assumptions.",
-  "No big health claims — just clearer facts about what touches your skin.",
+  "Natural fibre first, chosen for softness, breathability and ease.",
+  "Organic and OEKO-TEX targets as each batch is documented.",
+  "Made in India in smaller runs, with care visible in the finish.",
+  "No scare tactics. Just better-feeling clothes with a clearer story.",
 ];
 
-const RESEARCH_CARDS = [
+const CARE_CARDS = [
   {
-    title: "Synthetic fibres shed",
+    title: "Less plastic against skin",
     body:
-      "Studies show synthetic garments can release microfibres during washing. Fibre type, yarn structure and construction all matter — so the material you start with matters too.",
+      "Your activewear is one of the closest layers you own. Vyoma starts by reducing avoidable synthetic contact where softness matters most.",
   },
   {
-    title: "Finishes are worth a look",
+    title: "Breathes through movement",
     body:
-      "PFAS and other finishing chemicals are studied because some can persist or migrate. We'd rather use fewer of them and say what we've verified.",
+      "Made for heat, stretch, stillness and the long hours after practice. The feeling should stay calm, not clingy.",
   },
   {
-    title: "Proof over promises",
+    title: "A clearer promise",
     body:
-      "A premium claim should be backed by clear material composition and batch documentation as it becomes available — not vibes.",
+      "The fabric story is part of the product, not an afterthought. We keep the claims simple and the standards visible.",
   },
 ];
 
 const PILLARS = [
   {
     mark: "01",
-    title: "Made to move",
+    title: "Close-to-skin comfort",
     body:
-      "Buttery, supportive and opaque where it counts — built for the studio and the gym, finished for the rest of your day.",
+      "Soft where it touches, supportive where you move, breathable through the parts of the day you did not plan for.",
   },
   {
     mark: "02",
-    title: "Natural fibre first",
+    title: "Made to move quietly",
     body:
-      "Breathable, cotton-led fabrics chosen for feel and comfort, with fewer synthetics sitting against your skin.",
+      "Clean lines, easy stretch and a polished finish that belongs in practice, travel, errands and the pause after.",
   },
   {
     mark: "03",
-    title: "Made in India",
+    title: "Care you can feel",
     body:
-      "Cut, sewn and checked by hand in small runs, in one of the great textile traditions on earth. Made to last.",
+      "Materials, making and batch notes kept clear, because trust should feel calm before you even put it on.",
   },
 ];
 
 const STANDARDS = [
   {
     num: "01",
-    title: "Natural fibre first",
+    title: "Soft natural fibres",
     body:
       "Cotton performance knits and cotton-modal jerseys selected for comfort, breathability and daily wear.",
   },
@@ -68,19 +69,19 @@ const STANDARDS = [
     num: "02",
     title: "Made close to the source",
     body:
-      "Cut, sewn and checked in India, with a supply base we can document rather than guess at.",
+      "Cut, sewn and checked in India, with a supply base that can be documented rather than guessed.",
   },
   {
     num: "03",
-    title: "Small-batch discipline",
+    title: "Small-batch care",
     body:
-      "Limited drops keep quality visible, reduce overproduction and make good documentation practical.",
+      "Limited drops keep quality visible, reduce overproduction and make each release feel considered.",
   },
   {
     num: "04",
-    title: "Claims we can stand behind",
+    title: "Clear claims",
     body:
-      "No medical claims, no wellness theatre — just better materials, honest making and a calmer layer to live in.",
+      "No medical claims. No vague wellness theatre. Just materials, making and standards shown plainly.",
   },
 ];
 
@@ -93,40 +94,41 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
-              <p className={styles.eyebrow}>Natural-fibre activewear · Made in India</p>
+              <p className={styles.eyebrow}>Organic activewear for softer days</p>
               <h1>
                 Room to breathe.
-                <span>Made to move.</span>
+                <span>Built to move.</span>
               </h1>
               <p className={styles.lead}>
-                Vyoma is activewear with a yoga soul — natural-fibre first,
-                beautifully made, and built to carry you from the mat to the gym
-                to the rest of your day. A calmer, more considered layer against
-                your skin.
+                Vyoma is the layer you reach for when you want your body to feel
+                calm: organic-first activewear, made close to the source, with
+                less plastic against your skin.
               </p>
               <div className={styles.actions}>
                 <Link href="/#shop" className={styles.primaryCta}>
-                  Shop the collection
+                  Shop the first drop
                 </Link>
-                <Link href="/circle" className={styles.secondaryCta}>
+                <Link href="/fabric" className={styles.textCta}>
+                  See the fabric promise
+                </Link>
+                <Link href="/circle" className={styles.textCta}>
                   Join The Circle
                 </Link>
-                <Link href="/research" className={styles.textCta}>
-                  Why natural fibre
-                </Link>
               </div>
-              <div className={styles.trustStrip} aria-label="The Vyoma promise">
-                <span>Natural fibre first</span>
-                <span>Studio to street</span>
+              <div className={styles.trustStrip} aria-label="Material promise">
+                <span>Soft natural fibres</span>
                 <span>Made in India</span>
+                <span>Secure checkout</span>
               </div>
             </div>
 
             <div className={styles.heroVisual} aria-label="The Vyoma Set preview">
-              <div className={styles.heroFrame}>
-                <span className={styles.heroMark}>Vyoma</span>
-                <span className={styles.heroCaption}>model - the vyoma set</span>
-              </div>
+              <EditorialImage
+                name="homeHero"
+                alt="Indigo Vyoma movement layer in soft dawn studio light"
+                className={`${styles.heroFrame} editorial-home-frame`}
+                priority
+              />
               <div className={styles.swatchNote}>
                 <span />
                 Night-sky indigo
@@ -139,36 +141,67 @@ export default function Home() {
 
       <div className={styles.marquee} aria-hidden="true">
         <div className={styles.marqueeTrack}>
-          <span>Natural-fibre activewear</span>
+          <span>Soft against skin</span>
           <span>Made in India</span>
-          <span>Studio to street</span>
           <span>Small-batch first drop</span>
+          <span>Organic-first fibres</span>
           <span>Built for practice, finished for life</span>
-          <span>Natural-fibre activewear</span>
+          <span>Soft against skin</span>
           <span>Made in India</span>
-          <span>Studio to street</span>
           <span>Small-batch first drop</span>
+          <span>Organic-first fibres</span>
           <span>Built for practice, finished for life</span>
         </div>
       </div>
+
+      <section className={styles.researchTeaser} aria-labelledby="research-heading">
+        <div className={styles.shell}>
+          <div className={styles.splitIntro}>
+            <div>
+              <p className={styles.eyebrow}>Why plastic-free feels different</p>
+              <h2 id="research-heading">The closest layer should feel like care, not compromise.</h2>
+            </div>
+            <p>
+              The material story matters because you live in these clothes - in
+              heat, stretch, sweat, stillness and the rush between places. Vyoma
+              keeps the choice simple: softer natural fibres, fewer unknowns and
+              a calmer feeling on skin.
+            </p>
+          </div>
+
+          <div className={styles.researchGrid}>
+            {CARE_CARDS.map((card) => (
+              <article key={card.title} className={styles.researchCard}>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className={styles.centerAction}>
+            <Link href="/research" className={styles.primaryCta}>
+              Learn why it matters
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <section className={styles.section} aria-labelledby="materials-heading">
         <div className={styles.shell}>
           <div className={styles.sectionIntro}>
             <p className={styles.eyebrow}>The layer closest to you</p>
             <h2 id="materials-heading">
-              Performance wear is usually mostly synthetic. Ours doesn&apos;t have to be.
+              Most activewear starts with plastic. Vyoma starts with how you want to feel.
             </h2>
             <p>
-              We&apos;re not here to scare you out of your wardrobe. We just think
-              the material choice should be easy to see — especially for clothes
-              worn tight, warm and close to skin.
+              No fear. No lecture. Just a more thoughtful choice for the pieces
+              you wear tight, warm and often.
             </p>
           </div>
 
           <div className={styles.compareGrid}>
             <div className={styles.compareCard}>
-              <h3>What the category often relies on</h3>
+              <h3>What the category often asks you to accept</h3>
               <ul>
                 {MATERIAL_POINTS.map((item) => (
                   <li key={item}>{item}</li>
@@ -176,20 +209,20 @@ export default function Home() {
               </ul>
             </div>
             <div className={`${styles.compareCard} ${styles.compareDark}`}>
-              <h3>What Vyoma is building instead</h3>
+              <h3>What Vyoma chooses instead</h3>
               <ul>
                 {VYOMA_POINTS.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
               <Link href="/fabric" className={styles.inverseCta}>
-                Read the fabric story
+                Meet the fabric
               </Link>
             </div>
           </div>
 
           <p className={styles.pullQuote}>
-            Fewer assumptions. Better materials. A calmer layer to live in.
+            A calmer layer for practice, travel, errands and everything after.
           </p>
         </div>
       </section>
@@ -198,10 +231,11 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.sectionIntro}>
             <p className={styles.eyebrow}>Why Vyomawear</p>
-            <h2 id="why-heading">Built to move. Made to last.</h2>
+            <h2 id="why-heading">Clothes that make space for your body.</h2>
             <p>
-              Activewear you can practise in, train in and live in — made from
-              better materials, with the proof to back it.
+              The first feeling should be relief: nothing scratchy, nothing loud,
+              nothing you have to fight. Just a soft, beautiful layer that moves
+              with you.
             </p>
           </div>
 
@@ -217,71 +251,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="shop" className={`${styles.section} ${styles.collection}`} aria-labelledby="collection-heading">
-        <div className={styles.shell}>
-          <div className={styles.collectionHead}>
-            <div>
-              <p className={styles.eyebrow}>The Collection</p>
-              <h2 id="collection-heading">
-                The first wardrobe of natural-fibre performance layers.
-              </h2>
-            </div>
-            <Link href="/sky-series" className={styles.textCta}>
-              See the Sky Series
-            </Link>
-          </div>
-          <ShopGrid />
-        </div>
-      </section>
-
-      <section className={styles.researchTeaser} aria-labelledby="research-heading">
-        <div className={styles.shell}>
-          <div className={styles.splitIntro}>
-            <div>
-              <p className={styles.eyebrow}>Why natural fibre</p>
-              <h2 id="research-heading">A softer take on performance wear.</h2>
-            </div>
-            <p>
-              Synthetics changed activewear — but the science on microfibres and
-              chemical finishes is still developing. We take the practical route:
-              lead with natural fibres, use fewer finishes, and explain what we
-              know plainly. If you want the detail, we&apos;ve gathered it.
-            </p>
-          </div>
-
-          <div className={styles.researchGrid}>
-            {RESEARCH_CARDS.map((card) => (
-              <article key={card.title} className={styles.researchCard}>
-                <h3>{card.title}</h3>
-                <p>{card.body}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className={styles.centerAction}>
-            <Link href="/research" className={styles.primaryCta}>
-              Explore the research
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section className={styles.standard} aria-labelledby="standard-heading">
         <div className={styles.shell}>
           <div className={styles.standardGrid}>
             <div className={styles.standardIntro}>
               <p className={styles.eyebrow}>The House Standard</p>
               <h2 id="standard-heading">
-                Not just softer.
-                <span>More accountable.</span>
+                Soft first.
+                <span>Clear always.</span>
               </h2>
               <p>
-                Enduring brands are built on standards people can understand.
-                Ours is simple: make the layer beautiful, make it functional,
-                and make the material facts easy to inspect.
+                A beautiful brand still needs a backbone. Ours is simple: make
+                the layer feel incredible, make it useful beyond the mat, and
+                keep the material story honest.
               </p>
               <Link href="/research" className={styles.inverseCta}>
-                Read the research
+                Why we choose this
               </Link>
             </div>
 
@@ -300,12 +285,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="shop" className={`${styles.section} ${styles.collection}`} aria-labelledby="collection-heading">
+        <div className={styles.shell}>
+          <div className={styles.collectionHead}>
+            <div>
+              <p className={styles.eyebrow}>The Collection</p>
+              <h2 id="collection-heading">
+                The first drop of soft organic movement layers.
+              </h2>
+            </div>
+            <Link href="/sky-series" className={styles.textCta}>
+              Explore the Sky Series
+            </Link>
+          </div>
+          <ShopGrid />
+        </div>
+      </section>
+
       <section className={styles.origin} aria-labelledby="origin-heading">
         <div className={styles.shell}>
           <div className={styles.originPanel}>
-            <div className={styles.originArt}>
-              <span>Vyoma</span>
-            </div>
+            <EditorialImage
+              name="makingAtelier"
+              alt="Natural fabric being prepared on a warm atelier cutting table"
+              className={`${styles.originArt} home-origin-image`}
+            />
             <div className={styles.originCopy}>
               <p className={styles.eyebrow}>How it is made</p>
               <h2 id="origin-heading">Made slowly, by hands that care.</h2>
@@ -315,8 +319,8 @@ export default function Home() {
                 so nothing leaves until it earns the name.
               </p>
               <p>
-                Wherever you practise or train, it reaches you the same way:
-                made with care, carried with pride.
+                Whether you practise in Mumbai or Melbourne, it reaches you the
+                same way: made with care, carried with pride.
               </p>
               <Link href="/making" className={styles.textCta}>
                 Follow a piece from order to door
@@ -331,8 +335,8 @@ export default function Home() {
           <p className={styles.eyebrow}>The First Drop</p>
           <h2 id="circle-heading">Small batch. The circle hears first.</h2>
           <p>
-            The first circle is small. Join to be among the founders, and bring
-            a friend to move up the line.
+            Join for early access to the pieces, founder notes, and the quiet
+            thrill of building a better wardrobe from the first drop.
           </p>
           <Waitlist source="homepage" />
           <div className={styles.circleMeta}>

@@ -9,8 +9,6 @@ import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import ProductCard from "@/components/ProductCard";
 import Reviews from "@/components/Reviews";
 
-// Approved-review summary for structured data (rich-result stars). Defensive:
-// if the DB is unreachable (e.g. at build time) we just omit the rating.
 async function approvedReviewSummary(slug) {
   try {
     const reviews = await prisma.review.findMany({
@@ -40,10 +38,12 @@ async function resolve(slug) {
     try {
       const sp = await getShopifyProduct(slug);
       if (sp) return { kind: "shopify", product: sp };
-    } catch {
-      /* fall through to local preview */
+    } catch (err) {
+      // Log, then fall through to the local catalog preview.
+      console.error("Shopify product lookup failed", err);
     }
   }
+
   const local = getLocalProduct(slug);
   if (local) return { kind: "local", product: local };
   return null;
@@ -84,7 +84,6 @@ export default async function ProductPage({ params }) {
   const url = abs(`/product/${product.slug}`);
   const reviewSummary = await approvedReviewSummary(product.slug);
 
-  // Offers valid for a year from build; same garment served in two currencies.
   const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .slice(0, 10);
@@ -134,12 +133,13 @@ export default async function ProductPage({ params }) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: abs("/") },
-      { "@type": "ListItem", position: 2, name: "Collection", item: abs("/#shop") },
+      { "@type": "ListItem", position: 2, name: "Collection", item: abs("/shop") },
       { "@type": "ListItem", position: 3, name: product.name, item: url },
     ],
   };
+
   return (
-    <main>
+    <main className="commerce-page local-product-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
@@ -150,9 +150,9 @@ export default async function ProductPage({ params }) {
       />
       <div className="container">
         <p className="crumb">
-          <Link href="/#shop">Collection</Link> / {product.name}
+          <Link href="/shop">Collection</Link> / {product.name}
         </p>
-        <ProductDetail product={product} />
+        <ProductDetail product={product} commerceEnabled={false} />
       </div>
       <Reviews slug={product.slug} />
       <section className="section" style={{ paddingTop: 20 }}>

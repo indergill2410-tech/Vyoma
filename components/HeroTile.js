@@ -6,7 +6,7 @@ import { COLOURWAYS, swatchStyle } from "@/lib/catalog";
 const KEYS = Object.keys(COLOURWAYS);
 // When this photo exists (e.g. after `npm run images` or via Shopify), the tile
 // upgrades from the gamified swatch to the real shot automatically.
-const HERO_PHOTO = "/products/vyoma-pure-brief-women/model.png";
+const HERO_PHOTO = "/products/vyoma-the-set/model.png";
 
 // The gamified hero product tile: click a colourway and the sky cross-dissolves
 // with a ✦ sparkle burst; the tile tilts in 3D to the pointer; a light sheen
@@ -86,7 +86,7 @@ export default function HeroTile() {
         <img
           className="ht-photo"
           src={HERO_PHOTO}
-          alt="Vyoma Pure, worn"
+          alt="The Vyoma Set, worn"
           onLoad={() => setHasPhoto(true)}
           onError={() => setHasPhoto(false)}
         />
