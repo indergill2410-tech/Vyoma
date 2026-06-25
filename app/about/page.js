@@ -16,7 +16,7 @@ const STORY_PILLARS = [
   },
   {
     title: "The origin",
-    body: "Yoga was born in India. Vyoma is made there too, close to textile craft and the story that inspired the brand.",
+    body: "Yoga was born in India. Vyoma is made there too, close to the textile craft and the story that inspired it.",
   },
   {
     title: "The standard",
