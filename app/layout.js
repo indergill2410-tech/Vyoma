@@ -3,6 +3,9 @@ import "./conversion.css";
 import "./editorial.css";
 import { Fraunces, Karla } from "next/font/google";
 import Link from "next/link";
+import { Providers } from "@/components/Providers";
+import Nav from "@/components/Nav";
+import AnnounceBar from "@/components/AnnounceBar";
 
 // Self-hosted, preloaded fonts — no render-blocking @import to Google, no
 // extra DNS/round-trips, and `swap` + size matching avoids layout shift.
@@ -17,9 +20,6 @@ const karla = Karla({
   display: "swap",
   variable: "--font-karla",
 });
-import { Providers } from "@/components/Providers";
-import Nav from "@/components/Nav";
-import AnnounceBar from "@/components/AnnounceBar";
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
