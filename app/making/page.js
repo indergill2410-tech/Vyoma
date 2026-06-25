@@ -6,7 +6,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "The Making",
   description:
-    "Follow a Vyoma piece from order to your door: made in India, checked with care and shipped with tracking.",
+    "Made in India. Follow a Vyoma piece from your order to your door — crafted with care, made to last.",
   alternates: { canonical: abs("/making") },
 };
 
@@ -30,7 +30,7 @@ export default function MakingPage() {
             </p>
             <div className="commerce-actions">
               <Link href="/shop" className="btn accent">Shop the first drop</Link>
-              <Link href="/track" className="btn ghost">Track an order</Link>
+              <Link href="/fit" className="btn ghost">Find your fit</Link>
             </div>
           </div>
           <EditorialImage

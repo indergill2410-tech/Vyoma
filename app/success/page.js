@@ -18,12 +18,11 @@ export default function Success() {
         <p className="commerce-eyebrow">Order confirmed</p>
         <h1>Your piece is on its way to becoming yours.</h1>
         <p>
-          Your confirmation is heading to your inbox. From here, the order-status link in that email
-          is the easiest way to follow your piece from preparation to tracked delivery.
+          Your confirmation and order details are heading to your inbox. The order-status link in
+          that email is the easiest way to follow your piece from preparation to tracked delivery.
         </p>
         <div className="commerce-actions center-actions">
-          <Link href="/track" className="btn accent">Track your order</Link>
-          <Link href="/shop" className="btn ghost">Keep browsing</Link>
+          <Link href="/shop" className="btn accent">Keep browsing</Link>
         </div>
       </section>
     </main>

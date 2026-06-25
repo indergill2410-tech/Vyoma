@@ -1,71 +1,90 @@
-# Vyomawear
+# Vyomawear — Natural-fibre activewear store
 
-Vyomawear is a custom Next.js storefront for organic-first activewear. The front end lives here; products, variants, stock, payments, checkout, tax, shipping and orders are handled by Shopify.
+> *Vyoma (vee-OH-ma): Sanskrit for sky, ether, infinite space.*
 
-Primary brand domain target: `https://vyomawear.com.au`
-Current temporary Render URL: `https://vyoma-imsr.onrender.com`
+Premium **natural-fibre activewear with a yoga soul** — made in India for the studio,
+the gym and everyday life. A living-sky brand experience on top of **Shopify** as the
+commerce backend, launching in **Australia (AUD)**.
 
-## Commerce Model
+Shopify owns the catalogue, checkout, orders, fulfilment and customer emails. This
+Next.js 14 app is the custom storefront on top of it, plus the two things Vyoma owns
+itself: **The Circle** (a referral waitlist) and **moderated reviews**.
 
-- Shopify is the live commerce backend.
-- `/api/checkout` creates a Shopify cart and redirects to Shopify hosted checkout.
-- Stripe is not used for checkout.
-- The local product catalogue remains as a visual fallback so current catalogue pages and product imagery are not lost while Shopify data is being connected.
+## What's inside
 
-## Required Production Env Vars
+| Area | Path | Notes |
+|---|---|---|
+| **Living-sky homepage** | `/` | Animated sky, brand story, collection grid, The Circle waitlist |
+| **Story** | `/about` | The Vyoma origin and pronunciation |
+| **Why natural fibre** | `/research` | The material research, with sources to read further |
+| **Fabric** | `/fabric` | The natural-fibre fabric story |
+| **Collection** | `/#shop` | Live from Shopify (`lib/shopify.js`) |
+| **Product** | `/product/[handle]` | Shopify product: variants, gallery, add-to-bag, reviews |
+| **Cart** | drawer + `/cart` | Multi-item, Shopify-variant lines, persisted to localStorage |
+| **Checkout** | `/api/checkout` | Creates a Shopify cart from the line list → hosted checkout |
+| **Order updates** | `/api/shopify-webhook` | Signature-verified; fires WhatsApp/SMS via Twilio |
+| **Reviews** | `/api/reviews` | Submit (pending) → admin approves → shown with average rating |
+| **The Circle** | `/circle` | Referral waitlist: share code, place in line, perk ladder (`lib/circle.js`) |
+| **Admin** | `/admin` | Token-gated: The Circle waitlist + review moderation |
 
-```bash
-NEXT_PUBLIC_SITE_URL="https://vyoma-imsr.onrender.com" # switch to https://vyomawear.com.au after DNS is connected
-SHOPIFY_STORE_DOMAIN="your-store.myshopify.com"
-SHOPIFY_STOREFRONT_TOKEN="your-storefront-access-token"
-SHOPIFY_WEBHOOK_SECRET=""
-DATABASE_URL="..."
-ADMIN_TOKEN="..."
-```
+Orders, revenue and fulfilment live in your **Shopify admin** — not in this app.
 
-## Custom Domain Setup
+## Architecture
 
-Until `vyomawear.com.au` is connected, keep `NEXT_PUBLIC_SITE_URL` on the Render URL so canonical tags, sitemap, robots and social previews do not point to a dead domain.
+- **Commerce:** Shopify Storefront API (`lib/shopify.js`). Products, prices (AUD),
+  checkout and orders are all Shopify's. The app reads products and creates carts;
+  it never sets a price.
+- **Database (Postgres):** only `WaitlistEntry` + `Review` (`prisma/schema.prisma`).
+  No order data is stored here.
+- **Graceful fallback:** without the Shopify env vars the site still renders from the
+  local catalogue in `lib/catalog.js` as a **read-only preview** (no checkout), so dev
+  and previews work before the store is connected.
 
-When the domain is ready:
-
-1. Add `vyomawear.com.au` as a custom domain in Render for the web service.
-2. Add the DNS records Render gives you at the domain/DNS provider.
-3. Add `www.vyomawear.com.au` too if you want the `www` version supported.
-4. After DNS and SSL are active, set `NEXT_PUBLIC_SITE_URL="https://vyomawear.com.au"` in Render.
-5. In Shopify, connect `vyomawear.com.au` as the store domain if you want Shopify checkout/customer emails to use the brand domain.
-6. Configure Shopify webhooks to post to `https://vyomawear.com.au/api/shopify-webhook`.
-
-The app includes middleware to redirect `www.vyomawear.com.au`, `vyomawear.com`, and `www.vyomawear.com` to `https://vyomawear.com.au` once those domains point at the app.
-
-## Local Setup
+## Local setup
 
 ```bash
 npm install
-cp .env.example .env
-npm run db:push
-npm run dev
+cp .env.example .env        # fill in Shopify + a Postgres DATABASE_URL
+npm run db:push             # create the waitlist/review tables
+npm run dev                 # http://localhost:3000
 ```
 
-Local development runs at `http://localhost:3000`. If Shopify env vars are set locally, the shop grid and product pages pull live Shopify data; otherwise the local catalogue is shown.
+### Connect Shopify
 
-## Important Paths
+1. Shopify admin → **Settings → Apps and sales channels → Develop apps → Create app**.
+2. Enable Storefront API scopes: `unauthenticated_read_product_listings`,
+   `unauthenticated_write_checkouts`. Install the app, copy the **Storefront access token**.
+3. Set `SHOPIFY_STORE_DOMAIN` (e.g. `vyomawear.myshopify.com`) and
+   `SHOPIFY_STOREFRONT_TOKEN` in `.env`. The grid, product pages and checkout now go live.
+4. (Optional) Set `SHOPIFY_WEBHOOK_SECRET` and the `TWILIO_*` vars to send WhatsApp/SMS
+   order updates from `orders/create` and `orders/fulfilled` webhooks.
 
-| Area | Path |
-|---|---|
-| Home | `/` |
-| Collection | `/#shop` |
-| Product detail | `/product/[slug]` |
-| Shopify checkout API | `/api/checkout` |
-| Shopify webhook | `/api/shopify-webhook` |
-| Research | `/research` |
-| Circle | `/circle` |
-| Admin | `/admin` |
+## Deploy (Render + Postgres)
 
-## Current Production Priorities
+The repo ships a `render.yaml` Blueprint (a web service + a managed Postgres):
 
-- Connect `vyomawear.com.au` to Render and Shopify.
-- Ensure all live Shopify products have matching images, variants and prices.
-- Strengthen PDP trust blocks: reviews, fit/model notes, certifications, returns, stock status.
-- Upgrade product cards with swatches, badges, price hierarchy and quick actions.
-- Turn The Circle into a referral/community engine rather than the primary purchase CTA.
+1. Push to GitHub → Render → **New → Blueprint** → pick this repo.
+2. Render provisions the Postgres DB and wires `DATABASE_URL` automatically.
+3. Set the remaining env vars in the Render dashboard: `SHOPIFY_STORE_DOMAIN`,
+   `SHOPIFY_STOREFRONT_TOKEN`, `NEXT_PUBLIC_SITE_URL`, `ADMIN_TOKEN`,
+   `NEXT_PUBLIC_DROP_DATE`, and optionally `SHOPIFY_WEBHOOK_SECRET` + `TWILIO_*`.
+4. The build runs `prisma generate && next build`; the pre-deploy step runs
+   `prisma db push` to sync the waitlist/review tables.
+
+## Security model
+
+- **Prices and orders are Shopify's.** The browser only sends variant ids + quantities;
+  Shopify hosts the payment page (out of PCI scope).
+- **The Circle / reviews** live in your Postgres; reviews are moderated before they show.
+- **Admin is token-gated** via header (`lib/auth.js`). Move to real auth (NextAuth or
+  Shopify customer accounts) before adding team members.
+
+## Honest gaps (deliberate — add when needed)
+
+- **India market** — kept dormant in `lib/regions.js`; re-enable (Shopify market for INR
+  + the region toggle) when ready.
+- **Transactional email** — Shopify sends order/shipping emails; add Resend/Postmark for
+  extra branded touches.
+- **Reviews auth** — reviews are open + moderated; tie to verified orders when useful.
+
+*Vyoma — room to grow.*

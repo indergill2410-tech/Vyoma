@@ -1,7 +1,22 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
-import { getProduct } from "@/lib/catalog";
+import { getProduct as getLocalProduct } from "@/lib/catalog";
+import { shopifyConfigured, getProduct as getShopifyProduct } from "@/lib/shopify";
+
+// A review's productSlug must point at a real product. Shopify is authoritative;
+// fall back to the local catalog when the store isn't connected yet.
+async function productExists(slug) {
+  if (!slug) return false;
+  if (shopifyConfigured()) {
+    try {
+      if (await getShopifyProduct(slug)) return true;
+    } catch {
+      /* fall through to local */
+    }
+  }
+  return Boolean(getLocalProduct(slug));
+}
 
 // GET /api/reviews?slug=...  → approved reviews + average (public)
 // GET /api/reviews?admin=1   → all reviews (admin only)
@@ -31,7 +46,7 @@ export async function GET(req) {
 export async function POST(req) {
   try {
     const { slug, author, rating, title, body } = await req.json();
-    if (!getProduct(slug)) return NextResponse.json({ error: "Unknown product" }, { status: 400 });
+    if (!(await productExists(slug))) return NextResponse.json({ error: "Unknown product" }, { status: 400 });
 
     const r = parseInt(rating, 10);
     if (!(r >= 1 && r <= 5)) return NextResponse.json({ error: "Rating must be 1–5" }, { status: 400 });

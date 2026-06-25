@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy",
     "db:seed": "node prisma/seed.mjs",
     "images": "node scripts/generate-images.mjs",
     "report": "node scripts/weekly-report.mjs"

@@ -5,7 +5,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Our story",
   description:
-    "Vyoma means sky: activewear made in India with softer natural fibres, clearer materials and room to breathe.",
+    "Vyoma means sky. Natural-fibre activewear with a yoga soul, made in India — considered, never wasted.",
   alternates: { canonical: abs("/about") },
 };
 

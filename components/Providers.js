@@ -3,17 +3,21 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { DEFAULT_REGION, isRegion } from "@/lib/regions";
 
-// ── Region (Australia / India) ───────────────────────────────────────────────
+// ── Region (Australia only for now) ──────────────────────────────────────────
 const RegionContext = createContext(null);
 
 // ── Cart ─────────────────────────────────────────────────────────────────────
+// Shopify is the commerce backend. A cart line is a Shopify product variant,
+// identified by its variantId (the Storefront `merchandiseId`). Checkout hands
+// the whole line list to Shopify, which creates the hosted checkout.
 const CartContext = createContext(null);
 
 const REGION_KEY = "vyoma.region";
-const CART_KEY = "vyoma.cart.v1";
+const CART_KEY = "vyoma.cart.v2"; // v2: Shopify-variant lines (v1 was local catalog)
 
+// A line's identity is its Shopify variant id.
 function lineId(item) {
-  return `${item.slug}::${item.colour}::${item.size}`;
+  return item.variantId;
 }
 
 export function Providers({ children }) {
@@ -47,7 +51,9 @@ export function Providers({ children }) {
     if (isRegion(r)) setRegionState(r);
   }
 
+  // next: { variantId, handle, productTitle, variantTitle, image, amount, currencyCode, qty }
   function addItem(next) {
+    if (!next || !next.variantId) return;
     setItems((prev) => {
       const id = lineId(next);
       const found = prev.find((it) => lineId(it) === id);

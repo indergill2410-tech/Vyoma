@@ -2,88 +2,21 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useCart, useRegion } from "./Providers";
 import { COLOURWAYS } from "@/lib/catalog";
-import { getRegion } from "@/lib/regions";
 import { formatMoney, priceFor } from "@/lib/format";
-import { toast, celebrateFrom } from "@/lib/fx";
 import Gallery from "./Gallery";
 import SizeGuide from "./SizeGuide";
 
-export default function ProductDetail({ product, commerceEnabled = true }) {
-  const { addItem } = useCart();
-  const { region } = useRegion();
+// Local catalog preview. Shopify is the live store, but when the Storefront token
+// isn't connected yet we still render a rich, read-only product page so the site
+// looks complete. Add-to-bag / checkout live on the Shopify-backed pages.
+export default function ProductDetail({ product }) {
   const [colour, setColour] = useState(product.colourways[0]);
   const [size, setSize] = useState(null);
-  const [qty, setQty] = useState(1);
-  const [error, setError] = useState("");
   const [guideOpen, setGuideOpen] = useState(false);
-  const [busy, setBusy] = useState(false);
 
-  const r = getRegion(region);
-  const unit = priceFor(product, region);
+  const unit = priceFor(product, "AU");
   const cw = COLOURWAYS[colour];
-
-  function build() {
-    if (!size) {
-      setError("Pick your size first ✦");
-      return null;
-    }
-    setError("");
-    return {
-      slug: product.slug,
-      name: product.name,
-      colour,
-      colourName: COLOURWAYS[colour]?.name,
-      size,
-      qty,
-      priceAud: product.priceAud,
-      priceInr: product.priceInr,
-      category: product.category,
-    };
-  }
-
-  function add(e) {
-    if (!commerceEnabled) {
-      setError("This piece is being prepared for the first drop.");
-      return;
-    }
-    const item = build();
-    if (item) {
-      celebrateFrom(e);
-      addItem(item);
-      toast(`${product.name} — added to your bag`);
-    }
-  }
-
-  async function buyNow() {
-    if (!commerceEnabled) {
-      setError("This piece is being prepared for the first drop.");
-      return;
-    }
-    const item = build();
-    if (!item) return;
-    setBusy(true);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          region,
-          items: [{ slug: product.slug, colour, size, quantity: qty }],
-        }),
-      });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-      else {
-        setError(data.error || "Could not start checkout.");
-        setBusy(false);
-      }
-    } catch {
-      setError("Could not start checkout. Try again.");
-      setBusy(false);
-    }
-  }
 
   return (
     <div
@@ -95,7 +28,7 @@ export default function ProductDetail({ product, commerceEnabled = true }) {
       <div className="pdp-info">
         <p className="pdp-cat">{product.category} · {product.tagline}</p>
         <h1>{product.name}</h1>
-        <p className="pdp-price">{formatMoney(unit, region)}</p>
+        <p className="pdp-price">{formatMoney(unit, "AU")}</p>
         <p className="pdp-desc">{product.description}</p>
 
         <div className="pdp-field">
@@ -136,32 +69,11 @@ export default function ProductDetail({ product, commerceEnabled = true }) {
           </div>
         </div>
 
-        <div className="pdp-field">
-          <span className="pdp-label">Quantity</span>
-          <div className="qty">
-            <button aria-label="Decrease quantity" onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
-            <span aria-live="polite">{qty}</span>
-            <button aria-label="Increase quantity" onClick={() => setQty(Math.min(10, qty + 1))}>+</button>
-          </div>
-        </div>
-
         <div className="pdp-actions">
-          {commerceEnabled ? (
-            <>
-              <button className="btn block" onClick={add}>Add to bag</button>
-              <button className="btn ghost block" onClick={buyNow} disabled={busy}>
-                {busy ? "Opening checkout…" : "Buy it now"}
-              </button>
-            </>
-          ) : (
-            <Link href="/circle" className="btn block">
-              Join The Circle for first access
-            </Link>
-          )}
+          <Link className="btn block" href="/#shop">Shop the live collection</Link>
         </div>
-        {error && <p className="error" role="alert">{error}</p>}
 
-        <p className="pdp-lead">✦ {product.leadTime} · {r.shipping}</p>
+        <p className="pdp-lead">✦ {product.leadTime}</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
           <li><span>॥</span> Made in India</li>
@@ -178,24 +90,12 @@ export default function ProductDetail({ product, commerceEnabled = true }) {
         <div className="made-for-you" data-reveal>
           <h4>Made in India, with care</h4>
           <ol className="moto-timeline">
-            <li><span>1</span> Crafted in India — the birthplace of yoga</li>
+            <li><span>1</span> Crafted in India in small, considered runs</li>
             <li><span>2</span> Cut, sewn and checked by hand</li>
             <li><span>3</span> Couriered to your door, with tracking the whole way</li>
           </ol>
           <p className="muted small">Considered, never mass-produced. Made to last.</p>
         </div>
-      </div>
-
-      <div className="pdp-sticky">
-        <div className="pdp-sticky-info">
-          <strong>{product.name}</strong>
-          <span>{formatMoney(unit, region)}</span>
-        </div>
-        {commerceEnabled ? (
-          <button className="btn" onClick={add}>Add to bag</button>
-        ) : (
-          <Link href="/circle" className="btn">First access</Link>
-        )}
       </div>
 
       <SizeGuide open={guideOpen} onClose={() => setGuideOpen(false)} fit={product.fit} />
