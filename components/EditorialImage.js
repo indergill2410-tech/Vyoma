@@ -102,6 +102,8 @@ export default function EditorialImage({
               className={`editorial-photo-tile editorial-photo-tile--${image.tile}`}
               key={`${image.src}-${image.tile}`}
             >
+              {/* Pre-optimized WebP collage tiles; rendered directly by design. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={image.src}
                 alt={index === 0 ? alt : ""}
