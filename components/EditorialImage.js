@@ -1,12 +1,12 @@
 const PRODUCT_PHOTOS = {
-  akashaWrap: "/products/vyoma-akasha-wrap/model.png",
-  cloudBra: "/products/vyoma-cloud-bra/model.png",
-  highRise: "/products/vyoma-high-rise-legging/model.png",
-  matBag: "/products/vyoma-mat-bag/model.png",
-  pureBrief: "/products/vyoma-pure-brief-women/model.png",
-  pureTrunk: "/products/vyoma-pure-trunk-men/model.png",
-  studioTop: "/products/vyoma-studio-top/model.png",
-  theSet: "/products/vyoma-the-set/model.png",
+  akashaWrap: "/products/vyoma-akasha-wrap/model.webp",
+  cloudBra: "/products/vyoma-cloud-bra/model.webp",
+  highRise: "/products/vyoma-high-rise-legging/model.webp",
+  matBag: "/products/vyoma-mat-bag/model.webp",
+  pureBrief: "/products/vyoma-pure-brief-women/model.webp",
+  pureTrunk: "/products/vyoma-pure-trunk-men/model.webp",
+  studioTop: "/products/vyoma-studio-top/model.webp",
+  theSet: "/products/vyoma-the-set/model.webp",
 };
 
 const EDITORIAL_SCENES = {
