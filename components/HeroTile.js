@@ -7,6 +7,10 @@ const KEYS = Object.keys(COLOURWAYS);
 // When this photo exists (e.g. after `npm run images` or via Shopify), the tile
 // upgrades from the gamified swatch to the real shot automatically.
 const HERO_PHOTO = "/products/vyoma-the-set/model.webp";
+<<<<<<< Updated upstream
+=======
+const HERO_PHOTO_FALLBACK = "/products/vyoma-the-set/model.png";
+>>>>>>> Stashed changes
 
 // The gamified hero product tile: click a colourway and the sky cross-dissolves
 // with a ✦ sparkle burst; the tile tilts in 3D to the pointer; a light sheen
@@ -88,7 +92,15 @@ export default function HeroTile() {
           src={HERO_PHOTO}
           alt="The Vyoma Set, worn"
           onLoad={() => setHasPhoto(true)}
-          onError={() => setHasPhoto(false)}
+          onError={(event) => {
+            if (event.currentTarget.src.endsWith("/model.webp")) {
+              event.currentTarget.src = HERO_PHOTO_FALLBACK;
+            } else {
+              setHasPhoto(false);
+            }
+          }}
+          loading="eager"
+          fetchPriority="high"
         />
         <span className="ht-sheen" aria-hidden="true" />
         <span className="ht-stamp">व्योम Vyoma</span>

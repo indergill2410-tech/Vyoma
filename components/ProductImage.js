@@ -8,14 +8,19 @@ import { swatchStyle, COLOURWAYS } from "@/lib/catalog";
 // Always renders inside a positioned, aspect-ratio'd parent.
 export default function ProductImage({
   src,
+  fallbackSrc,
   alt,
   colour,
   mark = false,
   className = "",
+  loading = "lazy",
+  fetchPriority,
 }) {
   const [failed, setFailed] = useState(false);
+  const [usingFallback, setUsingFallback] = useState(false);
+  const activeSrc = usingFallback ? fallbackSrc : src;
 
-  if (!src || failed) {
+  if (!activeSrc || failed) {
     return (
       <div
         className={`swatch-fallback ${className}`}
@@ -38,11 +43,15 @@ export default function ProductImage({
     // hide committed assets behind fallbacks.
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={src}
+      src={activeSrc}
       alt={alt}
       className={`product-img ${className}`}
-      onError={() => setFailed(true)}
-      loading="lazy"
+      onError={() => {
+        if (!usingFallback && fallbackSrc) setUsingFallback(true);
+        else setFailed(true);
+      }}
+      loading={loading}
+      fetchPriority={fetchPriority}
       decoding="async"
     />
   );

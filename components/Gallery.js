@@ -15,10 +15,12 @@ export default function Gallery({ product, colour }) {
       <div className="pdp-frame" key={`${active}-${colour}`}>
         <ProductImage
           src={shots[active].src}
+          fallbackSrc={shots[active].fallbackSrc}
           alt={shots[active].alt}
           colour={colour}
           sizes="(min-width: 820px) 45vw, 100vw"
-          priority
+          loading="eager"
+          fetchPriority="high"
           mark
         />
         <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
@@ -32,7 +34,13 @@ export default function Gallery({ product, colour }) {
             aria-label={`Show ${s.alt}`}
             aria-pressed={active === i}
           >
-            <ProductImage src={s.src} alt={s.alt} colour={colour} sizes="80px" />
+            <ProductImage
+              src={s.src}
+              fallbackSrc={s.fallbackSrc}
+              alt={s.alt}
+              colour={colour}
+              sizes="80px"
+            />
           </button>
         ))}
       </div>
