@@ -14,6 +14,7 @@ export default function ProductCard({ product }) {
         </div>
         <ProductImage
           src={model.src}
+          fallbackSrc={model.fallbackSrc}
           alt={model.alt}
           colour={product.colourways[0]}
           sizes="(min-width: 980px) 32vw, (min-width: 640px) 46vw, 100vw"

@@ -38,6 +38,9 @@ export default async function ShopGrid() {
       products = [];
     }
     if (products.length) {
+      const liveHandles = new Set(products.map((p) => p.handle));
+      const localProducts = PRODUCTS.filter((p) => !liveHandles.has(p.slug));
+
       return (
         <div className="grid">
           {products.map((p) => {
@@ -88,9 +91,18 @@ export default async function ShopGrid() {
                     <span className="card-cta">View →</span>
                   </div>
                 </div>
+<<<<<<< Updated upstream
               </Link>
             );
           })}
+=======
+              </div>
+            </Link>
+          ))}
+          {localProducts.map((p) => (
+            <ProductCard key={p.slug} product={p} />
+          ))}
+>>>>>>> Stashed changes
         </div>
       );
     }
