@@ -71,6 +71,26 @@ The repo ships a `render.yaml` Blueprint (a web service + a managed Postgres):
 4. The build runs `prisma generate && next build`; the pre-deploy step runs
    `prisma db push` to sync the waitlist/review tables.
 
+## Domains
+
+Production canonical: **`https://www.vyomawear.com.au`**
+
+Render automatically redirects the apex (`vyomawear.com.au`) → `www`, and that
+direction isn't configurable, so `www` is the canonical host. `middleware.js`
+and `lib/seo.js` are set to match; `NEXT_PUBLIC_SITE_URL` must be
+`https://www.vyomawear.com.au` in Render.
+
+DNS at the registrar (per domain):
+
+| Type | Host | Value |
+|---|---|---|
+| `ALIAS` (or `A`) | `@` | `vyoma-imsr.onrender.com` (ALIAS) · `216.24.57.1` (A) |
+| `CNAME` | `www` | `vyoma-imsr.onrender.com` |
+
+Add each domain under Render → Settings → **Custom Domains**; SSL is issued
+automatically once DNS verifies. `vyomawear.com` is also pointed at the service
+and redirects to `www.vyomawear.com.au` via `middleware.js`.
+
 ## Security model
 
 - **Prices and orders are Shopify's.** The browser only sends variant ids + quantities;
