@@ -33,8 +33,10 @@ export default function ProductImage({
   }
 
   return (
-    // Local product photos live in /public/products. Render them directly so
-    // deployment image optimization cannot hide committed assets behind fallbacks.
+    // Local product photos live in /public/products as pre-optimized WebP
+    // (~20-230KB), rendered directly so the deploy-time image optimizer can't
+    // hide committed assets behind fallbacks.
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}
