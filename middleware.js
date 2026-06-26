@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 
-const PRIMARY_HOST = "vyomawear.com.au";
+// Render automatically redirects the apex (vyomawear.com.au) to the www
+// subdomain and that isn't configurable — so www is the canonical host. The
+// app must agree, otherwise apex→www (Render) + www→apex (app) is a loop.
+const PRIMARY_HOST = "www.vyomawear.com.au";
 const REDIRECT_HOSTS = new Set([
-  "www.vyomawear.com.au",
+  "vyomawear.com.au",
   "vyomawear.com",
   "www.vyomawear.com",
 ]);
