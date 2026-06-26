@@ -91,18 +91,12 @@ export default async function ShopGrid() {
                     <span className="card-cta">View →</span>
                   </div>
                 </div>
-<<<<<<< Updated upstream
               </Link>
             );
           })}
-=======
-              </div>
-            </Link>
-          ))}
           {localProducts.map((p) => (
             <ProductCard key={p.slug} product={p} />
           ))}
->>>>>>> Stashed changes
         </div>
       );
     }
