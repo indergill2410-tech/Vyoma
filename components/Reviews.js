@@ -29,9 +29,15 @@ export default function Reviews({ slug }) {
   const [state, setState] = useState("idle");
 
   async function load() {
-    const res = await fetch(`/api/reviews?slug=${encodeURIComponent(slug)}`);
-    const json = await res.json();
-    setData(json);
+    try {
+      const res = await fetch(`/api/reviews?slug=${encodeURIComponent(slug)}`);
+      if (!res.ok) return;
+      const json = await res.json();
+      setData(json);
+    } catch {
+      // Leave data null — the section falls back to its "no reviews yet" state
+      // instead of throwing if the API is briefly unavailable.
+    }
   }
 
   useEffect(() => {
