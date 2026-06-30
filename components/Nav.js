@@ -6,9 +6,10 @@ import { useCart } from "./Providers";
 
 const LINKS = [
   { href: "/shop", label: "Shop" },
+  { href: "/women", label: "Women" },
+  { href: "/men", label: "Men" },
   { href: "/pure", label: "Pure" },
   { href: "/fabric", label: "Fabric" },
-  { href: "/research", label: "Research" },
   { href: "/drops", label: "Drops" },
   { href: "/circle", label: "The Circle" },
   { href: "/about", label: "Story" },
