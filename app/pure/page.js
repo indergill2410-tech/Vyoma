@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/catalog";
+import { PRODUCTS, productAudience } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
 import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
@@ -19,8 +19,8 @@ const PURE_POINTS = [
 
 export default function PurePage() {
   const pure = PRODUCTS.filter((p) => p.category === "Vyoma Pure");
-  const women = pure.filter((p) => /women/i.test(p.name));
-  const men = pure.filter((p) => /men/i.test(p.name));
+  const women = pure.filter((p) => productAudience(p) === "women");
+  const men = pure.filter((p) => productAudience(p) === "men");
 
   return (
     <main className="commerce-page pure-page">
@@ -34,8 +34,8 @@ export default function PurePage() {
               No drama. Just softer daily comfort and a clearer material story.
             </p>
             <div className="commerce-actions">
-              <Link href="#women" className="btn accent">Shop Pure</Link>
-              <Link href="/fabric" className="btn ghost">See the fabric promise</Link>
+              <Link href="#women" className="btn accent">Shop women</Link>
+              <Link href="#men" className="btn ghost">Shop men</Link>
             </div>
           </div>
           <EditorialImage
@@ -67,7 +67,7 @@ export default function PurePage() {
               <p className="commerce-eyebrow">Pure · Women</p>
               <h2 id="pure-women-heading">Soft on the skin that notices everything.</h2>
             </div>
-            <Link href="/fit" className="link-btn">Need size help?</Link>
+            <Link href="/women" className="link-btn">See all women</Link>
           </div>
           <div className="grid">
             {women.map((product) => <ProductCard key={product.slug} product={product} />)}
@@ -82,7 +82,7 @@ export default function PurePage() {
               <p className="commerce-eyebrow">Pure · Men</p>
               <h2 id="pure-men-heading">All-day comfort without the noise.</h2>
             </div>
-            <Link href="/shop" className="link-btn">See the full drop</Link>
+            <Link href="/men" className="link-btn">See all men</Link>
           </div>
           <div className="grid">
             {men.map((product) => <ProductCard key={product.slug} product={product} />)}
