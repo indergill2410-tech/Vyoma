@@ -1,13 +1,16 @@
 .home {
-  --home-ink: #14162e;
-  --home-ink-soft: #2b2d52;
-  --home-muted: #56545e;
-  --home-paper: #f7f4ee;
-  --home-cream: #efe9df;
-  --home-sand: #e2dacb;
-  --home-accent: #b5946a;
-  --home-rose: #c98c82;
-  --home-line: rgba(20, 22, 46, 0.12);
+  /* Single-sourced: the homepage derives its palette from the global
+     tokens in globals.css so the front door and the rest of the site
+     are provably the same brand. */
+  --home-ink: var(--ink);
+  --home-ink-soft: var(--ink-soft);
+  --home-muted: var(--muted);
+  --home-paper: var(--paper);
+  --home-cream: var(--cream);
+  --home-sand: var(--sand);
+  --home-accent: var(--accent);
+  --home-rose: var(--rose);
+  --home-line: var(--line);
   position: relative;
   isolation: isolate;
   overflow-x: hidden;
