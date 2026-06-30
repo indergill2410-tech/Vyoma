@@ -1,13 +1,8 @@
 .research {
-  --ink: #14162e;
-  --soft-ink: #2b2d52;
-  --muted: #5f6171;
-  --paper: #f7f4ee;
-  --cream: #eee7dc;
-  --line: rgba(20, 22, 46, 0.12);
-  --accent: #b5946a;
-  --sage: #567260;
-  --rose: #c98c82;
+  /* Aliases onto the global token system (globals.css) so research
+     shares one palette with the whole site. */
+  --soft-ink: var(--ink-soft);
+  --sage: var(--green);
   overflow-x: hidden;
   background:
     radial-gradient(82% 54% at 86% 7%, rgba(201, 140, 130, 0.24), transparent 58%),
