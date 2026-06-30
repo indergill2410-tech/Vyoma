@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { COLOURWAYS } from "@/lib/catalog";
+import { COLOURWAYS, productAudience } from "@/lib/catalog";
 import { formatMoney, priceFor } from "@/lib/format";
 import Gallery from "./Gallery";
 import SizeGuide from "./SizeGuide";
@@ -17,6 +17,7 @@ export default function ProductDetail({ product }) {
 
   const unit = priceFor(product, "AU");
   const cw = COLOURWAYS[colour];
+  const audience = productAudience(product);
 
   return (
     <div
@@ -70,7 +71,7 @@ export default function ProductDetail({ product }) {
         </div>
 
         <div className="pdp-actions">
-          <Link className="btn block" href="/#shop">Shop the live collection</Link>
+          <Link className="btn block" href="/shop">Shop the live collection</Link>
         </div>
 
         <p className="pdp-lead">✦ {product.leadTime}</p>
@@ -98,7 +99,7 @@ export default function ProductDetail({ product }) {
         </div>
       </div>
 
-      <SizeGuide open={guideOpen} onClose={() => setGuideOpen(false)} fit={product.fit} />
+      <SizeGuide open={guideOpen} onClose={() => setGuideOpen(false)} fit={product.fit} audience={audience} />
     </div>
   );
 }
