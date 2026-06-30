@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProductImage from "./ProductImage";
 import Price from "./Price";
-import { COLOURWAYS, productShots } from "@/lib/catalog";
+import { COLOURWAYS, audienceLabel, productShots } from "@/lib/catalog";
 
 export default function ProductCard({ product }) {
   const model = productShots(product)[0];
@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
         <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       <div className="card-body">
-        <p className="card-kicker">{product.category}</p>
+        <p className="card-kicker">{audienceLabel(product)} · {product.category}</p>
         <div className="card-top">
           <h3>{product.name}</h3>
         </div>
