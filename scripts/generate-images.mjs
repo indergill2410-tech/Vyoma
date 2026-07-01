@@ -62,19 +62,13 @@ function brandingFor(product) {
 
 function modelDirection(product) {
   const target = product.photoModel || productAudience(product);
-  if (target === "male") {
-    return "a very attractive adult male model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  if (target === "male" || target === "men") {
+    return "very attractive adult male model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
   }
-  if (target === "female") {
-    return "a very attractive adult female model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  if (target === "female" || target === "women") {
+    return "very attractive adult female model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
   }
-  if (target === "men") {
-    return "a very attractive adult male model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
-  }
-  if (target === "women") {
-    return "a very attractive adult female model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
-  }
-  return "an attractive adult model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  return "attractive adult model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
 }
 
 function stylingGuard(product) {
@@ -92,7 +86,7 @@ function prompts(product) {
   const guard = stylingGuard(product);
   return {
     model:
-      `${STYLE} ${model} wearing the ${product.name} — a ${c} ${product.category} piece — ` +
+      `${STYLE} A ${model} wearing the ${product.name} — a ${c} ${product.category} piece — ` +
       `in a serene yoga studio. Full-body, three-quarter pose, natural and relaxed. ${guard} ` +
       `The actual garment is the clear hero, fits beautifully, and carries ${brand}, spelled correctly. ` +
       `Vertical 3:4 framing.`,
