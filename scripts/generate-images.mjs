@@ -12,15 +12,17 @@
 //                        (the free tier returns quota 0 for image generation).
 //   GEMINI_IMAGE_MODEL   default "gemini-2.5-flash-image"
 //                        (e.g. "gemini-2.5-flash-image" for the Nano-Banana model)
+//   PRODUCT_SLUGS        comma-separated slugs to generate, e.g. vyoma-mens-practice-tee,vyoma-pure-brief-men
 //   FORCE=1              regenerate even if a file already exists
 //
 // Files are written to /public/products/<slug>/{model,back,detail}.png.
-// Until they exist, the site falls back to the generated colourway swatch.
+// The site loads committed WebP first, then this PNG fallback while final WebP
+// assets are prepared.
 
 import { mkdir, writeFile, access } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { PRODUCTS, COLOURWAYS } from "../lib/catalog.js";
+import { PRODUCTS, COLOURWAYS, productAudience } from "../lib/catalog.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -32,41 +34,74 @@ const GEMINI_MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-2.5-flash-image";
 const CF_ACCT = process.env.CLOUDFLARE_ACCOUNT_ID;
 const CF_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const CF_MODEL = process.env.CLOUDFLARE_IMAGE_MODEL || "@cf/black-forest-labs/flux-1-schnell";
+const SELECTED_SLUGS = new Set(
+  (process.env.PRODUCT_SLUGS || "")
+    .split(",")
+    .map((slug) => slug.trim())
+    .filter(Boolean)
+);
 
 const STYLE =
-  "Realistic studio product photograph for Vyoma, a premium India-made yoga-wear brand. " +
+  "Realistic premium studio product photograph for Vyoma, an India-made natural-fibre yoga and lifestyle wear brand. " +
   "Soft natural studio light, minimalist seamless warm off-white backdrop, calm airy mood, " +
-  "photorealistic, sharp detail, true-to-life colour, no graphic overlays.";
+  "photorealistic, sharp detail, true-to-life colour, no graphic overlays, no watermark.";
 
 // Where the brand mark sits on each kind of garment. We carry BOTH the Sanskrit
 // "व्योम" (the brand's USP) and the "Vyoma" wordmark.
 const MARK = "the brand mark — the Sanskrit word 'व्योम' next to 'Vyoma', both spelled correctly";
-function brandingFor(category) {
-  const c = (category || "").toLowerCase();
+function brandingFor(product) {
+  const c = (product.category || "").toLowerCase();
+  const name = (product.name || "").toLowerCase();
   if (c.includes("bra")) return `${MARK} on the elastic underband`;
-  if (c.includes("top")) return `${MARK} on a small woven label at the hem`;
-  if (c.includes("layer")) return `${MARK} on a small woven label at the neckline`;
-  if (c.includes("accessor")) return `${MARK} screen-printed on the front`;
-  if (c.includes("set")) return `${MARK} on the legging waistband`;
-  return `${MARK} on the waistband`; // bottoms / default
+  if (c.includes("top") || name.includes("tee") || name.includes("tank")) return `${MARK} on a small woven label at the hem`;
+  if (c.includes("layer") || name.includes("hoodie")) return `${MARK} embroidered or woven at the chest or neckline`;
+  if (c.includes("accessor") || name.includes("sock")) return `${MARK} woven or screen-printed on the visible front`;
+  if (c.includes("set")) return `${MARK} on the waistband`;
+  return `${MARK} on the waistband`;
+}
+
+function modelDirection(product) {
+  const target = product.photoModel || productAudience(product);
+  if (target === "male") {
+    return "a very attractive adult male model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  }
+  if (target === "female") {
+    return "a very attractive adult female model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  }
+  if (target === "men") {
+    return "a very attractive adult male model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  }
+  if (target === "women") {
+    return "a very attractive adult female model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+  }
+  return "an attractive adult model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+}
+
+function stylingGuard(product) {
+  if (product.category === "Vyoma Pure") {
+    return "Tasteful premium underwear e-commerce styling, no nudity, no sheer fabric, no sexually explicit pose, product fully visible and worn appropriately.";
+  }
+  return "Premium activewear styling, natural posture, product-first composition, no sexually explicit pose.";
 }
 
 function prompts(product) {
   const colour = COLOURWAYS[product.colourways[0]];
   const c = `${colour?.name} (${colour?.base})`;
-  const brand = brandingFor(product.category);
+  const brand = brandingFor(product);
+  const model = modelDirection(product);
+  const guard = stylingGuard(product);
   return {
     model:
-      `${STYLE} A female model wearing the ${product.name} — a ${c} ${product.category} piece — ` +
-      `in a serene yoga studio. Full-body, three-quarter pose, natural and relaxed, calm expression. ` +
+      `${STYLE} ${model} wearing the ${product.name} — a ${c} ${product.category} piece — ` +
+      `in a serene yoga studio. Full-body, three-quarter pose, natural and relaxed. ${guard} ` +
       `The actual garment is the clear hero, fits beautifully, and carries ${brand}, spelled correctly. ` +
       `Vertical 3:4 framing.`,
     back:
-      `${STYLE} Back view of the same model wearing the ${product.name} in ${c}, same studio and styling. ` +
-      `Full-body, showing the fit and lines from behind. Vertical 3:4 framing.`,
+      `${STYLE} Back view of the same ${model} wearing the ${product.name} in ${c}, same studio and styling. ` +
+      `Full-body, showing the fit and lines from behind. ${guard} Vertical 3:4 framing.`,
     detail:
-      `${STYLE} Tight close-up of the same ${product.name} in ${c}: real fabric texture and stitching, ` +
-      `clearly showing ${brand}, spelled correctly and crisp, worn on the same model, soft directional light. ` +
+      `${STYLE} Tight close-up of the same ${product.name} in ${c}: real fabric texture, stitching and finish, ` +
+      `clearly showing ${brand}, spelled correctly and crisp, worn on the same adult model, soft directional light. ${guard} ` +
       `Vertical 3:4 framing.`,
   };
 }
@@ -146,7 +181,11 @@ async function main() {
   let made = 0;
   let skipped = 0;
 
-  for (const product of PRODUCTS) {
+  const products = SELECTED_SLUGS.size
+    ? PRODUCTS.filter((product) => SELECTED_SLUGS.has(product.slug))
+    : PRODUCTS;
+
+  for (const product of products) {
     const dir = join(OUT, product.slug);
     await mkdir(dir, { recursive: true });
     const p = prompts(product);
