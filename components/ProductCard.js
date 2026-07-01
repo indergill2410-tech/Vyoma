@@ -2,6 +2,7 @@ import Link from "next/link";
 import ProductImage from "./ProductImage";
 import Price from "./Price";
 import { COLOURWAYS, audienceLabel, productShots } from "@/lib/catalog";
+import { logoPlacementFor } from "@/lib/branding";
 
 export default function ProductCard({ product }) {
   const model = productShots(product)[0];
@@ -19,6 +20,7 @@ export default function ProductCard({ product }) {
           colour={product.colourways[0]}
           sizes="(min-width: 980px) 32vw, (min-width: 640px) 46vw, 100vw"
           mark
+          logoPlacement={logoPlacementFor(product, model.slot)}
         />
         <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
