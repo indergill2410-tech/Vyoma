@@ -63,7 +63,7 @@ function brandingFor(product) {
 function modelDirection(product) {
   const target = product.photoModel || productAudience(product);
   if (target === "male" || target === "men") {
-    return "very attractive adult male model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
+    return "exceptionally handsome and highly attractive adult male model, around 25-35, sharp jawline, clear skin, polished hair and beard grooming, athletic lean build, confident calm expression, refined masculine elegance, photogenic luxury fashion presence";
   }
   if (target === "female" || target === "women") {
     return "very attractive adult female model, around 25-35, athletic lean build, confident calm expression, premium grooming, tasteful aspirational presence";
