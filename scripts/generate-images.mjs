@@ -43,8 +43,9 @@ const SELECTED_SLUGS = new Set(
 
 const STYLE =
   "Realistic premium studio product photograph for Vyoma, an India-made natural-fibre yoga and lifestyle wear brand. " +
-  "Soft natural studio light, minimalist seamless warm off-white backdrop, calm airy mood, " +
-  "photorealistic, sharp detail, true-to-life colour, no graphic overlays, no watermark.";
+  "Soft natural studio light, minimalist seamless warm off-white backdrop, calm airy mood, joyful premium colour, " +
+  "rich but tasteful saturation, elevated tailoring, polished natural-fibre texture, photorealistic, sharp detail, " +
+  "true-to-life colour, no graphic overlays, no watermark.";
 
 // Where the brand mark sits on each kind of garment. We carry BOTH the Sanskrit
 // "व्योम" (the brand's USP) and the "Vyoma" wordmark.
@@ -88,6 +89,23 @@ function prompts(product) {
   const brand = brandingFor(product);
   const model = modelDirection(product);
   const guard = stylingGuard(product);
+
+  if (product.category === "Vyoma Pure") {
+    return {
+      model:
+        `${STYLE} Premium flat-lay e-commerce product photo of the ${product.name} — a ${c} organic-cotton ${product.category} piece — ` +
+        `neatly arranged on a warm off-white studio surface. The product is the clear hero, with waistband, silhouette, fabric texture and stitching visible. ` +
+        `The product carries ${brand}. ${LOGO_QUALITY} Product-only image, no human model, no body parts, no nudity, no explicit content. Vertical 3:4 framing.`,
+      back:
+        `${STYLE} Back-view flat-lay e-commerce product photo of the same ${product.name} in ${c}. ` +
+        `Show the back silhouette, waistband, seams, leg opening and construction clearly. The product carries ${brand}. ${LOGO_QUALITY} ` +
+        `Product-only image, no human model, no body parts, no nudity, no explicit content. Vertical 3:4 framing.`,
+      detail:
+        `${STYLE} Tight macro close-up of the same ${product.name} in ${c}: organic cotton texture, stitching, waistband finish and label area. ` +
+        `Clearly show ${brand}. ${LOGO_QUALITY} Product-only image, no human model, no body parts, no nudity, no explicit content. Vertical 3:4 framing.`,
+    };
+  }
+
   return {
     model:
       `${STYLE} A ${model} wearing the ${product.name} — a ${c} ${product.category} piece — ` +
