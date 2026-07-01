@@ -18,6 +18,21 @@ Each product should have three committed assets under `public/products/<slug>/`:
 - `back.png` or `back.webp`: back-view fit shot.
 - `detail.png` or `detail.webp`: fabric, seam, stitching and logo close-up.
 
+## Colour Direction
+
+The clothing should feel super premium and joyful, not muted or generic. Keep the existing Vyoma sky palette, then lead more catalogue images with brighter colour stories:
+
+- Clear-sky blue
+- Mango pop
+- Hibiscus pink
+- Parrot green
+- Peacock teal
+- Saffron sun
+- Lotus coral
+- Twilight amethyst
+
+Use rich but tasteful saturation, polished natural-fibre texture and elevated tailoring. Bright pieces should look expensive, clean and intentional, never cheap, plastic or neon.
+
 ## Model Direction
 
 Men's catalogue images should use an exceptionally handsome adult male model, age 25-35, with a sharp jawline, polished grooming, athletic lean build, confident calm expression and premium fashion presence.
