@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/men", label: "Men" },
   { href: "/pure", label: "Pure" },
   { href: "/fabric", label: "Fabric" },
+  { href: "/research", label: "Research" },
   { href: "/drops", label: "Drops" },
   { href: "/circle", label: "The Circle" },
   { href: "/about", label: "Story" },
