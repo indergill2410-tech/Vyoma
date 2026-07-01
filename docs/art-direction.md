@@ -3,11 +3,21 @@
 The single biggest lever between "template" and "iconic" is imagery. The code is
 ready for it; this is how to feed it.
 
+## Permanent positioning
+
+Vyomawear should feel like the luxury house of activewear. Internally, use
+LV/Dior-level activewear as the creative shorthand, but never say that in public
+site copy. The feeling should come through quiet branding, immaculate fit,
+cotton-rich texture, restraint, joyful colour and clothes that solve real
+movement-day problems.
+
 ## The look
 - **Lighting = the sky palette.** Night indigo, dawn rose, monsoon grey, marigold
   dusk, ether. Shoot/grade toward these tones.
-- **Editorial, not catalog.** Negative space, real crops, motion, calm.
-- **India, with pride.** The setting, the light, the craft — lead with origin.
+- **Editorial, not generic catalogue.** Negative space, real crops, motion, calm.
+- **Atelier polish.** Every garment should look precise, tactile and expensive.
+- **Origin with restraint.** The setting, light and craft can carry the story
+  without repeating origin claims across shopping pages.
 - Consistent model + styling across a product's shots (front, detail, in-motion).
 
 ## Hero film (optional, high impact)
@@ -26,6 +36,7 @@ Keep it < 6 MB, 1080p, ~8–12s, muted.
   `public/products/<slug>/`.
 - Until photos exist, the branded colourway swatch shows — never broken.
 
-## The brand stamp
-Every image carries a crisp **व्योम Vyoma** corner mark (CSS), so branding is
-sharp regardless of the photo.
+## Branding on images
+No floating stamps, UI labels, captions, corner marks or logo boxes should sit
+on top of product photos. Branding should appear as a real garment detail:
+embroidery, woven label, screen print, waistband mark or stitched patch.

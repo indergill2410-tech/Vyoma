@@ -4,10 +4,16 @@
 
 Add to the current catalogue. Do not remove existing products, current product photos, existing swatches, or existing shop categories.
 
+## Brand Positioning Memory
+
+Vyomawear should feel like the luxury house of activewear: refined, desirable, precise and quietly powerful. Internally, the shorthand is LV/Dior-level activewear energy, but customer-facing copy must not say that directly and must not mention millionaires or billionaires.
+
+Express the promise through atelier-level finishing, cotton-rich comfort, quiet branding, strong silhouette, joyful colour made expensive through restraint, and activewear that solves real world problems: synthetic feel, cling, rough seams, loud branding, weak drape and clothes that fail after the gym or studio.
+
 ## Catalogue Structure
 
 - Women: leggings, shorts, skorts, tops, bras, sets, Pure underwear, layers.
-- Men: practice tee, movement short, off-duty jogger, meditation hoodie, Pure trunk, Pure brief.
+- Men: practice tee, movement short, off-duty jogger, meditation hoodie, cotton-rich gym tees, muscle tank, training short, track pant, performance jogger, warmup hoodie, recovery sweatshirt, Pure trunk, Pure brief.
 - Unisex: wrap, mat carry, socks and shared comfort layers where appropriate.
 
 ## Required Shots Per Product
