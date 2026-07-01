@@ -48,10 +48,6 @@ export default async function ShopGrid() {
             return (
               <Link key={p.id} href={`/product/${p.handle}`} className="card" data-reveal>
                 <div className="card-media">
-                  <div className="card-flags" aria-label="Product badges">
-                    <span className="card-flag dark">First drop</span>
-                    <span className="card-flag">New</span>
-                  </div>
                   {p.featuredImage ? (
                     <Image
                       src={p.featuredImage.url}
@@ -63,9 +59,12 @@ export default async function ShopGrid() {
                   ) : (
                     <div className="swatch-fallback" role="img" aria-label={p.title} />
                   )}
-                  <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
                 </div>
                 <div className="card-body">
+                  <div className="card-flags" aria-label="Product badges">
+                    <span className="card-flag dark">First drop</span>
+                    <span className="card-flag">New</span>
+                  </div>
                   <p className="card-kicker">{p.productType || "Vyomawear"}</p>
                   <div className="card-top">
                     <h3>{p.title}</h3>

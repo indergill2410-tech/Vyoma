@@ -15,7 +15,7 @@ const MATERIAL_POINTS = [
 const VYOMA_POINTS = [
   "Natural fibre first, chosen for softness, breathability and ease.",
   "Organic and OEKO-TEX targets as each batch is documented.",
-  "Made in India in smaller runs, with care visible in the finish.",
+  "Small-batch production, with care visible in the finish.",
   "No scare tactics. Just better-feeling clothes with a clearer story.",
 ];
 
@@ -67,9 +67,9 @@ const STANDARDS = [
   },
   {
     num: "02",
-    title: "Made close to the source",
+    title: "Small-batch care",
     body:
-      "Cut, sewn and checked in India, with a supply base that can be documented rather than guessed.",
+      "Cut, sewn and checked in considered runs, with a supply base that can be documented rather than guessed.",
   },
   {
     num: "03",
@@ -101,7 +101,7 @@ export default function Home() {
               </h1>
               <p className={styles.lead}>
                 Vyoma is the layer you reach for when you want your body to feel
-                calm: organic-first activewear, made close to the source, with
+                calm: organic-first activewear with a clearer material story and
                 less plastic against your skin.
               </p>
               <div className={styles.actions}>
@@ -117,7 +117,7 @@ export default function Home() {
               </div>
               <div className={styles.trustStrip} aria-label="Material promise">
                 <span>Soft natural fibres</span>
-                <span>Made in India</span>
+                <span>Small-batch care</span>
                 <span>Secure checkout</span>
               </div>
             </div>
@@ -142,12 +142,12 @@ export default function Home() {
       <div className={styles.marquee} aria-hidden="true">
         <div className={styles.marqueeTrack}>
           <span>Soft against skin</span>
-          <span>Made in India</span>
+          <span>Natural fibre first</span>
           <span>Small-batch first drop</span>
           <span>Organic-first fibres</span>
           <span>Built for practice, finished for life</span>
           <span>Soft against skin</span>
-          <span>Made in India</span>
+          <span>Natural fibre first</span>
           <span>Small-batch first drop</span>
           <span>Organic-first fibres</span>
           <span>Built for practice, finished for life</span>

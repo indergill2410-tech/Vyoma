@@ -31,7 +31,6 @@ export default function ShopifyGallery({ images, title }) {
           sizes="(min-width: 820px) 45vw, 100vw"
           priority
         />
-        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       {images.length > 1 && (
         <div className="pdp-thumbs">

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import ProductImage from "./ProductImage";
 import { productShots } from "@/lib/catalog";
-import { logoPlacementFor } from "@/lib/branding";
 
 // PDP photo gallery: a main image plus thumbnails for each shot. Cross-dissolves
 // on change (cw-in) and recolours its swatch fallback with the selected colourway.
@@ -24,9 +23,7 @@ export default function Gallery({ product, colour }) {
           loading="eager"
           fetchPriority="high"
           mark
-          logoPlacement={logoPlacementFor(product, activeShot.slot)}
         />
-        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       <div className="pdp-thumbs">
         {shots.map((s, i) => (

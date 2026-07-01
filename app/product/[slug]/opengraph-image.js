@@ -62,7 +62,7 @@ export default function ProductOpengraphImage({ params }) {
             fontSize: 30,
           }}
         >
-          <span style={{ opacity: 0.85 }}>Made in India · made to order</span>
+          <span style={{ opacity: 0.85 }}>Natural fibre first · made to order</span>
           {price ? <span style={{ fontSize: 44, fontWeight: 700 }}>{price}</span> : <span />}
         </div>
       </div>

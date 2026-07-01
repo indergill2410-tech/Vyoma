@@ -8,7 +8,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Shop men and women",
   description:
-    "Shop Vyomawear's men and women catalog of soft natural-fibre activewear, Pure basics and calm layers made in India.",
+    "Shop Vyomawear's men and women catalog of soft natural-fibre activewear, Pure basics and calm layers.",
   alternates: { canonical: abs("/shop") },
 };
 
@@ -30,7 +30,7 @@ export default function ShopPage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">Men · Women · Pure</p>
-            <h1>Soft movement layers, made close to the source.</h1>
+            <h1>Soft movement layers for morning to night.</h1>
             <p className="commerce-lead">
               Organic-first activewear and Pure basics for women and men: practice, training,
               travel, errands and the quiet hours after.
@@ -40,7 +40,7 @@ export default function ShopPage() {
               <Link href="/fit" className="btn ghost">Find your fit</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">
-              <span>Made in India</span>
+              <span>Small-batch care</span>
               <span>Tracked delivery</span>
               <span>Natural fibre first</span>
             </div>

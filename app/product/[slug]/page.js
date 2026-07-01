@@ -56,7 +56,7 @@ export async function generateMetadata({ params }) {
   const title = found.kind === "shopify" ? p.title : p.name;
   const description =
     (p.description || "").slice(0, 200) ||
-    "Premium natural-fibre activewear, made in India — built for the studio, the gym and everyday life.";
+    "Premium natural-fibre activewear — built for the studio, the gym and everyday life.";
   const url = abs(`/product/${params.slug}`);
   return {
     title,

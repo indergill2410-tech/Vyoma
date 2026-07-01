@@ -7,7 +7,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Men's Vyomawear",
   description:
-    "Shop men's Vyomawear: organic cotton tees, movement shorts, joggers, hoodies and Pure underwear, made in India.",
+    "Shop men's Vyomawear: organic cotton tees, movement shorts, joggers, hoodies and Pure underwear.",
   alternates: { canonical: abs("/men") },
 };
 
@@ -34,14 +34,14 @@ export default function MenPage() {
             <p className="commerce-eyebrow">Men's Vyoma</p>
             <h1>Clean movement layers for training, stillness and the day after.</h1>
             <p className="commerce-lead">
-              Organic-first men's essentials with premium fit, quiet branding and the same made-in-India care as the practice line.
+              Organic-first men's essentials with premium fit, quiet branding and the same careful finish as the practice line.
             </p>
             <div className="commerce-actions">
               <Link href="#collection" className="btn accent">Shop men</Link>
               <Link href="/pure#men" className="btn ghost">Shop Pure Men</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">
-              <span>Made in India</span>
+              <span>Small-batch care</span>
               <span>Tracked delivery</span>
               <span>Natural fibre first</span>
             </div>

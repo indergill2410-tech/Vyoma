@@ -2,17 +2,12 @@ import Link from "next/link";
 import ProductImage from "./ProductImage";
 import Price from "./Price";
 import { COLOURWAYS, audienceLabel, productShots } from "@/lib/catalog";
-import { logoPlacementFor } from "@/lib/branding";
 
 export default function ProductCard({ product }) {
   const model = productShots(product)[0];
   return (
     <Link href={`/product/${product.slug}`} className="card" data-reveal>
       <div className="card-media">
-        <div className="card-flags" aria-label="Product badges">
-          {product.hero && <span className="card-flag dark">First drop</span>}
-          <span className="card-flag">New</span>
-        </div>
         <ProductImage
           src={model.src}
           fallbackSrc={model.fallbackSrc}
@@ -20,11 +15,13 @@ export default function ProductCard({ product }) {
           colour={product.colourways[0]}
           sizes="(min-width: 980px) 32vw, (min-width: 640px) 46vw, 100vw"
           mark
-          logoPlacement={logoPlacementFor(product, model.slot)}
         />
-        <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
       <div className="card-body">
+        <div className="card-flags" aria-label="Product badges">
+          {product.hero && <span className="card-flag dark">First drop</span>}
+          <span className="card-flag">New</span>
+        </div>
         <p className="card-kicker">{audienceLabel(product)} · {product.category}</p>
         <div className="card-top">
           <h3>{product.name}</h3>

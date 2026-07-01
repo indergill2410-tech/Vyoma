@@ -45,14 +45,14 @@ const STYLE =
   "Realistic premium studio product photograph for Vyoma, an India-made natural-fibre yoga and lifestyle wear brand. " +
   "Soft natural studio light, minimalist seamless warm off-white backdrop, calm airy mood, joyful premium colour, " +
   "rich but tasteful saturation, elevated tailoring, polished natural-fibre texture, photorealistic, sharp detail, " +
-  "true-to-life colour, no graphic overlays, no watermark.";
+  "true-to-life colour, no graphic overlays, no UI badges, no photo captions, no watermark.";
 
 // Where the brand mark sits on each kind of garment. We carry BOTH the Sanskrit
 // "व्योम" (the brand's USP) and the "Vyoma" wordmark.
 const MARK =
   "a detailed, crisp Vyoma logo lockup: the Sanskrit word 'व्योम' beside the Latin word 'Vyoma', both spellings exact, no extra letters, no garbled text";
 const LOGO_QUALITY =
-  "The logo must be physically attached to the garment as embroidery, a woven label, screen print or stitched patch; sharp enough to read, never a floating watermark. If exact text cannot be rendered, leave a clean blank label area rather than inventing random letters.";
+  "The logo must be physically attached to the garment as embroidery, a woven label, screen print or stitched patch; sharp enough to read, never a floating watermark, label box, UI badge, caption, or 'Organic movement wear' overlay. If exact text cannot be rendered, leave a clean blank label area rather than inventing random letters.";
 
 function brandingFor(product) {
   const c = (product.category || "").toLowerCase();

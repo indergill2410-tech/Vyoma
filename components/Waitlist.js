@@ -59,7 +59,7 @@ export default function Waitlist({ source = "homepage", compact = false }) {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const shareUrl = status.code ? `${origin}/circle?ref=${status.code}` : origin;
     const shareText =
-      "I just joined the Vyoma circle ✦ natural-fibre activewear, made in India. Join me before the first drop:";
+      "I just joined the Vyoma circle ✦ natural-fibre activewear, small-batch care. Join me before the first drop:";
 
     async function copy() {
       try {

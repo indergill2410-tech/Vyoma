@@ -63,7 +63,7 @@ export default function CartDrawer() {
           <div className="drawer-empty">
             <span className="dev">व्योम</span>
             <p>Your bag is empty.</p>
-            <p className="muted">Made in India, with care — built for the studio, the gym and everything after.</p>
+            <p className="muted">Soft natural fibres, built for the studio, the gym and everything after.</p>
             <button className="btn" onClick={() => setDrawerOpen(false)}>
               Browse the collection
             </button>

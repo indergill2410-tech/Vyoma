@@ -5,7 +5,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Our story",
   description:
-    "Vyoma means sky. Natural-fibre activewear with a yoga soul, made in India — considered, never wasted.",
+    "Vyoma means sky. Natural-fibre activewear with a yoga soul — considered, never wasted.",
   alternates: { canonical: abs("/about") },
 };
 
@@ -16,7 +16,7 @@ const STORY_PILLARS = [
   },
   {
     title: "The origin",
-    body: "Yoga was born in India. Vyoma is made there too, close to the textile craft and the story that inspired it.",
+    body: "The story begins with yoga, textile craft and a promise to keep the product considered.",
   },
   {
     title: "The standard",
@@ -34,7 +34,7 @@ export default function About() {
             <h1>Vyoma means sky.</h1>
             <p className="commerce-lead">
               व्योम · vee-OH-ma · the room to breathe that a practice gives back to you.
-              We make activewear in India with softer materials and a clearer conscience.
+              We make activewear with softer materials and a clearer conscience.
             </p>
             <div className="commerce-actions">
               <Link href="/shop" className="btn accent">Shop the first drop</Link>

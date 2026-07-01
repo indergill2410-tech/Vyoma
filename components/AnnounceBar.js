@@ -2,7 +2,7 @@
 export default function AnnounceBar() {
   const items = [
     "Natural-fibre activewear — studio to street",
-    "Made in India · Shipping across Australia",
+    "Natural fibre first · Shipping across Australia",
     "Secure checkout",
   ];
   return (

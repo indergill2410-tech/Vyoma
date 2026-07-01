@@ -7,7 +7,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Women's Vyomawear",
   description:
-    "Shop women's Vyomawear: leggings, bras, tops, Pure basics, layers and yoga essentials made in India.",
+    "Shop women's Vyomawear: leggings, bras, tops, Pure basics, layers and yoga essentials.",
   alternates: { canonical: abs("/women") },
 };
 
@@ -36,14 +36,14 @@ export default function WomenPage() {
             <p className="commerce-eyebrow">Women's Vyoma</p>
             <h1>Soft movement layers for practice, travel and everything after.</h1>
             <p className="commerce-lead">
-              The full women's catalog: sculpted leggings, breathable tops, clean support, Pure basics and calm layers made close to the source.
+              The full women's catalog: sculpted leggings, breathable tops, clean support, Pure basics and calm layers for the whole day.
             </p>
             <div className="commerce-actions">
               <Link href="#collection" className="btn accent">Shop women</Link>
               <Link href="/pure#women" className="btn ghost">Shop Pure Women</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">
-              <span>Made in India</span>
+              <span>Soft natural fibres</span>
               <span>Tracked delivery</span>
               <span>Opaque promise</span>
             </div>

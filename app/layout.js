@@ -40,7 +40,7 @@ export const metadata = {
     "yoga wear Australia",
     "gym wear",
     "natural fibre leggings",
-    "made in India activewear",
+    "small-batch activewear",
     "Vyoma",
     "Vyomawear",
   ],
@@ -51,14 +51,14 @@ export const metadata = {
     siteName: "Vyomawear",
     title: "Vyomawear — Activewear with a yoga soul.",
     description:
-      "Premium natural-fibre activewear, made in India for the studio, the gym and everyday life. Shipping across Australia.",
+    "Premium natural-fibre activewear for the studio, the gym and everyday life. Shipping across Australia.",
     locale: "en_AU",
   },
   twitter: {
     card: "summary_large_image",
     title: "Vyomawear — Activewear with a yoga soul",
     description:
-      "Premium natural-fibre activewear, made in India. Built for the studio, the gym and everyday life. Shipping across Australia.",
+      "Premium natural-fibre activewear. Built for the studio, the gym and everyday life. Shipping across Australia.",
   },
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
@@ -82,7 +82,7 @@ const SITE_JSONLD = {
       "@id": `${SITE_URL}/#organization`,
       name: BRAND.name,
       legalName: BRAND.legalName,
-      description: "Premium natural-fibre activewear, made in India for the studio, the gym and everyday life.",
+      description: "Premium natural-fibre activewear for the studio, the gym and everyday life.",
       slogan: BRAND.slogan,
       url: SITE_URL,
       logo: abs("/icon.svg"),
@@ -147,7 +147,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-meta">
                 <span className="dev">व्योम</span>
-                <p className="muted small">Made in India · Shipping across Australia</p>
+                <p className="muted small">Natural fibre first · Shipping across Australia</p>
                 <p className="muted xsmall">© {new Date().getFullYear()} Vyomawear · Room to grow.</p>
               </div>
             </div>

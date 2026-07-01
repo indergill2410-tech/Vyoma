@@ -77,7 +77,7 @@ export default function ProductDetail({ product }) {
         <p className="pdp-lead">✦ {product.leadTime}</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
-          <li><span>॥</span> Made in India</li>
+          <li><span>॥</span> Natural fibre first</li>
           <li><span>✦</span> Secure checkout</li>
           <li><span>◯</span> Tracked delivery</li>
         </ul>
@@ -89,13 +89,13 @@ export default function ProductDetail({ product }) {
         </dl>
 
         <div className="made-for-you" data-reveal>
-          <h4>Made in India, with care</h4>
+          <h4>Made with care</h4>
           <ol className="moto-timeline">
-            <li><span>1</span> Crafted in India in small, considered runs</li>
+            <li><span>1</span> Prepared in small, considered runs</li>
             <li><span>2</span> Cut, sewn and checked by hand</li>
             <li><span>3</span> Couriered to your door, with tracking the whole way</li>
           </ol>
-          <p className="muted small">Considered, never mass-produced. Made to last.</p>
+          <p className="muted small">Considered, never mass-produced. Built to last.</p>
         </div>
       </div>
 
