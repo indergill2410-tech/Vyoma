@@ -15,8 +15,10 @@ export const metadata = {
 const CATEGORY_LINKS = [
   { label: "Women", href: "/women", body: "Leggings, bras, tops, Pure basics and layers." },
   { label: "Men", href: "/men", body: "Tees, shorts, joggers, hoodies and Pure underwear." },
+  { label: "Leggings", href: "#collection", body: "Held, opaque and soft through every fold." },
+  { label: "Tops", href: "#collection", body: "Light layers for heat, breath and the day after." },
   { label: "Pure", href: "/pure", body: "Closest-to-skin basics made with extra care." },
-  { label: "Full drop", href: "#collection", body: "Everything in one calm catalog view." },
+  { label: "Sets", href: "#collection", body: "One decision. A complete practice uniform." },
 ];
 
 const FEATURED = PRODUCTS.filter((product) => product.hero).slice(0, 4);
@@ -34,8 +36,8 @@ export default function ShopPage() {
               travel, errands and the quiet hours after.
             </p>
             <div className="commerce-actions">
-              <Link href="/women" className="btn accent">Shop women</Link>
-              <Link href="/men" className="btn ghost">Shop men</Link>
+              <Link href="#collection" className="btn accent">Shop the collection</Link>
+              <Link href="/fit" className="btn ghost">Find your fit</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">
               <span>Made in India</span>
