@@ -48,14 +48,18 @@ const STYLE =
 
 // Where the brand mark sits on each kind of garment. We carry BOTH the Sanskrit
 // "व्योम" (the brand's USP) and the "Vyoma" wordmark.
-const MARK = "the brand mark — the Sanskrit word 'व्योम' next to 'Vyoma', both spelled correctly";
+const MARK =
+  "a detailed, crisp Vyoma logo lockup: the Sanskrit word 'व्योम' beside the Latin word 'Vyoma', both spellings exact, no extra letters, no garbled text";
+const LOGO_QUALITY =
+  "The logo must be physically attached to the garment as embroidery, a woven label, screen print or stitched patch; sharp enough to read, never a floating watermark. If exact text cannot be rendered, leave a clean blank label area rather than inventing random letters.";
+
 function brandingFor(product) {
   const c = (product.category || "").toLowerCase();
   const name = (product.name || "").toLowerCase();
   if (c.includes("bra")) return `${MARK} on the elastic underband`;
-  if (c.includes("top") || name.includes("tee") || name.includes("tank")) return `${MARK} on a small woven label at the hem`;
+  if (c.includes("top") || name.includes("tee") || name.includes("tank")) return `${MARK} on a small woven label at the hem or a subtle chest mark`;
   if (c.includes("layer") || name.includes("hoodie")) return `${MARK} embroidered or woven at the chest or neckline`;
-  if (c.includes("accessor") || name.includes("sock")) return `${MARK} woven or screen-printed on the visible front`;
+  if (c.includes("accessor") || name.includes("sock")) return `${MARK} woven or screen-printed on the visible front or cuff`;
   if (c.includes("set")) return `${MARK} on the waistband`;
   return `${MARK} on the waistband`;
 }
@@ -88,14 +92,15 @@ function prompts(product) {
     model:
       `${STYLE} A ${model} wearing the ${product.name} — a ${c} ${product.category} piece — ` +
       `in a serene yoga studio. Full-body, three-quarter pose, natural and relaxed. ${guard} ` +
-      `The actual garment is the clear hero, fits beautifully, and carries ${brand}, spelled correctly. ` +
+      `The actual garment is the clear hero, fits beautifully, and carries ${brand}. ${LOGO_QUALITY} ` +
       `Vertical 3:4 framing.`,
     back:
       `${STYLE} Back view of the same ${model} wearing the ${product.name} in ${c}, same studio and styling. ` +
-      `Full-body, showing the fit and lines from behind. ${guard} Vertical 3:4 framing.`,
+      `Full-body, showing the fit and lines from behind. The garment carries ${brand}. ${LOGO_QUALITY} ${guard} ` +
+      `Vertical 3:4 framing.`,
     detail:
-      `${STYLE} Tight close-up of the same ${product.name} in ${c}: real fabric texture, stitching and finish, ` +
-      `clearly showing ${brand}, spelled correctly and crisp, worn on the same adult model, soft directional light. ${guard} ` +
+      `${STYLE} Tight close-up of the same ${product.name} in ${c}: real fabric texture, stitching, seam finish and label detail, ` +
+      `clearly showing ${brand}. ${LOGO_QUALITY} Worn on the same adult model, soft directional light. ${guard} ` +
       `Vertical 3:4 framing.`,
   };
 }
