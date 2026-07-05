@@ -112,12 +112,6 @@ export default function ProductDetail({ product }) {
           </div>
         </dl>
 
-        <dl className="pdp-specs">
-          <div><dt>Fabric</dt><dd>{product.fabric}</dd></div>
-          <div><dt>Fit</dt><dd>{product.fit}</dd></div>
-          <div><dt>Care</dt><dd>{product.care}</dd></div>
-        </dl>
-
         <div className="made-for-you" data-reveal>
           <h4>Made in India, with care</h4>
           <ol className="moto-timeline">
