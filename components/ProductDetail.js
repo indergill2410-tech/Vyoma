@@ -26,10 +26,21 @@ export default function ProductDetail({ product }) {
       <Gallery product={product} colour={colour} />
 
       <div className="pdp-info">
+        <div className="pdp-proofline" aria-label="Product proof points">
+          <span>First drop</span>
+          <span>Natural-fibre first</span>
+          <span>Fit support</span>
+        </div>
         <p className="pdp-cat">{product.category} · {product.tagline}</p>
         <h1>{product.name}</h1>
         <p className="pdp-price">{formatMoney(unit, "AU")}</p>
         <p className="pdp-desc">{product.description}</p>
+
+        <div className="pdp-fit-panel pdp-fit-highlight">
+          <h3>Fit first. Checkout second.</h3>
+          <p>{product.fit}</p>
+          <button className="link-btn" onClick={() => setGuideOpen(true)}>Open size guide</button>
+        </div>
 
         <div className="pdp-field">
           <div className="pdp-field-head">
@@ -52,7 +63,7 @@ export default function ProductDetail({ product }) {
 
         <div className="pdp-field">
           <div className="pdp-field-head">
-            <span className="pdp-label">Size</span>
+            <span className="pdp-label">Size{size ? ` — ${size}` : ""}</span>
             <button className="link-btn" onClick={() => setGuideOpen(true)}>Size guide</button>
           </div>
           <div className="sizes" role="group" aria-label="Choose size">
@@ -70,10 +81,11 @@ export default function ProductDetail({ product }) {
         </div>
 
         <div className="pdp-actions">
-          <Link className="btn block" href="/#shop">Shop the live collection</Link>
+          <Link className="btn block" href="/shop">Shop the live collection</Link>
         </div>
 
         <p className="pdp-lead">✦ {product.leadTime}</p>
+        <p className="pdp-stock-note">Small-batch preview: live checkout appears when this product is connected in Shopify.</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
           <li><span>॥</span> Made in India</li>
@@ -81,10 +93,23 @@ export default function ProductDetail({ product }) {
           <li><span>◯</span> Tracked delivery</li>
         </ul>
 
-        <dl className="pdp-specs">
-          <div><dt>Fabric</dt><dd>{product.fabric}</dd></div>
-          <div><dt>Fit</dt><dd>{product.fit}</dd></div>
-          <div><dt>Care</dt><dd>{product.care}</dd></div>
+        <dl className="pdp-trust-grid" aria-label="Purchase confidence">
+          <div>
+            <dt>Fabric</dt>
+            <dd>{product.fabric}</dd>
+          </div>
+          <div>
+            <dt>Fit</dt>
+            <dd>{product.fit}</dd>
+          </div>
+          <div>
+            <dt>Care</dt>
+            <dd>{product.care}</dd>
+          </div>
+          <div>
+            <dt>Delivery</dt>
+            <dd>{product.leadTime}</dd>
+          </div>
         </dl>
 
         <div className="made-for-you" data-reveal>
