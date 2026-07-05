@@ -11,7 +11,7 @@ const LINKS = [
   { href: "/research", label: "Research" },
   { href: "/drops", label: "Drops" },
   { href: "/circle", label: "The Circle" },
-  { href: "/about", label: "Story" },
+  { href: "/story", label: "Story" },
 ];
 
 export default function Nav() {

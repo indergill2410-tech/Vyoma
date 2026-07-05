@@ -1,6 +1,7 @@
 import "./globals.css";
 import "./conversion.css";
 import "./editorial.css";
+import "./brand-polish.css";
 import { Fraunces, Karla } from "next/font/google";
 import Link from "next/link";
 import { Providers } from "@/components/Providers";
@@ -142,8 +143,7 @@ export default function RootLayout({ children }) {
                 <Link href="/sky-series">The Sky Series</Link>
                 <Link href="/making">The Making</Link>
                 <Link href="/fit">Fit Finder</Link>
-                <Link href="/about">Story</Link>
-                <Link href="/admin">Admin</Link>
+                <Link href="/story">Story</Link>
               </div>
               <div className="footer-meta">
                 <span className="dev">व्योम</span>
