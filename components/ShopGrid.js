@@ -25,6 +25,12 @@ function swatchFor(value, index) {
   return hit ? hit[1] : FALLBACK_SWATCHES[index % FALLBACK_SWATCHES.length];
 }
 
+function rangeLabel(values = []) {
+  if (!values.length) return "Fit help on page";
+  if (values.length === 1) return values[0];
+  return `${values[0]}-${values[values.length - 1]}`;
+}
+
 // The collection grid. Shopify is the live source of truth when configured.
 // The existing catalog stays as the visual fallback so current products and
 // product imagery are never hidden by a temporary Shopify/API issue.
@@ -45,12 +51,13 @@ export default async function ShopGrid() {
         <div className="grid">
           {products.map((p) => {
             const colourOption = p.options?.find((o) => /colou?r/i.test(o.name));
+            const sizeOption = p.options?.find((o) => /size/i.test(o.name));
             return (
               <Link key={p.id} href={`/product/${p.handle}`} className="card" data-reveal>
                 <div className="card-media">
                   <div className="card-flags" aria-label="Product badges">
                     <span className="card-flag dark">First drop</span>
-                    <span className="card-flag">New</span>
+                    <span className="card-flag">Small batch</span>
                   </div>
                   {p.featuredImage ? (
                     <Image
@@ -67,11 +74,14 @@ export default async function ShopGrid() {
                 </div>
                 <div className="card-body">
                   <p className="card-kicker">{p.productType || "Vyomawear"}</p>
-                  <div className="card-top">
+                  <div className="card-title-row">
                     <h3>{p.title}</h3>
+                    <span className="card-price card-price-main">{formatMoney(p.priceRange.minVariantPrice)}</span>
                   </div>
-                  {colourOption?.values?.length > 0 && (
+                  {colourOption?.values?.length > 0 ? (
                     <p className="card-tagline">{colourOption.values.length} colours</p>
+                  ) : (
+                    <p className="card-tagline">Soft movement layer</p>
                   )}
                   {colourOption?.values?.length > 0 && (
                     <div className="card-swatches" aria-label="Available colours">
@@ -85,10 +95,14 @@ export default async function ShopGrid() {
                       ))}
                     </div>
                   )}
-                  {p.description && <p className="card-desc">{p.description.slice(0, 120)}</p>}
+                  <div className="card-proofline" aria-label="Product proof points">
+                    <span>Live store</span>
+                    <span>{rangeLabel(sizeOption?.values)}</span>
+                  </div>
+                  {p.description && <p className="card-desc">{p.description.slice(0, 140)}</p>}
                   <div className="card-foot">
-                    <span className="card-price">{formatMoney(p.priceRange.minVariantPrice)}</span>
-                    <span className="card-cta">View →</span>
+                    <span className="card-cta">View product</span>
+                    <span className="card-micro">Fit + checkout details</span>
                   </div>
                 </div>
               </Link>
