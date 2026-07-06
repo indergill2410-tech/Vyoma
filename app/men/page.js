@@ -23,15 +23,15 @@ const MENS_SLUGS = [
 const MENS_PROMISES = [
   {
     title: "Start with the closest layer",
-    body: "The Pure trunk gives men a visible entry point into the brand: soft organic cotton, daily comfort and fewer synthetic unknowns.",
+    body: "Soft organic-cotton trunks for daily comfort, with fewer synthetic unknowns against warm skin.",
   },
   {
     title: "Move, recover, repeat",
-    body: "Practice tees, fleece and carry pieces make the catalog feel like a complete day, not one isolated product.",
+    body: "Practice tees, fleece and carry pieces make the catalogue feel like a complete day, not one isolated product.",
   },
   {
-    title: "Keep checkout calm",
-    body: "Every product card leads to fit, fabric and delivery details before the customer commits.",
+    title: "Choose with clarity",
+    body: "Every product card leads to fit, fabric and delivery details before checkout.",
   },
 ];
 
@@ -106,11 +106,11 @@ export default function MenPage() {
         <div className="commerce-shell confidence-grid">
           <div>
             <p className="commerce-eyebrow">Pure for men</p>
-            <h2 id="mens-pure-heading">The entry product has to be obvious.</h2>
+            <h2 id="mens-pure-heading">The layer you reach for every day.</h2>
           </div>
           <p>
-            The men's Pure trunk is now surfaced as a dedicated catalog path, not hidden low on the Pure page.
-            From here, the customer can move into fleece, tees, socks and carry pieces without losing the brand story.
+            Start with breathable organic-cotton trunks, then build the rest of the kit with fleece,
+            tees, socks and carry pieces that keep the same calm material language.
           </p>
         </div>
       </section>
