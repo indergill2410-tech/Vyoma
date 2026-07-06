@@ -15,6 +15,7 @@ export const metadata = {
 const CATEGORY_LINKS = [
   { label: "Leggings", href: "#collection", body: "Held, opaque and soft through every fold." },
   { label: "Tops", href: "#collection", body: "Light layers for heat, breath and the day after." },
+  { label: "Men", href: "/men", body: "Pure trunks, fleece and unisex movement layers." },
   { label: "Pure", href: "/pure", body: "Closest-to-skin basics made with extra care." },
   { label: "Sets", href: "#collection", body: "One decision. A complete practice uniform." },
 ];
@@ -35,7 +36,7 @@ export default function ShopPage() {
             </p>
             <div className="commerce-actions">
               <Link href="#collection" className="btn accent">Shop the collection</Link>
-              <Link href="/fit" className="btn ghost">Find your fit</Link>
+              <Link href="/men" className="btn ghost">Shop men</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">
               <span>Made in India</span>
