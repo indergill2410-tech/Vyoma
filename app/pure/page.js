@@ -34,8 +34,8 @@ export default function PurePage() {
               No drama. Just softer daily comfort and a clearer material story.
             </p>
             <div className="commerce-actions">
-              <Link href="#women" className="btn accent">Shop Pure</Link>
-              <Link href="/fabric" className="btn ghost">See the fabric promise</Link>
+              <Link href="#women" className="btn accent">Shop women's Pure</Link>
+              <Link href="/men" className="btn ghost">Shop men's catalogue</Link>
             </div>
           </div>
           <EditorialImage
@@ -82,7 +82,7 @@ export default function PurePage() {
               <p className="commerce-eyebrow">Pure · Men</p>
               <h2 id="pure-men-heading">All-day comfort without the noise.</h2>
             </div>
-            <Link href="/shop" className="link-btn">See the full drop</Link>
+            <Link href="/men" className="link-btn">Open the men's catalogue</Link>
           </div>
           <div className="grid">
             {men.map((product) => <ProductCard key={product.slug} product={product} />)}

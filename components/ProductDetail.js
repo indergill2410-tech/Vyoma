@@ -85,7 +85,7 @@ export default function ProductDetail({ product }) {
         </div>
 
         <p className="pdp-lead">✦ {product.leadTime}</p>
-        <p className="pdp-stock-note">Small-batch preview: live checkout appears when this product is connected in Shopify.</p>
+        <p className="pdp-stock-note">Small-batch preview: checkout appears when this piece is released live.</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
           <li><span>॥</span> Made in India</li>

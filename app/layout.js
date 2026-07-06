@@ -38,6 +38,8 @@ export const metadata = {
     "activewear Australia",
     "natural fibre activewear",
     "organic cotton activewear",
+    "men's organic cotton underwear",
+    "men's activewear Australia",
     "yoga wear Australia",
     "gym wear",
     "natural fibre leggings",
@@ -135,6 +137,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-links">
                 <Link href="/shop">Shop</Link>
+                <Link href="/men">Men</Link>
                 <Link href="/pure">Vyoma Pure</Link>
                 <Link href="/fabric">Fabric</Link>
                 <Link href="/research">Research</Link>
