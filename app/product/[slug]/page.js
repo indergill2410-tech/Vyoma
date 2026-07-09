@@ -3,13 +3,15 @@ import { notFound } from "next/navigation";
 import { getProduct as getLocalProduct, PRODUCTS, relatedProducts } from "@/lib/catalog";
 import { shopifyConfigured, getProduct as getShopifyProduct } from "@/lib/shopify";
 import { abs } from "@/lib/seo";
-import { prisma } from "@/lib/db";
+import { hasDatabase, prisma } from "@/lib/db";
 import ProductDetail from "@/components/ProductDetail";
 import ShopifyProductDetail from "@/components/ShopifyProductDetail";
 import ProductCard from "@/components/ProductCard";
 import Reviews from "@/components/Reviews";
 
 async function approvedReviewSummary(slug) {
+  if (!hasDatabase || !prisma) return null;
+
   try {
     const reviews = await prisma.review.findMany({
       where: { productSlug: slug, status: "approved" },

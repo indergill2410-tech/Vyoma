@@ -5,6 +5,7 @@
 
 # next.js
 /.next/
+/.next-stale-*/
 /out/
 
 # production
@@ -18,6 +19,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.npm-cache/
 
 # local env files — NEVER commit secrets
 .env

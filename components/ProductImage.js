@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { swatchStyle, COLOURWAYS } from "@/lib/catalog";
 
-// A product photo that gracefully falls back to the generated colourway swatch
-// if the image is missing (e.g. before scripts/generate-images.mjs has run).
+// A product photo that gracefully falls back to another product image, then to
+// the generated colourway swatch if no image is available.
 // Always renders inside a positioned, aspect-ratio'd parent.
 export default function ProductImage({
   src,

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { hasDatabase, prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
 import { circleCount } from "@/lib/circle";
 
@@ -8,6 +8,11 @@ import { circleCount } from "@/lib/circle";
 // things Vyoma owns: The Circle waitlist and review moderation.
 export async function GET(req) {
   if (!isAdmin(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!hasDatabase || !prisma) {
+    return NextResponse.json({
+      metrics: { waitlist: 0, members: 0, pendingReviews: 0, approvedReviews: 0 },
+    });
+  }
 
   const [waitlistRows, members, pendingReviews, approvedReviews] = await Promise.all([
     prisma.waitlistEntry.count(),

@@ -130,17 +130,6 @@ export default function SkyAtmosphere() {
           ))}
         </div>
       </div>
-      <style jsx global>{`
-        :root { --sky-pointer-x: 0px; --sky-pointer-y: 0px; }
-        .site-sky-motes { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0.58; mix-blend-mode: screen; }
-        html[data-sky-motes="quiet"] .site-sky-motes { opacity: 0.22; }
-        .site-sky-mote { position: absolute; left: var(--mote-x); top: var(--mote-y); width: var(--mote-size); aspect-ratio: 1; opacity: var(--mote-alpha); border-radius: 999px; background: radial-gradient(circle, rgba(255,238,187,.95) 0 18%, rgba(226,166,50,.74) 42%, rgba(226,166,50,0) 72%); box-shadow: 0 0 10px rgba(226,166,50,.46), 0 0 26px rgba(239,213,184,.16); transform: translate3d(var(--sky-pointer-x), var(--sky-pointer-y), 0) scale(.9); animation: vyomaMoteDrift var(--mote-duration) ease-in-out infinite; animation-delay: var(--mote-delay); will-change: transform, opacity; }
-        .site-sky-mote:nth-child(3n) { background: radial-gradient(circle, rgba(255,244,214,.92) 0 16%, rgba(203,135,49,.62) 44%, rgba(203,135,49,0) 74%); }
-        html[data-sky-motes="quiet"] .site-sky-mote:nth-child(n + 5) { display: none; }
-        @keyframes vyomaMoteDrift { 0%, 100% { transform: translate3d(var(--sky-pointer-x), var(--sky-pointer-y), 0) scale(.82); } 46% { transform: translate3d(calc(var(--sky-pointer-x) + var(--mote-wobble)), calc(var(--sky-pointer-y) - var(--mote-rise)), 0) scale(1); } }
-        @media (max-width: 720px), (pointer: coarse) { .site-sky-motes { opacity: .28; } .site-sky-mote:nth-child(n + 6) { display: none; } }
-        @media (prefers-reduced-motion: reduce) { .site-sky-motes { opacity: .16; } .site-sky-mote { animation: none; transform: none; } }
-      `}</style>
     </>
   );
 }

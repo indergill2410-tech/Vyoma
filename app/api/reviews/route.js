@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { hasDatabase, prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
 import { getProduct as getLocalProduct } from "@/lib/catalog";
 import { shopifyConfigured, getProduct as getShopifyProduct } from "@/lib/shopify";
@@ -25,12 +25,14 @@ export async function GET(req) {
 
   if (searchParams.get("admin")) {
     if (!isAdmin(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!hasDatabase || !prisma) return NextResponse.json({ reviews: [] });
     const reviews = await prisma.review.findMany({ orderBy: { createdAt: "desc" }, take: 500 });
     return NextResponse.json({ reviews });
   }
 
   const slug = searchParams.get("slug");
   if (!slug) return NextResponse.json({ error: "Missing slug" }, { status: 400 });
+  if (!hasDatabase || !prisma) return NextResponse.json({ reviews: [], count: 0, average: 0 });
 
   const reviews = await prisma.review.findMany({
     where: { productSlug: slug, status: "approved" },
@@ -45,6 +47,10 @@ export async function GET(req) {
 // POST /api/reviews — submit a review (public; lands as "pending")
 export async function POST(req) {
   try {
+    if (!hasDatabase || !prisma) {
+      return NextResponse.json({ error: "Reviews are temporarily unavailable." }, { status: 503 });
+    }
+
     const { slug, author, rating, title, body } = await req.json();
     if (!(await productExists(slug))) return NextResponse.json({ error: "Unknown product" }, { status: 400 });
 
@@ -74,6 +80,10 @@ export async function POST(req) {
 // PATCH /api/reviews — moderate (admin only)
 export async function PATCH(req) {
   if (!isAdmin(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!hasDatabase || !prisma) {
+    return NextResponse.json({ error: "Reviews are temporarily unavailable." }, { status: 503 });
+  }
+
   const { id, status } = await req.json();
   if (!["pending", "approved", "hidden"].includes(status)) {
     return NextResponse.json({ error: "Bad status" }, { status: 400 });

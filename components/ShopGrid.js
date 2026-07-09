@@ -53,7 +53,7 @@ export default async function ShopGrid() {
             const colourOption = p.options?.find((o) => /colou?r/i.test(o.name));
             const sizeOption = p.options?.find((o) => /size/i.test(o.name));
             return (
-              <Link key={p.id} href={`/product/${p.handle}`} className="card" data-reveal>
+              <Link key={p.id} href={`/product/${p.handle}`} className="card">
                 <div className="card-media">
                   <div className="card-flags" aria-label="Product badges">
                     <span className="card-flag dark">Organic-first</span>

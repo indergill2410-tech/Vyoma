@@ -19,7 +19,7 @@ function proofCopy(product) {
 export default function ProductCard({ product }) {
   const model = productShots(product)[0];
   return (
-    <Link href={`/product/${product.slug}`} className="card" data-reveal>
+    <Link href={`/product/${product.slug}`} className="card">
       <div className="card-media">
         <div className="card-flags" aria-label="Product badges">
           {product.hero && <span className="card-flag dark">Organic-first</span>}

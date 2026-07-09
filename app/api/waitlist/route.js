@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { hasDatabase, prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
 import { isRegion } from "@/lib/regions";
 import { makeReferralCode, circleStatus, circleCount } from "@/lib/circle";
 
 // Reuse this email's existing share code, or mint a fresh unique one.
 async function codeForEmail(email) {
+  if (!hasDatabase || !prisma) return makeReferralCode();
+
   const existing = await prisma.waitlistEntry.findFirst({
     where: { email, referralCode: { not: null } },
     select: { referralCode: true },
@@ -30,6 +32,10 @@ export async function POST(req) {
     }
     const reg = isRegion(region) ? region : "AU";
     const src = String(source || "homepage").slice(0, 60);
+
+    if (!hasDatabase || !prisma) {
+      return NextResponse.json({ error: "The Circle is temporarily unavailable." }, { status: 503 });
+    }
 
     const referralCode = await codeForEmail(clean);
 
@@ -81,6 +87,7 @@ export async function GET(req) {
   }
 
   if (!isAdmin(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!hasDatabase || !prisma) return NextResponse.json({ entries: [] });
   const entries = await prisma.waitlistEntry.findMany({ orderBy: { createdAt: "desc" }, take: 1000 });
   return NextResponse.json({ entries });
 }
