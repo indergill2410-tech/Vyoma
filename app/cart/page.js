@@ -32,7 +32,7 @@ export default function CartPage() {
       if (data.url) window.location.href = data.url;
       else { setError(data.error || "Could not start checkout."); setBusy(false); }
     } catch {
-      setError("Could not start checkout. Try again.");
+      setError("Could not open hosted checkout. Please try again.");
       setBusy(false);
     }
   }
@@ -45,7 +45,7 @@ export default function CartPage() {
       {count === 0 ? (
         <div className="order-card" style={{ textAlign: "center", padding: 48 }}>
           <span className="dev" style={{ fontSize: 36, color: "var(--marigold)", display: "block", marginBottom: 12 }}>व्योम</span>
-          <p className="muted">Nothing here yet. Warm activewear for training, travel, recovery and everything after.</p>
+          <p className="muted">Nothing here yet. Start with the layer your body will actually want to keep on.</p>
           <p style={{ marginTop: 18 }}><Link href="/#shop" className="btn">Browse the collection</Link></p>
         </div>
       ) : (
@@ -83,7 +83,7 @@ export default function CartPage() {
               <span>Subtotal</span>
               <strong>{money(subtotal)}</strong>
             </div>
-            <p className="muted small">Shipping &amp; taxes calculated at checkout.</p>
+            <p className="muted small">Shipping and taxes are shown before payment in hosted checkout.</p>
             {error && <p className="error">{error}</p>}
             <button className="btn block" style={{ marginTop: 14 }} onClick={checkout} disabled={busy}>
               {busy ? "Opening secure checkout…" : `Checkout · ${money(subtotal)}`}

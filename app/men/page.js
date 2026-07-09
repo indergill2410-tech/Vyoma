@@ -7,14 +7,14 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Men's Lifestyle Activewear",
   description:
-    "Men's Vyomawear lifestyle activewear for training, travel, recovery and weekends: base layers, tees, joggers, hoodies, socks and carry pieces.",
+    "Men's Vyomawear natural-fibre activewear for training, travel, recovery and everyday utility: trunks, tees, joggers, hoodies, socks and carry pieces.",
   alternates: { canonical: abs("/men") },
 };
 
 const MENS_PROMISES = [
   {
     title: "Training to life",
-    body: "Training tee, tapered jogger, recovery fleece and the bag that moves from workout to weekend.",
+    body: "Training tee, tapered jogger, recovery fleece and the bag that carries the day cleanly.",
   },
   {
     title: "Warm utility",
@@ -22,7 +22,7 @@ const MENS_PROMISES = [
   },
   {
     title: "Base layer up",
-    body: "Start with the trunk, then build the full-day kit for training, travel and after-hours.",
+    body: "Start with the trunk, then build the kit outward for movement, travel and recovery.",
   },
 ];
 
@@ -40,7 +40,7 @@ const MEN_DAY_MOMENTS = [
   {
     mark: "03",
     name: "Keep moving",
-    body: "Carry the same line through coffee, errands, travel and whatever happens after.",
+    body: "Carry the same line through coffee, errands, travel and the hours after.",
   },
   {
     mark: "04",
@@ -89,19 +89,19 @@ export default function MenPage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">Vyoma Men</p>
-            <h1>Men&apos;s activewear for training, travel and the hours after.</h1>
+            <h1>Men&apos;s activewear for movement, travel and recovery.</h1>
             <p className="commerce-lead">
-              A restrained men&apos;s edit in warm neutrals and copper depth:
-              base layers, training pieces, recovery fleece and carry pieces built for the full day.
+              A restrained men&apos;s edit in warm neutrals and copper depth: base layers,
+              training pieces, recovery fleece and carry pieces with fit and material details up front.
             </p>
             <div className="commerce-actions">
               <Link href="#mens-catalog" className="btn accent">Shop men</Link>
               <Link href="/product/vyoma-pure-trunk-men" className="btn ghost">Start with Pure</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Men's shopping promises">
-              <span>Training to life</span>
+              <span>Base layer up</span>
               <span>Warm utility</span>
-              <span>Secure checkout</span>
+              <span>Tracked delivery</span>
             </div>
           </div>
           <figure className="mens-story-visual" data-photo-board="true">
@@ -133,10 +133,10 @@ export default function MenPage() {
         <div className="commerce-shell">
           <div className="commerce-section-head">
             <p className="commerce-eyebrow">The day sequence</p>
-            <h2 id="mens-moments-heading">Train in it. Travel in it. Keep it on.</h2>
+            <h2 id="mens-moments-heading">Start close. Move well. Keep it on.</h2>
             <p>
               The men&apos;s edit is built from the closest layer outward, so the kit feels
-              clean on skin, sharp in public and useful after the workout.
+              calm on skin, sharp in public and useful after the workout.
             </p>
           </div>
           <div className="mens-colour-grid">
@@ -191,11 +191,11 @@ export default function MenPage() {
         <div className="commerce-shell confidence-grid">
           <div>
             <p className="commerce-eyebrow">Pure for men</p>
-            <h2 id="mens-pure-heading">The base layer under the whole kit.</h2>
+            <h2 id="mens-pure-heading">The base layer sets up the whole kit.</h2>
           </div>
           <p>
-            Start with breathable trunks, then pull on the tee, jogger, hoodie and carry pieces that
-            move through training, travel and the rest of your day.
+            Start with breathable trunks, then add the tee, jogger, hoodie and carry pieces that
+            move through the session and still feel right after.
           </p>
         </div>
       </section>

@@ -16,7 +16,7 @@ import { abs, SITE_URL, BRAND } from "@/lib/seo";
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Vyomawear - Lifestyle activewear for the full day",
+    default: "Vyomawear - Natural-fibre activewear for the full day",
     template: "%s · Vyomawear",
   },
   description: BRAND.description,
@@ -37,16 +37,16 @@ export const metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Vyomawear",
-    title: "Vyomawear - Lifestyle activewear for the full day.",
+    title: "Vyomawear - Natural-fibre activewear for the full day.",
     description:
-      "Premium natural-fibre activewear for training, travel, recovery and everyday life. Shipping across Australia.",
+      "Soft natural-fibre activewear with clear fit notes, calmer materials and tracked delivery across Australia.",
     locale: "en_AU",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vyomawear - Lifestyle activewear for the full day",
+    title: "Vyomawear - Natural-fibre activewear for the full day",
     description:
-      "Premium natural-fibre activewear for training, travel, recovery and everyday life. Shipping across Australia.",
+      "Soft natural-fibre activewear with clear fit notes, calmer materials and tracked delivery across Australia.",
   },
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
@@ -70,7 +70,7 @@ const SITE_JSONLD = {
       "@id": `${SITE_URL}/#organization`,
       name: BRAND.name,
       legalName: BRAND.legalName,
-      description: "Premium natural-fibre activewear for training, travel, recovery and everyday life.",
+      description: "Soft natural-fibre activewear with clear fit notes, calmer materials and tracked delivery across Australia.",
       slogan: BRAND.slogan,
       url: SITE_URL,
       logo: abs("/icon.svg"),
@@ -118,7 +118,7 @@ export default function RootLayout({ children }) {
             <div className="container footer-grid">
               <div>
                 <BrandLogo className="footer-logo" />
-                <p className="muted small">Warm natural-fibre activewear for training, travel, recovery and everyday life.</p>
+                <p className="muted small">Soft natural-fibre activewear for practice, travel and the hours after.</p>
               </div>
               <div className="footer-links">
                 <Link href="/shop">Shop</Link>
@@ -136,7 +136,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-meta">
                 <span className="dev">व्योम</span>
-                <p className="muted small">Lifestyle activewear - Shipping across Australia</p>
+                <p className="muted small">Natural-fibre activewear - Shipping across Australia</p>
                 <p className="muted xsmall">© {new Date().getFullYear()} Vyomawear · Room to grow.</p>
               </div>
             </div>

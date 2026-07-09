@@ -63,7 +63,7 @@ export default function CartDrawer() {
           <div className="drawer-empty">
             <span className="dev">व्योम</span>
             <p>Your bag is empty.</p>
-            <p className="muted">Warm activewear for training, travel, recovery and everything after.</p>
+            <p className="muted">Start with the layer your body will actually want to keep on.</p>
             <button className="btn" onClick={() => setDrawerOpen(false)}>
               Browse the collection
             </button>
@@ -113,13 +113,13 @@ export default function CartDrawer() {
                 <span>Subtotal</span>
                 <strong>{money(subtotal)}</strong>
               </div>
-              <p className="muted small">Shipping &amp; taxes calculated at checkout.</p>
+              <p className="muted small">Shipping and taxes are shown before payment in hosted checkout.</p>
               {error && <p className="error">{error}</p>}
               <button className="btn block" onClick={checkout} disabled={busy}>
                 {busy ? "Opening secure checkout…" : `Checkout · ${money(subtotal)}`}
               </button>
               <p className="muted xsmall center">
-                Secure checkout, powered by Shopify.
+                Hosted Shopify checkout. Your total is shown before payment.
               </p>
             </div>
           </>

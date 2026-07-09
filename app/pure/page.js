@@ -12,9 +12,9 @@ export const metadata = {
 };
 
 const PURE_POINTS = [
-  { title: "Soft where it matters", body: "A breathable everyday layer for warm, close contact and long wear." },
-  { title: "Natural fibre first", body: "Organic cotton-led comfort, with product claims tied to what can be shown." },
-  { title: "Activewear-level care", body: "Everyday basics with the same material attention as the movement line." },
+  { title: "Soft where it matters", body: "A breathable everyday layer for warm contact, long wear and fewer distractions." },
+  { title: "Natural fibre first", body: "Organic cotton-led comfort, with product claims kept plain and verifiable." },
+  { title: "Activewear-level care", body: "Everyday basics with the same fit, fabric and care attention as the movement line." },
 ];
 
 export default function PurePage() {
@@ -29,8 +29,8 @@ export default function PurePage() {
             <p className="commerce-eyebrow">Vyoma Pure</p>
             <h1>The closest layer should feel the cleanest.</h1>
             <p className="commerce-lead">
-              Organic-cotton underwear for women and men, made for the skin that notices everything.
-              No drama. Just softer daily comfort and a clearer material story.
+              Cotton-led underwear and first layers for women and men, made for the skin that notices everything.
+              No drama. Just softer daily comfort, clearer materials and a calmer first touch.
             </p>
             <div className="commerce-actions">
               <Link href="#women" className="btn accent">Shop women's Pure</Link>
@@ -93,11 +93,11 @@ export default function PurePage() {
         <div className="commerce-shell confidence-grid">
           <div>
             <p className="commerce-eyebrow">The simple promise</p>
-            <h2>Made to be reached for without thinking.</h2>
+            <h2>Made to be reached for without second-guessing.</h2>
           </div>
           <p>
-            Vyoma Pure is not about fear. It is about caring for the layer you wear closest,
-            most often and for the longest stretches of the day.
+            Vyoma Pure is not about fear. It is about giving the closest layer more care,
+            because it is often the one you wear longest.
           </p>
         </div>
       </section>

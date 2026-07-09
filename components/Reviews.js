@@ -78,7 +78,7 @@ export default function Reviews({ slug }) {
               <span>{avg.toFixed(1)} · {count} review{count === 1 ? "" : "s"}</span>
             </div>
           ) : (
-            <p className="muted">Be the first to review this piece.</p>
+            <p className="muted">No reviews yet. Until then, use the fit notes, fabric details and delivery timing to choose with confidence.</p>
           )}
         </div>
         <button className="btn ghost" onClick={() => setOpen((o) => !o)}>
@@ -89,7 +89,7 @@ export default function Reviews({ slug }) {
       {open && (
         state === "done" ? (
           <div className="review-thanks">
-            ✦ Thank you. Your review is in — we read every one before it goes live.
+            ✦ Thank you. Your review is in - we read every one before it goes live.
           </div>
         ) : (
           <form className="review-form" onSubmit={submit}>
@@ -110,7 +110,7 @@ export default function Reviews({ slug }) {
               aria-label="Review headline"
             />
             <textarea
-              placeholder="How does it move, feel, fit?"
+              placeholder="How does it move, feel and fit?"
               value={form.body}
               onChange={(e) => setForm({ ...form, body: e.target.value })}
               aria-label="Your review"

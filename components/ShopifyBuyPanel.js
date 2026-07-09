@@ -45,7 +45,7 @@ export default function ShopifyBuyPanel({ product }) {
   function addToBag(e) {
     setError("");
     if (!complete || !match) {
-      setError("Choose your options to continue.");
+      setError("Choose your size or option first so we send the right piece.");
       return;
     }
     if (!match.availableForSale) {
@@ -69,9 +69,9 @@ export default function ShopifyBuyPanel({ product }) {
   return (
     <div className="pdp-info shopify-pdp-info">
       <div className="pdp-proofline" aria-label="Product proof points">
-        <span>Organic-material activewear</span>
-        <span>Fit support</span>
-        <span>Secure hosted checkout</span>
+        <span>Made after you choose it</span>
+        <span>Fit notes before checkout</span>
+        <span>Hosted checkout</span>
       </div>
       <p className="pdp-cat">{product.productType || "Vyomawear"}</p>
       <h1>{product.title}</h1>
@@ -79,9 +79,9 @@ export default function ShopifyBuyPanel({ product }) {
       {product.description && <p className="pdp-desc">{product.description}</p>}
 
       <div className="pdp-fit-panel pdp-fit-highlight">
-        <h3>Fit first. Checkout second.</h3>
+        <h3>Choose the fit before you commit.</h3>
         <p>
-          Choose your size and colour here, then use the Fit Finder if you want a second check before adding to bag.
+          Pick your size and colour here, then use the Fit Finder if you want a second check before adding to bag.
         </p>
         <Link className="link-btn" href="/fit">Open Fit Finder</Link>
       </div>
@@ -137,24 +137,24 @@ export default function ShopifyBuyPanel({ product }) {
       {error && <p className="error" role="alert">{error}</p>}
 
       <p className="pdp-lead">✦ Made for you in India · ships in 10–14 days</p>
-      <p className="pdp-stock-note">Made-to-order flow: your selected option is confirmed once it is in the bag.</p>
+      <p className="pdp-stock-note">Your selected option is confirmed in the bag before secure hosted checkout.</p>
 
       <dl className="pdp-trust-grid" aria-label="Purchase confidence">
         <div>
           <dt>Materials</dt>
-          <dd>Natural-fibre first, designed to feel calmer against skin.</dd>
+          <dd>Natural-fibre first, designed to feel calmer against skin for longer wear.</dd>
         </div>
         <div>
           <dt>Fit support</dt>
-          <dd>Use the Fit Finder before checkout; support is clear if the first size is not right.</dd>
+          <dd>Use the Fit Finder before checkout, with product notes close to the size choice.</dd>
         </div>
         <div>
           <dt>Delivery</dt>
-          <dd>Tracked shipping after your piece is prepared and checked.</dd>
+          <dd>Tracked shipping after your piece is prepared, checked and ready to leave.</dd>
         </div>
         <div>
           <dt>Checkout</dt>
-          <dd>Payment completes through the secure hosted checkout already connected to the store.</dd>
+          <dd>Payment completes through hosted checkout, with totals shown before payment.</dd>
         </div>
       </dl>
 
@@ -162,13 +162,13 @@ export default function ShopifyBuyPanel({ product }) {
         <article>
           <span>How it fits into your day</span>
           <p>
-            Built for training first, then easy enough for travel, recovery and everyday wear.
+            Built for movement first, then easy enough for travel, recovery and everyday wear.
           </p>
         </article>
         <article>
           <span>Why your body notices</span>
           <p>
-            Organic-material layers help the closest part of the kit feel calmer, cleaner and more considered.
+            Natural-fibre-first layers help the closest part of the kit feel calmer, cleaner and more considered.
           </p>
         </article>
       </div>

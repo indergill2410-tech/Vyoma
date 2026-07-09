@@ -1,9 +1,9 @@
 // Slim top bar - material promise, shipping reassurance, checkout confidence.
 export default function AnnounceBar() {
   const items = [
-    "Warm natural-fibre activewear for the full day",
-    "Men / Women / Pure / Accessories",
-    "Secure checkout",
+    "Soft natural-fibre activewear for the full day",
+    "Fit notes before checkout",
+    "Tracked delivery from dispatch",
   ];
   return (
     <div className="announce" role="region" aria-label="Announcements">

@@ -7,22 +7,22 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Women's Lifestyle Activewear",
   description:
-    "Women's Vyomawear lifestyle activewear for practice, warm days, soft support and closest-to-skin organic layers.",
+    "Women's Vyomawear natural-fibre activewear for practice, warm days, soft support and closest-to-skin comfort.",
   alternates: { canonical: abs("/women") },
 };
 
 const WOMEN_PROMISES = [
   {
     title: "Practice first",
-    body: "Leggings, shorts, skort and soft tops are built around movement before anything else.",
+    body: "Leggings, shorts, skort and soft tops begin with movement, then stay comfortable after practice.",
   },
   {
     title: "Organic close layers",
-    body: "Pure briefs, cami and breathable cotton-rich pieces sit softly against skin through the whole day.",
+    body: "Pure briefs, cami and cotton-rich pieces sit softly against skin through the whole day.",
   },
   {
     title: "Copper warmth",
-    body: "The palette keeps the collection warm, natural and lifestyle-ready without drifting into streetwear.",
+    body: "The palette keeps the collection warm, natural and polished without drifting into streetwear.",
   },
 ];
 
@@ -30,22 +30,22 @@ const WOMEN_PLAN = [
   {
     mark: "01",
     name: "Start close",
-    body: "Begin with Pure when you want the cleanest base layer under the rest of the kit.",
+    body: "Begin with Pure when you want the softest base under the rest of the kit.",
   },
   {
     mark: "02",
     name: "Hold the practice",
-    body: "Choose leggings, shorts or the skort for the level of coverage your session needs.",
+    body: "Choose leggings, shorts or the skort for the coverage and hold your session needs.",
   },
   {
     mark: "03",
     name: "Support softly",
-    body: "Add the bra, studio top or rib tank so the top layer moves without digging in.",
+    body: "Add the bra, studio top or rib tank for support that moves without digging in.",
   },
   {
     mark: "04",
     name: "Leave it on",
-    body: "Finish with the set or wrap so the outfit still feels right after practice.",
+    body: "Finish with the set or wrap so the outfit still feels considered after practice.",
   },
 ];
 
@@ -90,20 +90,19 @@ export default function WomenPage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">Vyoma Women</p>
-            <h1>Women&apos;s activewear for practice, warm days and softer daily layers.</h1>
+            <h1>Women&apos;s activewear for practice, warm days and the hours after.</h1>
             <p className="commerce-lead">
-              The existing women catalogue now has its own home: leggings, shorts,
-              studio tops, bras, Pure basics, the set and the wrap, all kept in the
-              natural-fibre activewear lane.
+              Leggings, shorts, studio tops, bras, Pure basics, the set and the wrap
+              are grouped by how they feel on the body, so choosing the right layer is calmer.
             </p>
             <div className="commerce-actions">
               <Link href="#women-catalog" className="btn accent">Shop women</Link>
               <Link href="/pure" className="btn ghost">Start with Pure</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Women's shopping promises">
-              <span>Practice to life</span>
+              <span>Soft support</span>
               <span>Organic close layers</span>
-              <span>Secure checkout</span>
+              <span>Fit notes before checkout</span>
             </div>
           </div>
           <figure className="women-story-visual" aria-label="Women's Vyoma catalogue highlights">
@@ -151,11 +150,11 @@ export default function WomenPage() {
       <section className="commerce-section women-plan-section" aria-labelledby="women-plan-heading">
         <div className="commerce-shell">
           <div className="commerce-section-head">
-            <p className="commerce-eyebrow">The women section plan</p>
+            <p className="commerce-eyebrow">The wardrobe map</p>
             <h2 id="women-plan-heading">Build from the base layer out.</h2>
             <p>
-              This page separates the women catalogue from the full shop so each piece
-              has a clearer role in the wardrobe.
+              Start with what touches skin, then choose the hold, support and final layer
+              that make the outfit feel right after practice too.
             </p>
           </div>
           <div className="women-plan-grid">
@@ -175,7 +174,7 @@ export default function WomenPage() {
           <div className="commerce-section-head split">
             <div>
               <p className="commerce-eyebrow">Women&apos;s catalogue</p>
-              <h2 id="women-catalog-heading">The existing women pieces, now in one place.</h2>
+              <h2 id="women-catalog-heading">Women&apos;s pieces, clearly grouped.</h2>
             </div>
             <Link href="/fit" className="link-btn">Need size help?</Link>
           </div>
@@ -211,11 +210,11 @@ export default function WomenPage() {
         <div className="commerce-shell confidence-grid">
           <div>
             <p className="commerce-eyebrow">Women + Pure</p>
-            <h2 id="women-pure-heading">The soft base layer belongs in the same wardrobe.</h2>
+            <h2 id="women-pure-heading">The soft base layer is part of the outfit.</h2>
           </div>
           <p>
-            Women&apos;s activewear should not stop at leggings and tops. Pure basics
-            sit closest to skin, then the practice pieces and wrap complete the day.
+            The layer closest to skin affects how the whole kit feels. Pure basics sit first,
+            then the practice pieces and wrap complete the day.
           </p>
         </div>
       </section>

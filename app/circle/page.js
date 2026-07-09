@@ -16,15 +16,15 @@ export const metadata = {
 const BENEFITS = [
   {
     title: "Restocks first",
-    body: "Hear when a size, colour or favourite piece returns before the wider list does.",
+    body: "Hear when a size, colour or favourite piece returns before it goes to the wider list.",
   },
   {
     title: "Founder perks",
-    body: "Bring friends, move up the line and unlock small thank-you moments as we grow.",
+    body: "Bring friends, move up the line and unlock small thank-you moments without pressure.",
   },
   {
     title: "Quiet notes",
-    body: "No spam, no noise — just early word on new pieces, material updates and when the next release lands.",
+    body: "No spam, no noise, just early word on useful releases, fit updates and material notes.",
   },
 ];
 
@@ -35,14 +35,14 @@ export default function CirclePage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">The Circle</p>
-            <h1>The store is open. The Circle hears first.</h1>
+            <h1>The store is open. The Circle keeps you close.</h1>
             <p className="commerce-lead">
-              Join for restock notes, early access to considered releases and founder perks. It's not a hard sell —
-              it's the quiet line for the people here from the very beginning.
+              Join for restock notes, early access to considered releases and founder perks.
+              It is a quiet line for people who want the useful details first.
             </p>
             <WaitlistCount className="big" />
             <Waitlist source="circle" />
-            <p className="muted small">No spam. Leave whenever you like.</p>
+            <p className="muted small">No spam. No pressure. Leave whenever you like.</p>
           </div>
           <EditorialImage
             name="circleDrops"
@@ -70,7 +70,7 @@ export default function CirclePage() {
         <div className="commerce-shell two-column-section">
           <div className="sticky-copy">
             <p className="commerce-eyebrow">How it rises</p>
-            <h2 id="circle-ladder-heading">Share Vyoma. Unlock the ladder.</h2>
+            <h2 id="circle-ladder-heading">Share Vyoma when it feels right.</h2>
             <p>
               Every friend who joins through your link moves you up and unlocks the next founder perk.
               The goal is simple: grow through people who actually care about the clothes.
@@ -100,7 +100,7 @@ export default function CirclePage() {
           <div className="commerce-section-head">
             <p className="commerce-eyebrow">Already in?</p>
             <h2 id="circle-status-heading">Check your place in line.</h2>
-            <p>Enter your Circle code to see your rank, referrals and next unlock.</p>
+            <p>Enter your Circle code to see your rank, referrals and the next thank-you moment.</p>
           </div>
           <CircleStatusCheck />
         </div>

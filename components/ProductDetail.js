@@ -27,9 +27,9 @@ export default function ProductDetail({ product }) {
 
       <div className="pdp-info">
         <div className="pdp-proofline" aria-label="Product proof points">
-          <span>Made to order</span>
+          <span>Made after you choose it</span>
           <span>Natural-fibre first</span>
-          <span>Fit support</span>
+          <span>Fit notes before checkout</span>
         </div>
         <p className="pdp-cat">{product.category} · {product.tagline}</p>
         <h1>{product.name}</h1>
@@ -37,7 +37,7 @@ export default function ProductDetail({ product }) {
         <p className="pdp-desc">{product.description}</p>
 
         <div className="pdp-fit-panel pdp-fit-highlight">
-          <h3>Fit first. Checkout second.</h3>
+          <h3>Choose the fit before you commit.</h3>
           <p>{product.fit}</p>
           <button className="link-btn" onClick={() => setGuideOpen(true)}>Open size guide</button>
         </div>
@@ -81,21 +81,21 @@ export default function ProductDetail({ product }) {
         </div>
 
         <div className="pdp-actions">
-          <Link className="btn block" href="/shop">Shop the live collection</Link>
+          <Link className="btn block" href="/shop">Shop available pieces</Link>
         </div>
 
         <p className="pdp-lead">✦ {product.leadTime}</p>
-        <p className="pdp-stock-note">Made-to-order preview: checkout appears when this piece is released live.</p>
+        <p className="pdp-stock-note">This preview piece is not taking checkout yet. Shop available pieces now, or join The Circle for release notes.</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
           <li><span>॥</span> Made in India</li>
-          <li><span>✦</span> Secure checkout</li>
-          <li><span>◯</span> Tracked delivery</li>
+          <li><span>✦</span> Fit and fabric details</li>
+          <li><span>◯</span> Tracked from dispatch</li>
         </ul>
 
         <dl className="pdp-trust-grid" aria-label="Purchase confidence">
           <div>
-            <dt>Fabric</dt>
+            <dt>Material</dt>
             <dd>{product.fabric}</dd>
           </div>
           <div>
@@ -107,7 +107,7 @@ export default function ProductDetail({ product }) {
             <dd>{product.care}</dd>
           </div>
           <div>
-            <dt>Delivery</dt>
+            <dt>Timing</dt>
             <dd>{product.leadTime}</dd>
           </div>
         </dl>
@@ -124,19 +124,19 @@ export default function ProductDetail({ product }) {
             <span>Why your body notices</span>
             <p>
               The closest layer changes the way the rest of the day feels: softer
-              touch, clearer fit and less friction between training and life.
+              touch, clearer fit and less friction between movement and life.
             </p>
           </article>
         </div>
 
         <div className="made-for-you" data-reveal>
-          <h4>Made in India, with care</h4>
+          <h4>Made with time, not rush</h4>
           <ol className="moto-timeline">
-            <li><span>1</span> Crafted in India in small, considered runs</li>
+            <li><span>1</span> Prepared in small, considered runs</li>
             <li><span>2</span> Cut, sewn and checked by hand</li>
-            <li><span>3</span> Couriered to your door, with tracking the whole way</li>
+            <li><span>3</span> Sent with tracking once it is ready</li>
           </ol>
-          <p className="muted small">Considered, never mass-produced. Made to last.</p>
+          <p className="muted small">Considered, never rushed. Made to be reached for often.</p>
         </div>
       </div>
 

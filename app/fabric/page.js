@@ -19,12 +19,12 @@ const MATERIALS = [
     body: "Simpler compositions, fewer finish promises and clearer batch language as documentation arrives.",
   },
   {
-    title: "No overclaiming",
-    body: "We do not make medical claims. We explain what the garment is, what it avoids and what is verified.",
+    title: "Plain claims only",
+    body: "No medical promises, no vague wellness language. Just what the garment is, what it avoids and what is verified.",
   },
 ];
 
-const AVOIDS = ["Polyester as the default", "Nylon-heavy close layers", "Elastane-first storytelling", "Vague wellness claims"];
+const AVOIDS = ["Polyester as the automatic default", "Nylon-heavy close layers", "Elastane-first storytelling", "Vague wellness claims"];
 
 export default function FabricPage() {
   return (
@@ -36,7 +36,7 @@ export default function FabricPage() {
             <h1>Less mystery in the layer closest to you.</h1>
             <p className="commerce-lead">
               Vyoma begins with how fabric feels on warm, moving skin: soft, breathable,
-              clear and considered. The science sits behind the choice; the feeling comes first.
+              clear and considered. The proof supports the choice; the feeling comes first.
             </p>
             <div className="commerce-actions">
               <Link href="/shop" className="btn accent">Shop the catalogue</Link>
@@ -72,7 +72,7 @@ export default function FabricPage() {
             <h2 id="fabric-choice-heading">Activewear does not have to start with plastic.</h2>
             <p>
               Some synthetics perform beautifully. But for tight, warm, close-to-skin layers,
-              we believe a softer natural-fibre path deserves to exist.
+              we believe a softer natural-fibre path should be easy to choose.
             </p>
           </div>
           <div className="avoid-panel">
@@ -88,11 +88,11 @@ export default function FabricPage() {
         <div className="commerce-shell confidence-grid">
           <div>
             <p className="commerce-eyebrow">Standards</p>
-            <h2 id="cert-heading">Certificates, not costume jewellery.</h2>
+            <h2 id="cert-heading">Proof should stay plain.</h2>
           </div>
           <p>
             As GOTS, OEKO-TEX or product-specific batch documentation is issued, it should live here
-            plainly. Until then, Vyoma should only claim what can be proven.
+            plainly. Until then, Vyoma will keep claims limited to what can be shown.
           </p>
         </div>
       </section>

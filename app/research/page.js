@@ -5,7 +5,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Research",
   description:
-    "The quiet proof behind Vyomawear's material choices: microfibres, PFAS, skin contact and clearer standards.",
+    "The quiet proof behind Vyomawear material choices: natural fibres, close-to-skin care and clearer claim boundaries.",
   alternates: { canonical: abs("/research") },
 };
 
@@ -37,7 +37,7 @@ const PRINCIPLES = [
   "We only claim what we can actually show you.",
   "We choose softer natural fibres wherever they can do the job.",
   "We publish batch documents once the certificates are real.",
-  "We let the clothes feel beautiful before the proof needs to speak.",
+  "We let the clothes feel beautiful, then keep the proof close for anyone who wants it.",
 ];
 
 const CLAIM_BOUNDARIES = [
@@ -64,9 +64,9 @@ export default function ResearchPage() {
             <p className="commerce-eyebrow">The quiet proof</p>
             <h1>Why we lead with natural fibre.</h1>
             <p className="commerce-lead">
-              We'd rather you felt the softness than read a lecture. But if you want to know
+              We would rather you felt the softness than read a lecture. But if you want to know
               why we choose natural fibres, fewer finishes and gentler close-to-skin layers,
-              here's the reading behind it.
+              the reading is here in plain language.
             </p>
             <div className="commerce-actions">
               <Link href="/shop" className="btn accent">Shop the catalogue</Link>
@@ -88,8 +88,8 @@ export default function ResearchPage() {
             <p className="commerce-eyebrow">Material questions</p>
             <h2 id="evidence-heading">The questions behind our material choices.</h2>
             <p>
-              We're not here to scare you. These are simply the studies we read while choosing
-              softer, simpler materials — linked so you can read them too.
+              We are not here to scare you. These are simply the studies we read while choosing
+              softer, simpler materials, linked so you can read them too.
             </p>
           </div>
           <div className="commerce-card-grid three evidence-cards">
@@ -112,7 +112,7 @@ export default function ResearchPage() {
             <h2 id="principles-heading">We'd rather show than shout.</h2>
             <p>
               You should feel the softness first. The evidence is here for when you want to
-              look closer — especially on the claims that are easy to exaggerate and hard to back up.
+              look closer, especially on claims that are easy to exaggerate and hard to back up.
             </p>
           </div>
           <ul className="principle-list">
@@ -129,7 +129,7 @@ export default function ResearchPage() {
             <p className="commerce-eyebrow">Claim boundaries</p>
             <h2 id="claim-boundaries-heading">Evidence without fear.</h2>
             <p>
-              The research page should help you understand our choices, not make you anxious.
+              This page should help you understand our choices, not make you anxious.
               These boundaries keep the brand honest as documentation grows.
             </p>
           </div>
