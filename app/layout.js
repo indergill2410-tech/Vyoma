@@ -2,25 +2,10 @@ import "./globals.css";
 import "./conversion.css";
 import "./editorial.css";
 import "./brand-polish.css";
-import { Fraunces, Karla } from "next/font/google";
 import Link from "next/link";
 import { Providers } from "@/components/Providers";
 import Nav from "@/components/Nav";
 import AnnounceBar from "@/components/AnnounceBar";
-
-// Self-hosted, preloaded fonts — no render-blocking @import to Google, no
-// extra DNS/round-trips, and `swap` + size matching avoids layout shift.
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-fraunces",
-});
-const karla = Karla({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-karla",
-});
 import CartDrawer from "@/components/CartDrawer";
 import Fx from "@/components/Fx";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -73,7 +58,7 @@ export const viewport = {
   // viewport-fit=cover is required for env(safe-area-inset-*) to resolve to
   // real values on notched iPhones — without it the insets are always 0.
   viewportFit: "cover",
-  themeColor: "#14162E",
+  themeColor: "#fbf7ef",
 };
 
 const SITE_JSONLD = {
@@ -106,7 +91,7 @@ const SITE_JSONLD = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${karla.variable}`}>
+    <html lang="en">
       <head>
         {/* Warm up the Shopify image CDN early so product photos start
             downloading sooner (Next hoists these into <head>). */}

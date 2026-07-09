@@ -7,7 +7,7 @@ const KEYS = Object.keys(COLOURWAYS);
 // When this photo exists (e.g. after `npm run images` or via Shopify), the tile
 // upgrades from the gamified swatch to the real shot automatically.
 const HERO_PHOTO = "/products/vyoma-the-set/model.webp";
-const HERO_PHOTO_FALLBACK = "/products/vyoma-the-set/model.png";
+const HERO_PHOTO_FALLBACK = "/products/vyoma-the-set/detail.webp";
 
 // The gamified hero product tile: click a colourway and the sky cross-dissolves
 // with a ✦ sparkle burst; the tile tilts in 3D to the pointer; a light sheen

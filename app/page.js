@@ -14,7 +14,7 @@ const SHOP_LANES = [
   {
     title: "Women",
     href: "/shop#collection",
-    body: "Sculpted leggings, studio tops, bras, skorts and soft sets.",
+    body: "Sculpted leggings, studio tops, bras, skorts and soft sets for movement and the hours after.",
   },
   {
     title: "Pure",
@@ -32,17 +32,22 @@ const DAY_SYSTEM = [
   {
     mark: "01",
     title: "Train",
-    body: "Pieces that feel sharp enough for the gym floor and clean enough to keep on after.",
+    body: "Warm activewear that feels sharp on the gym floor and clean enough to keep on after.",
   },
   {
     mark: "02",
-    title: "Move",
-    body: "Layering, carry and colour built for errands, travel and the hours between plans.",
+    title: "Travel",
+    body: "Natural-fibre layers, carry pieces and easy silhouettes for movement between places.",
   },
   {
     mark: "03",
     title: "Recover",
-    body: "Soft fleece, breathable bases and calmer textures for the part of the day when your body wants ease.",
+    body: "Soft fleece, breathable bases and quieter textures for the part of the day when your body wants ease.",
+  },
+  {
+    mark: "04",
+    title: "Live",
+    body: "The layer your body lives in: calm on skin, polished in public and simple to trust.",
   },
 ];
 
@@ -62,10 +67,10 @@ const TRUST_POINTS = [
 ];
 
 const COLOUR_STORY = [
-  { name: "Amber heat", tone: "#d9902f", body: "Warmth and energy for the pieces that should feel most alive." },
-  { name: "Graphite hold", tone: "#17191f", body: "A premium base that makes product colour feel richer." },
-  { name: "Cobalt charge", tone: "#1557c0", body: "A sharper athletic signal for men's and activewear moments." },
-  { name: "Eucalyptus calm", tone: "#24695f", body: "A quiet counterweight so the brand stays natural, not loud." },
+  { name: "Warm amber", tone: "#d9902f", body: "Primary CTA warmth and the glow around the product world." },
+  { name: "Burnt copper", tone: "#9d4f24", body: "Premium depth for hover states, shadows and small highlights." },
+  { name: "Oat ivory", tone: "#f8f1e8", body: "The main surface: warm, quiet and easy on the eyes." },
+  { name: "Deep cacao", tone: "#17191f", body: "The contrast layer for text, navigation and confident sections." },
 ];
 
 export default function Home() {
@@ -79,27 +84,30 @@ export default function Home() {
             <div className={styles.heroCopy}>
               <p className={styles.eyebrow}>Vyomawear lifestyle activewear</p>
               <h1>
-                Activewear for the full day.
-                <span>Warm, sharp, ready.</span>
+                Organic-first activewear.
+                <span>For the body you live in all day.</span>
               </h1>
               <p className={styles.lead}>
-                Premium natural-fibre layers for training, travel, street plans and recovery.
-                Warm colour, clean detail and the pieces you can already shop.
+                Your body notices what touches it all day. Vyoma makes warm natural-fibre
+                layers for training, travel, recovery and everything after.
               </p>
               <div className={styles.actions}>
                 <Link href="/shop" className={styles.primaryCta}>
                   Shop the catalogue
                 </Link>
                 <Link href="/men" className={styles.secondaryCta}>
-                  Shop men
+                  Men
+                </Link>
+                <Link href="/shop#collection" className={styles.secondaryCta}>
+                  Women
                 </Link>
                 <Link href="/pure" className={styles.textCta}>
-                  Start with Pure
+                  Pure
                 </Link>
               </div>
               <div className={styles.trustStrip} aria-label="Shopping promises">
-                <span>Gym to street</span>
-                <span>Natural-fibre feel</span>
+                <span>Train to travel</span>
+                <span>Natural-fibre first</span>
                 <span>Secure checkout</span>
               </div>
             </div>
@@ -112,15 +120,15 @@ export default function Home() {
       <div className={styles.marquee} aria-hidden="true">
         <div className={styles.marqueeTrack}>
           <span>Warm amber activewear</span>
-          <span>Gym to street</span>
-          <span>Men's lifestyle kit</span>
-          <span>Women's movement layers</span>
-          <span>Pure cotton bases</span>
+          <span>Training</span>
+          <span>Travel</span>
+          <span>Recovery</span>
+          <span>Closest-to-skin comfort</span>
           <span>Warm amber activewear</span>
-          <span>Gym to street</span>
-          <span>Men's lifestyle kit</span>
-          <span>Women's movement layers</span>
-          <span>Pure cotton bases</span>
+          <span>Training</span>
+          <span>Travel</span>
+          <span>Recovery</span>
+          <span>Closest-to-skin comfort</span>
         </div>
       </div>
 
@@ -128,10 +136,9 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.sectionIntro}>
             <p className={styles.eyebrow}>Shop by wardrobe moment</p>
-            <h2 id="shop-lanes-heading">The right path to the right layer.</h2>
+            <h2 id="shop-lanes-heading">The right path to the layer your day needs.</h2>
             <p>
-              Move from Men, Women, Pure and accessories into the pieces that fit the way your
-              day actually moves.
+              Men, Women, Pure and accessories stay connected under one calm activewear system.
             </p>
           </div>
           <div className={styles.laneGrid}>
@@ -152,8 +159,8 @@ export default function Home() {
               <p className={styles.eyebrow}>Built around your day</p>
               <h2 id="system-heading">Dress for the whole day, not one hour.</h2>
               <p>
-                Every product should answer the same desire quickly: look sharper, move easier
-                and feel comfortable longer.
+                The closest layer matters because it stays with you: while you train, while you
+                travel, while you recover and while you get on with life.
               </p>
               <Link href="/shop" className={styles.inverseCta}>
                 Browse all products
@@ -176,12 +183,12 @@ export default function Home() {
         <div className={styles.shell}>
           <div className={styles.collectionHead}>
             <div>
-              <p className={styles.eyebrow}>The colour story</p>
-              <h2 id="colour-heading">Warmth with athletic contrast.</h2>
+              <p className={styles.eyebrow}>Brand palette</p>
+              <h2 id="colour-heading">Warmth, depth and restraint.</h2>
             </div>
             <p>
-              Amber brings heat. Graphite adds polish. Cobalt and eucalyptus keep the brand
-              athletic, fresh and alive.
+              Amber and copper carry the emotional glow. Oat and cacao keep the site premium,
+              readable and calm.
             </p>
           </div>
           <div className={styles.colourGrid}>
@@ -217,8 +224,8 @@ export default function Home() {
             <p className={styles.eyebrow}>Buy with clarity</p>
             <h2 id="confidence-heading">Confidence beats hype.</h2>
             <p>
-              Clear fit, fabric and use-case details help you choose faster, then move naturally
-              into product pages and checkout.
+              We do not use fear. We use evidence, restraint and better material choices,
+              then keep fit, fabric and checkout details easy to find.
             </p>
           </div>
           <div className={styles.proofGrid}>
@@ -235,9 +242,10 @@ export default function Home() {
       <section id="circle" className={styles.circle} aria-labelledby="circle-heading">
         <div className={styles.circleInner}>
           <p className={styles.eyebrow}>The Circle</p>
-          <h2 id="circle-heading">Get early notes when the next layer lands.</h2>
+          <h2 id="circle-heading">A quieter way to follow what comes next.</h2>
           <p>
-            Join for product notes, restock signals and first access to future colour moments.
+            Join for product notes, restock signals and useful material updates. No pressure,
+            no noisy campaign language.
           </p>
           <Waitlist source="homepage" />
           <div className={styles.circleMeta}>

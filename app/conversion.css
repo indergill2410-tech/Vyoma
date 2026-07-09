@@ -519,7 +519,7 @@
 .commerce-section-head.split {
   max-width: none;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
   text-align: left;
@@ -723,7 +723,7 @@
   display: grid;
   grid-template-columns: 52px 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .confidence-list strong,
@@ -761,7 +761,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 26px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .cart-lines {
@@ -787,7 +787,7 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .cart-line h2 {
@@ -995,7 +995,7 @@
 }
 
 .sticky-copy {
-  align-self: start;
+  align-self: flex-start;
 }
 
 @media (min-width: 860px) {

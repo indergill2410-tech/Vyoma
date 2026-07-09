@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { mensCatalogueProducts } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
 import { abs } from "@/lib/seo";
@@ -16,8 +17,8 @@ const MENS_PROMISES = [
     body: "Training tee, tapered jogger, recovery fleece and the bag that moves from workout to weekend.",
   },
   {
-    title: "Colour with pace",
-    body: "Teal, cobalt, saffron, graphite and clean white give the men's edit its own energy.",
+    title: "Warm utility",
+    body: "Cacao, graphite, oat and amber give the men's edit strength without turning loud.",
   },
   {
     title: "Base layer up",
@@ -27,24 +28,24 @@ const MENS_PROMISES = [
 
 const MEN_COLOUR_STORY = [
   {
-    name: "Training teal",
-    tone: "#0f6c78",
-    body: "The active top colour: sharp, wearable and made to stand out against concrete and gym steel.",
+    name: "Cacao base",
+    tone: "#322821",
+    body: "A grounded athletic neutral for pieces that need to feel sharp after the workout too.",
   },
   {
-    name: "Cobalt hit",
-    tone: "#0057b8",
-    body: "The men's blue: brighter than navy, cleaner than black, built for outer layers and accents.",
+    name: "Oat lift",
+    tone: "#f3eee6",
+    body: "A clean warm surface that keeps base layers and tees feeling considered, not clinical.",
   },
   {
-    name: "Saffron carry",
-    tone: "#c98a22",
-    body: "A warm utility pop on bags, stripes and details so the kit feels alive, not flat.",
+    name: "Amber utility",
+    tone: "#d9902f",
+    body: "A restrained hit on carry pieces and details, used for warmth rather than volume.",
   },
   {
-    name: "Graphite base",
+    name: "Graphite hold",
     tone: "#30333a",
-    body: "The grounding neutral for joggers, trunks and recovery pieces.",
+    body: "The city-ready anchor for joggers, trunks and recovery pieces.",
   },
 ];
 
@@ -90,8 +91,8 @@ export default function MenPage() {
             <p className="commerce-eyebrow">Vyoma Men</p>
             <h1>Lifestyle activewear for training, travel and everything after.</h1>
             <p className="commerce-lead">
-              A men&apos;s edit with its own colour story: teal training layers, cobalt recovery fleece,
-              graphite bases and saffron carry pieces built for the full day.
+              A restrained men&apos;s edit in warm neutrals, cacao depth and amber utility:
+              base layers, training pieces, recovery fleece and carry pieces built for the full day.
             </p>
             <div className="commerce-actions">
               <Link href="#mens-catalog" className="btn accent">Shop men</Link>
@@ -99,18 +100,17 @@ export default function MenPage() {
             </div>
             <div className="commerce-trust-row" aria-label="Men's shopping promises">
               <span>Gym to street</span>
-              <span>Alive colour</span>
+              <span>Warm utility</span>
               <span>Secure checkout</span>
             </div>
           </div>
           <figure className="mens-story-visual" data-photo-board="true">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/editorial/mens-catalogue-hero.png"
-              alt="Vyoma men's lifestyle activewear model leaving a boutique gym with teal, cobalt and saffron kit"
-              loading="eager"
-              decoding="sync"
-              fetchPriority="high"
+            <Image
+              src="/editorial/mens-catalogue-hero.webp"
+              alt="Vyoma men's lifestyle activewear in warm amber studio light"
+              fill
+              priority
+              sizes="(min-width: 920px) 46vw, 100vw"
             />
           </figure>
         </div>
@@ -133,10 +133,10 @@ export default function MenPage() {
         <div className="commerce-shell">
           <div className="commerce-section-head">
             <p className="commerce-eyebrow">Colour story</p>
-            <h2 id="mens-colour-heading">Not another navy-only men&apos;s rack.</h2>
+            <h2 id="mens-colour-heading">Strength without the noise.</h2>
             <p>
-              The women&apos;s line can stay softer and studio-led. Men gets a more electric rhythm:
-              gym colour, city neutrals and one warm utility hit.
+              Men stays inside the same Vyoma world: cacao, oat, amber and graphite first.
+              Product colours can bring energy naturally, without making the brand shout.
             </p>
           </div>
           <div className="mens-colour-grid">

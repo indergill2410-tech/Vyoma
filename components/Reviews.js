@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function Stars({ value, onChange }) {
   return (
@@ -28,7 +28,7 @@ export default function Reviews({ slug }) {
   const [form, setForm] = useState({ author: "", rating: 5, title: "", body: "" });
   const [state, setState] = useState("idle");
 
-  async function load() {
+  const load = useCallback(async function load() {
     try {
       const res = await fetch(`/api/reviews?slug=${encodeURIComponent(slug)}`);
       if (!res.ok) return;
@@ -38,11 +38,11 @@ export default function Reviews({ slug }) {
       // Leave data null — the section falls back to its "no reviews yet" state
       // instead of throwing if the API is briefly unavailable.
     }
-  }
+  }, [slug]);
 
   useEffect(() => {
     load();
-  }, [slug]);
+  }, [load]);
 
   async function submit(e) {
     e.preventDefault();

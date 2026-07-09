@@ -40,6 +40,21 @@ const PRINCIPLES = [
   "We let the clothes feel beautiful before the proof needs to speak.",
 ];
 
+const CLAIM_BOUNDARIES = [
+  {
+    title: "What we can prove",
+    body: "Synthetic textile studies measure microfibre release during washing, and public agencies document that PFAS have been used in some resistant finishes.",
+  },
+  {
+    title: "What varies",
+    body: "Fibre type, yarn, construction, finish, washing and the specific supplier all matter. A material category alone never tells the whole story.",
+  },
+  {
+    title: "What we will not claim",
+    body: "Vyoma is not medical clothing. We do not claim treatment, detox effects or that every synthetic garment carries the same risk.",
+  },
+];
+
 export default function ResearchPage() {
   return (
     <main className="commerce-page research-page-redesign">
@@ -105,6 +120,27 @@ export default function ResearchPage() {
               <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="commerce-section section-light" aria-labelledby="claim-boundaries-heading">
+        <div className="commerce-shell">
+          <div className="commerce-section-head">
+            <p className="commerce-eyebrow">Claim boundaries</p>
+            <h2 id="claim-boundaries-heading">Evidence without fear.</h2>
+            <p>
+              The research page should help you understand our choices, not make you anxious.
+              These boundaries keep the brand honest as documentation grows.
+            </p>
+          </div>
+          <div className="commerce-card-grid three">
+            {CLAIM_BOUNDARIES.map((item) => (
+              <article className="commerce-card" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </main>

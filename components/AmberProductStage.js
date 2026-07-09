@@ -8,7 +8,7 @@ const SCENES = {
     note: "A full-day wardrobe in warm amber light.",
     images: [
       {
-        src: "/editorial/mens-catalogue-hero.png",
+        src: "/editorial/mens-catalogue-hero.webp",
         alt: "Vyoma men's activewear lifestyle scene in warm amber studio light",
         tile: "hero",
       },
@@ -18,12 +18,12 @@ const SCENES = {
         tile: "tall",
       },
       {
-        src: "/products/vyoma-mat-bag/men-lifestyle.png",
+        src: "/products/vyoma-mat-bag/model.webp",
         alt: "Vyoma saffron gym carry lifestyle image",
         tile: "small",
       },
       {
-        src: "/products/vyoma-meditation-hoodie/men-lifestyle.png",
+        src: "/products/vyoma-meditation-hoodie/model.webp",
         alt: "Vyoma men's recovery hoodie lifestyle image",
         tile: "wide",
       },
@@ -41,17 +41,17 @@ const SCENES = {
         tile: "hero",
       },
       {
-        src: "/products/vyoma-practice-tee/men-lifestyle.png",
+        src: "/products/vyoma-practice-tee/model.webp",
         alt: "Vyoma men's practice tee lifestyle image",
         tile: "tall",
       },
       {
-        src: "/products/vyoma-organic-crew-sock/men-lifestyle.png",
+        src: "/products/vyoma-organic-crew-sock/model.webp",
         alt: "Vyoma organic crew socks lifestyle image",
         tile: "small",
       },
       {
-        src: "/products/vyoma-jogger/men-lifestyle.png",
+        src: "/products/vyoma-jogger/model.webp",
         alt: "Vyoma men's jogger lifestyle image",
         tile: "wide",
       },

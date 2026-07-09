@@ -88,10 +88,10 @@
 }
 
 .commerce-copy h1 {
-  max-width: 13ch;
+  max-width: 14ch;
   margin: 10px 0 22px;
-  font-size: 82px;
-  line-height: 0.98;
+  font-size: clamp(44px, 5.4vw, 70px);
+  line-height: 1.02;
 }
 
 .commerce-section-head h2,
@@ -337,7 +337,7 @@
 }
 
 .card-foot {
-  align-items: end;
+  align-items: flex-end;
   gap: 14px;
 }
 
@@ -481,4 +481,194 @@
   .shopify-sticky-buy .btn {
     width: auto;
   }
+}
+
+/* Light premium direction: warm editorial surfaces, cacao contrast, no dark-theme sections. */
+.commerce-page {
+  background:
+    radial-gradient(90% 70% at 86% 4%, rgba(217, 144, 47, 0.10), transparent 58%),
+    var(--paper);
+}
+
+.commerce-hero {
+  color: var(--ink);
+  background:
+    radial-gradient(82% 82% at 82% 12%, rgba(217, 144, 47, 0.18), transparent 56%),
+    radial-gradient(78% 72% at 8% 92%, rgba(157, 79, 36, 0.09), transparent 62%),
+    linear-gradient(135deg, #fff8ed 0%, #fbf7ef 56%, #f0dfcb 100%);
+}
+
+.shop-page .commerce-hero,
+.mens-page .commerce-hero,
+.pure-page .commerce-hero,
+.fabric-page .commerce-hero,
+.research-page-redesign .commerce-hero,
+.about-redesign .commerce-hero,
+.drops-page .commerce-hero,
+.circle-redesign .commerce-hero,
+.fit-page-main .commerce-hero {
+  color: var(--ink);
+  background:
+    radial-gradient(82% 82% at 82% 12%, rgba(217, 144, 47, 0.18), transparent 56%),
+    radial-gradient(78% 72% at 8% 92%, rgba(157, 79, 36, 0.09), transparent 62%),
+    linear-gradient(135deg, #fff8ed 0%, #fbf7ef 56%, #f0dfcb 100%);
+}
+
+.commerce-copy h1,
+.commerce-section-head h2,
+.sticky-copy h2,
+.confidence-grid h2,
+.drops-circle-grid h2,
+.commerce-copy > p:not(.commerce-eyebrow),
+.commerce-lead {
+  color: var(--ink);
+}
+
+.commerce-copy > p:not(.commerce-eyebrow),
+.commerce-lead {
+  opacity: 0.86;
+}
+
+.commerce-eyebrow {
+  color: #9d4f24;
+}
+
+.commerce-hero .btn.ghost {
+  color: var(--ink);
+  border-color: rgba(157, 79, 36, 0.28);
+  background: rgba(255, 252, 246, 0.46);
+}
+
+.commerce-hero .btn.ghost:hover {
+  color: var(--ink);
+  background: rgba(255, 252, 246, 0.78);
+  border-color: rgba(157, 79, 36, 0.48);
+  box-shadow: 0 12px 30px rgba(157, 79, 36, 0.12);
+}
+
+.commerce-trust-row span {
+  color: var(--dusk);
+  border-color: rgba(157, 79, 36, 0.20);
+  background: rgba(255, 252, 246, 0.58);
+}
+
+.announce {
+  color: var(--ink);
+  background: #f0dfcb;
+  border-bottom: 1px solid rgba(157, 79, 36, 0.12);
+}
+
+.commerce-visual,
+.amber-stage,
+.pure-visual,
+.fabric-sample,
+.fit-scale,
+.drop-orbit,
+.circle-proof-orbit,
+.research-ledger,
+.making-stamp,
+.about-wordmark,
+.track-ticket,
+.sky-stack,
+.mens-story-visual {
+  color: var(--ink);
+  border-color: rgba(157, 79, 36, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 252, 246, 0.72), rgba(240, 223, 203, 0.46)),
+    repeating-linear-gradient(115deg, rgba(157, 79, 36, 0.06) 0 2px, transparent 2px 11px);
+  box-shadow: 0 28px 74px rgba(157, 79, 36, 0.14);
+}
+
+.mens-story-visual::after {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 237, 0.02), rgba(80, 55, 38, 0.12)),
+    radial-gradient(70% 50% at 86% 14%, rgba(217, 144, 47, 0.20), transparent 62%);
+}
+
+.amber-stage-tile {
+  border-color: rgba(157, 79, 36, 0.18);
+  background: #fffaf2;
+  box-shadow: 0 22px 54px rgba(157, 79, 36, 0.16);
+}
+
+.amber-stage-tile::after {
+  background:
+    linear-gradient(180deg, transparent 54%, rgba(80, 55, 38, 0.12)),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.18), transparent 38%);
+}
+
+.amber-stage-caption {
+  color: var(--ink);
+  border-color: rgba(157, 79, 36, 0.18);
+  background: rgba(255, 250, 242, 0.84);
+  box-shadow: 0 16px 36px rgba(157, 79, 36, 0.12);
+}
+
+.amber-stage-caption span {
+  color: #9d4f24;
+}
+
+.amber-stage-caption em {
+  color: var(--slate);
+}
+
+.commerce-caption,
+.pure-visual strong,
+.drop-orbit em,
+.circle-proof-orbit em,
+.about-wordmark strong,
+.drop-orbit span,
+.circle-proof-orbit span,
+.research-ledger span,
+.making-stamp span,
+.track-ticket span {
+  color: var(--dusk);
+  border-color: rgba(157, 79, 36, 0.20);
+}
+
+.drop-orbit strong,
+.circle-proof-orbit strong,
+.commerce-motif,
+.commerce-visual .commerce-motif,
+.about-wordmark span,
+.pure-visual span,
+.fabric-sample span {
+  color: rgba(36, 28, 23, 0.72);
+}
+
+.final-shop-band,
+.pure-closing-band,
+.track-help-band,
+.making-close-band,
+.sky-close-band,
+.pdp-next-section,
+.drops-circle-band,
+.research-standard-band,
+.fabric-compare-band,
+.story-manifesto,
+.circle-ladder-section,
+.pdp-story-section,
+.section-light {
+  background:
+    radial-gradient(78% 76% at 86% 16%, rgba(217, 144, 47, 0.10), transparent 54%),
+    #fffaf2;
+}
+
+.site-footer {
+  color: var(--ink);
+  background:
+    radial-gradient(72% 70% at 82% 4%, rgba(217, 144, 47, 0.12), transparent 58%),
+    linear-gradient(180deg, #fff8ed 0%, #f0dfcb 100%);
+  border-top: 1px solid rgba(157, 79, 36, 0.16);
+}
+
+.footer-mark,
+.site-footer a,
+.site-footer .muted,
+.site-footer .dev {
+  color: var(--ink);
+}
+
+.site-footer .footer-links a:hover {
+  color: #9d4f24;
 }
