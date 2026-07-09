@@ -22,7 +22,7 @@ const WOMEN_PROMISES = [
   },
   {
     title: "Copper warmth",
-    body: "The palette keeps the collection warm, natural and polished without drifting into streetwear.",
+    body: "The palette keeps the collection warm, natural and polished for activewear that still feels like life.",
   },
 ];
 
