@@ -9,7 +9,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "The Circle",
   description:
-    "Join The Circle for Vyomawear restock notes, first access to small drops and founder perks.",
+    "Join The Circle for Vyomawear restock notes, first access to considered releases and founder perks.",
   alternates: { canonical: abs("/circle") },
 };
 
@@ -24,7 +24,7 @@ const BENEFITS = [
   },
   {
     title: "Quiet notes",
-    body: "No spam, no noise — just early word on new pieces, material updates and when the next drop lands.",
+    body: "No spam, no noise — just early word on new pieces, material updates and when the next release lands.",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function CirclePage() {
             <p className="commerce-eyebrow">The Circle</p>
             <h1>The store is open. The Circle hears first.</h1>
             <p className="commerce-lead">
-              Join for restock notes, early access to small drops and founder perks. It's not a hard sell —
+              Join for restock notes, early access to considered releases and founder perks. It's not a hard sell —
               it's the quiet line for the people here from the very beginning.
             </p>
             <WaitlistCount className="big" />

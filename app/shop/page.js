@@ -32,14 +32,14 @@ export default function ShopPage() {
             <h1>The full catalogue, built around the day you move through.</h1>
             <p className="commerce-lead">
               Men, women, Pure and accessories stay together in one clear shop:
-              warm activewear, useful colour, product detail and secure checkout.
+              warm natural-fibre layers, product detail and secure checkout.
             </p>
             <div className="commerce-actions">
               <Link href="#collection" className="btn accent">Shop the collection</Link>
               <Link href="/men" className="btn ghost">Shop men</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">
-              <span>Gym to street</span>
+              <span>Training to life</span>
               <span>Tracked delivery</span>
               <span>Secure checkout</span>
             </div>
@@ -69,7 +69,7 @@ export default function ShopPage() {
                 <p className="commerce-eyebrow">Start here</p>
                 <h2 id="featured-heading">The pieces that anchor the wardrobe.</h2>
               </div>
-              <Link href="/sky-series" className="link-btn">Explore the colour story</Link>
+              <Link href="/fabric" className="link-btn">Read the fabric promise</Link>
             </div>
             <div className="grid">
               {FEATURED.map((product) => (
@@ -101,7 +101,7 @@ export default function ShopPage() {
             <h2 id="shop-confidence-heading">The good kind of simple.</h2>
           </div>
           <ul className="confidence-list">
-            <li><strong>Fit first.</strong><span>Size help before you buy and exchange support if the first fit is not right.</span></li>
+            <li><strong>Fit first.</strong><span>Size guidance before you buy, with product-specific fit notes on every page.</span></li>
             <li><strong>Care visible.</strong><span>Fabric, care and batch language stays tied to what can be shown.</span></li>
             <li><strong>Checkout protected.</strong><span>Payment completes through protected hosted checkout.</span></li>
           </ul>

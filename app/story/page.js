@@ -72,7 +72,7 @@ export default function StoryPage() {
           <div className="story-copy-block">
             <p>
               Most activewear asks you to accept plastic-heavy stretch as the default. Vyoma begins
-              somewhere softer: with cotton-led comfort, small batches and the belief that the layer
+              somewhere softer: with cotton-led comfort, considered making and the belief that the layer
               closest to your skin should be easier to trust.
             </p>
             <p>

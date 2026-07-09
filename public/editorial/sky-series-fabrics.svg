@@ -11,7 +11,7 @@
     <rect x="0" y="0" width="600" height="132" rx="22" fill="#10142e"/>
     <rect x="38" y="116" width="560" height="132" rx="22" fill="#d1998f"/>
     <rect x="0" y="232" width="600" height="132" rx="22" fill="#6b7280"/>
-    <rect x="38" y="348" width="560" height="132" rx="22" fill="#c98a22"/>
+    <rect x="38" y="348" width="560" height="132" rx="22" fill="#9d4f24"/>
     <rect x="0" y="464" width="600" height="132" rx="22" fill="#e7e3da"/>
     <rect x="0" y="0" width="600" height="596" rx="22" fill="url(#weave)" opacity="0.66"/>
     <path d="M34 68h532M74 184h486M34 300h532M74 416h486M34 532h532" stroke="#fff" stroke-width="3" opacity="0.18"/>

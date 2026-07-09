@@ -4,10 +4,9 @@
   --home-paper: #f8f1e8;
   --home-panel: rgba(255, 252, 246, 0.78);
   --home-line: rgba(23, 25, 31, 0.12);
-  --home-amber: #d9902f;
-  --home-ember: #9d4f24;
-  --home-cobalt: #1557c0;
-  --home-green: #24695f;
+  --home-amber: #9d4f24;
+  --home-ember: #7f3f21;
+  --home-eucalyptus: #5f7c70;
   --dusk: 0;
   --night: 0;
   --dawn: 0;
@@ -23,9 +22,9 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 16% 12%, rgba(217, 144, 47, 0.24), transparent 32%),
-    radial-gradient(circle at 82% 6%, rgba(21, 87, 192, 0.12), transparent 34%),
-    radial-gradient(circle at 80% 72%, rgba(36, 105, 95, 0.14), transparent 34%),
+    radial-gradient(circle at 16% 12%, rgba(157, 79, 36, 0.20), transparent 32%),
+    radial-gradient(circle at 82% 6%, rgba(157, 79, 36, 0.13), transparent 34%),
+    radial-gradient(circle at 80% 72%, rgba(95, 124, 112, 0.09), transparent 34%),
     linear-gradient(180deg, #fff8ed 0%, #f8f1e8 48%, #ede7dc 100%);
 }
 
@@ -42,23 +41,23 @@
   opacity: calc(var(--dusk) + var(--night) * 0.14);
   background:
     radial-gradient(circle at 24% 22%, rgba(157, 79, 36, 0.32), transparent 32%),
-    radial-gradient(circle at 78% 18%, rgba(21, 87, 192, 0.26), transparent 36%),
-    linear-gradient(180deg, #f2c48c 0%, #c98c5a 36%, #1c2430 100%);
+    radial-gradient(circle at 78% 18%, rgba(157, 79, 36, 0.16), transparent 36%),
+    linear-gradient(180deg, #d8a084 0%, #f0dfcb 48%, #fbf7ef 100%);
 }
 
 .skyField::after {
   opacity: var(--night);
   background:
-    radial-gradient(circle at 78% 22%, rgba(255, 215, 148, 0.2), transparent 20%),
-    radial-gradient(circle at 12% 72%, rgba(36, 105, 95, 0.24), transparent 38%),
-    linear-gradient(180deg, #14171d 0%, #17191f 50%, #273431 100%);
+    radial-gradient(circle at 78% 22%, rgba(200, 117, 74, 0.18), transparent 20%),
+    radial-gradient(circle at 12% 72%, rgba(157, 79, 36, 0.12), transparent 38%),
+    linear-gradient(180deg, #fff8ed 0%, #f8f1e8 52%, #e8d6c2 100%);
 }
 
 .skyField span {
   opacity: calc(var(--night) * 0.42 + var(--dawn) * 0.16);
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.86) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(255, 221, 166, 0.55) 0 1px, transparent 1.4px);
+    radial-gradient(circle, rgba(200, 117, 74, 0.38) 0 1px, transparent 1.4px);
   background-position: 12px 18px, 70px 42px;
   background-size: 120px 120px, 180px 180px;
 }
@@ -135,8 +134,8 @@
 }
 
 .hero h1 {
-  max-width: 780px;
-  font-size: clamp(4rem, 8vw, 8.4rem);
+  max-width: 720px;
+  font-size: clamp(3.25rem, 6.4vw, 6.7rem);
 }
 
 .hero h1 span {
@@ -180,14 +179,16 @@
 
 .primaryCta {
   color: #161514;
-  background: linear-gradient(135deg, #f0b450, var(--home-amber));
+  color: #fff8ed;
+  background: linear-gradient(135deg, #c8754a, var(--home-amber));
   box-shadow: 0 20px 44px rgba(157, 79, 36, 0.26);
 }
 
 .secondaryCta {
-  color: #fff;
-  background: var(--home-ink);
-  box-shadow: 0 18px 40px rgba(23, 25, 31, 0.18);
+  border: 1px solid rgba(157, 79, 36, 0.28);
+  color: var(--home-ink);
+  background: rgba(255, 252, 246, 0.78);
+  box-shadow: 0 16px 34px rgba(157, 79, 36, 0.1);
 }
 
 .inverseCta {
@@ -322,7 +323,7 @@
 }
 
 .laneCard:hover {
-  border-color: rgba(217, 144, 47, 0.5);
+  border-color: rgba(157, 79, 36, 0.5);
   box-shadow: 0 26px 64px rgba(157, 79, 36, 0.18);
   transform: translateY(-4px);
 }
@@ -339,26 +340,26 @@
 }
 
 .systemSection {
-  color: #fff;
+  color: var(--home-ink);
   background:
-    radial-gradient(70% 80% at 88% 14%, rgba(217, 144, 47, 0.22), transparent 58%),
-    radial-gradient(70% 70% at 4% 88%, rgba(36, 105, 95, 0.3), transparent 62%),
-    linear-gradient(135deg, #17191f 0%, #22252a 54%, #322821 100%);
+    radial-gradient(70% 80% at 88% 14%, rgba(157, 79, 36, 0.14), transparent 58%),
+    radial-gradient(70% 70% at 4% 88%, rgba(157, 79, 36, 0.10), transparent 62%),
+    linear-gradient(135deg, #fff8ed 0%, #f8f1e8 54%, #f0dfcb 100%);
 }
 
 .systemSection .eyebrow,
 .systemSection h2,
 .systemSection p {
-  color: #fff;
+  color: var(--home-ink);
 }
 
 .systemGrid {
   grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1fr);
-  align-items: start;
+  align-items: flex-start;
 }
 
 .stickyCopy {
-  align-self: start;
+  align-self: flex-start;
 }
 
 .systemCards {
@@ -371,24 +372,24 @@
   grid-template-columns: 56px 1fr;
   gap: 16px;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: none;
+  background: rgba(255, 252, 246, 0.82);
+  border-color: rgba(157, 79, 36, 0.16);
+  box-shadow: 0 16px 42px rgba(157, 79, 36, 0.08);
 }
 
 .systemCard span {
-  color: #f0b450;
+  color: #9d4f24;
   font-weight: 900;
 }
 
 .systemCard h3,
 .systemCard p {
-  color: #fff;
+  color: var(--home-ink);
 }
 
 .collectionHead {
   grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.72fr);
-  align-items: end;
+  align-items: flex-end;
 }
 
 .colourSection {
@@ -406,12 +407,18 @@
 }
 
 .colourCard > span {
-  display: block;
-  width: 100%;
-  height: 82px;
+  display: inline-flex;
+  min-height: 34px;
   margin-bottom: 18px;
-  border-radius: 7px;
-  box-shadow: inset 0 0 0 1px rgba(23, 25, 31, 0.16);
+  align-items: center;
+  border: 1px solid rgba(157, 79, 36, 0.22);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: #9d4f24;
+  background: rgba(255, 248, 237, 0.74);
+  box-shadow: 0 12px 28px rgba(157, 79, 36, 0.08);
+  font-size: 0.78rem;
+  font-weight: 900;
 }
 
 .colourCard h3,
@@ -421,7 +428,7 @@
 
 .collection {
   background:
-    radial-gradient(80% 80% at 86% 18%, rgba(217, 144, 47, 0.12), transparent 56%),
+    radial-gradient(80% 80% at 86% 18%, rgba(157, 79, 36, 0.10), transparent 56%),
     rgba(255, 255, 255, 0.4);
 }
 
@@ -439,10 +446,10 @@
 
 .circle {
   padding: clamp(74px, 10vw, 132px) 20px;
-  color: #fff;
+  color: var(--home-ink);
   background:
-    radial-gradient(80% 110% at 76% 0%, rgba(217, 144, 47, 0.26), transparent 55%),
-    #17191f;
+    radial-gradient(80% 110% at 76% 0%, rgba(157, 79, 36, 0.16), transparent 55%),
+    linear-gradient(135deg, #fff8ed 0%, #f8f1e8 58%, #f0dfcb 100%);
 }
 
 .circleInner {
@@ -455,7 +462,7 @@
 .circle h2,
 .circle p,
 .circle a {
-  color: #fff;
+  color: var(--home-ink);
 }
 
 .circleMeta {
@@ -464,7 +471,7 @@
   gap: 14px;
   justify-content: center;
   margin-top: 18px;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--home-muted);
   font-size: 0.9rem;
 }
 

@@ -1,11 +1,11 @@
 {
   "name": "Vyomawear",
   "short_name": "Vyoma",
-  "description": "Premium yoga wear, made in India — the birthplace of yoga.",
+  "description": "Organic-material activewear and lifestyle layers for training, travel, recovery and everyday wear.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#14162E",
-  "theme_color": "#14162E",
+  "background_color": "#fbf7ef",
+  "theme_color": "#fbf7ef",
   "icons": [
     { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]

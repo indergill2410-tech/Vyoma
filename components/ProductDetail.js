@@ -27,7 +27,7 @@ export default function ProductDetail({ product }) {
 
       <div className="pdp-info">
         <div className="pdp-proofline" aria-label="Product proof points">
-          <span>First drop</span>
+          <span>Made to order</span>
           <span>Natural-fibre first</span>
           <span>Fit support</span>
         </div>
@@ -85,7 +85,7 @@ export default function ProductDetail({ product }) {
         </div>
 
         <p className="pdp-lead">✦ {product.leadTime}</p>
-        <p className="pdp-stock-note">Small-batch preview: checkout appears when this piece is released live.</p>
+        <p className="pdp-stock-note">Made-to-order preview: checkout appears when this piece is released live.</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
           <li><span>॥</span> Made in India</li>
@@ -111,6 +111,23 @@ export default function ProductDetail({ product }) {
             <dd>{product.leadTime}</dd>
           </div>
         </dl>
+
+        <div className="pdp-day-grid" data-reveal>
+          <article>
+            <span>How it fits into your day</span>
+            <p>
+              Wear it for movement first, then keep it on for the drive, the coffee,
+              the errand or the quieter hours after.
+            </p>
+          </article>
+          <article>
+            <span>Why your body notices</span>
+            <p>
+              The closest layer changes the way the rest of the day feels: softer
+              touch, clearer fit and less friction between training and life.
+            </p>
+          </article>
+        </div>
 
         <div className="made-for-you" data-reveal>
           <h4>Made in India, with care</h4>

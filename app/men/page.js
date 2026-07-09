@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { mensCatalogueProducts } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
 import { abs } from "@/lib/seo";
@@ -12,12 +13,12 @@ export const metadata = {
 
 const MENS_PROMISES = [
   {
-    title: "Gym to street",
+    title: "Training to life",
     body: "Training tee, tapered jogger, recovery fleece and the bag that moves from workout to weekend.",
   },
   {
-    title: "Colour with pace",
-    body: "Teal, cobalt, saffron, graphite and clean white give the men's edit its own energy.",
+    title: "Warm utility",
+    body: "Warm neutrals and copper depth keep the men's edit strong without turning loud.",
   },
   {
     title: "Base layer up",
@@ -25,26 +26,26 @@ const MENS_PROMISES = [
   },
 ];
 
-const MEN_COLOUR_STORY = [
+const MEN_DAY_MOMENTS = [
   {
-    name: "Training teal",
-    tone: "#0f6c78",
-    body: "The active top colour: sharp, wearable and made to stand out against concrete and gym steel.",
+    mark: "01",
+    name: "Start close",
+    body: "Begin with the trunk: the first layer that makes the rest of the kit feel easier.",
   },
   {
-    name: "Cobalt hit",
-    tone: "#0057b8",
-    body: "The men's blue: brighter than navy, cleaner than black, built for outer layers and accents.",
+    mark: "02",
+    name: "Train",
+    body: "Add the tee and jogger for movement that still looks clean when the session ends.",
   },
   {
-    name: "Saffron carry",
-    tone: "#c98a22",
-    body: "A warm utility pop on bags, stripes and details so the kit feels alive, not flat.",
+    mark: "03",
+    name: "Keep moving",
+    body: "Carry the same line through coffee, errands, travel and whatever happens after.",
   },
   {
-    name: "Graphite base",
-    tone: "#30333a",
-    body: "The grounding neutral for joggers, trunks and recovery pieces.",
+    mark: "04",
+    name: "Recover",
+    body: "Finish with soft fleece and socks for the quieter part of the day.",
   },
 ];
 
@@ -65,13 +66,13 @@ const MEN_SECTIONS = [
     group: "Recovery",
     eyebrow: "Recovery",
     title: "Layer for after.",
-    body: "Heavy fleece with a clean street profile for cool-downs, late starts and weekend plans.",
+    body: "Heavy fleece with a clean lifestyle profile for cool-downs, late starts and weekend plans.",
   },
   {
     group: "Carry + Socks",
     eyebrow: "Carry + socks",
     title: "Make it a kit.",
-    body: "A saffron carry and crisp crew socks give the men's line its lifestyle signature.",
+    body: "A warm carry piece and crisp crew socks give the men's line its lifestyle signature.",
   },
 ];
 
@@ -88,29 +89,28 @@ export default function MenPage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">Vyoma Men</p>
-            <h1>Lifestyle activewear for training, travel and everything after.</h1>
+            <h1>Men&apos;s activewear for training, travel and the hours after.</h1>
             <p className="commerce-lead">
-              A men&apos;s edit with its own colour story: teal training layers, cobalt recovery fleece,
-              graphite bases and saffron carry pieces built for the full day.
+              A restrained men&apos;s edit in warm neutrals and copper depth:
+              base layers, training pieces, recovery fleece and carry pieces built for the full day.
             </p>
             <div className="commerce-actions">
               <Link href="#mens-catalog" className="btn accent">Shop men</Link>
               <Link href="/product/vyoma-pure-trunk-men" className="btn ghost">Start with Pure</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Men's shopping promises">
-              <span>Gym to street</span>
-              <span>Alive colour</span>
+              <span>Training to life</span>
+              <span>Warm utility</span>
               <span>Secure checkout</span>
             </div>
           </div>
           <figure className="mens-story-visual" data-photo-board="true">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/editorial/mens-catalogue-hero.png"
-              alt="Vyoma men's lifestyle activewear model leaving a boutique gym with teal, cobalt and saffron kit"
-              loading="eager"
-              decoding="sync"
-              fetchPriority="high"
+            <Image
+              src="/editorial/mens-catalogue-hero.webp"
+              alt="Vyoma men's lifestyle activewear in warm copper studio light"
+              fill
+              priority
+              sizes="(min-width: 920px) 46vw, 100vw"
             />
           </figure>
         </div>
@@ -129,22 +129,22 @@ export default function MenPage() {
         </div>
       </section>
 
-      <section className="commerce-section mens-colour-section" aria-labelledby="mens-colour-heading">
+      <section className="commerce-section mens-colour-section" aria-labelledby="mens-moments-heading">
         <div className="commerce-shell">
           <div className="commerce-section-head">
-            <p className="commerce-eyebrow">Colour story</p>
-            <h2 id="mens-colour-heading">Not another navy-only men&apos;s rack.</h2>
+            <p className="commerce-eyebrow">The day sequence</p>
+            <h2 id="mens-moments-heading">Train in it. Travel in it. Keep it on.</h2>
             <p>
-              The women&apos;s line can stay softer and studio-led. Men gets a more electric rhythm:
-              gym colour, city neutrals and one warm utility hit.
+              The men&apos;s edit is built from the closest layer outward, so the kit feels
+              clean on skin, sharp in public and useful after the workout.
             </p>
           </div>
           <div className="mens-colour-grid">
-            {MEN_COLOUR_STORY.map((colour) => (
-              <article className="mens-colour-card" key={colour.name}>
-                <span className="mens-colour-swatch" style={{ background: colour.tone }} />
-                <h3>{colour.name}</h3>
-                <p>{colour.body}</p>
+            {MEN_DAY_MOMENTS.map((moment) => (
+              <article className="mens-colour-card mens-moment-card" key={moment.name}>
+                <span className="mens-colour-swatch mens-moment-mark">{moment.mark}</span>
+                <h3>{moment.name}</h3>
+                <p>{moment.body}</p>
               </article>
             ))}
           </div>

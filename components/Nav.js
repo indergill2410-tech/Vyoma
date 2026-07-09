@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useCart } from "./Providers";
+import BrandLogo from "./BrandLogo";
 
 const LINKS = [
   { href: "/shop", label: "Shop" },
@@ -34,8 +35,8 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="nav-inner container">
-        <Link href="/" className="mark" aria-label="Vyomawear home" onClick={() => setMenuOpen(false)}>
-          Vyoma<span className="mark-thin">wear</span>
+        <Link href="/" className="mark brand-link" aria-label="Vyomawear home" onClick={() => setMenuOpen(false)}>
+          <BrandLogo />
         </Link>
 
         <nav className="nav-links" aria-label="Primary">

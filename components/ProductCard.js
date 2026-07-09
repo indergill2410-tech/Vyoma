@@ -22,8 +22,8 @@ export default function ProductCard({ product }) {
     <Link href={`/product/${product.slug}`} className="card" data-reveal>
       <div className="card-media">
         <div className="card-flags" aria-label="Product badges">
-          {product.hero && <span className="card-flag dark">First drop</span>}
-          <span className="card-flag">Small batch</span>
+          {product.hero && <span className="card-flag dark">Organic-first</span>}
+          <span className="card-flag">Made to order</span>
         </div>
         <ProductImage
           src={model.src}

@@ -34,7 +34,7 @@ const STEPS = [
     sub: "This one picks your sky.",
     options: [
       { label: "Sunrise flow", note: "soft and warm", value: "dawn-rose" },
-      { label: "Midday power", note: "bold and golden", value: "marigold-dusk" },
+      { label: "Midday power", note: "bold and copper", value: "marigold-dusk" },
       { label: "Evening wind-down", note: "deep and calm", value: "night-sky-indigo" },
       { label: "All day, every day", note: "quiet and clean", value: "ether" },
     ],

@@ -4,7 +4,7 @@ import { shopifyConfigured, getProducts, formatMoney } from "@/lib/shopify";
 import { PRODUCTS } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
 
-const FALLBACK_SWATCHES = ["#262A4E", "#D1998F", "#6B7280", "#C98A22", "#E7E3DA"];
+const FALLBACK_SWATCHES = ["#262A4E", "#D1998F", "#6B7280", "#9D4F24", "#E7E3DA"];
 
 function swatchFor(value, index) {
   const named = {
@@ -14,8 +14,8 @@ function swatchFor(value, index) {
     pink: "#D1998F",
     grey: "#6B7280",
     gray: "#6B7280",
-    marigold: "#C98A22",
-    yellow: "#C98A22",
+    marigold: "#9D4F24",
+    yellow: "#9D4F24",
     ether: "#E7E3DA",
     white: "#F7F6F2",
     black: "#14162E",
@@ -56,8 +56,8 @@ export default async function ShopGrid() {
               <Link key={p.id} href={`/product/${p.handle}`} className="card" data-reveal>
                 <div className="card-media">
                   <div className="card-flags" aria-label="Product badges">
-                    <span className="card-flag dark">First drop</span>
-                    <span className="card-flag">Small batch</span>
+                    <span className="card-flag dark">Organic-first</span>
+                    <span className="card-flag">Live store</span>
                   </div>
                   {p.featuredImage ? (
                     <Image

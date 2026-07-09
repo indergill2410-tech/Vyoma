@@ -1,18 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Vyoma">
   <defs>
-    <radialGradient id="sky" cx="50%" cy="18%" r="90%">
-      <stop offset="0%" stop-color="#2b2f5c"/>
-      <stop offset="55%" stop-color="#1B1E3C"/>
-      <stop offset="100%" stop-color="#14162E"/>
-    </radialGradient>
+    <linearGradient id="bg" x1="80" y1="42" x2="430" y2="490" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8ed"/>
+      <stop offset=".62" stop-color="#f0dfcb"/>
+      <stop offset="1" stop-color="#c8754a"/>
+    </linearGradient>
   </defs>
-  <rect width="512" height="512" fill="url(#sky)"/>
-  <circle cx="150" cy="130" r="2.5" fill="#EDEFF3" opacity=".8"/>
-  <circle cx="360" cy="100" r="2" fill="#EDEFF3" opacity=".6"/>
-  <circle cx="410" cy="200" r="1.8" fill="#EDEFF3" opacity=".5"/>
-  <circle cx="110" cy="230" r="1.8" fill="#EDEFF3" opacity=".5"/>
-  <text x="50%" y="56%" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
-        font-size="190" fill="#EDEFF3" dominant-baseline="middle">व्योम</text>
-  <text x="50%" y="80%" text-anchor="middle" font-family="Georgia, serif" letter-spacing="8"
-        font-size="46" fill="#D99A2B" dominant-baseline="middle">VYOMA</text>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M120 386 256 126l136 260" fill="none" stroke="#9d4f24" stroke-width="70" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -69,7 +69,7 @@ export default function ShopifyBuyPanel({ product }) {
   return (
     <div className="pdp-info shopify-pdp-info">
       <div className="pdp-proofline" aria-label="Product proof points">
-        <span>First drop</span>
+        <span>Organic-material activewear</span>
         <span>Fit support</span>
         <span>Secure hosted checkout</span>
       </div>
@@ -137,7 +137,7 @@ export default function ShopifyBuyPanel({ product }) {
       {error && <p className="error" role="alert">{error}</p>}
 
       <p className="pdp-lead">✦ Made for you in India · ships in 10–14 days</p>
-      <p className="pdp-stock-note">Small-batch drop: your selected option is reserved once it is in the bag.</p>
+      <p className="pdp-stock-note">Made-to-order flow: your selected option is confirmed once it is in the bag.</p>
 
       <dl className="pdp-trust-grid" aria-label="Purchase confidence">
         <div>
@@ -157,6 +157,21 @@ export default function ShopifyBuyPanel({ product }) {
           <dd>Payment completes through the secure hosted checkout already connected to the store.</dd>
         </div>
       </dl>
+
+      <div className="pdp-day-grid" data-reveal>
+        <article>
+          <span>How it fits into your day</span>
+          <p>
+            Built for training first, then easy enough for travel, recovery and everyday wear.
+          </p>
+        </article>
+        <article>
+          <span>Why your body notices</span>
+          <p>
+            Organic-material layers help the closest part of the kit feel calmer, cleaner and more considered.
+          </p>
+        </article>
+      </div>
 
       <div className="shopify-sticky-buy" aria-label="Sticky add to bag">
         <div className="pdp-sticky-info">

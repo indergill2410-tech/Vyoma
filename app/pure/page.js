@@ -14,7 +14,7 @@ export const metadata = {
 const PURE_POINTS = [
   { title: "Soft where it matters", body: "A breathable everyday layer for warm, close contact and long wear." },
   { title: "Natural fibre first", body: "Organic cotton-led comfort, with product claims tied to what can be shown." },
-  { title: "Small-batch finish", body: "Everyday basics with the same care as the activewear line." },
+  { title: "Activewear-level care", body: "Everyday basics with the same material attention as the movement line." },
 ];
 
 export default function PurePage() {

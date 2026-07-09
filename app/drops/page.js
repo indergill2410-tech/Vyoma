@@ -8,16 +8,16 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "The Drops",
   description:
-    "Follow Vyomawear restocks, small-batch releases and future colour stories.",
+    "Follow Vyomawear restocks, considered releases and future organic-material activewear stories.",
   alternates: { canonical: abs("/drops") },
 };
 
 const FEATURED_DROP = PRODUCTS.filter((product) => product.hero).slice(0, 3);
 
 const DROP_STAGES = [
-  { label: "01", title: "Available now", body: "A focused edit of movement layers, Pure basics and the sky palette." },
-  { label: "02", title: "Restock notes", body: "The Circle hears first when a size, colour or small batch returns." },
-  { label: "03", title: "Next sky", body: "Future colours and pieces release slowly, so every drop can be made with care." },
+  { label: "01", title: "Available now", body: "A focused edit of movement layers, Pure basics and warm activewear essentials." },
+  { label: "02", title: "Restock notes", body: "The Circle hears first when a size, colour or favourite organic layer returns." },
+  { label: "03", title: "Next release", body: "Future colours and pieces arrive when the material, fit and making are ready." },
 ];
 
 export default function DropsPage() {
@@ -27,13 +27,13 @@ export default function DropsPage() {
         <div className="commerce-shell commerce-hero-grid">
           <div className="commerce-copy">
             <p className="commerce-eyebrow">The Drops</p>
-            <h1>Small batches, released with room to breathe.</h1>
+            <h1>Considered releases for the activewear you live in.</h1>
             <p className="commerce-lead">
-              Vyoma does not need a loud season calendar. The shop stays focused,
-              followed by restocks and future colour moments when the making is ready.
+              Vyoma does not need a loud season calendar. The shop stays focused on
+              organic-material activewear, then adds restocks and future colour moments when the making is ready.
             </p>
             <div className="commerce-actions">
-              <Link href="/shop" className="btn accent">Shop the live drop</Link>
+              <Link href="/shop" className="btn accent">Shop the live edit</Link>
               <Link href="#circle" className="btn ghost">Get restock notes</Link>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function DropsPage() {
             <p className="commerce-eyebrow">The Circle</p>
             <h2 id="drop-circle-heading">Restocks should not feel random.</h2>
             <p>
-              Join for early notes on size returns, colour stories and small-batch releases.
+              Join for early notes on size returns, colour stories and considered releases.
               The store stays open; The Circle simply hears first.
             </p>
           </div>

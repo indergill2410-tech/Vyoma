@@ -36,7 +36,7 @@
 .pdp-badges span {
   color: var(--ink);
   background: #fbefd9;
-  border: 1px solid rgba(217, 154, 43, 0.32);
+  border: 1px solid rgba(157, 79, 36, 0.32);
 }
 
 .pdp-cert-row span {
@@ -47,7 +47,7 @@
 
 .pdp-stock-note {
   margin-top: 20px;
-  border: 1px solid rgba(217, 154, 43, 0.34);
+  border: 1px solid rgba(157, 79, 36, 0.34);
   border-radius: 8px;
   padding: 12px 14px;
   color: #755012;
@@ -260,7 +260,7 @@
   padding: clamp(70px, 10vw, 132px) 0;
   color: #fff;
   background:
-    radial-gradient(90% 90% at 82% 12%, rgba(217, 144, 47, 0.34), transparent 54%),
+    radial-gradient(90% 90% at 82% 12%, rgba(157, 79, 36, 0.34), transparent 54%),
     radial-gradient(80% 80% at 12% 88%, rgba(36, 105, 95, 0.26), transparent 60%),
     radial-gradient(60% 72% at 48% 0%, rgba(21, 87, 192, 0.16), transparent 60%),
     linear-gradient(135deg, #17191f 0%, #24262d 48%, #3a2a20 100%);
@@ -386,7 +386,7 @@
   inset: 10%;
   z-index: -1;
   border-radius: 999px;
-  background: rgba(217, 144, 47, 0.18);
+  background: rgba(157, 79, 36, 0.18);
   filter: blur(46px);
   transform: translate3d(0, 0, -80px);
 }
@@ -469,7 +469,7 @@
 }
 
 .amber-stage-caption span {
-  color: #f0b450;
+  color: #c8754a;
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 0.14em;
@@ -519,7 +519,7 @@
 .commerce-section-head.split {
   max-width: none;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
   text-align: left;
@@ -723,7 +723,7 @@
   display: grid;
   grid-template-columns: 52px 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .confidence-list strong,
@@ -761,7 +761,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 26px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .cart-lines {
@@ -787,7 +787,7 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .cart-line h2 {
@@ -853,7 +853,7 @@
 .empty-bag-panel .commerce-motif,
 .success-confirmation .commerce-motif {
   display: block;
-  color: rgba(217, 154, 43, 0.35);
+  color: rgba(157, 79, 36, 0.35);
   font-size: clamp(48px, 9vw, 84px);
 }
 
@@ -910,7 +910,7 @@
 .circle-ladder-section,
 .pdp-story-section {
   background:
-    radial-gradient(80% 80% at 86% 16%, rgba(217,154,43,.12), transparent 54%),
+    radial-gradient(80% 80% at 86% 16%, rgba(157,79,36,.12), transparent 54%),
     #fff;
 }
 
@@ -995,7 +995,7 @@
 }
 
 .sticky-copy {
-  align-self: start;
+  align-self: flex-start;
 }
 
 @media (min-width: 860px) {

@@ -1,22 +1,22 @@
 :root {
-  --ink: #1B1E3C;
-  --ink-2: #14162E;
-  --dusk: #3A3F66;
-  --slate: #5b618a;
-  --mist: #C9D2DE;
-  --horizon: #EDEFF3;
-  --paper: #F7F6F2;
-  --marigold: #D99A2B;
-  --marigold-lt: #E9AC3F;
-  --rose: #D9A8A0;
-  --green: #1F5C3A;
-  /* Fonts are self-hosted via next/font (see app/layout.js); the variables
-     fall back to system serif/sans before hydration and if a face is missing. */
-  --serif: var(--font-fraunces), 'Fraunces', Georgia, serif;
-  --sans: var(--font-karla), 'Karla', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ink: #241c17;
+  --ink-2: #17120f;
+  --dusk: #5b4639;
+  --slate: #756b62;
+  --mist: #d8cfc2;
+  --horizon: #f1e9dd;
+  --paper: #fbf7ef;
+  --marigold: #9d4f24;
+  --marigold-lt: #c8754a;
+  --rose: #d8b6a6;
+  --green: #5f7c70;
+  /* No remote font fetch at build time: premium editorial/system stacks keep
+     the site fast and deployable while preserving a warm luxury feel. */
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: "Avenir Next", Avenir, "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
   --r: 12px;
-  --shadow: 0 18px 40px rgba(27, 30, 60, 0.10);
-  --shadow-lg: 0 30px 70px rgba(27, 30, 60, 0.22);
+  --shadow: 0 18px 40px rgba(36, 28, 23, 0.10);
+  --shadow-lg: 0 30px 70px rgba(36, 28, 23, 0.18);
   /* Editorial rhythm: a comfortable reading measure and a generous, fluid
      section cadence — whitespace is the loudest signal of a premium brand. */
   --measure: 64ch;
@@ -62,13 +62,13 @@ a { color: inherit; text-decoration: none; }
 /* ── Night → dawn scroll sky (homepage signature) ────────────
    Fixed atmosphere behind the page. Transparent sections reveal it; opaque
    (white / ink) sections read as clean islands. JS sets --dawn (0→1) from
-   scroll progress, so the sky warms into a marigold dawn as you descend. */
+   scroll progress, so the sky warms into a copper dawn as you descend. */
 .home { position: relative; }
 .home-sky {
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
   --dawn: 0;
   background:
-    radial-gradient(125% 75% at 50% 112%, rgba(217, 154, 43, calc(.30 * var(--dawn) + .03)) 0%, transparent 58%),
+    radial-gradient(125% 75% at 50% 112%, rgba(157, 79, 36, calc(.30 * var(--dawn) + .03)) 0%, transparent 58%),
     radial-gradient(150% 82% at 50% 92%, rgba(217, 168, 160, calc(.26 * var(--dawn))) 0%, transparent 55%),
     radial-gradient(120% 60% at 50% 4%, rgba(58, 63, 102, calc(.12 * (1 - var(--dawn)))) 0%, transparent 50%),
     linear-gradient(180deg, var(--paper) 0%, #F3EEE6 55%, #F0E8DD 100%);
@@ -82,7 +82,7 @@ a { color: inherit; text-decoration: none; }
 .dev { font-family: var(--serif); }
 
 /* ── Buttons ──────────────────────────────────────────────────
-   Quiet-luxury hierarchy: ink is primary, marigold is a reserved "moment"
+   Quiet-luxury hierarchy: ink is primary, copper is a reserved "moment"
    (the drop, the Circle). Buttons are context-aware — a plain primary on a
    dark section renders as a white solid, so dark pages stay correct without
    per-button classes. */
@@ -98,9 +98,9 @@ a { color: inherit; text-decoration: none; }
 .btn:disabled { opacity: .55; cursor: wait; transform: none; box-shadow: none; }
 .btn:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; }
 
-/* marigold moment — the drop & the Circle */
+/* Copper moment — the drop & the Circle */
 .btn.accent { background: var(--marigold); color: var(--ink); }
-.btn.accent:hover { background: var(--marigold-lt); box-shadow: 0 12px 28px rgba(217,154,43,.32); }
+.btn.accent:hover { background: var(--marigold-lt); box-shadow: 0 12px 28px rgba(157,79,36,.28); }
 
 /* white solid — primary action on dark surfaces */
 .btn.on-dark { background: var(--horizon); color: var(--ink); }
@@ -250,7 +250,7 @@ a { color: inherit; text-decoration: none; }
 .sky-video { object-fit: cover; filter: brightness(.82) saturate(1.05); }
 .sky-horizon {
   position: absolute; left: 0; right: 0; bottom: 0; height: 34%;
-  background: radial-gradient(120% 140% at 50% 130%, rgba(217,154,43,.55) 0%, rgba(217,154,43,.10) 40%, transparent 62%);
+  background: radial-gradient(120% 140% at 50% 130%, rgba(157,79,36,.55) 0%, rgba(157,79,36,.10) 40%, transparent 62%);
   pointer-events: none;
 }
 .sky-content { position: relative; z-index: 2; text-align: center; padding: 66px 24px 92px; width: 100%; }
@@ -394,11 +394,11 @@ a { color: inherit; text-decoration: none; }
 .house-standard {
   padding: var(--space-section) 0;
   background:
-    radial-gradient(90% 120% at 85% 8%, rgba(217, 154, 43, .18) 0%, transparent 54%),
+    radial-gradient(90% 120% at 85% 8%, rgba(157, 79, 36, .18) 0%, transparent 54%),
     linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
   color: var(--horizon);
 }
-.standard-grid { display: grid; gap: 42px; align-items: start; grid-template-columns: 1fr; }
+.standard-grid { display: grid; gap: 42px; align-items: flex-start; grid-template-columns: 1fr; }
 @media (min-width: 880px) { .standard-grid { grid-template-columns: .82fr 1.18fr; } }
 .standard-copy { max-width: 440px; }
 .standard-copy h2 {
@@ -501,7 +501,7 @@ a { color: inherit; text-decoration: none; }
 /* ── PDP ─────────────────────────────────────────────────── */
 .pdp { display: grid; gap: 44px; grid-template-columns: 1fr; padding: 44px 0 70px;
   --cw-base: #262A4E; --cw-accent: #3A3F66; --cw-ink: #EDEFF3; }
-@media (min-width: 820px) { .pdp { grid-template-columns: 1fr 1fr; align-items: start; } }
+@media (min-width: 820px) { .pdp { grid-template-columns: 1fr 1fr; align-items: flex-start; } }
 .pdp-media { position: sticky; top: 84px; }
 .pdp-frame {
   position: relative; aspect-ratio: 3/4; border-radius: var(--r); overflow: hidden;
@@ -674,7 +674,7 @@ a { color: inherit; text-decoration: none; }
 /* ── Footer ──────────────────────────────────────────────── */
 .site-footer { background: var(--ink); color: rgba(237,239,243,.65); padding: 54px 0 40px; margin-top: 60px; }
 .footer-grid { display: grid; gap: 30px; grid-template-columns: 1fr; }
-@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1.2fr; align-items: start; } }
+@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1.2fr; align-items: flex-start; } }
 .footer-mark { font-family: var(--serif); font-size: 22px; color: #fff; display: block; margin-bottom: 8px; }
 .site-footer .muted { color: rgba(237,239,243,.55); }
 .footer-links { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
@@ -750,7 +750,7 @@ a { color: inherit; text-decoration: none; }
 .mk-intro h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 6vw, 58px); line-height: 1.06; letter-spacing: -0.02em; margin: 14px 0 16px; }
 .mk-intro p { color: var(--slate); font-weight: 300; font-size: 17px; }
 .mk-grid { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 0; }
-@media (min-width: 900px) { .mk-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; } }
+@media (min-width: 900px) { .mk-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: flex-start; } }
 .mk-sticky { position: sticky; top: 56px; z-index: 1; }
 .mk-scene {
   position: relative; border-radius: var(--r); height: 38vh; min-height: 240px;
@@ -871,7 +871,7 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 /* ── Flying star (add-to-cart celebration) ───────────────── */
 .fly-star {
   position: fixed; left: 0; top: 0; z-index: 80; font-size: 22px; color: var(--marigold);
-  pointer-events: none; will-change: transform, opacity; text-shadow: 0 0 12px rgba(217,154,43,.6);
+  pointer-events: none; will-change: transform, opacity; text-shadow: 0 0 12px rgba(157,79,36,.6);
   transform: translate(var(--x0), var(--y0));
   animation: fly .85s cubic-bezier(.55,0,.85,.35) forwards;
 }
@@ -941,7 +941,7 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 
 .circle-ladder { list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: left; margin-top: 4px; }
 .circle-ladder li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.04); opacity: .62; }
-.circle-ladder li.unlocked { opacity: 1; background: rgba(217,154,43,.12); box-shadow: inset 0 0 0 1px rgba(233,172,63,.35); }
+.circle-ladder li.unlocked { opacity: 1; background: rgba(157,79,36,.12); box-shadow: inset 0 0 0 1px rgba(200,117,74,.35); }
 .ladder-mark {
   flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
   font-size: 13px; font-weight: 700; background: rgba(255,255,255,.1); color: var(--horizon);
@@ -959,7 +959,7 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 
 /* /circle landing */
 .circle-hero {
-  background: radial-gradient(80% 120% at 80% -10%, rgba(217,154,43,.22) 0%, transparent 55%), var(--ink);
+  background: radial-gradient(80% 120% at 80% -10%, rgba(157,79,36,.22) 0%, transparent 55%), var(--ink);
   color: var(--horizon); text-align: center; padding: 88px 0 64px;
 }
 .circle-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 6vw, 58px); line-height: 1.04; letter-spacing: -0.02em; margin-top: 10px; }
@@ -987,7 +987,7 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 .btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 32px; }
 .pron { font-family: var(--serif); font-style: italic; color: var(--dusk); font-size: 19px; }
 
-/* Unified text-field focus (light forms) — a calm marigold ring */
+/* Unified text-field focus (light forms) — a calm copper ring */
 .review-form input, .review-form textarea, .track-form input,
 .admin-gate input, .circle-check input {
   transition: border-color .18s ease, box-shadow .18s ease;
@@ -995,10 +995,10 @@ html.reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 .review-form input:focus, .review-form textarea:focus, .track-form input:focus,
 .admin-gate input:focus, .circle-check input:focus {
   outline: none; border-color: var(--marigold);
-  box-shadow: 0 0 0 3px rgba(217, 154, 43, .18);
+  box-shadow: 0 0 0 3px rgba(157, 79, 36, .18);
 }
 
-/* Refined marigold underline for links inside prose */
+/* Refined copper underline for links inside prose */
 .article a:not(.btn):not(.link-btn) {
   color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
   text-decoration-color: var(--marigold); text-decoration-thickness: 1.5px;

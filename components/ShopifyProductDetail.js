@@ -44,7 +44,7 @@ export default function ShopifyProductDetail({ product }) {
             </article>
             <article className="commerce-card">
               <h3>Fit support</h3>
-              <p>Use the Fit Finder before checkout, then rely on clear support if the first fit is not right.</p>
+              <p>Use the Fit Finder before checkout, then check the product notes before choosing your size.</p>
             </article>
             <article className="commerce-card">
               <h3>Clear checkout</h3>

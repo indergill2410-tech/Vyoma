@@ -6,7 +6,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "The Sky Series",
   description:
-    "Every Vyoma colour is a moment in the sky: night, dawn, monsoon, marigold and ether.",
+    "Every Vyoma colour is a moment in the sky: night, dawn, monsoon, copper and ether.",
   alternates: { canonical: abs("/sky-series") },
 };
 
@@ -31,9 +31,9 @@ const SCENES = [
   },
   {
     key: "marigold-dusk",
-    moment: "Gold hour",
+    moment: "Copper hour",
     line: "A little ceremony in the everyday.",
-    body: "The warmth of an Indian evening, built into a colour you can move in.",
+    body: "The warmth of an Indian evening, grounded into a copper tone you can move in.",
   },
   {
     key: "ether",
