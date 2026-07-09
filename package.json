@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "audit:catalog": "node scripts/audit-catalog.mjs",
+    "audit:media": "node scripts/audit-media.mjs",
     "audit:men": "node scripts/audit-men-catalog.mjs",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate deploy",

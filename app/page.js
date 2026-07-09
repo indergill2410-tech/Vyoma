@@ -33,21 +33,29 @@ const DAY_SYSTEM = [
     mark: "01",
     title: "Train",
     body: "Warm activewear that feels sharp on the gym floor and clean enough to keep on after.",
+    image: "/products/vyoma-practice-tee/men-lifestyle.webp",
+    alt: "Vyoma Practice Tee styled for training",
   },
   {
     mark: "02",
     title: "Travel",
     body: "Natural-fibre layers, carry pieces and easy silhouettes for movement between places.",
+    image: "/products/vyoma-mat-bag/men-lifestyle.webp",
+    alt: "Vyoma carry kit for travel and daily movement",
   },
   {
     mark: "03",
     title: "Recover",
     body: "Soft fleece, breathable bases and quieter textures for the part of the day when your body wants ease.",
+    image: "/products/vyoma-meditation-hoodie/men-lifestyle.webp",
+    alt: "Vyoma Recovery Hoodie lifestyle layer",
   },
   {
     mark: "04",
     title: "Live",
     body: "The layer your body lives in: calm on skin, polished in public and simple to trust.",
+    image: "/products/vyoma-the-set/model.webp",
+    alt: "Vyoma set for activewear and everyday life",
   },
 ];
 
@@ -185,9 +193,15 @@ export default function Home() {
             <div className={styles.systemCards}>
               {DAY_SYSTEM.map((item) => (
                 <article className={styles.systemCard} key={item.title}>
-                  <span>{item.mark}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
+                  <figure className={styles.systemVisual}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
+                  </figure>
+                  <div className={styles.systemText}>
+                    <span>{item.mark}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </div>
                 </article>
               ))}
             </div>
