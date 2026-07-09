@@ -13,7 +13,7 @@ export const metadata = {
 };
 
 const CATEGORY_LINKS = [
-  { label: "Women", href: "#collection", body: "Leggings, tops, bras, skorts and soft sets." },
+  { label: "Women", href: "/women", body: "Leggings, tops, bras, skorts and soft sets." },
   { label: "Men", href: "/men", body: "Lifestyle activewear for gym, travel and weekends." },
   { label: "Pure", href: "/pure", body: "Closest-to-skin basics made with extra care." },
   { label: "Accessories", href: "#collection", body: "Socks and carry pieces that finish the kit." },
@@ -35,7 +35,7 @@ export default function ShopPage() {
               warm natural-fibre layers, product detail and secure checkout.
             </p>
             <div className="commerce-actions">
-              <Link href="#collection" className="btn accent">Shop the collection</Link>
+              <Link href="/women" className="btn accent">Shop women</Link>
               <Link href="/men" className="btn ghost">Shop men</Link>
             </div>
             <div className="commerce-trust-row" aria-label="Shopping promises">

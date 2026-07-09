@@ -8,6 +8,7 @@ import BrandLogo from "./BrandLogo";
 
 const LINKS = [
   { href: "/shop", label: "Shop" },
+  { href: "/women", label: "Women" },
   { href: "/men", label: "Men" },
   { href: "/pure", label: "Pure" },
   { href: "/fabric", label: "Fabric" },
@@ -17,7 +18,7 @@ const LINKS = [
   { href: "/story", label: "Story" },
 ];
 
-const CATALOGUE_LOGO_PATHS = ["/shop", "/men", "/pure"];
+const CATALOGUE_LOGO_PATHS = ["/shop", "/women", "/men", "/pure"];
 
 function LegacyWordmark() {
   return (

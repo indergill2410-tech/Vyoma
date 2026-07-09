@@ -9,6 +9,8 @@ export default function sitemap() {
   const staticRoutes = [
     { path: "/", priority: 1.0, changeFrequency: "daily" },
     { path: "/shop", priority: 0.95, changeFrequency: "daily" },
+    { path: "/women", priority: 0.9, changeFrequency: "daily" },
+    { path: "/men", priority: 0.9, changeFrequency: "daily" },
     { path: "/pure", priority: 0.8, changeFrequency: "weekly" },
     { path: "/sky-series", priority: 0.7, changeFrequency: "weekly" },
     { path: "/fabric", priority: 0.7, changeFrequency: "monthly" },

@@ -122,6 +122,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-links">
                 <Link href="/shop">Shop</Link>
+                <Link href="/women">Women</Link>
                 <Link href="/men">Men</Link>
                 <Link href="/pure">Vyoma Pure</Link>
                 <Link href="/fabric">Fabric</Link>

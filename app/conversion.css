@@ -585,6 +585,145 @@
   object-fit: cover;
 }
 
+.women-story-visual {
+  position: relative;
+  min-height: 560px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(157, 79, 36, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(70% 60% at 18% 12%, rgba(209, 153, 143, 0.18), transparent 60%),
+    linear-gradient(135deg, #fffaf2 0%, #f6eadb 100%);
+  box-shadow: 0 34px 94px rgba(157, 79, 36, 0.14);
+}
+
+.women-story-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.04), rgba(80, 55, 38, 0.10)),
+    radial-gradient(70% 50% at 86% 14%, rgba(157, 79, 36, 0.20), transparent 62%);
+}
+
+.women-hero-card {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(157, 79, 36, 0.18);
+  border-radius: 8px;
+  background: #fffaf2;
+  box-shadow: 0 24px 54px rgba(80, 55, 38, 0.16);
+}
+
+.women-hero-card.card-1 {
+  top: 32px;
+  left: 28px;
+  width: 48%;
+  height: 68%;
+}
+
+.women-hero-card.card-2 {
+  right: 30px;
+  top: 78px;
+  width: 44%;
+  height: 58%;
+}
+
+.women-hero-card.card-3 {
+  left: 22%;
+  right: 36px;
+  bottom: 30px;
+  height: 34%;
+}
+
+.women-hero-card .product-img,
+.women-hero-card .swatch-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.women-hero-label {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(157, 79, 36, 0.14);
+  border-radius: 6px;
+  color: var(--ink);
+  background: rgba(255, 252, 246, 0.84);
+  box-shadow: 0 12px 26px rgba(80, 55, 38, 0.12);
+}
+
+.women-hero-label strong,
+.women-hero-label small {
+  display: block;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.15;
+}
+
+.women-hero-label strong {
+  font-weight: 800;
+}
+
+.women-hero-label small {
+  flex: none;
+  color: var(--dusk);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.women-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.women-plan-card {
+  min-height: 220px;
+  padding: 22px;
+  border: 1px solid rgba(157, 79, 36, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(70% 60% at 88% 10%, rgba(157, 79, 36, 0.10), transparent 58%),
+    rgba(255, 252, 246, 0.86);
+  box-shadow: 0 18px 42px rgba(80, 55, 38, 0.08);
+}
+
+.women-plan-mark {
+  display: inline-grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  margin-bottom: 20px;
+  border: 1px solid rgba(157, 79, 36, 0.22);
+  border-radius: 999px;
+  color: #9d4f24;
+  background: rgba(255, 248, 237, 0.82);
+  box-shadow: 0 14px 30px rgba(157, 79, 36, 0.10);
+  font-weight: 900;
+}
+
+.women-plan-card h3 {
+  margin-bottom: 8px;
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
 .mens-colour-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1153,6 +1292,7 @@
   .amber-stage,
   .pure-visual,
   .mens-story-visual,
+  .women-story-visual,
   .fabric-sample,
   .fit-scale,
   .drop-orbit,
@@ -1169,6 +1309,10 @@
     min-height: 420px;
   }
 
+  .women-story-visual {
+    min-height: 460px;
+  }
+
   .amber-stage {
     min-height: 460px;
   }
@@ -1181,6 +1325,7 @@
   .commerce-card-grid.two,
   .category-strip,
   .mens-colour-grid,
+  .women-plan-grid,
   .drop-stage-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1224,13 +1369,43 @@
   .commerce-card-grid.two,
   .category-strip,
   .mens-colour-grid,
+  .women-plan-grid,
   .drop-stage-grid {
     grid-template-columns: 1fr;
   }
 
   .mens-story-visual,
-  .mens-story-visual img {
+  .mens-story-visual img,
+  .women-story-visual {
     min-height: 380px;
+  }
+
+  .women-hero-card.card-1 {
+    top: 18px;
+    left: 18px;
+    width: 58%;
+    height: 54%;
+  }
+
+  .women-hero-card.card-2 {
+    top: 96px;
+    right: 16px;
+    width: 52%;
+    height: 46%;
+  }
+
+  .women-hero-card.card-3 {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    height: 30%;
+  }
+
+  .women-hero-label {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 10px;
   }
 
   .amber-stage {

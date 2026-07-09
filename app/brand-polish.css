@@ -537,6 +537,7 @@
 }
 
 .shop-page .commerce-hero,
+.women-page .commerce-hero,
 .mens-page .commerce-hero,
 .pure-page .commerce-hero,
 .fabric-page .commerce-hero,
@@ -608,7 +609,8 @@
 .about-wordmark,
 .track-ticket,
 .sky-stack,
-.mens-story-visual {
+.mens-story-visual,
+.women-story-visual {
   color: var(--ink);
   border-color: rgba(157, 79, 36, 0.18);
   background:
@@ -617,7 +619,8 @@
   box-shadow: 0 28px 74px rgba(157, 79, 36, 0.14);
 }
 
-.mens-story-visual::after {
+.mens-story-visual::after,
+.women-story-visual::after {
   background:
     linear-gradient(180deg, rgba(255, 248, 237, 0.02), rgba(80, 55, 38, 0.12)),
     radial-gradient(70% 50% at 86% 14%, rgba(157, 79, 36, 0.20), transparent 62%);
