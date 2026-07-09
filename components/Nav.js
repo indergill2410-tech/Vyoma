@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "./Providers";
 import BrandLogo from "./BrandLogo";
 
@@ -16,11 +17,24 @@ const LINKS = [
   { href: "/story", label: "Story" },
 ];
 
+const CATALOGUE_LOGO_PATHS = ["/shop", "/men", "/pure"];
+
+function LegacyWordmark() {
+  return (
+    <>
+      Vyoma<span className="mark-thin">wear</span>
+    </>
+  );
+}
+
 export default function Nav() {
   const { count, setDrawerOpen } = useCart();
+  const pathname = usePathname() || "/";
   const [bump, setBump] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const prev = useRef(count);
+  const useCatalogueWordmark =
+    CATALOGUE_LOGO_PATHS.includes(pathname) || pathname.startsWith("/product/");
 
   useEffect(() => {
     if (count > prev.current) {
@@ -35,8 +49,13 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="nav-inner container">
-        <Link href="/" className="mark brand-link" aria-label="Vyomawear home" onClick={() => setMenuOpen(false)}>
-          <BrandLogo />
+        <Link
+          href="/"
+          className={`mark ${useCatalogueWordmark ? "" : "brand-link"}`.trim()}
+          aria-label="Vyomawear home"
+          onClick={() => setMenuOpen(false)}
+        >
+          {useCatalogueWordmark ? <LegacyWordmark /> : <BrandLogo />}
         </Link>
 
         <nav className="nav-links" aria-label="Primary">
