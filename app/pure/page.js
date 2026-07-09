@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/catalog";
+import { pureProductsForAudience } from "@/lib/catalog";
 import ProductCard from "@/components/ProductCard";
 import EditorialImage from "@/components/EditorialImage";
 import { abs } from "@/lib/seo";
@@ -18,9 +18,8 @@ const PURE_POINTS = [
 ];
 
 export default function PurePage() {
-  const pure = PRODUCTS.filter((p) => p.category === "Vyoma Pure");
-  const women = pure.filter((p) => /women/i.test(p.name));
-  const men = pure.filter((p) => /men/i.test(p.name));
+  const women = pureProductsForAudience("women");
+  const men = pureProductsForAudience("men");
 
   return (
     <main className="commerce-page pure-page">

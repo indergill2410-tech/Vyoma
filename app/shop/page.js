@@ -15,7 +15,7 @@ export const metadata = {
 const CATEGORY_LINKS = [
   { label: "Leggings", href: "#collection", body: "Held, opaque and soft through every fold." },
   { label: "Tops", href: "#collection", body: "Light layers for heat, breath and the day after." },
-  { label: "Men", href: "/men", body: "Pure trunks, fleece and unisex movement layers." },
+  { label: "Men", href: "/men", body: "Lifestyle activewear for gym, travel and weekends." },
   { label: "Pure", href: "/pure", body: "Closest-to-skin basics made with extra care." },
   { label: "Sets", href: "#collection", body: "One decision. A complete practice uniform." },
 ];
@@ -31,7 +31,7 @@ export default function ShopPage() {
             <p className="commerce-eyebrow">The first drop</p>
             <h1>Soft movement layers, made close to the source.</h1>
             <p className="commerce-lead">
-              Organic-first activewear for practice, travel, errands and the quiet hours after.
+              Organic-first activewear for training, travel, errands and the quiet hours after.
               Choose your piece, then move through secure checkout when you are ready.
             </p>
             <div className="commerce-actions">
@@ -46,7 +46,7 @@ export default function ShopPage() {
           </div>
           <EditorialImage
             name="shopHero"
-            alt="Folded Vyoma movement layers and yoga mat in soft dusk light"
+            alt="Folded Vyoma movement layers and carry pieces in soft dusk light"
             className="commerce-visual"
             priority
           />

@@ -81,6 +81,7 @@ export default async function ProductPage({ params }) {
   }
 
   const product = found.product;
+  const isMensProduct = product.catalogues?.includes("men");
   const url = abs(`/product/${product.slug}`);
   const reviewSummary = await approvedReviewSummary(product.slug);
 
@@ -150,7 +151,7 @@ export default async function ProductPage({ params }) {
       />
       <div className="container">
         <p className="crumb">
-          <Link href="/shop">Collection</Link> / {product.name}
+          <Link href={isMensProduct ? "/men" : "/shop"}>{isMensProduct ? "Men" : "Collection"}</Link> / {product.name}
         </p>
         <ProductDetail product={product} commerceEnabled={false} />
       </div>
@@ -159,7 +160,7 @@ export default async function ProductPage({ params }) {
         <div className="container">
           <div className="section-head" data-reveal>
             <span className="section-eyebrow">Pairs well</span>
-            <h2>Complete your practice.</h2>
+            <h2>{isMensProduct ? "Build the full day kit." : "Complete your practice."}</h2>
           </div>
           <div className="grid">
             {relatedProducts(product.slug, 3).map((p) => (
