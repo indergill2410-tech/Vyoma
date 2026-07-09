@@ -6,7 +6,7 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Fit Finder",
   description:
-    "Find your Vyomawear size and fit feel before you choose your first-drop piece.",
+    "Find your Vyomawear size and fit feel before you choose your piece.",
   alternates: { canonical: abs("/fit") },
 };
 
@@ -34,7 +34,7 @@ export default function FitPage() {
             <p className="commerce-eyebrow">Fit Finder</p>
             <h1>Find the size that lets you stop thinking about size.</h1>
             <p className="commerce-lead">
-              A quick guide for the first drop. It is simple on purpose: your frame,
+              A quick guide for the current catalogue. It is simple on purpose: your frame,
               your preferred feel, and the colour mood you reach for.
             </p>
             <div className="commerce-actions">

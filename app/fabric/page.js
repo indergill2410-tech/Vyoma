@@ -39,7 +39,7 @@ export default function FabricPage() {
               clear and considered. The science sits behind the choice; the feeling comes first.
             </p>
             <div className="commerce-actions">
-              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/shop" className="btn accent">Shop the catalogue</Link>
               <Link href="/research" className="btn ghost">Read the sources</Link>
             </div>
           </div>

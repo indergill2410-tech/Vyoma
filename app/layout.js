@@ -30,7 +30,7 @@ import { abs, SITE_URL, BRAND } from "@/lib/seo";
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Vyomawear — Activewear with a yoga soul",
+    default: "Vyomawear - Lifestyle activewear for the full day",
     template: "%s · Vyomawear",
   },
   description: BRAND.description,
@@ -40,10 +40,9 @@ export const metadata = {
     "organic cotton activewear",
     "men's organic cotton underwear",
     "men's activewear Australia",
-    "yoga wear Australia",
+    "lifestyle activewear",
     "gym wear",
     "natural fibre leggings",
-    "made in India activewear",
     "Vyoma",
     "Vyomawear",
   ],
@@ -52,16 +51,16 @@ export const metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Vyomawear",
-    title: "Vyomawear — Activewear with a yoga soul.",
+    title: "Vyomawear - Lifestyle activewear for the full day.",
     description:
-      "Premium natural-fibre activewear, made in India for the studio, the gym and everyday life. Shipping across Australia.",
+      "Premium natural-fibre activewear for training, travel, recovery and everyday life. Shipping across Australia.",
     locale: "en_AU",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vyomawear — Activewear with a yoga soul",
+    title: "Vyomawear - Lifestyle activewear for the full day",
     description:
-      "Premium natural-fibre activewear, made in India. Built for the studio, the gym and everyday life. Shipping across Australia.",
+      "Premium natural-fibre activewear for training, travel, recovery and everyday life. Shipping across Australia.",
   },
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
@@ -85,7 +84,7 @@ const SITE_JSONLD = {
       "@id": `${SITE_URL}/#organization`,
       name: BRAND.name,
       legalName: BRAND.legalName,
-      description: "Premium natural-fibre activewear, made in India for the studio, the gym and everyday life.",
+      description: "Premium natural-fibre activewear for training, travel, recovery and everyday life.",
       slogan: BRAND.slogan,
       url: SITE_URL,
       logo: abs("/icon.svg"),
@@ -133,7 +132,7 @@ export default function RootLayout({ children }) {
             <div className="container footer-grid">
               <div>
                 <span className="footer-mark">Vyoma<span className="mark-thin">wear</span></span>
-                <p className="muted small">Vyoma (vee-OH-ma) — Sanskrit for sky, ether, infinite space.</p>
+                <p className="muted small">Warm natural-fibre activewear for training, travel, recovery and everyday life.</p>
               </div>
               <div className="footer-links">
                 <Link href="/shop">Shop</Link>
@@ -150,7 +149,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="footer-meta">
                 <span className="dev">व्योम</span>
-                <p className="muted small">Made in India · Shipping across Australia</p>
+                <p className="muted small">Lifestyle activewear - Shipping across Australia</p>
                 <p className="muted xsmall">© {new Date().getFullYear()} Vyomawear · Room to grow.</p>
               </div>
             </div>

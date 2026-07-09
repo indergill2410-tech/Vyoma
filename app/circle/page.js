@@ -16,7 +16,7 @@ export const metadata = {
 const BENEFITS = [
   {
     title: "Restocks first",
-    body: "Hear when a size, colour or first-drop piece returns before the wider list does.",
+    body: "Hear when a size, colour or favourite piece returns before the wider list does.",
   },
   {
     title: "Founder perks",

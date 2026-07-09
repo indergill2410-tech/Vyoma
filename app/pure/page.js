@@ -7,14 +7,14 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Vyoma Pure",
   description:
-    "Organic-cotton underwear for women and men, made in India. The closest layer, made softer and clearer.",
+    "Organic-cotton underwear for women and men. The closest layer, made softer and clearer.",
   alternates: { canonical: abs("/pure") },
 };
 
 const PURE_POINTS = [
   { title: "Soft where it matters", body: "A breathable everyday layer for warm, close contact and long wear." },
   { title: "Natural fibre first", body: "Organic cotton-led comfort, with product claims tied to what can be shown." },
-  { title: "Made in India", body: "Small-batch basics made close to the source, with the same care as the practice line." },
+  { title: "Small-batch finish", body: "Everyday basics with the same care as the activewear line." },
 ];
 
 export default function PurePage() {

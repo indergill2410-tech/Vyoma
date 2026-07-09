@@ -5,18 +5,18 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "Story",
   description:
-    "The Vyoma story: activewear with a yoga soul, made in India with softer natural fibres and less plastic against the skin.",
+    "The Vyoma story: lifestyle activewear with softer natural fibres, warm colour and a calmer feel against skin.",
   alternates: { canonical: abs("/story") },
 };
 
 const STORY_PILLARS = [
   {
-    title: "A yoga soul",
+    title: "Room to move",
     body: "Vyoma begins with breath, space and the feeling of a layer that lets your body settle before it asks your body to perform.",
   },
   {
-    title: "Made close to source",
-    body: "Yoga was born in India. Vyoma is made there too, closer to the craft, cotton, makers and story that shaped the brand.",
+    title: "Craft with context",
+    body: "Materials, finish and fit are treated as part of the same story, so each layer feels considered from first touch.",
   },
   {
     title: "Less plastic on skin",
@@ -34,10 +34,10 @@ export default function StoryPage() {
             <h1>Vyoma means sky.</h1>
             <p className="commerce-lead">
               व्योम · vee-OH-ma · the room to breathe that a good practice gives back to you.
-              Activewear with a yoga soul, made in India for movement that feels calmer on the skin.
+              Lifestyle activewear for movement that feels calmer on the skin.
             </p>
             <div className="commerce-actions">
-              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/shop" className="btn accent">Shop the catalogue</Link>
               <Link href="/fabric" className="btn ghost">See the fabric promise</Link>
             </div>
           </div>

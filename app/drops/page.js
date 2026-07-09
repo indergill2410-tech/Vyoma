@@ -8,14 +8,14 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "The Drops",
   description:
-    "Follow Vyomawear's first drop, restocks and small-batch releases.",
+    "Follow Vyomawear restocks, small-batch releases and future colour stories.",
   alternates: { canonical: abs("/drops") },
 };
 
-const FIRST_DROP = PRODUCTS.filter((product) => product.hero).slice(0, 3);
+const FEATURED_DROP = PRODUCTS.filter((product) => product.hero).slice(0, 3);
 
 const DROP_STAGES = [
-  { label: "01", title: "First drop", body: "The opening edit: practice layers, Pure basics and the sky palette." },
+  { label: "01", title: "Available now", body: "A focused edit of movement layers, Pure basics and the sky palette." },
   { label: "02", title: "Restock notes", body: "The Circle hears first when a size, colour or small batch returns." },
   { label: "03", title: "Next sky", body: "Future colours and pieces release slowly, so every drop can be made with care." },
 ];
@@ -29,7 +29,7 @@ export default function DropsPage() {
             <p className="commerce-eyebrow">The Drops</p>
             <h1>Small batches, released with room to breathe.</h1>
             <p className="commerce-lead">
-              Vyoma does not need a loud season calendar. The first drop is a focused edit,
+              Vyoma does not need a loud season calendar. The shop stays focused,
               followed by restocks and future colour moments when the making is ready.
             </p>
             <div className="commerce-actions">
@@ -39,7 +39,7 @@ export default function DropsPage() {
           </div>
           <EditorialImage
             name="circleDrops"
-            alt="First-drop invitation with fabric swatches in warm dusk light"
+            alt="Vyoma drop invitation with fabric swatches in warm dusk light"
             className="drop-orbit"
             priority
           />
@@ -64,18 +64,18 @@ export default function DropsPage() {
         </div>
       </section>
 
-      {FIRST_DROP.length > 0 && (
-        <section className="commerce-section" aria-labelledby="first-drop-heading">
+      {FEATURED_DROP.length > 0 && (
+        <section className="commerce-section" aria-labelledby="featured-drop-heading">
           <div className="commerce-shell">
             <div className="commerce-section-head split">
               <div>
                 <p className="commerce-eyebrow">Available now</p>
-                <h2 id="first-drop-heading">The pieces leading the first drop.</h2>
+                <h2 id="featured-drop-heading">The pieces leading the edit.</h2>
               </div>
               <Link href="/shop" className="link-btn">See every piece</Link>
             </div>
             <div className="grid">
-              {FIRST_DROP.map((product) => (
+              {FEATURED_DROP.map((product) => (
                 <ProductCard key={product.slug} product={product} />
               ))}
             </div>

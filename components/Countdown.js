@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-// Counts down to the first drop. Date comes from NEXT_PUBLIC_DROP_DATE.
+// Counts down to the next drop. Date comes from NEXT_PUBLIC_DROP_DATE.
 export default function Countdown({ date }) {
   const target = date ? new Date(date).getTime() : null;
   const [now, setNow] = useState(null);
@@ -25,7 +25,7 @@ export default function Countdown({ date }) {
   const s = Math.floor((diff % 60000) / 1000);
 
   if (live) {
-    return <div className="countdown live">The first drop is live ✦</div>;
+    return <div className="countdown live">The next drop is live ✦</div>;
   }
 
   const cells = [
@@ -36,7 +36,7 @@ export default function Countdown({ date }) {
   ];
 
   return (
-    <div className="countdown" role="timer" aria-label="Time until the first drop">
+    <div className="countdown" role="timer" aria-label="Time until the next drop">
       {cells.map((c) => (
         <div className="cd-cell" key={c.l}>
           <span className="cd-v">{String(c.v).padStart(2, "0")}</span>

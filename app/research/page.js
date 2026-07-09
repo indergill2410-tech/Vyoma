@@ -54,7 +54,7 @@ export default function ResearchPage() {
               here's the reading behind it.
             </p>
             <div className="commerce-actions">
-              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/shop" className="btn accent">Shop the catalogue</Link>
               <Link href="/fabric" className="btn ghost">Read the fabric promise</Link>
             </div>
           </div>

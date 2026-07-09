@@ -6,12 +6,12 @@ import { abs } from "@/lib/seo";
 export const metadata = {
   title: "The Making",
   description:
-    "Made in India. Follow a Vyoma piece from your order to your door — crafted with care, made to last.",
+    "Follow a Vyoma piece from your order to your door: crafted with care, checked properly and made to last.",
   alternates: { canonical: abs("/making") },
 };
 
 const MAKING_PROOF = [
-  { title: "Made in India", body: "A textile story rooted close to the origin of yoga and the craft behind the cloth." },
+  { title: "Crafted with care", body: "A textile story rooted in careful material choices, hand checks and considered finish." },
   { title: "Checked by hand", body: "Seams, finish and feel are part of the product, not an afterthought." },
   { title: "Tracked to your door", body: "Once your parcel leaves, delivery details arrive by email for calm follow-through." },
 ];
@@ -25,11 +25,11 @@ export default function MakingPage() {
             <p className="commerce-eyebrow">The Making</p>
             <h1>What happens after you choose your piece.</h1>
             <p className="commerce-lead">
-              Vyoma is made in India with a slower standard: prepared carefully, checked properly
-              and sent with tracking when it is ready for you.
+              Vyoma follows a slower standard: prepared carefully, checked properly and sent
+              with tracking when it is ready for you.
             </p>
             <div className="commerce-actions">
-              <Link href="/shop" className="btn accent">Shop the first drop</Link>
+              <Link href="/shop" className="btn accent">Shop the catalogue</Link>
               <Link href="/fit" className="btn ghost">Find your fit</Link>
             </div>
           </div>
