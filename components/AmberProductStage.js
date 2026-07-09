@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const SCENES = {
   home: {
     label: "Vyomawear warm copper product world with men's and women's activewear",
@@ -88,16 +86,14 @@ export default function AmberProductStage({ variant = "home", className = "", pr
               ...TILE_STYLES[image.tile],
             }}
           >
-            <Image
+            {/* Pre-optimized WebP assets are rendered directly so Render never blocks the hero on image optimization. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={image.src}
               alt={image.alt}
-              fill
-              priority={priority && index === 0}
-              sizes={
-                image.tile === "hero"
-                  ? "(min-width: 980px) 34vw, 90vw"
-                  : "(min-width: 980px) 18vw, 44vw"
-              }
+              loading={priority && index === 0 ? "eager" : "lazy"}
+              decoding={priority && index === 0 ? "sync" : "async"}
+              fetchPriority={priority && index === 0 ? "high" : undefined}
               className="amber-stage-img"
             />
           </span>
