@@ -18,7 +18,7 @@ itself: **The Circle** (a referral waitlist) and **moderated reviews**.
 | **Story** | `/about` | The Vyoma origin and pronunciation |
 | **Why natural fibre** | `/research` | The material research, with sources to read further |
 | **Fabric** | `/fabric` | The natural-fibre fabric story |
-| **Collection** | `/#shop` | Live from Shopify (`lib/shopify.js`) |
+| **Collection** | `/shop` | Live from Shopify (`lib/shopify.js`) |
 | **Product** | `/product/[handle]` | Shopify product: variants, gallery, add-to-bag, reviews |
 | **Cart** | drawer + `/cart` | Multi-item, Shopify-variant lines, persisted to localStorage |
 | **Checkout** | `/api/checkout` | Creates a Shopify cart from the line list → hosted checkout |
