@@ -2,8 +2,12 @@ import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import {
   PRODUCTS,
+  PRODUCT_STATUSES,
   mensCatalogueProducts,
+  missingImageRoles,
   productShots,
+  productStatus,
+  productStoryFields,
   pureProductsForAudience,
   womenCatalogueProducts,
 } from "../lib/catalog.js";
@@ -102,16 +106,46 @@ const duplicates = allSlugs.filter((slug, index) => allSlugs.indexOf(slug) !== i
 if (duplicates.length) fail(`Duplicate catalogue slugs: ${[...new Set(duplicates)].join(", ")}`);
 
 for (const product of PRODUCTS) {
+  const status = productStatus(product);
+  if (!PRODUCT_STATUSES[status]) fail(`${product.slug} has invalid product status: ${status}`);
+
+  const story = productStoryFields(product);
+  if (!story.storyHeadline || !story.storySummary) {
+    fail(`${product.slug} is missing backward-compatible story fields.`);
+  }
+  if (!Array.isArray(story.useMoments) || story.useMoments.length === 0) {
+    fail(`${product.slug} must declare at least one use moment.`);
+  }
+
   const shots = productShots(product);
-  if (shots.length !== 3) fail(`${product.slug} should expose exactly 3 product shots.`);
+  if (shots.length < 1) fail(`${product.slug} should expose at least one product shot.`);
+
+  const shotSrcs = shots.map((shot) => shot.src);
+  const duplicateShotSrcs = shotSrcs.filter((src, index) => shotSrcs.indexOf(src) !== index);
+  if (duplicateShotSrcs.length) {
+    fail(`${product.slug} repeats one image as multiple gallery roles: ${[...new Set(duplicateShotSrcs)].join(", ")}`);
+  }
 
   for (const shot of shots) {
+    if (!shot.role || !shot.angle || !shot.alt) {
+      fail(`${product.slug} ${shot.slot} must include role, angle and alt metadata.`);
+    }
+    if (/back view/i.test(shot.alt) && shot.role !== "back") {
+      fail(`${product.slug} labels ${shot.slot} as a back view without a back role.`);
+    }
+    if (/material detail/i.test(shot.alt) && shot.role !== "detail") {
+      fail(`${product.slug} labels ${shot.slot} as material detail without a detail role.`);
+    }
+
     const hasPrimary = await existsPublicAsset(shot.src);
     const hasFallback = await existsPublicAsset(shot.fallbackSrc);
     if (!hasPrimary && !hasFallback) {
       fail(`${product.slug} ${shot.slot} has no usable image or fallback.`);
     }
   }
+
+  const missingRoles = missingImageRoles(product);
+  if (!Array.isArray(missingRoles)) fail(`${product.slug} missing image roles must be auditable.`);
 }
 
 const productCard = await readFile(join(ROOT, "components", "ProductCard.js"), "utf8");

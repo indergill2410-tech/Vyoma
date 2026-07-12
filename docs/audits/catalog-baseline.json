@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T07:56:02.500Z",
+  "generatedAt": "2026-07-12T04:10:06.619Z",
   "source": "GitHub checkout: lib/catalog.js local fallback catalogue",
   "note": "Shopify is the live commerce system when env vars are configured; this audit records the GitHub source fallback and preserves its commercial fields.",
   "productCount": 18,
@@ -21,6 +21,9 @@
       "badges": [
         "Featured"
       ],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 7900,
       "priceAudDisplay": "AUD 79",
       "priceInrMinor": 240000,
@@ -54,30 +57,46 @@
       "materialInformation": "Organic cotton performance knit with natural stretch. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry, skip the softener. Built for seasons, not weeks.",
       "fitInformation": "True to size, with a firm hold. Between sizes? Size down.",
+      "storyHeadline": "Sculpted hold, softer contact.",
+      "storySummary": "A high-rise practice legging with smooth natural stretch, steady coverage and a held feel that still lets the body breathe.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
         "/products/vyoma-high-rise-legging/model.webp",
-        "/products/vyoma-high-rise-legging/back.webp",
-        "/products/vyoma-high-rise-legging/model.webp"
+        "/products/vyoma-high-rise-legging/back.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-high-rise-legging/model.webp",
-          "alt": "The Vyoma High-Rise Legging, worn",
+          "fallbackSrc": "/products/vyoma-high-rise-legging/model.png",
+          "alt": "The Vyoma High-Rise Legging, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         },
         {
           "slot": "back",
+          "role": "back",
+          "angle": "back",
           "src": "/products/vyoma-high-rise-legging/back.webp",
+          "fallbackSrc": "/products/vyoma-high-rise-legging/model.webp",
           "alt": "The Vyoma High-Rise Legging, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-high-rise-legging/model.webp",
-          "alt": "The Vyoma High-Rise Legging, fabric detail",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -100,7 +119,8 @@
       "structuredMetadata": {
         "tagline": "Sculpted hold, softer contact.",
         "hero": true,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -116,6 +136,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 5900,
       "priceAudDisplay": "AUD 59",
       "priceInrMinor": 180000,
@@ -149,30 +172,35 @@
       "materialInformation": "Organic cotton-modal jersey that breathes with you. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry. The drape only gets better with wear.",
       "fitInformation": "Relaxed through the body. Size down for a closer fit.",
+      "storyHeadline": "Open-back studio layer.",
+      "storySummary": "Light as breath, with a back you'll want to be seen from. Cool enough for hot yoga, considered enough for the café after. Throw it on and forget it's there.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-studio-top/model.webp",
-        "/products/vyoma-studio-top/model.webp",
         "/products/vyoma-studio-top/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-studio-top/model.webp",
-          "alt": "The Vyoma Studio Top, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-studio-top/model.webp",
-          "alt": "The Vyoma Studio Top, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-studio-top/model.webp",
-          "alt": "The Vyoma Studio Top, fabric detail",
+          "fallbackSrc": "/products/vyoma-studio-top/model.png",
+          "alt": "The Vyoma Studio Top, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -195,7 +223,8 @@
       "structuredMetadata": {
         "tagline": "Open-back studio layer.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -211,6 +240,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 5200,
       "priceAudDisplay": "AUD 52",
       "priceInrMinor": 160000,
@@ -249,30 +281,35 @@
       "materialInformation": "Organic cotton rib with natural recovery. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry. Wash inside out to protect the embroidery.",
       "fitInformation": "Close to the body with natural give. Size up for a softer studio fit.",
+      "storyHeadline": "Branded rib, bright practice energy.",
+      "storySummary": "A fitted rib tank with the Vyoma mark stitched into the layer you reach for first. Soft organic cotton, lively colour, and enough structure to hold its shape through practice and the rest of the day.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-rib-tank/model.webp",
-        "/products/vyoma-rib-tank/model.webp",
         "/products/vyoma-rib-tank/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-rib-tank/model.webp",
-          "alt": "The Vyoma Rib Tank, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-rib-tank/model.webp",
-          "alt": "The Vyoma Rib Tank, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-rib-tank/model.webp",
-          "alt": "The Vyoma Rib Tank, fabric detail",
+          "fallbackSrc": "/products/vyoma-rib-tank/model.png",
+          "alt": "The Vyoma Rib Tank, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -296,7 +333,8 @@
       "structuredMetadata": {
         "tagline": "Branded rib, bright practice energy.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -312,6 +350,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 5600,
       "priceAudDisplay": "AUD 56",
       "priceInrMinor": 170000,
@@ -350,30 +391,36 @@
       "materialInformation": "Organic cotton-modal jersey with a soft hand and easy drape.",
       "careInformation": "Cold wash, line dry. The jersey softens with wear.",
       "fitInformation": "Relaxed through the body. Take your usual size for an easy fit.",
+      "storyHeadline": "Training tee, all-day ease.",
+      "storySummary": "A breathable training tee with a clean Vyoma mark, made for the session, the commute and the plans after.",
+      "useMoments": [
+        "Train",
+        "Travel",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-practice-tee/men-lifestyle.webp",
-        "/products/vyoma-practice-tee/men-lifestyle.webp",
         "/products/vyoma-practice-tee/men-lifestyle.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-practice-tee/men-lifestyle.webp",
-          "alt": "The Vyoma Practice Tee, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-practice-tee/men-lifestyle.webp",
-          "alt": "The Vyoma Practice Tee, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-practice-tee/men-lifestyle.webp",
-          "alt": "The Vyoma Practice Tee, fabric detail",
+          "fallbackSrc": null,
+          "alt": "The Vyoma Practice Tee, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -397,7 +444,8 @@
       "structuredMetadata": {
         "tagline": "Training tee, all-day ease.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -417,6 +465,9 @@
       "badges": [
         "Featured"
       ],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 12900,
       "priceAudDisplay": "AUD 129",
       "priceInrMinor": 390000,
@@ -450,30 +501,46 @@
       "materialInformation": "Organic cotton performance knit and cotton-modal jersey. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry, skip the softener.",
       "fitInformation": "Order your usual size in both. Mixing sizes? Leave us a note at checkout.",
+      "storyHeadline": "The complete practice layer.",
+      "storySummary": "The High-Rise Legging and Studio Top, paired for a practice kit that feels considered before, during and after movement.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-the-set/model.webp",
         "/products/vyoma-the-set/model.webp",
         "/products/vyoma-the-set/detail.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-the-set/model.webp",
-          "alt": "The Vyoma Set, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-the-set/model.webp",
-          "alt": "The Vyoma Set, back view",
+          "fallbackSrc": "/products/vyoma-the-set/model.png",
+          "alt": "The Vyoma Set, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         },
         {
           "slot": "detail",
+          "role": "detail",
+          "angle": "material",
           "src": "/products/vyoma-the-set/detail.webp",
-          "alt": "The Vyoma Set, fabric detail",
+          "fallbackSrc": "/products/vyoma-the-set/model.webp",
+          "alt": "The Vyoma Set, material detail",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -499,6 +566,10 @@
         "bundle": [
           "vyoma-high-rise-legging",
           "vyoma-studio-top"
+        ],
+        "completeTheLookIds": [
+          "vyoma-high-rise-legging",
+          "vyoma-studio-top"
         ]
       }
     },
@@ -515,6 +586,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 8900,
       "priceAudDisplay": "AUD 89",
       "priceInrMinor": 290000,
@@ -546,30 +620,35 @@
       "materialInformation": "Organic cotton with a soft, brushed inside.",
       "careInformation": "Cold wash, dry flat to keep its shape.",
       "fitInformation": "One relaxed, generous cut. Drapes beautifully on every body.",
+      "storyHeadline": "Post-practice drape.",
+      "storySummary": "Akasha — Sanskrit for the space that holds everything. An open, drapey layer for the walk home and the slow cool-down. Throw it on; you won't want to take it off.",
+      "useMoments": [
+        "Recover",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-akasha-wrap/model.webp",
-        "/products/vyoma-akasha-wrap/model.webp",
         "/products/vyoma-akasha-wrap/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-akasha-wrap/model.webp",
-          "alt": "The Akasha Wrap, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-akasha-wrap/model.webp",
-          "alt": "The Akasha Wrap, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-akasha-wrap/model.webp",
-          "alt": "The Akasha Wrap, fabric detail",
+          "fallbackSrc": "/products/vyoma-akasha-wrap/model.png",
+          "alt": "The Akasha Wrap, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -590,7 +669,8 @@
       "structuredMetadata": {
         "tagline": "Post-practice drape.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -606,6 +686,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 3900,
       "priceAudDisplay": "AUD 39",
       "priceInrMinor": 120000,
@@ -640,30 +723,35 @@
       "materialInformation": "Heavyweight organic cotton canvas, screen-printed by hand in India.",
       "careInformation": "Spot clean, or a cold hand wash when it needs one.",
       "fitInformation": "Roomy enough for gym kit, spare layers and a long weekend reset.",
+      "storyHeadline": "The copper kit bag.",
+      "storySummary": "A heavyweight canvas carry for trainers, towel, bottle and the layer you throw on after. The colour hit that makes the kit feel alive.",
+      "useMoments": [
+        "Travel",
+        "Recover",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-mat-bag/men-lifestyle.webp",
-        "/products/vyoma-mat-bag/men-lifestyle.webp",
         "/products/vyoma-mat-bag/men-lifestyle.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "lifestyle",
+          "angle": "lifestyle",
           "src": "/products/vyoma-mat-bag/men-lifestyle.webp",
-          "alt": "The Vyoma Gym Carry, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-mat-bag/men-lifestyle.webp",
-          "alt": "The Vyoma Gym Carry, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-mat-bag/men-lifestyle.webp",
-          "alt": "The Vyoma Gym Carry, fabric detail",
+          "fallbackSrc": null,
+          "alt": "The Vyoma Gym Carry, lifestyle view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "product",
+        "reverse",
+        "detail",
+        "travel",
+        "recovery"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -683,7 +771,8 @@
       "structuredMetadata": {
         "tagline": "The copper kit bag.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -699,6 +788,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 7500,
       "priceAudDisplay": "AUD 75",
       "priceInrMinor": 230000,
@@ -737,30 +829,35 @@
       "materialInformation": "Organic cotton performance knit with natural stretch. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry, skip the softener.",
       "fitInformation": "True to size, with a firm hold. Between sizes? Size down.",
+      "storyHeadline": "Cropped sculpted hold.",
+      "storySummary": "The High-Rise, cropped to the ankle. The same no-slip waist and natural hold, cut a little shorter for warm studios and bare feet on the mat.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-78-legging/model.webp",
-        "/products/vyoma-78-legging/model.webp",
         "/products/vyoma-78-legging/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-78-legging/model.webp",
-          "alt": "The 7/8 Legging, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-78-legging/model.webp",
-          "alt": "The 7/8 Legging, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-78-legging/model.webp",
-          "alt": "The 7/8 Legging, fabric detail",
+          "fallbackSrc": "/products/vyoma-78-legging/model.png",
+          "alt": "The 7/8 Legging, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -784,7 +881,8 @@
       "structuredMetadata": {
         "tagline": "Cropped sculpted hold.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -800,6 +898,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 5500,
       "priceAudDisplay": "AUD 55",
       "priceInrMinor": 170000,
@@ -833,30 +934,35 @@
       "materialInformation": "Organic cotton performance knit with natural stretch. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry, skip the softener.",
       "fitInformation": "True to size, compressive. Between sizes? Size down.",
+      "storyHeadline": "High-waist studio short.",
+      "storySummary": "High-waisted, squat-proof, and long enough to forget you're wearing them. For lifting days, hot flows and the long ride home.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-bike-short/model.webp",
-        "/products/vyoma-bike-short/model.webp",
         "/products/vyoma-bike-short/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-bike-short/model.webp",
-          "alt": "The Bike Short, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-bike-short/model.webp",
-          "alt": "The Bike Short, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-bike-short/model.webp",
-          "alt": "The Bike Short, fabric detail",
+          "fallbackSrc": "/products/vyoma-bike-short/model.png",
+          "alt": "The Bike Short, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -879,7 +985,8 @@
       "structuredMetadata": {
         "tagline": "High-waist studio short.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -895,6 +1002,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 6900,
       "priceAudDisplay": "AUD 69",
       "priceInrMinor": 210000,
@@ -928,30 +1038,35 @@
       "materialInformation": "Organic cotton performance knit with a lightweight cotton inner short.",
       "careInformation": "Cold wash, line dry, skip the softener.",
       "fitInformation": "True to size with secure waist coverage. Between sizes? Size up.",
+      "storyHeadline": "Studio coverage, sky-bright colour.",
+      "storySummary": "A high-waist active skort with a soft crescent wrap front and built-in short. Made for summer practice, long walks and days when leggings feel like too much.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-crescent-skort/model.webp",
-        "/products/vyoma-crescent-skort/model.webp",
         "/products/vyoma-crescent-skort/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-crescent-skort/model.webp",
-          "alt": "The Crescent Skort, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-crescent-skort/model.webp",
-          "alt": "The Crescent Skort, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-crescent-skort/model.webp",
-          "alt": "The Crescent Skort, fabric detail",
+          "fallbackSrc": "/products/vyoma-crescent-skort/model.png",
+          "alt": "The Crescent Skort, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -974,7 +1089,8 @@
       "structuredMetadata": {
         "tagline": "Studio coverage, sky-bright colour.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -990,6 +1106,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 4900,
       "priceAudDisplay": "AUD 49",
       "priceInrMinor": 150000,
@@ -1023,30 +1142,46 @@
       "materialInformation": "Organic cotton performance knit with a soft brushed band. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry. Remove pads before washing.",
       "fitInformation": "Light support. Size up between sizes for a softer fit.",
+      "storyHeadline": "Light support, soft hold.",
+      "storySummary": "Light support for slow flows and easy days. A soft, wide band, a clean back, and nothing that digs in. The one you forget you have on.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-cloud-bra/model.webp",
         "/products/vyoma-cloud-bra/model.webp",
         "/products/vyoma-cloud-bra/detail.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-cloud-bra/model.webp",
-          "alt": "The Cloud Bra, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-cloud-bra/model.webp",
-          "alt": "The Cloud Bra, back view",
+          "fallbackSrc": "/products/vyoma-cloud-bra/model.png",
+          "alt": "The Cloud Bra, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         },
         {
           "slot": "detail",
+          "role": "detail",
+          "angle": "material",
           "src": "/products/vyoma-cloud-bra/detail.webp",
-          "alt": "The Cloud Bra, fabric detail",
+          "fallbackSrc": "/products/vyoma-cloud-bra/model.webp",
+          "alt": "The Cloud Bra, material detail",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1069,7 +1204,8 @@
       "structuredMetadata": {
         "tagline": "Light support, soft hold.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1085,6 +1221,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 5900,
       "priceAudDisplay": "AUD 59",
       "priceInrMinor": 180000,
@@ -1118,30 +1257,35 @@
       "materialInformation": "Organic cotton performance knit with a supportive band. No polyester, nylon, elastane or spandex.",
       "careInformation": "Cold wash, line dry. Remove pads before washing.",
       "fitInformation": "Medium support. True to size.",
+      "storyHeadline": "Medium support, clean lines.",
+      "storySummary": "Medium support with a sculpted band and a back you'll want to show. Steady enough for power flows, soft enough to wear all day.",
+      "useMoments": [
+        "Train",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-flow-bra/model.webp",
-        "/products/vyoma-flow-bra/model.webp",
         "/products/vyoma-flow-bra/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-flow-bra/model.webp",
-          "alt": "The Flow Bra, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-flow-bra/model.webp",
-          "alt": "The Flow Bra, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-flow-bra/model.webp",
-          "alt": "The Flow Bra, fabric detail",
+          "fallbackSrc": "/products/vyoma-flow-bra/model.png",
+          "alt": "The Flow Bra, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1164,7 +1308,8 @@
       "structuredMetadata": {
         "tagline": "Medium support, clean lines.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1180,6 +1325,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 8900,
       "priceAudDisplay": "AUD 89",
       "priceInrMinor": 290000,
@@ -1218,30 +1366,36 @@
       "materialInformation": "Organic cotton fleece with a brushed inside.",
       "careInformation": "Cold wash, line dry to keep the softness.",
       "fitInformation": "Relaxed, tapered leg. Size down for a slimmer fit.",
+      "storyHeadline": "Tapered comfort after training.",
+      "storySummary": "Soft, tapered and clean enough to keep on after the session. Built for training days, travel days and the hours after.",
+      "useMoments": [
+        "Train",
+        "Travel",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-jogger/men-lifestyle.webp",
-        "/products/vyoma-jogger/men-lifestyle.webp",
         "/products/vyoma-jogger/men-lifestyle.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-jogger/men-lifestyle.webp",
-          "alt": "The Off-Duty Jogger, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-jogger/men-lifestyle.webp",
-          "alt": "The Off-Duty Jogger, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-jogger/men-lifestyle.webp",
-          "alt": "The Off-Duty Jogger, fabric detail",
+          "fallbackSrc": null,
+          "alt": "The Off-Duty Jogger, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1265,7 +1419,8 @@
       "structuredMetadata": {
         "tagline": "Tapered comfort after training.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1281,6 +1436,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 9900,
       "priceAudDisplay": "AUD 99",
       "priceInrMinor": 320000,
@@ -1319,30 +1477,36 @@
       "materialInformation": "Organic cotton fleece with a brushed inner face and ribbed cuffs.",
       "careInformation": "Cold wash inside out, line dry. Do not tumble dry the embroidery.",
       "fitInformation": "Oversized and relaxed. Size down for a closer layer.",
+      "storyHeadline": "Heavy fleece, calmer recovery.",
+      "storySummary": "A relaxed fleece hoodie with a clean Vyoma mark, made for cool-downs, late starts, airport layers and weekend plans.",
+      "useMoments": [
+        "Recover",
+        "Travel",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-meditation-hoodie/men-lifestyle.webp",
-        "/products/vyoma-meditation-hoodie/men-lifestyle.webp",
         "/products/vyoma-meditation-hoodie/men-lifestyle.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-meditation-hoodie/men-lifestyle.webp",
-          "alt": "The Recovery Hoodie, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-meditation-hoodie/men-lifestyle.webp",
-          "alt": "The Recovery Hoodie, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-meditation-hoodie/men-lifestyle.webp",
-          "alt": "The Recovery Hoodie, fabric detail",
+          "fallbackSrc": null,
+          "alt": "The Recovery Hoodie, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1366,7 +1530,8 @@
       "structuredMetadata": {
         "tagline": "Heavy fleece, calmer recovery.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1384,6 +1549,9 @@
       ],
       "audience": "Women",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 2500,
       "priceAudDisplay": "AUD 25",
       "priceInrMinor": 80000,
@@ -1417,30 +1585,35 @@
       "materialInformation": "Organic cotton, soft and breathable.",
       "careInformation": "Cold wash, line dry.",
       "fitInformation": "True to size, sits at the natural waist.",
+      "storyHeadline": "Softest where it matters.",
+      "storySummary": "The layer closest to you, made softer. Breathable organic cotton with a gentle waistband and plain material language.",
+      "useMoments": [
+        "Closest to Skin",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-pure-brief-women/model.webp",
-        "/products/vyoma-pure-brief-women/model.webp",
         "/products/vyoma-pure-brief-women/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-pure-brief-women/model.webp",
-          "alt": "Vyoma Pure Brief — Women, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-pure-brief-women/model.webp",
-          "alt": "Vyoma Pure Brief — Women, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-pure-brief-women/model.webp",
-          "alt": "Vyoma Pure Brief — Women, fabric detail",
+          "fallbackSrc": "/products/vyoma-pure-brief-women/model.png",
+          "alt": "Vyoma Pure Brief — Women, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1463,7 +1636,8 @@
       "structuredMetadata": {
         "tagline": "Softest where it matters.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1479,6 +1653,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 3900,
       "priceAudDisplay": "AUD 39",
       "priceInrMinor": 120000,
@@ -1512,30 +1689,35 @@
       "materialInformation": "Organic cotton rib, soft and breathable.",
       "careInformation": "Cold wash, line dry. Wash inside out to protect the logo stitch.",
       "fitInformation": "Close but not compressive. Size up for a softer lounge fit.",
+      "storyHeadline": "The branded everyday base.",
+      "storySummary": "A soft rib cami for the first layer of the day. Clean straps, an easy neckline and a small Vyoma mark at the hem so even the basics feel considered.",
+      "useMoments": [
+        "Closest to Skin",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-pure-cami/model.webp",
-        "/products/vyoma-pure-cami/model.webp",
         "/products/vyoma-pure-cami/model.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-pure-cami/model.webp",
-          "alt": "Vyoma Pure Cami, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-pure-cami/model.webp",
-          "alt": "Vyoma Pure Cami, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-pure-cami/model.webp",
-          "alt": "Vyoma Pure Cami, fabric detail",
+          "fallbackSrc": "/products/vyoma-pure-cami/model.png",
+          "alt": "Vyoma Pure Cami, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1558,7 +1740,8 @@
       "structuredMetadata": {
         "tagline": "The branded everyday base.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1575,6 +1758,9 @@
       ],
       "audience": "Men",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 2700,
       "priceAudDisplay": "AUD 27",
       "priceInrMinor": 85000,
@@ -1612,30 +1798,36 @@
       "materialInformation": "Organic cotton, breathable and soft.",
       "careInformation": "Cold wash, line dry.",
       "fitInformation": "True to size, supportive without digging in.",
+      "storyHeadline": "Base layer, made calmer.",
+      "storySummary": "Breathable daily comfort under the whole activewear kit. Soft organic cotton where the day starts closest to skin.",
+      "useMoments": [
+        "Closest to Skin",
+        "Travel",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-pure-trunk-men/men-lifestyle.webp",
-        "/products/vyoma-pure-trunk-men/men-lifestyle.webp",
         "/products/vyoma-pure-trunk-men/men-lifestyle.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "worn",
+          "angle": "front-three-quarter",
           "src": "/products/vyoma-pure-trunk-men/men-lifestyle.webp",
-          "alt": "Vyoma Pure Trunk — Men, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-pure-trunk-men/men-lifestyle.webp",
-          "alt": "Vyoma Pure Trunk — Men, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-pure-trunk-men/men-lifestyle.webp",
-          "alt": "Vyoma Pure Trunk — Men, fabric detail",
+          "fallbackSrc": null,
+          "alt": "Vyoma Pure Trunk — Men, worn view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "back",
+        "detail",
+        "movement",
+        "daily-life",
+        "colour",
+        "complete-look"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1658,7 +1850,8 @@
       "structuredMetadata": {
         "tagline": "Base layer, made calmer.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     },
     {
@@ -1674,6 +1867,9 @@
       ],
       "audience": "Not explicitly assigned",
       "badges": [],
+      "status": "made-to-order",
+      "publicState": "Made to order",
+      "checkoutPolicy": "Shopify variant required before payment",
       "priceAudMinor": 1900,
       "priceAudDisplay": "AUD 19",
       "priceInrMinor": 60000,
@@ -1709,30 +1905,35 @@
       "materialInformation": "Organic cotton-rich knit with a cushioned sole and ribbed cuff.",
       "careInformation": "Cold wash, line dry. Keep pairs together for a longer life.",
       "fitInformation": "Soft crew height with gentle hold at the cuff.",
+      "storyHeadline": "The colour hit.",
+      "storySummary": "Soft organic cotton crew socks with a branded cuff and contrast stripe, made to lift sneakers, joggers and the weekend bag.",
+      "useMoments": [
+        "Travel",
+        "Recover",
+        "Everyday"
+      ],
       "imagePaths": [
-        "/products/vyoma-organic-crew-sock/men-lifestyle.webp",
-        "/products/vyoma-organic-crew-sock/men-lifestyle.webp",
         "/products/vyoma-organic-crew-sock/men-lifestyle.webp"
       ],
       "images": [
         {
           "slot": "model",
+          "role": "lifestyle",
+          "angle": "lifestyle",
           "src": "/products/vyoma-organic-crew-sock/men-lifestyle.webp",
-          "alt": "The Organic Crew Sock, worn",
-          "exists": true
-        },
-        {
-          "slot": "back",
-          "src": "/products/vyoma-organic-crew-sock/men-lifestyle.webp",
-          "alt": "The Organic Crew Sock, back view",
-          "exists": true
-        },
-        {
-          "slot": "detail",
-          "src": "/products/vyoma-organic-crew-sock/men-lifestyle.webp",
-          "alt": "The Organic Crew Sock, fabric detail",
+          "fallbackSrc": null,
+          "alt": "The Organic Crew Sock, lifestyle view",
+          "verified": true,
+          "status": "Verified unique asset",
           "exists": true
         }
+      ],
+      "missingImageRoles": [
+        "product",
+        "reverse",
+        "detail",
+        "travel",
+        "recovery"
       ],
       "variantImageRelationships": "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
       "cartIdentifiers": {
@@ -1753,7 +1954,8 @@
       "structuredMetadata": {
         "tagline": "The colour hit.",
         "hero": false,
-        "bundle": []
+        "bundle": [],
+        "completeTheLookIds": []
       }
     }
   ]

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { COLOURWAYS } from "@/lib/catalog";
+import { COLOURWAYS, PRODUCT_STATUSES, productStatus, productStoryFields } from "@/lib/catalog";
 import { formatMoney, priceFor } from "@/lib/format";
 import Gallery from "./Gallery";
 import SizeGuide from "./SizeGuide";
@@ -17,6 +17,9 @@ export default function ProductDetail({ product }) {
 
   const unit = priceFor(product, "AU");
   const cw = COLOURWAYS[colour];
+  const status = productStatus(product);
+  const statusCopy = PRODUCT_STATUSES[status];
+  const story = productStoryFields(product);
 
   return (
     <div
@@ -27,14 +30,14 @@ export default function ProductDetail({ product }) {
 
       <div className="pdp-info">
         <div className="pdp-proofline" aria-label="Product proof points">
-          <span>Made after you choose it</span>
+          <span>{statusCopy?.label || "Made to order"}</span>
           <span>Natural-fibre first</span>
           <span>Fit notes before checkout</span>
         </div>
         <p className="pdp-cat">{product.category} · {product.tagline}</p>
         <h1>{product.name}</h1>
         <p className="pdp-price">{formatMoney(unit, "AU")}</p>
-        <p className="pdp-desc">{product.description}</p>
+        <p className="pdp-desc">{story.storySummary}</p>
 
         <div className="pdp-fit-panel pdp-fit-highlight">
           <h3>Choose the fit before you commit.</h3>
@@ -84,8 +87,8 @@ export default function ProductDetail({ product }) {
           <Link className="btn block" href="/shop">Shop available pieces</Link>
         </div>
 
-        <p className="pdp-lead">✦ {product.leadTime}</p>
-        <p className="pdp-stock-note">This preview piece is not taking checkout yet. Shop available pieces now, or join The Circle for release notes.</p>
+        <p className="pdp-lead">✦ {statusCopy?.publicState || "Made to order"} · {product.leadTime}</p>
+        <p className="pdp-stock-note">Checkout stays off until a verified Shopify variant is available for this exact product, size and colour.</p>
 
         <ul className="pdp-trust" aria-label="Why buy from Vyoma">
           <li><span>॥</span> Made in India</li>

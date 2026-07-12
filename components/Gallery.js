@@ -25,25 +25,27 @@ export default function Gallery({ product, colour }) {
         />
         <span className="brand-stamp"><span className="bs-dev">व्योम</span> Vyoma</span>
       </div>
-      <div className="pdp-thumbs">
-        {shots.map((s, i) => (
-          <button
-            key={s.slot}
-            className={`pdp-thumb ${active === i ? "active" : ""}`}
-            onClick={() => setActive(i)}
-            aria-label={`Show ${s.alt}`}
-            aria-pressed={active === i}
-          >
-            <ProductImage
-              src={s.src}
-              fallbackSrc={s.fallbackSrc}
-              alt={s.alt}
-              colour={colour}
-              sizes="80px"
-            />
-          </button>
-        ))}
-      </div>
+      {shots.length > 1 && (
+        <div className="pdp-thumbs">
+          {shots.map((s, i) => (
+            <button
+              key={s.slot}
+              className={`pdp-thumb ${active === i ? "active" : ""}`}
+              onClick={() => setActive(i)}
+              aria-label={`Show ${s.alt}`}
+              aria-pressed={active === i}
+            >
+              <ProductImage
+                src={s.src}
+                fallbackSrc={s.fallbackSrc}
+                alt={s.alt}
+                colour={colour}
+                sizes="80px"
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,7 +1,15 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { COLOURWAYS, PRODUCTS, productShots } from "../lib/catalog.js";
+import {
+  COLOURWAYS,
+  PRODUCTS,
+  missingImageRoles,
+  productShots,
+  productStatus,
+  productStoryFields,
+  PRODUCT_STATUSES,
+} from "../lib/catalog.js";
 import { getProducts, shopifyConfigured } from "../lib/shopify.js";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -17,8 +25,13 @@ function imageSnapshot(product) {
     const relativePath = shot.src.replace(/^\//, "");
     return {
       slot: shot.slot,
+      role: shot.role,
+      angle: shot.angle,
       src: shot.src,
+      fallbackSrc: shot.fallbackSrc || null,
       alt: shot.alt,
+      verified: Boolean(shot.verified),
+      status: "Verified unique asset",
       exists: existsSync(join(ROOT, "public", relativePath)),
     };
   });
@@ -46,6 +59,8 @@ function formatMinor(minor) {
 
 function productSnapshot(product) {
   const images = imageSnapshot(product);
+  const status = productStatus(product);
+  const story = productStoryFields(product);
   return {
     product: product.name,
     slug: product.slug,
@@ -56,6 +71,9 @@ function productSnapshot(product) {
     collections: collectionsFor(product),
     audience: audienceFor(product),
     badges: product.hero ? ["Featured"] : [],
+    status,
+    publicState: PRODUCT_STATUSES[status]?.publicState || status,
+    checkoutPolicy: PRODUCT_STATUSES[status]?.checkoutPolicy || "Not specified",
     priceAudMinor: product.priceAud,
     priceAudDisplay: `AUD ${formatMinor(product.priceAud)}`,
     priceInrMinor: product.priceInr,
@@ -71,8 +89,12 @@ function productSnapshot(product) {
     materialInformation: product.fabric,
     careInformation: product.care,
     fitInformation: product.fit,
+    storyHeadline: story.storyHeadline,
+    storySummary: story.storySummary,
+    useMoments: story.useMoments,
     imagePaths: images.map((image) => image.src),
     images,
+    missingImageRoles: missingImageRoles(product),
     variantImageRelationships:
       "Local fallback uses the selected colourway for generated swatch fallback; no committed colour-specific product photos are present.",
     cartIdentifiers: {
@@ -87,6 +109,7 @@ function productSnapshot(product) {
       tagline: product.tagline,
       hero: Boolean(product.hero),
       bundle: product.bundle || [],
+      completeTheLookIds: story.completeTheLookIds,
     },
   };
 }
@@ -106,9 +129,9 @@ function snapshot() {
 function markdownForSnapshot(data) {
   const rows = data.products
     .map((product) => {
-      const imageStatus = `${product.images.filter((image) => image.exists).length}/${product.images.length} files present`;
+      const imageStatus = `${product.images.filter((image) => image.exists).length}/${product.images.length} verified roles present`;
       const colours = product.colours.map((colour) => colour.name).join(", ");
-      return `| ${escapeCell(product.product)} | ${escapeCell(product.slug)} | ${escapeCell(product.category)} | ${product.priceAudDisplay} / ${product.priceInrDisplay} | ${escapeCell(product.sizes.join(", "))} | ${escapeCell(colours)} | ${escapeCell(imageStatus)} | Preserved |`;
+      return `| ${escapeCell(product.product)} | ${escapeCell(product.slug)} | ${escapeCell(product.category)} | ${product.priceAudDisplay} / ${product.priceInrDisplay} | ${escapeCell(product.sizes.join(", "))} | ${escapeCell(colours)} | ${escapeCell(imageStatus)} | ${escapeCell(product.publicState)} |`;
     })
     .join("\n");
 
