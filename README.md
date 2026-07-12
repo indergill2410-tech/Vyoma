@@ -19,6 +19,7 @@ itself: **The Circle** (a referral waitlist) and **moderated reviews**.
 | **Why natural fibre** | `/research` | The material research, with sources to read further |
 | **Fabric** | `/fabric` | The natural-fibre fabric story |
 | **Collection** | `/shop` | Live from Shopify (`lib/shopify.js`) |
+| **Accessories** | `/accessories` | Existing Gym Carry and Organic Crew Sock placement |
 | **Product** | `/product/[handle]` | Shopify product: variants, gallery, add-to-bag, reviews |
 | **Cart** | drawer + `/cart` | Multi-item, Shopify-variant lines, persisted to localStorage |
 | **Checkout** | `/api/checkout` | Creates a Shopify cart from the line list → hosted checkout |

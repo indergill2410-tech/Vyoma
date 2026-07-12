@@ -13,7 +13,7 @@ const SHOP_LANES = [
   },
   {
     title: "Women",
-    href: "/shop#collection",
+    href: "/women",
     body: "Leggings, bras, skorts, tops and soft sets for practice, warm days and the hours after.",
   },
   {
@@ -23,7 +23,7 @@ const SHOP_LANES = [
   },
   {
     title: "Accessories",
-    href: "/shop#collection",
+    href: "/accessories",
     body: "Crew socks and carry pieces that make the activewear kit feel complete.",
   },
 ];
@@ -122,7 +122,7 @@ export default function Home() {
                 <Link href="/men" className={styles.secondaryCta}>
                   Men
                 </Link>
-                <Link href="/shop#collection" className={styles.secondaryCta}>
+                <Link href="/women" className={styles.secondaryCta}>
                   Women
                 </Link>
                 <Link href="/pure" className={styles.textCta}>

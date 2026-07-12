@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/women", label: "Women" },
   { href: "/men", label: "Men" },
   { href: "/pure", label: "Pure" },
+  { href: "/accessories", label: "Accessories" },
   { href: "/fabric", label: "Fabric" },
   { href: "/research", label: "Research" },
   { href: "/drops", label: "Drops" },
@@ -18,7 +19,7 @@ const LINKS = [
   { href: "/story", label: "Story" },
 ];
 
-const CATALOGUE_LOGO_PATHS = ["/shop", "/women", "/men", "/pure"];
+const CATALOGUE_LOGO_PATHS = ["/shop", "/women", "/men", "/pure", "/accessories"];
 
 function LegacyWordmark() {
   return (

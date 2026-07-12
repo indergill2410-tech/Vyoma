@@ -16,11 +16,76 @@ const CATEGORY_LINKS = [
   { label: "Women", href: "/women", body: "Practice layers, soft support and sets that keep working after class." },
   { label: "Men", href: "/men", body: "Base layers, training pieces and recovery fleece for the full day." },
   { label: "Pure", href: "/pure", body: "Soft cotton-led basics for the layer closest to skin." },
-  { label: "Accessories", href: "#collection", body: "Socks and carry pieces that make the kit feel complete." },
+  { label: "Accessories", href: "/accessories", body: "Socks and carry pieces that make the kit feel complete." },
   { label: "All products", href: "#collection", body: "Everything visible, with fit and material notes close by." },
 ];
 
 const FEATURED = PRODUCTS.filter((product) => product.hero).slice(0, 3);
+
+const CATEGORY_GROUPS = [
+  {
+    id: "practice-bottoms",
+    eyebrow: "Practice bottoms",
+    title: "Hold, coverage and off-duty comfort.",
+    body: "Leggings, shorts, the skort and jogger placed together so the movement base is easy to compare.",
+    slugs: [
+      "vyoma-high-rise-legging",
+      "vyoma-78-legging",
+      "vyoma-bike-short",
+      "vyoma-crescent-skort",
+      "vyoma-jogger",
+    ],
+  },
+  {
+    id: "tops-bras",
+    eyebrow: "Tops + bras",
+    title: "Breathable layers and support.",
+    body: "Studio tops, tees, tanks and bras grouped by the layer that meets heat, stretch and support.",
+    slugs: [
+      "vyoma-studio-top",
+      "vyoma-rib-tank",
+      "vyoma-practice-tee",
+      "vyoma-cloud-bra",
+      "vyoma-flow-bra",
+    ],
+  },
+  {
+    id: "layers-sets",
+    eyebrow: "Layers + sets",
+    title: "The outfit and the recovery finish.",
+    body: "The complete practice set, the wrap and the hoodie placed where customers build the after-training layer.",
+    slugs: [
+      "vyoma-the-set",
+      "vyoma-akasha-wrap",
+      "vyoma-meditation-hoodie",
+    ],
+  },
+  {
+    id: "vyoma-pure",
+    eyebrow: "Vyoma Pure",
+    title: "Closest-to-skin comfort.",
+    body: "The Pure line stays visible as its own foundation: brief, cami and trunk.",
+    slugs: [
+      "vyoma-pure-brief-women",
+      "vyoma-pure-cami",
+      "vyoma-pure-trunk-men",
+    ],
+  },
+  {
+    id: "accessories",
+    eyebrow: "Accessories",
+    title: "Carry and finish the kit.",
+    body: "The existing Gym Carry and Organic Crew Sock are placed together without creating another bag.",
+    slugs: [
+      "vyoma-mat-bag",
+      "vyoma-organic-crew-sock",
+    ],
+  },
+];
+
+function productsFor(slugs) {
+  return slugs.map((slug) => PRODUCTS.find((product) => product.slug === slug)).filter(Boolean);
+}
 
 export default function ShopPage() {
   return (
@@ -91,6 +156,42 @@ export default function ShopPage() {
             </p>
           </div>
           <ShopGrid />
+        </div>
+      </section>
+
+      <section className="commerce-section section-light" aria-labelledby="category-placement-heading">
+        <div className="commerce-shell">
+          <div className="commerce-section-head">
+            <p className="commerce-eyebrow">Placed by purpose</p>
+            <h2 id="category-placement-heading">All 18 current products, sorted before any new catalogue work.</h2>
+            <p>
+              These sections keep every existing product visible in the wardrobe area it already belongs to.
+            </p>
+          </div>
+          {CATEGORY_GROUPS.map((group) => {
+            const products = productsFor(group.slugs);
+            if (!products.length) return null;
+
+            return (
+              <section
+                className="commerce-subsection"
+                id={group.id}
+                aria-labelledby={`${group.id}-heading`}
+                key={group.id}
+              >
+                <div className="commerce-section-head compact">
+                  <p className="commerce-eyebrow">{group.eyebrow}</p>
+                  <h3 id={`${group.id}-heading`}>{group.title}</h3>
+                  <p>{group.body}</p>
+                </div>
+                <div className="grid">
+                  {products.map((product) => (
+                    <ProductCard key={product.slug} product={product} />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </section>
 

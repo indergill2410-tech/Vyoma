@@ -12,6 +12,7 @@ export default function sitemap() {
     { path: "/women", priority: 0.9, changeFrequency: "daily" },
     { path: "/men", priority: 0.9, changeFrequency: "daily" },
     { path: "/pure", priority: 0.8, changeFrequency: "weekly" },
+    { path: "/accessories", priority: 0.8, changeFrequency: "weekly" },
     { path: "/sky-series", priority: 0.7, changeFrequency: "weekly" },
     { path: "/fabric", priority: 0.7, changeFrequency: "monthly" },
     { path: "/research", priority: 0.8, changeFrequency: "monthly" },
